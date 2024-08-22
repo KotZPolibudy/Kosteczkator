@@ -2,7 +2,7 @@
 import tensorflow as tf
 import numpy as np
 import cv2
-from model import create_model
+from config import NUM_CLASSES
 
 def predict_digit(image_path):
     model = tf.keras.models.load_model('digit_recognition_model.h5')
@@ -16,6 +16,6 @@ def predict_digit(image_path):
     return np.argmax(prediction)
 
 if __name__ == "__main__":
-    image_path = 'data/test/example_digit.png'
+    image_path = 'data/test/20240822_095958.png'
     digit = predict_digit(image_path)
     print(f"The digit in the image is: {digit}")

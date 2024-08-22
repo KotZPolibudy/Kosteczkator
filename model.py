@@ -1,9 +1,10 @@
 # model.py
-from tensorflow.keras import layers, models
 import tensorflow as tf
+from tensorflow.keras import layers, models
+from config import NUM_CLASSES
 
 
-def create_model(input_shape=(28, 28, 1), num_classes=10):
+def create_model(input_shape=(28, 28, 1), num_classes=NUM_CLASSES):
     model = models.Sequential()
     model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
     model.add(layers.MaxPooling2D((2, 2)))
