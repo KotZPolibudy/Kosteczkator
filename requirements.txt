@@ -1,0 +1,4 @@
+tensorflow==2.13.0
+numpy
+opencv-python
+pillow
