@@ -18,6 +18,6 @@ def predict_digit(image_path):
 
 
 if __name__ == "__main__":
-    image_path = 'data/test/20240822_095958.png'
+    image_path = './data/test/20240822_141459.jpg'
     digit = predict_digit(image_path)
     print(f"The digit in the image is: {digit}")

@@ -30,4 +30,4 @@ def train_model(train_data_dir, validation_data_dir=None, epochs=10):
 
 
 if __name__ == "__main__":
-    train_model('data/train', validation_data_dir='data/validation')
+    train_model('./data/train', validation_data_dir='./data/validation')
