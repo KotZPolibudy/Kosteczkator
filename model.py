@@ -1,6 +1,7 @@
 # model.py
 import tensorflow as tf
-from tensorflow.keras import layers, models
+from tensorflow.python.keras import layers, models
+# from tensorflow.keras import layers, models
 from config import NUM_CLASSES
 
 
