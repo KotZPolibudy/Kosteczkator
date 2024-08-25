@@ -1,7 +1,7 @@
 # train.py
 import tensorflow as tf
-# from tf.keras.preprocessing.image import ImageDataGenerator
-from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+# from keras.preprocessing.image import ImageDataGenerator
 import model
 from config import NUM_CLASSES
 
