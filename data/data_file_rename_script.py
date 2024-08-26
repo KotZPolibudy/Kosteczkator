@@ -38,7 +38,7 @@ def rename_files_in_data_folder(data_folder):
 
 if __name__ == "__main__":
     # Define the path to the 'data' folder
-    data_folder = os.path.join(os.getcwd(), 'data')
+    data_folder = os.path.join(os.getcwd(), '')
 
     # Rename files in the 'data' folder and its subdirectories
     rename_files_in_data_folder(data_folder)

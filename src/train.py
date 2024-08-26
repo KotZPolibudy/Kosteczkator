@@ -1,6 +1,6 @@
 # train.py
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-# from keras.preprocessing.image import ImageDataGenerator
+import os
 import model
 from config import NUM_CLASSES
 from config import NUM_EPOCHS
@@ -25,9 +25,10 @@ def train_model(train_data_dir, validation_data_dir=None, epochs=NUM_EPOCHS):
     cnn_model.fit(train_data,
                   validation_data=validation_data,
                   epochs=epochs)
-
-    cnn_model.save('kosteczka_model.keras')
+    save_dir = '../models'
+    os.makedirs(save_dir, exist_ok=True)
+    cnn_model.save(os.path.join(save_dir, 'kosteczka_model.keras'))
 
 
 if __name__ == "__main__":
-    train_model('./data/train', validation_data_dir='./data/validation')
+    train_model('../data/train', validation_data_dir='../data/validation')
