@@ -8,7 +8,7 @@ data/test/
 data/validation
 
 # trained model (chcemy go w ignore, czy postępy treningu teżwrzucamy na gita??)
-digit_recognition_model.h5
+*.h5
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

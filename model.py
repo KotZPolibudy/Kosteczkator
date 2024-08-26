@@ -1,13 +1,12 @@
 # model.py
-import tensorflow as tf
-# from tensorflow.python.keras import layers, models
-from tensorflow.keras import layers, models
+from tensorflow.keras import layers, models, Input
 from config import NUM_CLASSES
 
 
 def create_model(input_shape=(28, 28, 1), num_classes=NUM_CLASSES):
     model = models.Sequential()
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
+    model.add(Input(shape=input_shape))  # Specify the input shape here
+    model.add(layers.Conv2D(32, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Conv2D(64, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))

@@ -1,9 +1,9 @@
 # train.py
-import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 # from keras.preprocessing.image import ImageDataGenerator
 import model
 from config import NUM_CLASSES
+from config import NUM_EPOCHS
 
 
 def load_data(data_dir, target_size=(28, 28), batch_size=32):
@@ -16,7 +16,7 @@ def load_data(data_dir, target_size=(28, 28), batch_size=32):
     return data
 
 
-def train_model(train_data_dir, validation_data_dir=None, epochs=10):
+def train_model(train_data_dir, validation_data_dir=None, epochs=NUM_EPOCHS):
     train_data = load_data(train_data_dir)
     validation_data = load_data(validation_data_dir) if validation_data_dir else None
 
@@ -26,7 +26,7 @@ def train_model(train_data_dir, validation_data_dir=None, epochs=10):
                   validation_data=validation_data,
                   epochs=epochs)
 
-    cnn_model.save('digit_recognition_model.h5')
+    cnn_model.save('kosteczka_model.h5')
 
 
 if __name__ == "__main__":
