@@ -26,7 +26,7 @@ def train_model(train_data_dir, validation_data_dir=None, epochs=NUM_EPOCHS):
                   validation_data=validation_data,
                   epochs=epochs)
 
-    cnn_model.save('kosteczka_model.h5')
+    cnn_model.save('kosteczka_model.keras')
 
 
 if __name__ == "__main__":
