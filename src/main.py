@@ -3,10 +3,11 @@ import tensorflow as tf
 import numpy as np
 import cv2
 from config import NUM_CLASSES
+from config import USED_MODEL_NAME
 
 
 def predict_digit(image_path):
-    model = tf.keras.models.load_model('../models/kosteczka_model.keras')
+    model = tf.keras.models.load_model(f'../models/{USED_MODEL_NAME}')
 
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     img = cv2.resize(img, (28, 28))

@@ -1,9 +1,10 @@
-# train.py
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 import model
 from config import NUM_CLASSES
 from config import NUM_EPOCHS
+from datetime import datetime
+import getpass
 
 
 def load_data(data_dir, target_size=(28, 28), batch_size=32):
@@ -25,9 +26,15 @@ def train_model(train_data_dir, validation_data_dir=None, epochs=NUM_EPOCHS):
     cnn_model.fit(train_data,
                   validation_data=validation_data,
                   epochs=epochs)
+
+    username = getpass.getuser()
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    model_filename = f'M_{username}_{timestamp}.keras'
+
     save_dir = '../models'
     os.makedirs(save_dir, exist_ok=True)
-    cnn_model.save(os.path.join(save_dir, 'kosteczka_model.keras'))
+
+    cnn_model.save(os.path.join(save_dir, model_filename))
 
 
 if __name__ == "__main__":
