@@ -1,0 +1,83 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bachelor's & Master's Thesis Template        %%
+%% Copyleft by Dawid Weiss & Marta Szachniuk    %%
+%% Faculty of Computing and Telecommunication   %%
+%% Poznan University of Technology, 2020        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Szkielet dla pracy licencjackiej pisanej w języku polskim.
+
+\documentclass[polish,bachelor,a4paper,oneside]{ppfcmthesis}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+
+%--------------------------------------
+% Strona tytułowa
+%--------------------------------------
+
+% Autorzy pracy, jeśli jest ich więcej niż jeden
+% wstaw między nimi separator \and
+\author{%
+   Pierwszy autor pracy \album{nr-indeksu} \and 
+   Drugi autor pracy \album{nr-indeksu}}
+\authortitle{}                                % Do not change.
+
+\title{Temat pracy dyplomowej}
+
+% Your supervisor comes here.
+\ppsupervisor{prof.~dr hab.~inż.~Imię Nazwisko} 
+
+% Year of final submission (not graduation!)
+\ppyear{2020}                                 
+
+
+\begin{document}
+
+% Front matter starts here
+\frontmatter\pagestyle{empty}%
+\maketitle\cleardoublepage%
+
+
+%--------------------------------------
+% Spis treści
+%--------------------------------------
+
+\pagenumbering{Roman}\pagestyle{ppfcmthesis}%
+\tableofcontents* 
+\cleardoublepage % Zaczynamy od nieparzystej strony
+
+%--------------------------------------
+% Rozdziały
+%--------------------------------------
+
+%Najwygodniej jeśli każdy rozdział znajduje się w oddzielnym pliku
+\mainmatter%
+\input{chapters/01-wstep.tex}
+\input{chapters/02-teoria.tex}
+\input{chapters/03-praca-wlasna.tex}
+\input{chapters/04-zakonczenie.tex}
+
+%--------------------------------------
+% Literatura
+%--------------------------------------
+
+\bibliographystyle{plain}{\raggedright\sloppy\small\bibliography{bibliografia}}
+
+%--------------------------------------
+% Dodatki
+%--------------------------------------
+
+\cleardoublepage\appendix%
+\newpage
+\input{chapters/zalacznik.tex}
+
+%--------------------------------------
+% Informacja o prawach autorskich
+%--------------------------------------
+
+\ppcolophon
+
+\end{document}
