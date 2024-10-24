@@ -3,6 +3,13 @@ To będzie ten nasz projekt na inżynierkę, a przynajmniej ta mała sieć neuro
 ...a przynajmniej taką mam nadzieję.
 
 
+# Jak pisać prackę:
+
+w ./Pracka znajdują się wszystkie źródła TeX'a.
+main.tex jak się domyślacie jest głównym plikiem, a osobne rozdziały macie w chapters.
+Wrzucam też Issue z zadankiem żeby każdy sobie to przekompilował i zobaczył czy MiKTeX działa na danej maszynie itd
+
+
 # WAŻNE!
 Na gicie nie znajdziecie plików ze zdjęciami, na których trenowany był model. \
 Przedstawiam tutaj drzewko, jak powinny być poustawiane w głównym folderze repozytorium.
