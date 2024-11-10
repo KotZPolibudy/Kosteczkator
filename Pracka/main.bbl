@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{Drozdowski2006}
+Maciej Drozdowski.
+\newblock Jak pisać prace dyplomowe -- uwagi o formie.
+\newblock [on-line]
+  \url{http://www.cs.put.poznan.pl/mdrozdowski/dyd/txt/jak_mgr.html}, 2006.
+
+\bibitem{Knuth1986}
+Donald~E. Knuth.
+\newblock {\em The {\TeX}book}.
+\newblock Computers and Typesetting. Ad{\-d}i{\-s}on-Wes{\-l}ey, Reading, MA,
+  USA, 1986.
+
+\bibitem{Lamport1985}
+Leslie Lamport.
+\newblock {\em {\LaTeX} --- A Document Preparation System --- User's Guide and
+  Reference Manual}.
+\newblock Ad{\-d}i{\-s}on-Wes{\-l}ey, Reading, MA, USA, 1985.
+
+\end{thebibliography}

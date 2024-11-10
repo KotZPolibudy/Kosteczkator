@@ -1,0 +1,18 @@
+\babel@toc {polish}{}\relax 
+\babel@toc {polish}{}\relax 
+\contentsline {chapter}{\chapternumberline {1}Wstęp}{1}{chapter.1}%
+\contentsline {chapter}{\chapternumberline {2}Podstawy teoretyczne}{2}{chapter.2}%
+\contentsline {chapter}{\chapternumberline {3}Rozwinięcie}{3}{chapter.3}%
+\contentsline {chapter}{\chapternumberline {4}Zakończenie}{4}{chapter.4}%
+\contentsline {chapter}{Literatura}{5}{chapter*.3}%
+\contentsline {appendix}{\chapternumberline {A}Składanie dokumentu w systemie \LaTeX }{6}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Struktura dokumentu}{6}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Akapity i znaki specjalne}{6}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Wypunktowania}{6}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Polecenia pakietu \texttt {ppfcmthesis}}{7}{section.A.4}%
+\contentsline {paragraph}{Makra zdefiniowane dla języka angielskiego.}{7}{section*.4}%
+\contentsline {paragraph}{Makra zdefiniowane dla języka polskiego.}{7}{section*.5}%
+\contentsline {section}{\numberline {A.5}Rysunki}{7}{section.A.5}%
+\contentsline {subsection}{\numberline {A.5.1}Tablice}{8}{subsection.A.5.1}%
+\contentsline {subsection}{\numberline {A.5.2}Checklista}{8}{subsection.A.5.2}%
+\contentsline {section}{\numberline {A.6}Literatura i materiały dodatkowe}{9}{section.A.6}%
