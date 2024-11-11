@@ -11,6 +11,16 @@ data/validation
 # *.h5
 # models/
 
+#  aaaa
+Pracka/main.aux
+Pracka/main.bbl
+Pracka/main.blg
+Pracka/main.fdb_latexmk
+Pracka/main.fls
+Pracka/main.synctex.gz
+Pracka/main.toc
+Pracka/main.out
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
