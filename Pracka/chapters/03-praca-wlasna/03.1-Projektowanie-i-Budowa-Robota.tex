@@ -1,0 +1,39 @@
+
+\chapter{Budowa sprzętowego generatora liczb losowych}
+\section{Projektowanie robota}
+
+Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością.
+Ostatecznie, po przeanalizowaniu kilku koncepcji, zdecydowano się na rozwiązanie wykorzystujące obrotowy 
+kubek, wewnątrz którego kość porusza się i odbija od ścianek. Taki mechanizm zapewnia losowość rzutu, a 
+jednocześnie jest prosty w konstrukcji i intuicyjny w działaniu. Obracający się kubek został 
+zaprojektowany tak, aby jego prędkość i czas trwania obrotu można było precyzyjnie kontrolować, co  w założeniu 
+pozwala na uzyskanie wiarygodnych wyników przy każdym rzucie. W celach testowych został skonstruowany prototypowy
+model robota zbudowany w taki sposób żeby wszystkie jego komponenty były modułowe. Takie rozwiązanie pozwala na 
+łatwe podmiany elementów robota bez potrzeby przeprojektowywania całości robota. Przy budowie wykorzystano 
+technologię druku 3d, która pozwala na szybkie modyfikacje przy jednoczesnym zachowaniu bardzo wysokiej dokładności
+budowy elementów składowych robota.
+
+Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3d.
+Tymi elementami był: kubek, ramię służące do montażu kubka, uchwyty do prątów oraz płytka mocująca do kamery. Dodatkowo
+wykorzystano silnik prądu stałego napędzający kubek oraz sterownik służący do zasilania i sterowania ruchem silnika.
+
+Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
+wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie prostogo
+serwomechanizmu jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów, które byłyby odpowiednie w tym celu ma
+ograniczony ruch do $180^{\circ}$ lub $360^{\circ}$ a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
+Ostatecznie w tym celu wybrano mały silnik krokowy z wystarczającym momentem obrotowym (34.3mN.m).
+
+Podczas testów pierwszej wersji robota wykorzytującej obrotowy kubek powstał pomysł alternatywnego rozwiązania.
+Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek a dodatkowo wyhylać go,
+wykorzystany został trwale zamontowany kubek na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
+Takie rozwiązanie znacząco upraszcza cały mechanizm robota a dodatkowo bardzo przyspiesza proces losowania liczby.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TODO
+%1. oświetlenie
+%2. dodać wiecej informacji
+%3. ostateczny projekt robota
+%4. całe mnóstwo poprawiania i dopracowywania tego tekstu
+%5. dodać zdjęcia/modele
