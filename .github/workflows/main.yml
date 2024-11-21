@@ -11,22 +11,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: blang/latex:ctanfull  # A lightweight TeX Live image
 
     steps:
       # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Install TeX Live
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
-
       # Compile LaTeX document
       - name: Compile LaTeX
-        run: |
-          pdflatex -output-directory ./ ./Pracka/main.tex
+        run: pdflatex -output-directory ./ ./Pracka/main.tex
 
       # Move the output PDF to the root directory
       - name: Move PDF to root
