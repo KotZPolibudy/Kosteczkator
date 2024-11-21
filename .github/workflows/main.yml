@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: texlive/texlive  # A compatible TeX Live Docker image
+      image: texlive/texlive:latest  # Specify the tag for stability
 
     steps:
       # Checkout the repository
@@ -21,7 +21,8 @@ jobs:
 
       # Compile LaTeX document
       - name: Compile LaTeX
-        run: pdflatex -output-directory ./ ./Pracka/main.tex
+        run: |
+          pdflatex -output-directory ./Pracka -interaction=nonstopmode -file-line-error ./Pracka/main.tex
 
       # Move the output PDF to the root directory
       - name: Move PDF to root
@@ -33,4 +34,3 @@ jobs:
         with:
           name: compiled-main-pdf
           path: ./main.pdf
-
