@@ -17,17 +17,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Install MiKTeX
-      - name: Set up MiKTeX
+      # Install dependencies and MiKTeX
+      - name: Install MiKTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y miktex
+          sudo apt-get install -y wget
+          wget -q https://miktex.org/download/ctan/systems/win32/miktex/setup/miktex-linux.deb
+          sudo apt-get install -y ./miktex-linux.deb
+          sudo miktexsetup finish
+          sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
+          sudo mtxrun --generate
 
       # Compile LaTeX document
       - name: Compile LaTeX
         run: |
-          miktexsetup finish
-          mtxrun --generate
           pdflatex -output-directory ./ ./Pracka/main.tex
 
       # Move the output PDF to the root directory
