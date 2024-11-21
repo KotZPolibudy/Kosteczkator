@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: blang/latex:ctanfull  # A lightweight TeX Live image
+      image: texlive/texlive  # A compatible TeX Live Docker image
 
     steps:
       # Checkout the repository
@@ -33,3 +33,4 @@ jobs:
         with:
           name: compiled-main-pdf
           path: ./main.pdf
+
