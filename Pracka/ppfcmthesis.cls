@@ -117,11 +117,11 @@
 \renewcommand{\maketitlehooka}{%
 \begin{center}
 \if@pppolish
-  \includegraphics[width=\textwidth]{wit/sygnet-pp.eps} \\
+  \includegraphics[width=\textwidth]{wit/sygnet-pp} \\
 WYDZIA{\L} INFORMATYKI I TELEKOMUNIKACJI\\
 Instytut Informatyki
 \else
-  \includegraphics[width=\textwidth]{wit/sygnet-pp-eng.eps} \\
+  \includegraphics[width=\textwidth]{wit/sygnet-pp-eng} \\
 FACULTY OF COMPUTING AND TELECOMMUNICATION\\
 Institute of Computing Science
 \fi\end{center}}
