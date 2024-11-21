@@ -1,0 +1,47 @@
+name: Compile LaTeX Document
+
+on:
+  push:
+    branches:
+      - main
+      - Kotu*
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest  # Ensure a stable TeX Live image
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Compile LaTeX (1st pass)
+      - name: Compile LaTeX (1st pass)
+        run: pdflatex -output-directory ./Pracka -interaction=nonstopmode -file-line-error ./Pracka/main.tex
+
+      # Compile LaTeX (2nd pass)
+      - name: Compile LaTeX (2nd pass)
+        run: pdflatex -output-directory ./Pracka -interaction=nonstopmode -file-line-error ./Pracka/main.tex
+
+      # Move the output PDF to the root directory
+      - name: Move PDF to root
+        run: mv ./Pracka/main.pdf ./main.pdf
+
+      # Upload the compiled PDF as an artifact
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-main-pdf
+          path: ./main.pdf
+
+      # Upload LaTeX logs for debugging (optional)
+      - name: Upload LaTeX logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: latex-logs
+          path: ./Pracka/main.log
