@@ -48,13 +48,6 @@ pierwszym wariancie. Na drukarce 3d wydrukowano dodatkowe części niezbędne do
 Zaprojektowano i wydrukowano nowy kubek, śmigło oraz mocowanie dla silnika. Kubek został przystosowany do montażu 
 silnika prądu stałego oraz śmigła. 
 
-%tu kłamie bo jeszcze nie zrobilem tego
-W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
-LED sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
-robienie zdjęć o wystarczająco dobrej jakości dla zamierzonego celu. 
-
-%TODO
-%wstawic zdjeicei oswietlonego kubka
 
 Duże znaczenie miała również wykorzystywana kość. Od jej koloru i tekstury zależała jakość zdjęć zrobionych przez
 zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic w ich czytelności zależnych od koloru kości.
@@ -81,6 +74,19 @@ procesora, co zapewniło stabilne i bezpieczne działanie całego systemu.
     \centering
     \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/now_we_are_cool.png}
     \caption{\label{fig:zimno}zimno}
+\end{figure}
+
+W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
+LED sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
+robienie zdjęć o wystarczająco dobrej jakości dla zamierzonego celu. Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
+jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Dzięki temu wysokość prototypu zmniejszyła się o około 5cm.
+Diody połączono szeregowo dzięki czemu nie trzeba było wykorzystywać dodatkowych rezystorów a ilość połączeń
+została minimalna.
+
+\begin{figure}[H]
+    \centering
+    \rotatebox{90}{\includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg}}
+    \caption{\label{fig:jasno}jasno}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
