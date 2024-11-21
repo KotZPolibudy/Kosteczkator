@@ -2,9 +2,9 @@ name: Deploy PDF
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
       - name: Build
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: thesis.tex
+          root_file: ./Pracka/main.tex
       - name: Copy
         run: |
           mkdir out
