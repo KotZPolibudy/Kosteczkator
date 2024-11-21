@@ -17,16 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Install dependencies and MiKTeX
-      - name: Install MiKTeX
+      # Install TeX Live
+      - name: Install TeX Live
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget
-          wget -q https://miktex.org/download/ctan/systems/win32/miktex/setup/miktex-linux.deb
-          sudo apt-get install -y ./miktex-linux.deb
-          sudo miktexsetup finish
-          sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
-          sudo mtxrun --generate
+          sudo apt-get install -y texlive-full
 
       # Compile LaTeX document
       - name: Compile LaTeX
