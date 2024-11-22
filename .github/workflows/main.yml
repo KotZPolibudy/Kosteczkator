@@ -20,8 +20,10 @@ jobs:
     - name: Install MiKTeX
       run: |
         sudo apt-get update
-        sudo apt-get install -y software-properties-common wget
-        wget -qO- https://miktex.org/download/ubuntu | sudo bash
+        sudo apt-get install -y software-properties-common wget gnupg
+        wget -qO- https://miktex.org/download/gpg-pubkey | sudo gpg --dearmor -o /usr/share/keyrings/miktex-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/miktex-archive-keyring.gpg] https://miktex.org/download/ubuntu jammy universe" | sudo tee /etc/apt/sources.list.d/miktex.list
+        sudo apt-get update
         sudo apt-get install -y miktex
         miktexsetup finish
         initexmf --admin --update-fndb
