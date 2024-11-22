@@ -17,17 +17,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up MiKTeX
-      uses: mirkonasato/setup-miktex@v1
-      with:
-        version: latest
+    - name: Install MiKTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y software-properties-common wget
+        wget -qO- https://miktex.org/download/ubuntu | sudo bash
+        sudo apt-get install -y miktex
+        miktexsetup finish
+        initexmf --admin --update-fndb
+        initexmf --admin --mklinks
+        mpm --admin --update
 
     - name: Compile LaTeX document
       run: |
-        miktexsetup finish
-        mpm --admin --update-db
-        mpm --admin --update
-
         # Navigate to the directory containing main.tex
         cd Pracka
         
