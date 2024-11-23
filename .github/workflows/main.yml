@@ -12,43 +12,39 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest  # Ensure a stable TeX Live image
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Install MiKTeX
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y software-properties-common wget gnupg
-        wget -qO- https://miktex.org/download/gpg-pubkey | sudo gpg --dearmor -o /usr/share/keyrings/miktex-archive-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/miktex-archive-keyring.gpg] https://miktex.org/download/ubuntu jammy universe" | sudo tee /etc/apt/sources.list.d/miktex.list
-        sudo apt-get update
-        sudo apt-get install -y miktex
-        miktexsetup finish
-        initexmf --admin --update-fndb
-        initexmf --admin --mklinks
-        mpm --admin --update
-
-    - name: Compile LaTeX document
-      run: |
-        # Navigate to the directory containing main.tex
-        cd Pracka
+      # Compile LaTeX (1st pass)
+      - name: Compile LaTeX (1st pass)
+        run: |
+          cd ./Pracka
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
         
-        # First pass with pdflatex
-        pdflatex -interaction=nonstopmode -file-line-error main.tex
-        
-        # Run bibtex to process the bibliography
-        bibtex main
+      # Compile LaTeX (2nd pass)
+      - name: Compile LaTeX (2nd pass)
+        run: |
+          cd ./Pracka
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
+      # Move the output PDF to the root directory
+      - name: Move PDF to root
+        run: mv ./Pracka/main.pdf ./main.pdf
 
-        # Second pass with pdflatex
-        pdflatex -interaction=nonstopmode -file-line-error main.tex
+      # Upload the compiled PDF as an artifact
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-main-pdf
+          path: ./main.pdf
 
-        # Third pass to resolve cross-references
-        pdflatex -interaction=nonstopmode -file-line-error main.tex
-
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: thesis-pdf
-        path: Pracka/main.pdf
+      # Upload LaTeX logs for debugging (optional)
+      - name: Upload LaTeX logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-logs
+          path: ./Pracka/main.log
