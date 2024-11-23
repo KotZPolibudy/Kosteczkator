@@ -22,12 +22,15 @@ jobs:
 
       # Compile LaTeX (1st pass)
       - name: Compile LaTeX (1st pass)
-        run: pdflatex -output-directory ./Pracka -interaction=nonstopmode -file-line-error ./Pracka/main.tex
-
+        run: |
+          cd ./Pracka
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
+        
       # Compile LaTeX (2nd pass)
       - name: Compile LaTeX (2nd pass)
-        run: pdflatex -output-directory ./Pracka -interaction=nonstopmode -file-line-error ./Pracka/main.tex
-
+        run: |
+          cd ./Pracka
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
       # Move the output PDF to the root directory
       - name: Move PDF to root
         run: mv ./Pracka/main.pdf ./main.pdf
