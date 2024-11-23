@@ -180,7 +180,7 @@ Poznan University of Technology\\Faculty of Computing and Telecommunication\\Ins
 
 \medskip\noindent%
 \if@pppolish%
-Sk{\l}ad przy u{\.z}yciu systemu \LaTeX{} na platformie Overleaf.
+Sk{\l}ad przy u{\.z}yciu systemu \LaTeX{} - MiKTeX oraz workflow za pomocą Github Actions.
 \else%
 Typeset using \LaTeX\.
 \fi
