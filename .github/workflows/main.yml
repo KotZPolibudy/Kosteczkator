@@ -37,14 +37,14 @@ jobs:
 
       # Upload the compiled PDF as an artifact
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-main-pdf
           path: ./main.pdf
 
       # Upload LaTeX logs for debugging (optional)
       - name: Upload LaTeX logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: latex-logs
           path: ./Pracka/main.log
