@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - Kotu*
+      # - Kotu*
   pull_request:
     branches:
       - main
@@ -29,6 +29,7 @@ jobs:
       # Compile LaTeX (2nd pass)
       - name: Compile LaTeX (2nd pass)
         run: |
+          cd ./Pracka
           pdflatex -interaction=nonstopmode -file-line-error main.tex
 
       # Move the output PDF to the root directory
