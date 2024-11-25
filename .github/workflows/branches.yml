@@ -8,6 +8,7 @@ on:
       - Julka
   pull_request:
     branches:
+      - main
       - Kotu*
       - Kedra*
       - Julka
