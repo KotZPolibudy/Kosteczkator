@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - Kotu*
+      - Julka
   pull_request:
     branches:
       - main
