@@ -68,14 +68,17 @@ def read_number_from_image(image_path):
 
 def main():
     # Set up argument parser
-    parser = argparse.ArgumentParser(description="Extract a numeric value from an image using Tesseract OCR.")
-    parser.add_argument("image_path", help="Path to the image file containing the number")
+    # parser = argparse.ArgumentParser(description="Extract a numeric value from an image using Tesseract OCR.")
+    # parser.add_argument("image_path", help="Path to the image file containing the number")
 
     # Parse arguments
-    args = parser.parse_args()
+    # args = parser.parse_args()
 
     # Read the number from the image
-    number = read_number_from_image(args.image_path)
+    # number = read_number_from_image(args.image_path)
+    # path = "../data/7/k8_5_2024-11-22_19_24_24.jpg"
+    path = "../data/cropped/cropped_die.jpg"
+    number = read_number_from_image(path)
     if number is not None:
         print(f"Extracted Number: {number}")
 
