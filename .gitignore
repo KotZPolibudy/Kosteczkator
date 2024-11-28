@@ -20,6 +20,10 @@ venv.bak/
 /out/main.toc
 /Pracka/figures/mathematica-eps-converted-to.pdf
 /Pracka/wit/sygnet-pp-eps-converted-to.pdf
+/auxil/main.toc
+/auxil/main.aux
+/auxil/main.out
+/main.synctex.gz
 #  aaaa
 Pracka/main.aux
 Pracka/main.bbl
@@ -43,4 +47,3 @@ data/
 # trained model (chcemy go w ignore, czy postępy treningu teżwrzucamy na gita??)
 # *.h5
 # models/
-
