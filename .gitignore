@@ -192,3 +192,6 @@ cython_debug/
 /out/main.toc
 /Pracka/figures/mathematica-eps-converted-to.pdf
 /Pracka/wit/sygnet-pp-eps-converted-to.pdf
+/old_kotu_stuff/data/test/*
+/old_kotu_stuff/data/train/*
+/old_kotu_stuff/data/validation/*
