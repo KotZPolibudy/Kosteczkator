@@ -47,3 +47,4 @@ data/
 # trained model (chcemy go w ignore, czy postępy treningu teżwrzucamy na gita??)
 # *.h5
 # models/
+/src/yolov8n.pt
