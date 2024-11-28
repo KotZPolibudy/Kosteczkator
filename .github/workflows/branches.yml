@@ -1,4 +1,4 @@
-name: Compile LaTeX Document and store it as an artifact
+name: Compile LaTeX (branches)
 
 on:
   push:
