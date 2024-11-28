@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.24)  28 NOV 2024 18:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.24)  28 NOV 2024 18:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -680,10 +680,10 @@ Package hyperref Info: Link coloring ON on input line 40.
 \openout5 = `main.out'.
 
 Package epstopdf Info: Source file: <wit/sygnet-pp.eps>
-(epstopdf)                    date: 2024-11-28 18:21:10
+(epstopdf)                    date: 2024-11-28 18:28:53
 (epstopdf)                    size: 1264718 bytes
 (epstopdf)             Output file: <wit/sygnet-pp-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-11-28 18:21:19
+(epstopdf)                    date: 2024-11-28 18:29:02
 (epstopdf)                    size: 31840 bytes
 (epstopdf)             Command: <repstopdf --outfile=wit/sygnet-pp-eps-converte
 d-to.pdf wit/sygnet-pp.eps>
@@ -881,11 +881,11 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              for symbol `textbraceleft' on input line 71.
 
 Package epstopdf Info: Source file: <figures/mathematica.eps>
-(epstopdf)                    date: 2024-11-28 18:21:10
+(epstopdf)                    date: 2024-11-28 18:28:53
 (epstopdf)                    size: 15878 bytes
 (epstopdf)             Output file: <figures/mathematica-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-11-28 18:21:20
-(epstopdf)                    size: 5539 bytes
+(epstopdf)                    date: 2024-11-28 18:29:03
+(epstopdf)                    size: 5540 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mathematica-eps-co
 nverted-to.pdf figures/mathematica.eps>
 (epstopdf)             \includegraphics on input line 97.
@@ -897,11 +897,11 @@ Package pdftex.def Info: figures/mathematica-eps-converted-to.pdf  used on inpu
 t line 97.
 (pdftex.def)             Requested size: 142.26378pt x 87.43282pt.
 Package epstopdf Info: Source file: <figures/mathematica.eps>
-(epstopdf)                    date: 2024-11-28 18:21:10
+(epstopdf)                    date: 2024-11-28 18:28:53
 (epstopdf)                    size: 15878 bytes
 (epstopdf)             Output file: <figures/mathematica-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-11-28 18:21:20
-(epstopdf)                    size: 5539 bytes
+(epstopdf)                    date: 2024-11-28 18:29:03
+(epstopdf)                    size: 5540 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mathematica-eps-co
 nverted-to.pdf figures/mathematica.eps>
 (epstopdf)             \includegraphics on input line 102.
