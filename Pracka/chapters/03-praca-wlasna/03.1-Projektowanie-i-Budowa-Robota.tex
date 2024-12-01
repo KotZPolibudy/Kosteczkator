@@ -8,12 +8,12 @@ kubek, wewnątrz którego kość porusza się i odbija od ścianek. Taki mechani
 jednocześnie jest prosty w konstrukcji i intuicyjny w działaniu. Obracający się kubek został 
 zaprojektowany tak, aby jego prędkość i czas trwania obrotu można było precyzyjnie kontrolować, co  w założeniu 
 pozwala na uzyskanie wiarygodnych wyników przy każdym rzucie. W celach testowych został skonstruowany prototypowy
-model robota zbudowany w taki sposób żeby wszystkie jego komponenty były modułowe. Takie rozwiązanie pozwala na 
-łatwe podmiany elementów robota bez potrzeby przeprojektowywania całości robota. Przy budowie wykorzystano 
-technologię druku 3d, która pozwala na szybkie modyfikacje przy jednoczesnym zachowaniu bardzo wysokiej dokładności
-budowy elementów składowych robota.
+model robota, zbudowany w taki sposób, żeby wszystkie jego komponenty były modułowe. Takie rozwiązanie pozwala na 
+łatwą wymianę elementów robota, bez potrzeby przeprojektowywania całego robota od nowa. Przy budowie wykorzystano 
+technologię druku 3D, która pozwala na szybkie modyfikacje przy jednoczesnym zachowaniu bardzo wysokiej dokładności
+budowy elementów składowych.
 
-Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3d.
+Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
 Tymi elementami był: kubek, ramię służące do montażu kubka, uchwyty do prątów oraz płytka mocująca do kamery. Dodatkowo
 wykorzystano silnik prądu stałego napędzający kubek oraz sterownik służący do zasilania i sterowania ruchem silnika.
 
@@ -39,24 +39,25 @@ nie pracuje na granicy swoich możliwości co zapewni jego długi okres eksploat
 \end{figure}
 
 Podczas testów pierwszej wersji robota wykorzytującej obrotowy kubek powstał pomysł alternatywnego rozwiązania.
-Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek a dodatkowo wyhylać go,
-wykorzystany został trwale zamontowany kubek na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
-Takie rozwiązanie znacząco upraszcza cały mechanizm robota a dodatkowo bardzo przyspiesza proces losowania liczby.
+Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wyhylać go,
+wykorzystany został trwale zamontowany kubek, na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
+Takie rozwiązanie znacząco upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby.
 
-Przy projektowaniu drugiego wariantu robota zostal wykorzystany ten sam stelaż złożony z metalowych prętów co w 
-pierwszym wariancie. Na drukarce 3d wydrukowano dodatkowe części niezbędne do realizacji tego wariantu.
+Przy projektowaniu drugiego wariantu robota został wykorzystany ten sam stelaż złożony z metalowych prętów co w 
+pierwszym wariancie. Na drukarce 3D wydrukowano dodatkowe części, niezbędne do realizacji tego wariantu.
 Zaprojektowano i wydrukowano nowy kubek, śmigło oraz mocowanie dla silnika. Kubek został przystosowany do montażu 
 silnika prądu stałego oraz śmigła. 
 
 %tu kłamie bo jeszcze nie zrobilem tego
+%nie prawda, zrobiłeś
 W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
-LED sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
+LED, sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
 robienie zdjęć o wystarczająco dobrej jakości dla zamierzonego celu. 
 
 %TODO
 %wstawic zdjeicei oswietlonego kubka
 
-Duże znaczenie miała również wykorzystywana kość. Od jej koloru i tekstury zależała jakość zdjęć zrobionych przez
+Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
 zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic w ich czytelności zależnych od koloru kości.
 
 \begin{figure}[H]

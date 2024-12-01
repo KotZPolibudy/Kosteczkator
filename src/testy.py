@@ -1,3 +1,5 @@
+import math
+
 def test_pojedynczych_bitow(bity):
     if 9725 < bity.count(1) < 10275:
         testPB = True
@@ -99,12 +101,29 @@ def test_chi2(rzuty):
         testC = True
     return testC
 
+def entropia(rzuty):
+    e = 0
+    suma = sum(rzuty)
+    for i in rzuty:
+        if i != 0:
+            e -= (i / suma) * math.log(i / suma, 2)
+    return e
+
+def entropia_procentowa(rzuty):
+    e = entropia(rzuty)
+    ep = entropia([1,1,1,1,1,1,1,1])
+    return e /ep * 100
+    
+
 def czy_uczciwa(bity, rzuty):
-    testPB = test_pojedynczych_bitow(bity)
+    testPB = test_pojedynczych_bitow(bity) #bity to po prostu ciąg bitów
     testS, testDS = serii_testy(bity)
     testP = test_pokerowy(bity)
-    testC = test_chi2(rzuty)
+    testC = test_chi2(rzuty) #rzuty to lista, na której każdy jej element to ile razy wypadła dana ścianka
     if testC and testP and testS and testDS and testPB:
         print("Ta kość jest uczciwa! :>")
     else:
         print("Ta kość niestety nie jest uczciwa :<") 
+
+o = [19,21,26,29,24,26,14,18]
+print(entropia_procentowa(o))
