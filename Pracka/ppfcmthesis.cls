@@ -117,11 +117,11 @@
 \renewcommand{\maketitlehooka}{%
 \begin{center}
 \if@pppolish
-  \includegraphics[width=\textwidth]{wit/sygnet-pp.eps} \\
+  \includegraphics[width=\textwidth]{wit/sygnet-pp} \\
 WYDZIA{\L} INFORMATYKI I TELEKOMUNIKACJI\\
 Instytut Informatyki
 \else
-  \includegraphics[width=\textwidth]{wit/sygnet-pp-eng.eps} \\
+  \includegraphics[width=\textwidth]{wit/sygnet-pp-eng} \\
 FACULTY OF COMPUTING AND TELECOMMUNICATION\\
 Institute of Computing Science
 \fi\end{center}}
@@ -180,7 +180,7 @@ Poznan University of Technology\\Faculty of Computing and Telecommunication\\Ins
 
 \medskip\noindent%
 \if@pppolish%
-Sk{\l}ad przy u{\.z}yciu systemu \LaTeX{} na platformie Overleaf.
+Sk{\l}ad przy u{\.z}yciu systemu \LaTeX{} - MiKTeX oraz workflow za pomocą Github Actions.
 \else%
 Typeset using \LaTeX\.
 \fi
