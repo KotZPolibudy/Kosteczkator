@@ -124,6 +124,3 @@ def czy_uczciwa(bity, rzuty):
         print("Ta kość jest uczciwa! :>")
     else:
         print("Ta kość niestety nie jest uczciwa :<") 
-
-o = [19,21,26,29,24,26,14,18]
-print(entropia_procentowa(o))
