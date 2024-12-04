@@ -39,9 +39,19 @@ def process(image_path, output_path):
     result.save(output_path)
 
 
-for input_fn in glob.glob('foty_kostek/*/*.jpg'):
+# Main loop to process images
+input_base = Path("../data/raw")   # Base input directory
+output_base = Path("../data/masked")  # Base output directory
+
+for input_fn in glob.glob(str(input_base / "*/*.jpg")):  # Match all JPG files in subdirectories
     input_fn = Path(input_fn)
-    output_fn = Path('output') / input_fn
+
+    # Derive the corresponding output path
+    relative_path = input_fn.relative_to(input_base)  # Get path relative to input base
+    output_fn = output_base / relative_path  # Combine with output base
+
+    # Create directories for the output file if they don't exist
     output_fn.parent.mkdir(parents=True, exist_ok=True)
-    print(input_fn)
+
+    # Process the image and save the output
     process(input_fn, output_fn)
