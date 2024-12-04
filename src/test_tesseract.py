@@ -2,6 +2,7 @@ import argparse
 from PIL import Image, ImageEnhance
 import pytesseract
 import matplotlib.pyplot as plt
+import glob
 
 
 # If Tesseract is not in your PATH, uncomment and adjust the line below
@@ -48,7 +49,9 @@ def read_number_from_image(image_path):
         show_images(img, processed_img)
 
         # Use Tesseract to do OCR on the image
-        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789'
+        # psm 6 - block text
+        # psm 10 - single character
+        custom_config = r'--oem 3 --psm 10 -c tessedit_char_whitelist=0123456789'
         text = pytesseract.image_to_string(processed_img, config=custom_config)
         print("Extracted Text: ", text)
 
@@ -77,10 +80,14 @@ def main():
     # Read the number from the image
     # number = read_number_from_image(args.image_path)
     # path = "../data/7/k8_5_2024-11-22_19_24_24.jpg"
-    path = "../data/cropped/cropped_die.jpg"
-    number = read_number_from_image(path)
-    if number is not None:
-        print(f"Extracted Number: {number}")
+    i=0
+    for input_fn in glob.glob('./data/1/*.jpg'):
+        i+=1
+        number = read_number_from_image(input_fn)
+        if number is not None:
+            print(f"Extracted Number: {number}")
+        if i > 5:
+            break
 
 
 if __name__ == "__main__":
