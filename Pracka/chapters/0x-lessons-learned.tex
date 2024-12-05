@@ -1,0 +1,72 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+
+\chapter{Porażki i wnioski}\label{ch:porazki-i-wnioski}
+%%To powinien być rozdział storyofmajlife
+Praca inżynierska jest niemałym przedsięwzięciem, wobec czego musiały pojawić się też pewne trudności.
+Niektóre z nich widzieliśmy już z daleka na wczesnych etapach planowania, a inne zaskoczyły nas, gdy pojawiały się w najróżniejszych momentach.
+Na szczęście jesteśmy w stanie poradzić sobie z każdą taką trudnością, wyciągając odpowiednie wnioski. \n
+
+
+\section{Faza planowania i pomysłów}\label{sec:faza-planowania-i-pomysow}
+
+Początkowy plan zakładał rzucanie kostką, sprawdzanie wyniku, zapisywanie go i przekazywanie gdzieś dalej.
+Prosty.
+Aż za prosty.
+Jak odczytać wynik?
+Znaleźć kostkę, użyć dostępnego ocr.
+%at this point, to nie wiem jak to napisać, julka pomocy bo ja dam tylko storyofmajlajf
+A jak rzucić jeszcze raz?
+Jakoś trzeba ją chwycić...
+Może nie wypuszczać, albo upewnić się że zawsze wyląduje w tym samym miejscu?
+Ale że jak wieża do kości? to jak przeładować?
+No to może jednak nie zmieniać miejsca kostki, zamiast wieży do kości użyć kubka.
+Zaprojektujmy własny kubek i nim obracajmy!
+Problem2: kostka się nie obraca w kubku, tylko klei do ścianki
+Solution2.1: Inny kubek
+Nie, inne designy kubków nie zadziałały
+Solution2.2: Przechylimy kubek
+W ten sposób powstaje wariant betoniarka
+Problem z wariantem betoniarka?
+No jest dość powolny wolny..
+A gdyby tak dać tam śmigiełko do środka, zamiast kręcić kubkiem?
+- Brawo, zrobiliśmy blender.
+Blender działa trochę lepiej, bo szybciej, ale ciekawe czy bardziej losowo?
+Jak starczy czasu to sprawdzimy
+
+
+\section{Hardware}\label{sec:hardware}
+
+Tutaj problemy hardware???
+
+
+\section{Czytanie wyniku}\label{sec:czytanie-wyniku}
+
+Ciemne zdjęcia, polegamy na zewnętrznym oświetleniu.
+Solution: dodać diody
+Problem? zasilanie? ale to hardware.
+
+Ok, mamy to, ale, jak tu czytać? gotowe modele?
+no więc tesseract widzi "śmieci". Dziwne słowa.
+Filtr na liczby i do przodu.
+Ok, miliony.. hmmm...
+szukaj cyfry? - nie ma cyfry, ale jest dłuuuga
+
+Solution: preprocessing.
+kontrast
+nie działa, nadal słabo
+własny model?
+nooo, średnia skuteczność
+Ok, to wróćmy do tesseracta, więcej preprocesing.
+Szukanie kości na zdj i przycinanie, jak?
+użyć gotowych modeli object detection np yolo8v
+no więc jest 1 apple, 1 donut, no dice
+Ok, może jednak nie chcę rozpoznawać, tylko szukać kostek?
+po kolorach?
+Po kolorach działa wycinanie, ale tesseract z wyciętego nadal widzi śmieci
+No to może jednak wyrównac rozmiary tych wyciętych zdj.... no i zrobić jednak własny model
+No i teraz jesteśmy tutaj.
+
+
+
