@@ -46,12 +46,13 @@ def read_number_from_image(image_path):
         processed_img = preprocess_image(img)
 
         # Show the original and processed images
-        show_images(img, processed_img)
+        # todo hidden here
+        # show_images(img, processed_img)
 
         # Use Tesseract to do OCR on the image
         # psm 6 - block text
         # psm 10 - single character
-        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789'
+        custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=12345678'
         text = pytesseract.image_to_string(processed_img, config=custom_config)
         print("Extracted Text: ", text)
 
@@ -61,7 +62,7 @@ def read_number_from_image(image_path):
         if number:
             return int(number)
         else:
-            print("No number found.")
+            # print("No number found.")
             return None
 
     except Exception as e:
@@ -80,17 +81,21 @@ def main():
     # Read the number from the image
     # number = read_number_from_image(args.image_path)
     # path = "../data/7/k8_5_2024-11-22_19_24_24.jpg"
-    """i = 0
-    for input_fn in glob.glob('./data/cropped/1/*.jpg'):
-        i += 1
-        number = read_number_from_image(input_fn)
-        if number is not None:
-            print(f"Extracted Number: {number}")
-        if i > 5:
-            break"""
-    path = "../data/cropped/3/k8_5_2024-11-22_19_06_13.jpg"
-    number = read_number_from_image(path)
-    print(number)
+    numnum = []
+    for num in range(1, 9):
+        numbers = []
+        for input_fn in glob.glob(f'../data/cropped/{num}/*.jpg'):
+            print(f"File: {input_fn}")
+            number = read_number_from_image(input_fn)
+            # print(f"Extracted Number: {number}")
+            numbers.append(number)
+        # print(numbers)
+        numnum.append(numbers)
+    for el in numnum:
+        print(el)
+        
+
+        # todo
 
 
 if __name__ == "__main__":
