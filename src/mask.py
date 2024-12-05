@@ -22,7 +22,7 @@ def process(image_path, output_path):
     v_array = np.array(blurred_v)
 
     # Apply thresholding
-    threshold = 224  # You can adjust this value
+    threshold = 230  # todo You can adjust this value dać to w parametr na zewnątrz
     binary_mask = (v_array > threshold).astype(np.uint8) * 255
 
     # Convert the mask back to a Pillow Image
