@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def detect_die(image_path, output_path="cropped_die.jpg"):
     # Load the YOLO model
-    model = YOLO("yolov8n.pt")  # Replace with your custom model if available
+    model = YOLO("../src/yolov8n.pt")  # Replace with your custom model if available
 
     # Run inference on the input image
     results = model(image_path)
