@@ -55,7 +55,7 @@ def process_and_crop(image_path, masked_output_path, cropped_output_path):
 
 def rescale_image(image, output_path, size=(64, 64)):
     # Resize the image
-    resized_image = image.resize(size, Image.ANTIALIAS)
+    resized_image = image.resize(size, Image.Resampling.LANCZOS)
 
     # Save the resized image
     resized_image.save(output_path)
