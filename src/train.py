@@ -18,6 +18,7 @@ if not os.path.exists(DATASET_PATH):
 
 # Load and preprocess data
 print("Loading dataset...")
+# todo można nawet więcej noise i innych udziwnień preprocessu
 datagen = ImageDataGenerator(
     rescale=1.0 / 255.0,
     validation_split=0.2,
