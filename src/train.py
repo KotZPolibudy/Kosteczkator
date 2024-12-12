@@ -4,13 +4,13 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 
 # Set dataset paths
-DATASET_PATH = "../data/cropped"
+DATASET_PATH = "../data/rescaled"
 MODEL_SAVE_PATH = "die_number_recognizer.keras"
 
 # Image parameters
-IMAGE_SIZE = (64, 64)  # Input size (matches rescaled images)
-BATCH_SIZE = 32  # Adjust batch size as needed
-EPOCHS = 10  # Number of training epochs
+IMAGE_SIZE = (64, 64)
+BATCH_SIZE = 16
+EPOCHS = 20
 
 # Check if the dataset path exists
 if not os.path.exists(DATASET_PATH):
@@ -26,7 +26,7 @@ datagen = ImageDataGenerator(
     width_shift_range=0.2,  # Horizontal shift
     height_shift_range=0.2,  # Vertical shift
     shear_range=0.2,  # Shear transformation
-    zoom_range=0.2,  # Random zoom
+    zoom_range=0.1,  # Random zoom
     horizontal_flip=True  # Flip images horizontally
 )
 
@@ -55,7 +55,7 @@ def create_model():
     model = models.Sequential([
         layers.Input(shape=(64, 64, 3)),  # Input layer
 
-        layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
+        layers.Conv2D(32, (3, 3), activation='relu'),
         layers.MaxPooling2D((2, 2)),
 
         layers.Conv2D(64, (3, 3), activation='relu'),
@@ -82,12 +82,15 @@ model.summary()
 
 # Train the model
 print("Starting training...")
+steps_per_epoch = train_data.samples // BATCH_SIZE
+validation_steps = val_data.samples // BATCH_SIZE
+
 history = model.fit(
     train_data,
     validation_data=val_data,
     epochs=EPOCHS,
-    steps_per_epoch=len(train_data),
-    validation_steps=len(val_data)
+    steps_per_epoch=steps_per_epoch,
+    validation_steps=validation_steps
 )
 
 # Save the trained model
@@ -95,7 +98,6 @@ print(f"Saving model to {MODEL_SAVE_PATH}...")
 model.save(MODEL_SAVE_PATH)
 print("Model saved!")
 
-# Optional: Plot training history
 import matplotlib.pyplot as plt
 
 # Plot accuracy
