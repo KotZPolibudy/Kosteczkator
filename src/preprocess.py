@@ -35,8 +35,8 @@ def process_and_crop(image_path, masked_output_path, cropped_output_path):
     masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
 
     # Save the masked image
-    masked_image.save(masked_output_path)
-    print(f"Saved masked image to {masked_output_path}")
+    # masked_image.save(masked_output_path)
+    # print(f"Saved masked image to {masked_output_path}")
 
     # Find bounding box of the mask and crop the image
     contours, _ = cv2.findContours(closed_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -46,8 +46,8 @@ def process_and_crop(image_path, masked_output_path, cropped_output_path):
         cropped_image = image.crop((x, y, x + w, y + h))
 
         # Save the cropped image
-        cropped_image.save(cropped_output_path)
-        print(f"Saved cropped image to {cropped_output_path}")
+        # cropped_image.save(cropped_output_path)
+        # print(f"Saved cropped image to {cropped_output_path}")
         return cropped_image  # Return cropped image for further processing
     else:
         print(f"No valid mask found for {image_path}. Skipping cropping.")
@@ -78,8 +78,8 @@ for input_fn in glob.glob(str(input_base / "*/*.jpg")):  # Match all JPG files i
     rescaled_output_fn = rescaled_output_base / relative_path  # Combine with rescaled output base
 
     # Create directories for the output files if they don't exist
-    masked_output_fn.parent.mkdir(parents=True, exist_ok=True)
-    cropped_output_fn.parent.mkdir(parents=True, exist_ok=True)
+    # masked_output_fn.parent.mkdir(parents=True, exist_ok=True)
+    # cropped_output_fn.parent.mkdir(parents=True, exist_ok=True)
     rescaled_output_fn.parent.mkdir(parents=True, exist_ok=True)
 
     # Process the image and save both outputs
