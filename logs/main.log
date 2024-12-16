@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.1)  2 DEC 2024 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.15)  16 DEC 2024 10:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -37,7 +37,7 @@ Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \c@@memmarkcntra=\count199
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
 \trimtop=\skip52
 \trimedge=\skip53
@@ -680,16 +680,16 @@ Package hyperref Info: Link coloring ON on input line 40.
 \openout5 = `main.out'.
 
 Package epstopdf Info: Source file: <wit/sygnet-pp.eps>
-(epstopdf)                    date: 2024-12-02 21:13:38
+(epstopdf)                    date: 2024-12-16 10:57:54
 (epstopdf)                    size: 1264718 bytes
 (epstopdf)             Output file: <wit/sygnet-pp-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-12-02 21:13:47
-(epstopdf)                    size: 31838 bytes
+(epstopdf)                    date: 2024-12-16 10:58:02
+(epstopdf)                    size: 31840 bytes
 (epstopdf)             Command: <repstopdf --outfile=wit/sygnet-pp-eps-converte
 d-to.pdf wit/sygnet-pp.eps>
 (epstopdf)             \includegraphics on input line 44.
 Package epstopdf Info: Output file is already uptodate.
-<wit/sygnet-pp-eps-converted-to.pdf, id=192, 1391.1975pt x 278.03876pt>
+<wit/sygnet-pp-eps-converted-to.pdf, id=217, 1391.1975pt x 278.03876pt>
 File: wit/sygnet-pp-eps-converted-to.pdf Graphic file (type pdf)
 <use wit/sygnet-pp-eps-converted-to.pdf>
 Package pdftex.def Info: wit/sygnet-pp-eps-converted-to.pdf  used on input line
@@ -713,7 +713,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ]
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
-45.
+51.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 ))
@@ -744,31 +744,26 @@ File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 
 ]
 
-[7]) (./chapters/02-teoria/02.3-testy-statystyczne.tex
+[7]) (./chapters/03-praca-wlasna/03-praca-wlasna.tex
 
-[8]) (./chapters/03-praca-wlasna/03-praca-wlasna.tex
-
-[9
-
-]
+[8]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
 
 
-LaTeX Warning: Citation `Drozdowski2006' on page 10 undefined on input line 25.
-
+LaTeX Warning: Citation `Drozdowski2006' on page 9 undefined on input line 25.
 
 ) (./chapters/03-praca-wlasna/03.1-Projektowanie-i-Budowa-Robota.tex
 
-[10
+[9
 
 ]
 
 pdfTeX warning: pdflatex (file ./chapters/03-praca-wlasna/figures/pierwszy.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=317, 475.82146pt x 844.0292p
+<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=342, 475.82146pt x 844.0292p
 t>
 File: chapters/03-praca-wlasna/figures/pierwszy.pdf Graphic file (type pdf)
 <use chapters/03-praca-wlasna/figures/pierwszy.pdf>
@@ -777,16 +772,16 @@ Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on
 (pdftex.def)             Requested size: 106.5pt x 188.90671pt.
 
 
-[11
+[10
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/plsc.enc}
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1}) 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.34 
       <./chapters/03-praca-wlasna/figures/pierwszy.pdf>]
-<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=327, 955.57pt x 1927.2p
+<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=353, 955.57pt x 1927.2p
 t>
 File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png
 )
@@ -794,7 +789,7 @@ File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  us
 ed on input line 37.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/nie_widac.png, id=328, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/nie_widac.png, id=354, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/nie_widac.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used o
@@ -802,20 +797,20 @@ n input line 65.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
 
 
-[12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.2}) 
+[11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.68 
       <./chapters/03-praca-wlasna/figures/koła_zębowe.png>]
-<chapters/03-praca-wlasna/figures/widac.png, id=335, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/widac.png, id=361, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/widac.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on in
 put line 71.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=336, 955.57pt x 1927.
+<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=362, 955.57pt x 1927.
 2pt>
 File: chapters/03-praca-wlasna/figures/now_we_are_cool.png Graphic file (type p
 ng)
@@ -825,14 +820,14 @@ used on input line 83.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
 
 
-[13
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.3}) 
+[12
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.86 
      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.4}) 
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -842,22 +837,25 @@ lasna/figures/widac.png>])
 (./chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex)
 (./chapters/04-testy.tex
 
-[14
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7.5}) 
+[13
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.1 \chapter
-            {Testy} <./chapters/03-praca-wlasna/figures/now_we_are_cool.png>])
-(./chapters/05-zakonczenie.tex
+            {Testy} <./chapters/03-praca-wlasna/figures/now_we_are_cool.png>]
 
-[15
+[14
 
-])
+]
+
+[15]) (./chapters/05-zakonczenie.tex
+
+[16])
 No file main.bbl.
 
 
-[16
+[17
 
 ] (./chapters/zalacznik.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -868,7 +866,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
 
 
-[17
+[18
 
 
 ]
@@ -885,26 +883,26 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              for symbol `textbraceleft' on input line 71.
 
 Package epstopdf Info: Source file: <figures/mathematica.eps>
-(epstopdf)                    date: 2024-12-02 21:13:38
+(epstopdf)                    date: 2024-12-16 10:57:53
 (epstopdf)                    size: 15878 bytes
 (epstopdf)             Output file: <figures/mathematica-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-12-02 21:13:47
+(epstopdf)                    date: 2024-12-16 10:58:03
 (epstopdf)                    size: 5539 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mathematica-eps-co
 nverted-to.pdf figures/mathematica.eps>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
-<figures/mathematica-eps-converted-to.pdf, id=367, 289.08pt x 177.66376pt>
+<figures/mathematica-eps-converted-to.pdf, id=405, 289.08pt x 177.66376pt>
 File: figures/mathematica-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/mathematica-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mathematica-eps-converted-to.pdf  used on inpu
 t line 97.
 (pdftex.def)             Requested size: 142.26378pt x 87.43282pt.
 Package epstopdf Info: Source file: <figures/mathematica.eps>
-(epstopdf)                    date: 2024-12-02 21:13:38
+(epstopdf)                    date: 2024-12-16 10:57:53
 (epstopdf)                    size: 15878 bytes
 (epstopdf)             Output file: <figures/mathematica-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-12-02 21:13:47
+(epstopdf)                    date: 2024-12-16 10:58:03
 (epstopdf)                    size: 5539 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mathematica-eps-co
 nverted-to.pdf figures/mathematica.eps>
@@ -917,7 +915,7 @@ t line 102.
 (pdftex.def)             Requested size: 426.0pt x 261.82675pt.
 
 
-[18{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/plitt.enc}
+[19{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/plitt.enc}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -925,7 +923,7 @@ has been already used, duplicate ignored
 l.116 
        <./figures/mathematica-eps-converted-to.pdf>]
 
-[19
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -948,24 +946,24 @@ l.157 \item S
              prawdź czy tutuł pracy ma maksymalnie dwa wiersze i czy stano...
 ]
 
-LaTeX Warning: Citation `Lamport1985' on page 20 undefined on input line 216.
+LaTeX Warning: Citation `Lamport1985' on page 21 undefined on input line 216.
 
 
-LaTeX Warning: Citation `Knuth1986' on page 20 undefined on input line 217.
+LaTeX Warning: Citation `Knuth1986' on page 21 undefined on input line 217.
 
 
 
-[20])
+[21])
 
-[21]
-<wit/logo-pp.pdf, id=416, 422.57875pt x 422.57875pt>
+[22]
+<wit/logo-pp.pdf, id=455, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
-Package pdftex.def Info: wit/logo-pp.pdf  used on input line 91.
+Package pdftex.def Info: wit/logo-pp.pdf  used on input line 90.
 (pdftex.def)             Requested size: 42.67946pt x 42.67912pt.
 
 
-[22
+[23
 
  <./wit/logo-pp.pdf>]
 \tf@toc=\write6
@@ -984,46 +982,50 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B96A358FA1E8F97CFB51297965436A32;10625.
+(rerunfilecheck)             Checksum: 91FFCA2D309265C547A8169470C08617;11668.
  )
 (\end occurred when \ifx on line 136 was incomplete)
 (\end occurred when \ifx on line 103 was incomplete) 
 Here is how much of TeX's memory you used:
- 14797 strings out of 473330
- 234112 string characters out of 5719769
- 668758 words of memory out of 5000000
- 37609 multiletter control sequences out of 15000+600000
+ 14815 strings out of 473330
+ 234244 string characters out of 5719768
+ 668791 words of memory out of 5000000
+ 37623 multiletter control sequences out of 15000+600000
  575732 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,107p,681b,654s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/font
-s/type1/public/pl/plbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
-blic/pl/plbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/pl
-bx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plbx8.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plcsc10.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/pl/plitt10.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/pl/plr10.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/pl/plr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
-pe1/public/pl/plr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/p
-l/plr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plti10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plti8.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/pl/plti9.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/pl/pltt10.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/pl/pltt12.pfb></usr/local/texlive/2024/texmf-dist/fonts
-/type1/public/pl/pltt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
-/cm-super/sfrm1000.pfb>
-Output written on main.pdf (25 pages, 1028537 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
+/public/pl/plbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl
+/plbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plbx7.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plbx8.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/pl/plcsc10.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/pl/plitt10.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/pl/plr10.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/pl/plr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
+lic/pl/plr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plr8.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plti10.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/pl/plti8.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/pl/plti9.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/pl/pltt10.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/pl/pltt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/pl/pltt8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-sup
+er/sfrm1000.pfb>
+Output written on main.pdf (26 pages, 1072810 bytes).
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 463 compressed objects within 5 object streams
- 92 named destinations out of 1000 (max. 500000)
- 417 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 613 PDF objects out of 1000 (max. 8388607)
+ 509 compressed objects within 6 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 465 words of extra memory for PDF output out of 10000 (max. 10000000)
 
