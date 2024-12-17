@@ -1,7 +1,0 @@
-tensorflow~=2.17.0
-numpy~=1.26.4
-opencv-python~=4.10.0.84
-pillow~=10.4.0
-keras
-pytesseract~=0.3.13
-matplotlib~=3.9.2

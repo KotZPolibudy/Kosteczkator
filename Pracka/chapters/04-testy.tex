@@ -1,0 +1,105 @@
+\chapter{Testy}
+
+Przez wzgląd na brak oprogramowania, nie da się przeprowadzić typowej oceny jakości projektu. Zamiast tego, postanowiono 
+sprawadzić losowość odczytanych wyników rzutu kością dla obu wariantów robota, a następnie porównać je między sobą oraz
+z losowością wbudowanego generatora pseudolosowego programu Python.
+
+Do oceny losowości otrzymanych wyników użyto:
+\begin{itemize}
+    \item test chi-kwadrat,
+    \item test pojedynczych bitów,
+    \item test serii,
+    \item test długiej serii,
+    \item test pokerowy
+    \item procentową wartość entropii.
+\end{itemize}
+
+Dla otrzymania wystarczającej ilości danych, należało wygenerować 20 000 bitów. Ponieważ robot używa kości ośmiościennej,
+dającej wynik w postaci dokładnie 3 bitów, należało wykonać 6 667 rzutów.
+
+\section{Użyte wzory}
+
+\subsection{Test chi-kwadrat}
+Aby przeprowadzić ten test, dla wszystkich \begin{math} n \end{math} rzutów zliczono, ile razy wypadła każda z 
+\begin{math} k \end{math} ścian kości ośmiościennej (\begin{math}O_i\end{math}). Wyniki te porównano z oczekiwaną
+liczbą wyrzucenia każdej ze ścianek \begin{math}E_i = \frac{n}{k}\end{math}.
+
+
+\begin{displaymath}
+    \chi^2 = \sum_{i=1}^{k} \left( \frac{O_i - E_i}{E_i} \right)^2
+\end{displaymath}
+Ponieważ do generowania liczb losowych użyto kości ośmiościennej, to \begin{math} k \end{math} jest równe 8, co daje wzór:
+\begin{displaymath}
+    \chi^2 = \sum^{8}_{i=1} \left( \frac{O_i - E_i}{E_i} \right)^2
+\end{displaymath}
+Dla przeprowadzonych testów wybrano poziom istotności \begin{math} p = 0,5 \end{math}, natomiast stopień swobody 
+przy \begin{math} k = 8 \end{math} równa się:
+\begin{displaymath}
+    k - 1 = 8 - 1 = 7
+\end{displaymath}
+Zatem dla otrzymanego stopnia swobody oraz założonego stopnia istotności, wartość krytyczna wynosi \begin{math} 14,0671 \end{math}.
+Test jest zakończony sukcesem, jeśli otrzymana wartość będzie mniejsza od wartości krtycznej.
+
+\subsection{Entropia}
+\begin{displaymath}
+    H \left(X\right) = -\sum^k_{i=1} p \left(x_i\right) log_2 p \left(x_i\right)
+\end{displaymath}
+Ponieważ wartość entropii jest wyznaczana dla bitów, a każdy rzut na kości ośmiościennej daje wynik w 3 bitach, 
+wartość entropii przeprowadzonego testu może wynosić maksymalnie 3.
+
+\subsection{Test pojedynczych bitów}
+Dla wszystkich wygenerowanych bitów zliczono, ile razy wystąpiły 0 (\begin{math}n_0\end{math}) i ile razy wystąpiły 1 
+(\begin{math}n_1\end{math}). Test jest zakończony sukcesem, jeśli każda z tych wartości spełnia zależność:
+\begin{displaymath}
+    9725 < n_0 < 10275
+\end{displaymath}
+\begin{displaymath}
+    9725 < n_1 < 10275
+\end{displaymath}
+
+\subsection{Test serii}
+Jednocześnie dla ciągu wygenerowanych bitów zliczono tzw. serie, czyli ile razy bez przerw występuje podciąg zer lub 
+jedynek o długościach od jednego do pięciu takiego samego bitu pod rząd. Dłuższe serie zliczono do jednej kategorii.
+Aby test został zakończony sukcesem, liczba serii danych długości dla zarówno zer jak i jedynek musi spełniać zależność
+przedstawioną w poniższej tabeli. 
+\begin{center}
+    \begin{tabular}{|c|c|} 
+        \hline
+        Długość serii & Przedział \\
+        \hline
+        1 & 2315 - 2685 \\
+        \hline
+        2 & 1114 - 1386 \\
+        \hline
+        3 & 527 - 723 \\
+        \hline
+        4 & 240 - 384 \\
+        \hline
+        5 & 103 - 209 \\
+        \hline
+        6 i więcej & 103 - 209 \\
+        \hline
+    \end{tabular}        
+\end{center}
+\subsection{Test najdłuższej serii}
+Przy zliczaniu bitów dla testu serii, jednocześnie szukano najdłuższego podciągu samych zer i najdłuższego podciągu 
+samych jedynek. Test długiej serii jest zakończony sukcesem, jeśli żaden z tych podciągów nie zawiera więcej niż 25 bitów.
+
+\subsection{Test pokerowy}
+Do przeprowadzenia testu pokerowego podzielono wygenerowany ciąg na czwórki bitów, a następnie zliczono, ile razy 
+wystąpiła każda z szesnastu kombinacji \begin{math}s_i\end{math}. Test jest zakończony sukcesem, jeśli spełniona jest
+poniższa nierówność:
+\begin{displaymath}
+    2,16 < X < 46,17
+\end{displaymath}
+Gdzie:
+\begin{displaymath}
+    X = \frac{16}{5000} \sum^{15}_{i=0} s_i^2 - 5000
+\end{displaymath}
+
+
+\section{Testy poszczególnych wariantów}
+Coś tam coś tam, mamy dwa warianty robota to możemy je porównać. (jeśli będzie czas na testowanie betoniarki)
+\subsection{Wariant 1 - \glqq Betoniarka\grqq}
+\subsection{Wariant 2 - \glqq Blender\grqq}
+
