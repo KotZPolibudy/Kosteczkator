@@ -2,9 +2,10 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
+import matplotlib.pyplot as plt
 
 # Set dataset paths
-DATASET_PATH = "../data/rescaled"
+DATASET_PATH = "../data/gray"
 MODEL_SAVE_PATH = "die_number_recognizer.keras"
 
 # Image parameters
@@ -93,12 +94,24 @@ history = model.fit(
     validation_steps=validation_steps
 )
 
+
+# Extract final metrics
+final_train_acc = history.history['accuracy'][-1]
+final_val_acc = history.history['val_accuracy'][-1]
+final_train_loss = history.history['loss'][-1]
+final_val_loss = history.history['val_loss'][-1]
+
+# Print final statistics
+print("\nFinal Training Accuracy: {:.4f}".format(final_train_acc))
+print("Final Validation Accuracy: {:.4f}".format(final_val_acc))
+print("Final Training Loss: {:.4f}".format(final_train_loss))
+print("Final Validation Loss: {:.4f}".format(final_val_loss))
+
+
 # Save the trained model
 print(f"Saving model to {MODEL_SAVE_PATH}...")
 model.save(MODEL_SAVE_PATH)
 print("Model saved!")
-
-import matplotlib.pyplot as plt
 
 # Plot accuracy
 plt.figure()
