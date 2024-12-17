@@ -23,12 +23,12 @@ print("Loading dataset...")
 datagen = ImageDataGenerator(
     rescale=1.0 / 255.0,
     validation_split=0.2,
-    rotation_range=50,  # Rotate images up to 50 degrees
+    rotation_range=90,  # Rotate images up to 90 degrees
     width_shift_range=0.2,  # Horizontal shift
     height_shift_range=0.2,  # Vertical shift
     shear_range=0.2,  # Shear transformation
     zoom_range=0.1,  # Random zoom
-    horizontal_flip=True  # Flip images horizontally
+    horizontal_flip=False  # DONT MIRROR
 )
 
 
