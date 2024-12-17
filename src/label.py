@@ -52,7 +52,7 @@ if __name__ == "__main__":
     output_folder = "../data/TO-BE-LABELCHECKED"  # Base folder for labeled images
 
     # List of class names (predefined based on model training)
-    class_names = ['8', '1', '2', '3', '4', '5', '6', '7']
+    class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
 
     # Load the pre-trained model
     model_path = "die_number_recognizer.keras"
