@@ -33,19 +33,20 @@ def process_and_crop(image_path, size=(64, 64)):
 
 def process_images_in_directory(input_base):
     input_base = Path(input_base)
-
+    all_skipped = []
     # Iterate through all JPG files (recursively)
     for image_path in input_base.rglob("*.jpg"):
-        print(f"Processing {image_path}...")
-
+        # print(f"Processing {image_path}...")
         output_image = process_and_crop(image_path)
         if output_image:
             output_image.save(image_path)
             print(f"Replaced: {image_path}")
         else:
             print(f"Skipped: {image_path}")
+            all_skipped.append(image_path)
             # image_path.unlink()
             # print(f"Deleted: {image_path}")
+    print(all_skipped)
 
 
 if __name__ == "__main__":
