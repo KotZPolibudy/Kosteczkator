@@ -15,7 +15,7 @@ def predict_number(model, img_path):
     predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
 
     # List of class labels (from 1 to 8 for dice numbers)
-    class_names = ['8', '1', '2', '3', '4', '5', '6', '7']
+    class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
     print(predicted_class)
     # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
