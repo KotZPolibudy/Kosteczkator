@@ -5,7 +5,8 @@ import glob
 
 
 def predict_number(model, img_path):
-    img = image.load_img(img_path, target_size=(64, 64))  # Resize to match model input size
+    # Load the image in grayscale mode to match the model input
+    img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')  # Ensure grayscale input
     img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
     img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
 
