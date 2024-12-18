@@ -16,7 +16,7 @@ def process_and_crop(image_path, size=(64, 64)):
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
     closed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_CLOSE, kernel)
     mask = Image.fromarray(closed_mask)
-    masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
+    # masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
 
     # Find bounding box of the mask and crop the image
     contours, _ = cv2.findContours(closed_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
