@@ -22,13 +22,14 @@ print("Loading dataset...")
 # todo można nawet więcej noise i innych udziwnień preprocessu
 datagen = ImageDataGenerator(
     rescale=1.0 / 255.0,
-    validation_split=0.2,
+    validation_split=0.3,
     rotation_range=90,  # Rotate images up to 90 degrees
     width_shift_range=0.2,  # Horizontal shift
     height_shift_range=0.2,  # Vertical shift
-    shear_range=0.2,  # Shear transformation
+    shear_range=0.1,  # Shear transformation
     zoom_range=0.1,  # Random zoom
-    horizontal_flip=False  # DONT MIRROR
+    horizontal_flip=False,  # DONT MIRROR
+    vertical_flip=False
 )
 
 
@@ -36,7 +37,8 @@ train_data = datagen.flow_from_directory(
     DATASET_PATH,
     target_size=IMAGE_SIZE,
     batch_size=BATCH_SIZE,
-    class_mode="sparse",  # Labels as integers (0-7 for numbers 1-8)
+    class_mode="sparse",
+    color_mode="grayscale",  # Specify grayscale mode
     subset="training"
 )
 
@@ -45,8 +47,10 @@ val_data = datagen.flow_from_directory(
     target_size=IMAGE_SIZE,
     batch_size=BATCH_SIZE,
     class_mode="sparse",
+    color_mode="grayscale",  # Specify grayscale mode
     subset="validation"
 )
+
 
 print(f"Training samples: {train_data.samples}")
 print(f"Validation samples: {val_data.samples}")
@@ -54,7 +58,7 @@ print(f"Validation samples: {val_data.samples}")
 # Define the CNN model
 def create_model():
     model = models.Sequential([
-        layers.Input(shape=(64, 64, 3)),  # Input layer
+        layers.Input(shape=(64, 64, 1)),  # Input layer
 
         layers.Conv2D(32, (3, 3), activation='relu'),
         layers.MaxPooling2D((2, 2)),
