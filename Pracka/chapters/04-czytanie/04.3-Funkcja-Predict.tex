@@ -1,0 +1,42 @@
+\section{Funkcja predict}
+
+W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
+która przekształca obraz do odpowiedniego formatu i zwraca przewidywaną klasę.
+Funkcja działa w następujących krokach:
+
+\subsection{Wczytanie i przetworzenie obrazu}
+
+W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać. Krok ten jest pomijany gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
+TODO (to jeszcze nie istnieje, ale będzie istnieć w finalnej części, gdzie przetwarzanie będzie bardziej ``potokowe'' niźli wstadowe jak teraz, jeśli tak to można określić)
+Obraz wejściowy wczytywany jest w trybie skali szarości i zmieniany na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli):
+
+\begin{verbatim}
+img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')
+img_array = image.img_to_array(img) / 255.0
+img_array = np.expand_dims(img_array, axis=0)
+\end{verbatim}
+
+Obraz jest normalizowany do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
+
+\subsection{Predykcja klasy}
+
+Przygotowany obraz jest przekazywany do modelu w celu uzyskania wyników predykcji:
+
+\begin{verbatim}
+prediction = model.predict(img_array)
+predicted_class = np.argmax(prediction, axis=1)
+\end{verbatim}
+
+Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwie.
+
+\subsection{Interpretacja wyniku}
+
+Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8):
+
+\begin{verbatim}
+class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
+predicted_label = class_names[predicted_class[0]]
+return predicted_label
+\end{verbatim}
+
+Wynik funkcji to etykieta odpowiadająca numerowi na kości, co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
