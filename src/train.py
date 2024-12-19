@@ -60,6 +60,7 @@ def create_model():
     model = models.Sequential([
         layers.Input(shape=(64, 64, 1)),  # Input layer
 
+        # todo a co jeśli tu dać więcej neuronów, a potem zmniejszać?
         layers.Conv2D(32, (3, 3), activation='relu'),
         layers.MaxPooling2D((2, 2)),
 
