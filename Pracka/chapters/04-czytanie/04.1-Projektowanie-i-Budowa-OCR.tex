@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TODO
+%1.
+%2.
+%3.
+%4.
+
+\chapter{Odczytywanie losowego wyniku z kości}
+
+\section{Przetwarzanie wstępne obrazów}
+
+W niniejszym rozdziale omówiono proces przetwarzania wstępnego obrazów kości, który przekształca dane pochodzące z fizycznego komponentu naszej maszyny (zdjęcia kości) na dane wejściowe dla modelu sztucznej inteligencji.
+Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości, o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia całego bębna maszyny.
+
+\subsection{algorytm}
+Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
+
+Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a workflow prezentuje się tak:
+Obraz wejściowy -> Odnalezienie kości za pomocą maski na komponencie nasycenia -> Stworzenie i wycięcie "Bounding Box" wokół maski -> Przeskalowanie do odpowiedniego rozmiaru -> Konwersja do skali szarości -> Zapisanie gotowego obrazu
+
+
+Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni kolorów RGB, co zapewnia jednolitość formatów danych wejściowych:
+\begin{verbatim}
+image = Image.open(image_path).convert("RGB")
+\end{verbatim}
+
+Obrazy są przekształcane do przestrzeni barw HSV, aby oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
+Nasycenie jest następnie wygładzane przy użyciu filtra Gaussa:
+
+\begin{verbatim}
+hsv_image = image.convert("HSV")
+h, s, v = hsv_image.split()
+blurred_v = s.filter(ImageFilter.GaussianBlur(radius=5))
+\end{verbatim}
+
+Na podstawie komponentu nasycenia (S) oraz progowania tworzona jest maska binarna, która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość):
+
+\begin{verbatim}
+v_array = np.array(blurred_v)
+threshold = 224
+binary_mask = (v_array > threshold).astype(np.uint8) * 255
+\end{verbatim}
+
+W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego z wykorzystaniem strukturalnego elementu prostokątnego:
+
+\begin{verbatim}
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
+closed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_CLOSE, kernel)
+\end{verbatim}
+
+Maska jest analizowana w celu zlokalizowania największego konturu, który określa obszar zainteresowania. Na tej podstawie oryginalny obraz jest kadrowany, a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli:
+
+\begin{verbatim}
+contours, _ = cv2.findContours(closed_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+if contours:
+    x, y, w, h = cv2.boundingRect(max(contours, key=cv2.contourArea))
+    cropped_image = image.crop((x, y, x + w, y + h))
+    resized_image = cropped_image.resize(size, Image.Resampling.LANCZOS)
+\end{verbatim}
+
+Ostatecznie obraz jest konwertowany do skali szarości, co redukuje wymiarowość danych i umożliwia modelowi AI skupienie się na strukturze obrazu.
+
+\begin{verbatim}
+grayscale_image = resized_image.convert("L")
+\end{verbatim}
+
+\section{Podsumowanie}
+
+Przedstawiony algorytm przetwarzania wstępnego pozwala na skuteczne przygotowanie danych wejściowych dla modelu sztucznej inteligencji.
+Automatyzuje proces identyfikacji i kadrowania obiektów zainteresowania w obrazach, co znacząco poprawia jakość danych.
+Rozwiązanie zostało zaprojektowane z myślą o łatwej adaptacji do innych zastosowań wymagających podobnego przetwarzania obrazów.
+
