@@ -122,7 +122,7 @@ try:
         
         # Tworzenie nowego folderu dla serii zdjęć
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        folder_name = f"seria_{timestamp}"
+        folder_name = f"../serie/seria_{timestamp}"
         os.makedirs(folder_name, exist_ok=True)  # Tworzy folder, jeśli nie istnieje
         #print(f"Utworzono folder: {folder_name}")
         
