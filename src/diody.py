@@ -6,6 +6,8 @@ from picamera2 import Picamera2
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
+from PIL import Image, ImageFilter
+import cv2
 
 # Konfiguracja kamery
 camera = Picamera2()
@@ -58,6 +60,38 @@ def stop_motor():
     GPIO.output(IN1, GPIO.LOW)
     GPIO.output(IN2, GPIO.LOW)
     pwm.ChangeDutyCycle(0)  # Wyłącz sygnał PWM
+
+
+# preprocess function
+def process_and_crop(image_path, size=(64, 64)):
+    image = Image.open(image_path).convert("RGB")
+    hsv_image = image.convert("HSV")
+    h, s, v = hsv_image.split()
+    blurred_v = s.filter(ImageFilter.GaussianBlur(radius=5))
+    v_array = np.array(blurred_v)
+    threshold = 224  # You can adjust this value
+    binary_mask = (v_array > threshold).astype(np.uint8) * 255
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
+    closed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_CLOSE, kernel)
+    mask = Image.fromarray(closed_mask)
+    # masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
+
+    # Find bounding box of the mask and crop the image
+    contours, _ = cv2.findContours(closed_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if contours:
+        x, y, w, h = cv2.boundingRect(max(contours, key=cv2.contourArea))
+        cropped_image = image.crop((x, y, x + w, y + h))
+        try:
+            resized_image = cropped_image.resize(size, Image.Resampling.LANCZOS)
+        except AttributeError:
+            resized_image = cropped_image.resize(size, Image.LANCZOS)
+
+        grayscale_image = resized_image.convert("L")
+        return grayscale_image
+    else:
+        print(f"No valid mask found for {image_path}. Skipping cropping.")
+        return None
 
 
 # predict function
@@ -116,7 +150,8 @@ try:
             GPIO.output(dioda_blue, GPIO.HIGH)
             t = datetime.datetime.now()
             t_str = t.strftime("%Y-%m-%d_%H-%M-%S")
-            title = f"{folder_name}/{n + 1}_{t_str}.jpg"  # Ścieżka do zdjęcia
+            filename = f"{n + 1}_{t_str}.jpg"
+            title = f"{folder_name}/{filename}"  # Ścieżka do zdjęcia
             
             camera.start()
             camera.capture_file(title)
@@ -124,14 +159,27 @@ try:
             GPIO.output(dioda_blue, GPIO.LOW)
             #print(f"Zdjęcie zapisane jako {title}")
 
-            prediction = predict_number(model, title)
+            # Przetwarzanie zdjęcia
+            processed_image = process_and_crop(title)
+
+            # Sprawdzanie, czy przetwarzanie się udało
+            if processed_image is None:
+                print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
+                continue
+
+            # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
+            processed_path = f"{folder_name}/processed_{filename}"
+            processed_image.save(processed_path)
+
+            # Predykcja na przetworzonym obrazie
+            prediction = predict_number(model, processed_path)
             
             end_time = time.time()  # Zapisz czas zakończenia iteracji
             iteration_time = end_time - start_time
             
             # Zapisz czas wykonania iteracji do pliku w folderze
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
-                file.write(f"{title} ; {iteration_time:.2f} ; {prediction}\n")
+                file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
         
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
