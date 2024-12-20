@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.15)  19 DEC 2024 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.15)  20 DEC 2024 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -680,10 +680,10 @@ Package hyperref Info: Link coloring ON on input line 40.
 \openout5 = `main.out'.
 
 Package epstopdf Info: Source file: <wit/sygnet-pp.eps>
-(epstopdf)                    date: 2024-12-19 11:29:29
+(epstopdf)                    date: 2024-12-20 17:17:02
 (epstopdf)                    size: 1264718 bytes
 (epstopdf)             Output file: <wit/sygnet-pp-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-12-19 11:29:38
+(epstopdf)                    date: 2024-12-20 17:17:11
 (epstopdf)                    size: 31841 bytes
 (epstopdf)             Command: <repstopdf --outfile=wit/sygnet-pp-eps-converte
 d-to.pdf wit/sygnet-pp.eps>
