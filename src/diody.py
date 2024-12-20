@@ -103,12 +103,12 @@ def predict_number(model, img_path):
 
     # Make prediction
     prediction = model.predict(img_array)  # Get the model's predictions for the image
-    print(prediction)
+    # print(prediction)
     predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
 
     # List of class labels (from 1 to 8 for dice numbers)
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
-    print(predicted_class)
+    # print(predicted_class)
     # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
@@ -180,6 +180,8 @@ try:
             # Zapisz czas wykonania iteracji do pliku w folderze
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
                 file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
+
+            print(f"{n} / {x} iteracji")
         
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
