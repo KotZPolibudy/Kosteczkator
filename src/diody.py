@@ -3,6 +3,7 @@ import time
 import datetime
 import os
 from picamera2 import Picamera2
+import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
