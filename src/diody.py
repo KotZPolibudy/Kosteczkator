@@ -3,6 +3,8 @@ import time
 import datetime
 import os
 from picamera2 import Picamera2
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
 
 # Konfiguracja kamery
 camera = Picamera2()
@@ -56,7 +58,29 @@ def stop_motor():
     GPIO.output(IN2, GPIO.LOW)
     pwm.ChangeDutyCycle(0)  # Wyłącz sygnał PWM
 
+
+# predict function
+def predict_number(model, img_path):
+    # Load the image in grayscale mode to match the model input
+    img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')  # Ensure grayscale input
+    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
+    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+
+    # Make prediction
+    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    print(prediction)
+    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
+
+    # List of class labels (from 1 to 8 for dice numbers)
+    class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
+    print(predicted_class)
+    # Return the predicted label (the number corresponding to the class)
+    predicted_label = class_names[predicted_class[0]]
+    return predicted_label
+
 try:
+    # Load the model
+    model = load_model("die_number_recognizer.keras")
     while True:
         print("Podaj liczbę zdjęć, jakie chcesz zrobić:")
         x = int(input())  # Konwertuj na liczbę całkowitą
@@ -98,13 +122,15 @@ try:
             camera.stop()
             GPIO.output(dioda_blue, GPIO.LOW)
             #print(f"Zdjęcie zapisane jako {title}")
+
+            prediction = predict_number(model, title)
             
             end_time = time.time()  # Zapisz czas zakończenia iteracji
             iteration_time = end_time - start_time
             
             # Zapisz czas wykonania iteracji do pliku w folderze
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
-                file.write(f"{iteration_time:.2f}\n")
+                file.write(f"{title} ; {iteration_time:.2f} ; {prediction}\n")
         
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
