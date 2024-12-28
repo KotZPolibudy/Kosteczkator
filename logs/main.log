@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.15)  20 DEC 2024 17:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  28 DEC 2024 10:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -394,7 +394,7 @@ Package verbatim [2008/07/23] emulated by memoir.
 Package verse [2008/07/23] emulated by memoir.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2024/11/30 v24.14 The multilingual framework for pdfLaTeX, LuaLa
+Package: babel 2024/12/21 v24.15 The multilingual framework for pdfLaTeX, LuaLa
 TeX and XeLaTeX
 \babel@savecnt=\count322
 \U@D=\dimen186
@@ -680,16 +680,16 @@ Package hyperref Info: Link coloring ON on input line 40.
 \openout5 = `main.out'.
 
 Package epstopdf Info: Source file: <wit/sygnet-pp.eps>
-(epstopdf)                    date: 2024-12-20 17:17:02
+(epstopdf)                    date: 2024-12-28 10:27:04
 (epstopdf)                    size: 1264718 bytes
 (epstopdf)             Output file: <wit/sygnet-pp-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-12-20 17:17:11
+(epstopdf)                    date: 2024-12-28 10:27:13
 (epstopdf)                    size: 31841 bytes
 (epstopdf)             Command: <repstopdf --outfile=wit/sygnet-pp-eps-converte
 d-to.pdf wit/sygnet-pp.eps>
 (epstopdf)             \includegraphics on input line 44.
 Package epstopdf Info: Output file is already uptodate.
-<wit/sygnet-pp-eps-converted-to.pdf, id=209, 1391.1975pt x 278.03876pt>
+<wit/sygnet-pp-eps-converted-to.pdf, id=221, 1391.1975pt x 278.03876pt>
 File: wit/sygnet-pp-eps-converted-to.pdf Graphic file (type pdf)
 <use wit/sygnet-pp-eps-converted-to.pdf>
 Package pdftex.def Info: wit/sygnet-pp-eps-converted-to.pdf  used on input line
@@ -744,60 +744,55 @@ e-ra-to-r�w pseu-do-lo-so-wych (PRNG).
 
 pdfTeX warning: pdflatex (file ./chapters/03-praca-wlasna/figures/pierwszy.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=310, 475.82146pt x 844.0292p
+<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=325, 475.82146pt x 844.0292p
 t>
 File: chapters/03-praca-wlasna/figures/pierwszy.pdf Graphic file (type pdf)
 <use chapters/03-praca-wlasna/figures/pierwszy.pdf>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on
- input line 22.
+ input line 30.
 (pdftex.def)             Requested size: 106.5pt x 188.90671pt.
 
 
 [7
 
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/plsc.enc}
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.34 
-      <./chapters/03-praca-wlasna/figures/pierwszy.pdf>]
-<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=321, 955.57pt x 1927.2p
+]
+<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=330, 955.57pt x 1927.2p
 t>
 File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png
 )
 <use chapters/03-praca-wlasna/figures/koła_zębowe.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  us
-ed on input line 37.
-(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/nie_widac.png, id=322, 955.57pt x 1927.2pt>
-File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/nie_widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used o
-n input line 65.
+ed on input line 43.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
 
 
-[8
+[8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/plsc.enc}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.55 
+     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.68 
-      <./chapters/03-praca-wlasna/figures/koła_zębowe.png>]
-<chapters/03-praca-wlasna/figures/widac.png, id=329, 955.57pt x 1927.2pt>
-File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on in
-put line 71.
-(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=330, 955.57pt x 1927.
+l.55 
+      <./chapters/03-praca-wlasna/figures/pierwszy.pdf> <./chapters/03-praca-wl
+asna/figures/koła_zębowe.png>]
+<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=343, 955.57pt x 1927.
 2pt>
 File: chapters/03-praca-wlasna/figures/now_we_are_cool.png Graphic file (type p
 ng)
 <use chapters/03-praca-wlasna/figures/now_we_are_cool.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  
-used on input line 83.
+used on input line 69.
+(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
+<chapters/03-praca-wlasna/figures/nie_widac.png, id=344, 955.57pt x 1927.2pt>
+File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/nie_widac.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used o
+n input line 78.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
 
 
@@ -806,34 +801,58 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.86 
-     
+l.81 
+      <./chapters/03-praca-wlasna/figures/now_we_are_cool.png>]
+<chapters/03-praca-wlasna/figures/widac.png, id=350, 955.57pt x 1927.2pt>
+File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/widac.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on in
+put line 84.
+(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
+<chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg, id=351, 4047.12pt x 
+2276.505pt>
+File: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg Graphic file (ty
+pe jpg)
+<use chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.j
+pg  used on input line 102.
+(pdftex.def)             Requested size: 106.5pt x 59.88594pt.
+
+
+[10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.86 
-      <./chapters/03-praca-wlasna/figures/nie_widac.png> <./chapters/03-praca-w
-lasna/figures/widac.png>])
-(./chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex)
-(./chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
-
-[10
+l.105 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.8 \chapter
-            {Odczytywanie losowego wyniku z kości} <./chapters/03-praca-wlasna
-/figures/now_we_are_cool.png>]
+l.105 
+       <./chapters/03-praca-wlasna/figures/nie_widac.png> <./chapters/03-praca-
+wlasna/figures/widac.png>]
+
+[11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4.6}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.139 
+       <./chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>]
+
+[12]) (./chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex)
+(./chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
+
+[13]
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
 23.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/polski/ot4cmtt.fd
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 
-[11
+[14
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/pl/pltt.enc}]
 Overfull \hbox (30.74602pt too wide) in paragraph at lines 54--54
@@ -843,9 +862,9 @@ L, cv2.CHAIN_APPROX_SIMPLE)[]
 
 ) (./chapters/04-czytanie/04.2-Opis-Modelu.tex
 
-[12]
+[15]
 
-[13]) (./chapters/04-czytanie/04.3-Funkcja-Predict.tex
+[16]) (./chapters/04-czytanie/04.3-Funkcja-Predict.tex
 Overfull \hbox (41.22325pt too wide) in paragraph at lines 3--6
 []\OT4/cmr/m/n/10 W celu roz-po-zna-wa-nia liczb na zdj�-ciach prze-two-rzo-nyc
 h przez mo-del stwo-rzono funk-cj� \OT4/cmtt/m/n/10 predict[]number\OT4/cmr/m/n
@@ -854,24 +873,24 @@ h przez mo-del stwo-rzono funk-cj� \OT4/cmtt/m/n/10 predict[]number\OT4/cmr/m/n
 
 ) (./chapters/05-Przetwarzanie Wyniku/05-Przetwarzanie-wyniku.tex
 
-[14]) (./chapters/04-testy.tex
+[17]) (./chapters/04-testy.tex
 
-[15]
-
-[16
-
-]
-
-[17]) (./chapters/05-zakonczenie.tex
-
-[18])
-No file main.bbl.
-
+[18]
 
 [19
 
 ]
-<wit/logo-pp.pdf, id=387, 422.57875pt x 422.57875pt>
+
+[20]) (./chapters/05-zakonczenie.tex
+
+[21])
+No file main.bbl.
+
+
+[22
+
+]
+<wit/logo-pp.pdf, id=418, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
 Package pdftex.def Info: wit/logo-pp.pdf  used on input line 101.
@@ -882,7 +901,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 101.
 
 
-[20
+[23
 
 
  <./wit/logo-pp.pdf>]
@@ -895,13 +914,13 @@ LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 483D8469D37762900BB2BB7A40820AC7;10593.
+(rerunfilecheck)             Checksum: B9F515CCB8C48A6A33455CCA386C68FC;11157.
  ) 
 Here is how much of TeX's memory you used:
- 14757 strings out of 473330
- 233840 string characters out of 5719768
- 668866 words of memory out of 5000000
- 37578 multiletter control sequences out of 15000+600000
+ 14776 strings out of 473330
+ 234428 string characters out of 5719768
+ 668902 words of memory out of 5000000
+ 37590 multiletter control sequences out of 15000+600000
  569006 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,107p,677b,654s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -922,10 +941,10 @@ pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/pl/plti9.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/pl/pltt10.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (23 pages, 979906 bytes).
+Output written on main.pdf (26 pages, 3894287 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 423 compressed objects within 5 object streams
- 81 named destinations out of 1000 (max. 500000)
- 444 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 529 PDF objects out of 1000 (max. 8388607)
+ 450 compressed objects within 5 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 473 words of extra memory for PDF output out of 10000 (max. 10000000)
 
