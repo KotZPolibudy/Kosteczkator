@@ -1,20 +1,28 @@
 
 \chapter{Budowa sprzętowego generatora liczb losowych}
-section{Projektowanie robota}
+\section{Projektowanie robota}
+\subsection{Prototypowanie}
+
+Przy całym procesie budowy robota wykorzystano technologię druku 3D. Pozwala na szybkie modyfikacje przy 
+jednoczesnym zachowaniu bardzo wysokiej dokładności i jakości wykonania elementów. Dzięki temu podczas budowy prototypów a 
+pózniej ostatecznej wersji robota można było w prosty sposób modyfikować, projektować i zmieniać każdy element składowy 
+robota. Pomimo tego, że proces druku 3D w szczególności dużych skomplikowanych elementów jest dość czasochłonny to jest to
+najlepsza dostępna nam technologia do wykorzystania w tego rodzaju projektach.
+
+Głównym założeniem podczas projektowania i budowy robota było założenie modułowości. Oznacza to, że każdy element jest wymienny i łatwo dostępny.
+Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
+są znacząco prostsze i przede wszystkim szybsze niż gdyby cały robot był jednolitą bryłą.
 
 Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością.
-Ostatecznie, po przeanalizowaniu kilku koncepcji, zdecydowano się na rozwiązanie wykorzystujące obrotowy 
-kubek, wewnątrz którego kość porusza się i odbija od ścianek. Taki mechanizm zapewnia losowość rzutu, a 
-jednocześnie jest prosty w konstrukcji i intuicyjny w działaniu. Obracający się kubek został 
-zaprojektowany tak, aby jego prędkość i czas trwania obrotu można było precyzyjnie kontrolować, co  w założeniu 
-pozwala na uzyskanie wiarygodnych wyników przy każdym rzucie. W celach testowych został skonstruowany prototypowy
-model robota, zbudowany w taki sposób, żeby wszystkie jego komponenty były modułowe. Takie rozwiązanie pozwala na 
-łatwą wymianę elementów robota, bez potrzeby przeprojektowywania całego robota od nowa. Przy budowie wykorzystano 
-technologię druku 3D, która pozwala na szybkie modyfikacje przy jednoczesnym zachowaniu bardzo wysokiej dokładności
-budowy elementów składowych.
+Po przeanalizowaniu kilku pomysłów, zdecydowano się na rozwiązanie wykorzystujące obrotowy 
+kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano betoniarką od podobnej 
+zasady działania. Taki mechanizm zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a 
+jednocześnie jest prosty w konstrukcji. Obracający się kubek został 
+zaprojektowany tak, aby jego prędkość obrotową i czas trwania obrotu można było w prosty sposób kontrolować.
+W celach testowych został skonstruowany prototypowy model robota.
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
-Tymi elementami był: kubek, ramię służące do montażu kubka, uchwyty do prątów oraz płytka mocująca do kamery. Dodatkowo
+Tymi elementami były: kubek, ramię służące do montażu kubka, uchwyty do prętów oraz płytka mocująca do kamery. Dodatkowo
 wykorzystano silnik prądu stałego napędzający kubek oraz sterownik służący do zasilania i sterowania ruchem silnika.
 
 \begin{figure}[H]
@@ -23,14 +31,12 @@ wykorzystano silnik prądu stałego napędzający kubek oraz sterownik służąc
     \caption{\label{fig:pierwszy}bałagan na stole}
 \end{figure}
     
-
 Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
-wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie prostogo
-serwomechanizmu jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów, które byłyby odpowiednie w tym celu ma
-ograniczony ruch do $180^{\circ}$ lub $360^{\circ}$ a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
-Ostatecznie w tym celu wybrano mały silnik krokowy z wystarczającym momentem obrotowym (34.3mN.m). Silnik ten obraca 
-układem dwóch kół zębatych 1:2 dzięki czemu silnik ma jeszcze większy zapas momentu obrotowego. Dzięki takiemu rozwiązaniu silnik
-nie pracuje na granicy swoich możliwości co zapewni jego długi okres eksploatacji. 
+wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie
+serwomechanizmu jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów, ma
+ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$ a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
+Ostatecznie w tym celu wybrano mały silnik krokowy z wystarczającym do wychylenia kubka momentem obrotowym (34.3mN.m). 
+Silnik ten obraca układem dwóch kół zębatych.
 
 \begin{figure}[H]
     \centering
@@ -38,24 +44,31 @@ nie pracuje na granicy swoich możliwości co zapewni jego długi okres eksploat
     \caption{\label{fig:zebatki}zebatki}
 \end{figure}
 
+Do pierwszych testów robota zaprojektowano kilka wariantów kształtów kubków. Najlepszym wariantem okazał się być cylindryczny
+kubek z dodatkowymi pionowymi żebrami, o które kostka się odbijała podczas kręcenia.
+
 Podczas testów pierwszej wersji robota wykorzytującej obrotowy kubek powstał pomysł alternatywnego rozwiązania.
 Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wyhylać go,
 wykorzystany został trwale zamontowany kubek, na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
-Takie rozwiązanie znacząco upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby.
+Takie rozwiązanie znacząco upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby. Ten wariant 
+nazwano roboczo blenderem również od podobnej zasady działania.
 
 Przy projektowaniu drugiego wariantu robota został wykorzystany ten sam stelaż złożony z metalowych prętów co w 
 pierwszym wariancie. Na drukarce 3D wydrukowano dodatkowe części, niezbędne do realizacji tego wariantu.
 Zaprojektowano i wydrukowano nowy kubek, śmigło oraz mocowanie dla silnika. Kubek został przystosowany do montażu 
-silnika prądu stałego oraz śmigła. 
+silnika prądu stałego oraz śmigła.
 
-%tu kłamie bo jeszcze nie zrobilem tego
-%nie prawda, zrobiłeś
-W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
-LED, sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
-robienie zdjęć o wystarczająco dobrej jakości dla zamierzonego celu. 
+W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temperatur podczas intensywnej pracy, 
+co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
+zastosowanie radiatorów, które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
+wspomagał cyrkulację powietrza wokół procesora. Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy 
+procesora, co zapewniło stabilne i bezpieczne działanie całego systemu.
 
-%TODO
-%wstawic zdjeicei oswietlonego kubka
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/now_we_are_cool.png}
+    \caption{\label{fig:zimno}zimno}
+\end{figure}
 
 Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
 zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic w ich czytelności zależnych od koloru kości.
@@ -72,23 +85,16 @@ zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic 
     \caption{\label{fig:widac}lepiej}
 \end{figure}
 
-W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temperatur podczas intensywnej pracy, 
-co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
-zastosowanie dodatkowych rezystorów, które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
-wspomagał cyrkulację powietrza wokół procesora. Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy 
-procesora, co zapewniło stabilne i bezpieczne działanie całego systemu.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/now_we_are_cool.png}
-    \caption{\label{fig:zimno}zimno}
-\end{figure}
+%TODO
+%wstawic zdjeicei oswietlonego kubka
 
 W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
 LED sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
-robienie zdjęć o wystarczająco dobrej jakości dla zamierzonego celu. Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
-jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Dzięki temu wysokość prototypu zmniejszyła się o około 5cm.
-Diody połączono szeregowo dzięki czemu nie trzeba było wykorzystywać dodatkowych rezystorów a ilość połączeń
+robienie zdjęć lepszej jakości. Dodatkową rozświetlenie wnętrza kubka na tyle poprawiło
+jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Spowodowało to że wysokość prototypu zmniejszyła się o około 5cm - 
+co również miało duże znaczenie podczas projektowania robota, ponieważ jednym z założeń postawionych na początku budowy była kompaktowość.
+Dzięki tym zabiegom otrzymywane zdjęcia stały się dużo bardziej wyraźne oraz pole widzenia kamery było ograniczone do dna kubka.
+Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo dzięki czemu nie trzeba było wykorzystywać dodatkowych rezystorów a ilość połączeń
 została minimalna.
 
 \begin{figure}[H]
@@ -97,19 +103,82 @@ została minimalna.
     \caption{\label{fig:jasno}jasno}
 \end{figure}
 
-Po skonstruowaniu obu wersji robota oczywistym stało się, że wersja "blender" będzie znacznie szybciej (około 3-krotnie) generowała wyniki. 
-Dodatkowo była ona zdecydowanie prostsza w budowie - mniej ruchomych elementów. Z tego powodu do docelowego robota wybrano 
-rozwiązanie blender. Dzięki temu projekt stał się mniej skomplikowany mechanicznie a jednocześnie jego użyteczność wzrosła, ponieważ
-głównym zadaniem tego robota jest generowanie liczb losowych a to zadanie szybciej była w stanie wykonywać wersja blender.
+Po skonstruowaniu obu wersji robota oczywistym stało się, że wariant blendera będzie znacznie szybciej (około 3-krotnie) generował wyniki. 
+Dodatkowo był ona zdecydowanie prostszy w budowie przez mniejszą liczbę ruchomych elementów. Z tego powodu do docelowego robota wybrano 
+wariant blendera. Dzięki temu projekt stał się mniej skomplikowany mechanicznie a jednocześnie jego użyteczność wzrosła, ponieważ
+głównym zadaniem tego robota jest generowanie liczb losowych a to zadanie szybciej był w stanie wykonywać wariant blendera.
 
+\subsection{Ostateczna wersja robota}
 Projektowanie ostatecznej wersji robota rozpoczęto od przeanalizowania wad, zalet oraz ogólnych cech (takich jak wymiary) prototypów.
-Postanowiono, że finalna wersja robota będzie wariantem blendera, składała się z kubka o tej samej średnicy i kształcie wewnętrznych
-żeber. Dookoła tych wymiarów zaprojektowano resztę konstrukcji. Obudowę zaprojektowano w taki sposób żeby była w stanie pomieścić
-kubek oraz kamerę uniesioną na odpowiednią wysokość. Dodatkowo w tylnej oraz dolnej części obudowy pozostawiono przestrzeń na resztę
+Postanowiono, że finalna wersja robota będzie wykorzystywała kubek o tej samej średnicy co prototypowa. Dookoła tych wymiarów zaprojektowano 
+resztę konstrukcji. Obudowę zaprojektowano w taki sposób żeby była w stanie pomieścić
+kubek oraz kamerę umieszczoną na wysokości 120mm nad dnem kubka. Wysokość tą określono esperymentalnie podczas testów prototypów.
+Dodatkowo w tylnej oraz dolnej części obudowy pozostawiono przestrzeń na resztę
 elementów składowych robota. Tą przestrzeń wyznaczono poprzez zwymiarowanie pozostałych elementów takich jak silnik, sterownik, wentylator 
 czy Raspberry Pi. Te wymiary posłużyły do wyznaczenia minimum potrzebnej przestrzeni. Do tego minimum dodano (CO) w taki sposób
-żeby we wnętrzu pomieściły się również przewody, śruby oraz żeby po całkowitym złożeniu pozostała przestrzeń do swobodnego manipulowania
+żeby we wnętrzu pomieściły się również przewody i śruby oraz żeby po całkowitym złożeniu pozostała przestrzeń do swobodnego manipulowania
 elementami składowymi.
+
+Każdy element został zaprojektowany w taki sposób żeby cały robot był modułowy. Żeby spełnić to założenie, każdy element
+zaprojektowano w taki sposób żeby posiadał on specjalne miejsca na inserty lub śruby. Inserty to mosiężne elementy, które za pomocą lutownicy wgrzewa się
+w wydruk 3D. Posiadają one wewnętrzny gwint dzięki czemu można do łączenia wydruków wykorzystywać śruby nie uszkadzając samego wydruku przy 
+wielokrotnym skręcaniu i rozkręcaniu robota.
+
+Górna część obudowy - pokrywa - mieszcząca kamerę oraz diody LED, została zaprojektowana w taki sposób żeby dostęp do kubka pozostał łatwy. Osiągnięto to
+poprzez wykorzystanie prostego mocowania pokrywy do obudowy, z wykorzystaniem pojedyńczej śruby oraz magnesów neodymowych. Dzięki temu w przypadku kiedy konieczny 
+jest dostęp do kamery lub diod LED wystarczy zdjąć tylną scianę robota oraz odkręcić pojedyńczą śrubę. Dodatkowo magnesy neodymowe zapewniają
+dobre przyleganie pokrywy do reszty obudowy. Ich dodatkową zaletą jest blokowanie pokrywy w ustalonej pozycji podczas umieszczania kości wewnątrz
+kubka.
+
+Kamera wraz z diodami LED służącymi do oświetlenia wnętrza kubka znajdujde się w pokrywie. Kamere zamontowano przy użyciu dwóch śrub M2 natomiast
+diody LED umieszczono w zaprojektowanych w wydruku otworach.
+
+W pokrywie znajdują się również dwa sześciokątne otwory na magnesy neodymowe. Dzięki temu że otwory są sześciokątne to walcowe magnesy idealnie
+się w nie wpasowują. W drugiej części obudowy znajdują się takie same otwory na drugą parę magnesów. Dla pewności podczas umieszczania magnesów 
+wykorzystano klej cyjanoakrylowy.
+
+Kubek, w którym dokonywane są rzuty kością, zaprojektowano na podstawie kubka z prototypowej wersji blendera. Zachowano jego średnicę oraz kształt wewnętrznych
+żeber. Zmieniony został natomiast sposób mocowania kubka w taki sposób żeby był on przystosowany do zamocowania w obudowie. W tym celu zaprojektowano
+cztery mocowania za pomocą, których kubek jest przykręcany do obudowy. Dodatkowo pogrubiono dno kubka tak żeby można było w nim zamocować inserty służące 
+do mocowania uchwytu silnika. Ostatnią modyfikacją było podwyższenie kubka w taki sposób żeby wysokością sięgał on aż do mocowania kamery - górnej pokrywy.
+Dzięki temu podczas rzutów zniknął problem z wypadającą kością co było dość częstym zajwiskiem podczas testów prototypu. Niestety takie Rozwiązanie
+spowodowało, że wnętrze kubka przestało być widoczne z zewnątrz. Jednak zostało uznane, że nie jest to konieczne do osiągnięcia celów projektu.
+
+Projekt pierwszego uchwytu mocującego silnik składał się z miejsca do umieszczenia silnika oraz dwóch cylindrycznych słupków służących za prowadnice
+śrub mocujących cały uchwyt do dna kubka. Jednak, ponieważ podczas testów pojawiły się problemy z pierwszym silnikiem i wymieniono go na inny konieczne
+było zaprojektowanie drugiego uchwytu. Podczas projektowania tego drugiego uchwytu wzorowano sie na projekcie pierwszego jednak dodano dodatkowy trzeci
+cylindryczny słupek na śrubę, która miała służyć do kontrolowania wychylenia całego uchwytu na boki. 
+
+Do mocowania Raspberry Pi zaprojektowano specjalną płykę mocowaną do boku obudowy. W projekcie tej płytki uwzględniono otwory do przymocowania Raspberry
+Pi oraz układu ULN2803A Darlington. Dodatkowo przygotowano specjalne miejsce do mocowania przycisku. Na płytnce pozostawiono również miejsce
+na zamontowanie szyny zasilania. Płytke tą umieszczono w obudowie w taki sposób żeby znajdowała się ona bezpośrednio nad wentylatorem. Dzięki temu
+strumień powietrza bezpośrednio chłodzi najważniejsze elementy elektroniczne robota. Przycisk zamocowano na tej samej płytce z wykorzystaniem
+dodatkowego elementu wydukowanego na drukarce 3D. Dzięki temu znalazł się on bezpośrednio przy ściance obudowy a dodatkowo jego mocowanie
+nadal spełnia założenie modułowości poprzez mocowanie za pomocą śrub i insertów.
+
+Układ sterujący silnikiem LN298 przykręcono do obudowy pośrednio poprzez specjalnie zaprojektowane mocowanie. Dzięki temu wykorzystano
+gotowe otwory na śruby znajdujące się w płytce układu LN298.
+
+Do dna obudowy robota przymocowano za pomocą śrub również wentylator.
+
+Obudowę zaprojektowano w taki sposób żeby pomieściła wszystkie powyższe elementy. W jej scianach zaprojektowano otwory na wyjścia Raspberry Pi, 
+diody LED oraz gniazdo zasilania. W scianie obudowy na wysokości miejsca, w którym znajduje się wewnątrz przycisk, zaprojektowano specjalne wycięcie.
+Dzięki dodatkowemu zmniejszeniu grubosci sciana obudowy w tym miejscu jest bardziej elastyczna co pozwala na kliknięcie przycisku znajdującego
+się po wewnętrznej stronie sciany obudowy. Na dnie obudowy zaprojektowo również specjalne słupki służące za podpórki dla kubka. 
+W słupkach tyych zaprojektowano otwory na inserty dzięki, którym kubek można przykręcić do obudowy gwarantując tym jego stabilność.
+
+Podczas projektowania obudowy przewidziano także takie elemementy jak wycięcia od spodu bezpośrednio pod wentylatorem służące za wlot powietrza 
+oraz wycięcia w tylenej sciance służące za wylot powietrza. Dodatkowo w dnie umieszczono duży utwór możliwiający swobodne mocowanie oraz dostęp do 
+silnika, diod LED oraz gniazda zasilania.
+
+Podczas testów ostatecznej wersji robota napotkano problem z pierwotnie wykorzystywanym silnikiem. Silnik ten miał okrągły wał przez co śmigło musiało
+być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością, śmigło
+wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
+Żeby temu zaradzić umieszczono pomiędzy śmigłem a dnem kubka metalową podkłądkę po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
+jednak nie rozwiązało problemu ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
+Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliowść obrotu ale ma większy moment obrotowy.
+Dodatkową zaletą nowego silnika jest jego wał w kształcie litery "D". Pozwala to na znacznie lużniejsze spasowanie otworu śmigła z wałem przez co 
+demontaż śmigła jest znacząco łatwiejszy.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TODO

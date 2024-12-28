@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  19 DEC 2024 15:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  27 DEC 2024 17:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -621,7 +621,7 @@ Package epstopdf Info: Source file: <wit/sygnet-pp.eps>
 (epstopdf)             Command: <miktex-epstopdf --outfile=wit/sygnet-pp-eps-converted-to.pdf wit/sygnet-pp.eps>
 (epstopdf)             \includegraphics on input line 44.
 Package epstopdf Info: Output file is already uptodate.
-<wit/sygnet-pp-eps-converted-to.pdf, id=219, 1391.1975pt x 278.03876pt>
+<wit/sygnet-pp-eps-converted-to.pdf, id=231, 1391.1975pt x 278.03876pt>
 File: wit/sygnet-pp-eps-converted-to.pdf Graphic file (type pdf)
 <use wit/sygnet-pp-eps-converted-to.pdf>
 Package pdftex.def Info: wit/sygnet-pp-eps-converted-to.pdf  used on input line 44.
@@ -641,7 +641,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 ]
-LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 52.
+LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 55.
  (C:\Users\jakub\AppData\Local\Programs\MiKTeX\tex/latex/polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 ))
@@ -684,48 +684,43 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 
 pdfTeX warning: pdflatex (file ./chapters/03-praca-wlasna/figures/pierwszy.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=346, 475.82146pt x 844.0292pt>
+<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=361, 475.82146pt x 844.0292pt>
 File: chapters/03-praca-wlasna/figures/pierwszy.pdf Graphic file (type pdf)
 <use chapters/03-praca-wlasna/figures/pierwszy.pdf>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on input line 22.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on input line 30.
 (pdftex.def)             Requested size: 106.5pt x 188.90671pt.
 
 
 [10
 
-{C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plsc.enc}
+]
+<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=367, 955.57pt x 1927.2pt>
+File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/koła_zębowe.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  used on input line 43.
+(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
+
+
+[11{C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plsc.enc}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.34 
-      <./chapters/03-praca-wlasna/figures/pierwszy.pdf>]
-<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=357, 955.57pt x 1927.2pt>
-File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/koła_zębowe.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  used on input line 37.
-(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/nie_widac.png, id=358, 955.57pt x 1927.2pt>
-File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/nie_widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used on input line 65.
-(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-
-
-[11
+l.55 
+     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.68 
-      <./chapters/03-praca-wlasna/figures/koła_zębowe.png>]
-<chapters/03-praca-wlasna/figures/widac.png, id=365, 955.57pt x 1927.2pt>
-File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on input line 71.
-(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
-<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=366, 955.57pt x 1927.2pt>
+l.55 
+      <./chapters/03-praca-wlasna/figures/pierwszy.pdf> <./chapters/03-praca-wlasna/figures/koła_zębowe.png>]
+<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=379, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/now_we_are_cool.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/now_we_are_cool.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  used on input line 83.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  used on input line 69.
+(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
+<chapters/03-praca-wlasna/figures/nie_widac.png, id=380, 955.57pt x 1927.2pt>
+File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/nie_widac.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used on input line 78.
 (pdftex.def)             Requested size: 106.5pt x 214.78629pt.
 
 
@@ -733,43 +728,52 @@ Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  u
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.86 
-     
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.86 
-      <./chapters/03-praca-wlasna/figures/nie_widac.png> <./chapters/03-praca-wlasna/figures/widac.png>]
-<chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg, id=373, 4047.12pt x 2276.505pt>
+l.81 
+      <./chapters/03-praca-wlasna/figures/now_we_are_cool.png>]
+<chapters/03-praca-wlasna/figures/widac.png, id=386, 955.57pt x 1927.2pt>
+File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/widac.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on input line 84.
+(pdftex.def)             Requested size: 106.5pt x 214.78629pt.
+<chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg, id=387, 4047.12pt x 2276.505pt>
 File: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg Graphic file (type jpg)
 <use chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg  used on input line 96.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg  used on input line 102.
 (pdftex.def)             Requested size: 106.5pt x 59.88594pt.
 
 
 [13
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.105 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.113 
-      
+l.105 
+       <./chapters/03-praca-wlasna/figures/nie_widac.png> <./chapters/03-praca-wlasna/figures/widac.png>]
+
+[14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.113 
-       <./chapters/03-praca-wlasna/figures/now_we_are_cool.png> <./chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>]) (chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex) (chapters/04-testy.tex
+l.139 
+       <./chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>]
 
-[14]
+[15]) (chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex) (chapters/04-testy.tex
 
-[15
+[16]
+
+[17
 
 ]
 
-[16]) (chapters/05-zakonczenie.tex
+[18]) (chapters/05-zakonczenie.tex
 
-[17]) (main.bbl
+[19]) (main.bbl
 
-[18
+[20
 
 ]
 bibitemlist
@@ -777,7 +781,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 7.
 )
 
-[19
+[21
 
 ] (chapters/zalacznik.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -788,7 +792,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 2.
 
 
-[20
+[22
 
 
 ]
@@ -812,7 +816,7 @@ Package epstopdf Info: Source file: <figures/mathematica.eps>
 (epstopdf)             Command: <miktex-epstopdf --outfile=figures/mathematica-eps-converted-to.pdf figures/mathematica.eps>
 (epstopdf)             \includegraphics on input line 97.
 Package epstopdf Info: Output file is already uptodate.
-<figures/mathematica-eps-converted-to.pdf, id=425, 289.08pt x 177.66376pt>
+<figures/mathematica-eps-converted-to.pdf, id=449, 289.08pt x 177.66376pt>
 File: figures/mathematica-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/mathematica-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mathematica-eps-converted-to.pdf  used on input line 97.
@@ -832,14 +836,14 @@ Package pdftex.def Info: figures/mathematica-eps-converted-to.pdf  used on input
 (pdftex.def)             Requested size: 426.0pt x 261.82675pt.
 
 
-[21{C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plitt.enc}
+[23{C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plitt.enc}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.116 
        <./figures/mathematica-eps-converted-to.pdf>]
 
-[22
+[24
 pdfTeX warning (ext4): destination with the same identifier (name{figure.A.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
@@ -856,17 +860,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.A.2}) ha
 l.157 \item S
              prawdź czy tutuł pracy ma maksymalnie dwa wiersze i czy stano...]
 
-[23])
+[25])
 
-[24]
-<wit/logo-pp.pdf, id=476, 422.57875pt x 422.57875pt>
+[26]
+<wit/logo-pp.pdf, id=499, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
 Package pdftex.def Info: wit/logo-pp.pdf  used on input line 90.
 (pdftex.def)             Requested size: 42.67946pt x 42.67912pt.
 
 
-[25
+[27
 
  <./wit/logo-pp.pdf>]
 \tf@toc=\write6
@@ -882,22 +886,22 @@ L3 programming layer <2020/03/25>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0D643F428E3EDA75C59FFF7B3DB9F4E4;11762.
+(rerunfilecheck)             Checksum: 6D126DCDB7BE5F300113853796642BDA;12326.
  )
 (\end occurred when \ifx on line 136 was incomplete)
 (\end occurred when \ifx on line 103 was incomplete) 
 Here is how much of TeX's memory you used:
- 14863 strings out of 473681
- 238137 string characters out of 5719194
- 668533 words of memory out of 5000000
- 37601 multiletter control sequences out of 15000+600000
+ 14872 strings out of 473681
+ 238257 string characters out of 5719194
+ 668536 words of memory out of 5000000
+ 37605 multiletter control sequences out of 15000+600000
  577179 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,107p,723b,654s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0800.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plcsc10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plitt10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt12.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt9.pfb>
-Output written on main.pdf (28 pages, 4070936 bytes).
+Output written on main.pdf (30 pages, 4080511 bytes).
 PDF statistics:
- 643 PDF objects out of 1000 (max. 8388607)
- 106 named destinations out of 1000 (max. 500000)
- 478 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 668 PDF objects out of 1000 (max. 8388607)
+ 111 named destinations out of 1000 (max. 500000)
+ 502 words of extra memory for PDF output out of 10000 (max. 10000000)
 
