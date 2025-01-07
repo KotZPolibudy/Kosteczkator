@@ -20,8 +20,8 @@ def test_pojedynczych_bitow(zera, jedynki):
     return testPB
 
 def testy_serii(seria): #test serii i test długiej serii
-    lewy = [-1, 2315, 1114, 527, 240, 103, 103]
-    prawy = [26, 2685, 1386, 723, 384, 209, 209]
+    lewy = [-1, 2343, 1135, 542, 251, 111, 111]
+    prawy = [26, 2657, 1365, 708, 373, 201, 201]
     test = True
     for i in range(7):
         if not(lewy[i] < seria[0][i] < prawy[i]) or not(lewy[i] < seria[1][i] < prawy[i]):
@@ -37,7 +37,7 @@ def test_pokerowy(poker):
         X = X + p
     X = 16*X/5000 - 5000
 
-    if 2.14 < X < 57:
+    if 2.16 < X < 46.17:
         testP = True
     else:
         testP = False
