@@ -49,3 +49,6 @@ data/
 # *.h5
 # models/
 /src/yolov8n.pt
+
+# *.keras - dodaje model na gita, żeby na malinie go pociągnąć ;)
+/serie/*
