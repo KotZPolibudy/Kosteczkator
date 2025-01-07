@@ -62,7 +62,7 @@ W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temp
 co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
 zastosowanie radiatorów, które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
 wspomagał cyrkulację powietrza wokół procesora. Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy 
-procesora, co zapewniło stabilne i bezpieczne działanie całego systemu.
+procesora, która teraz utrzymuje się w granicach $40^{\circ}$C, co zapewnia stabilne i bezpieczne działanie całego systemu. 
 
 \begin{figure}[H]
     \centering
@@ -176,10 +176,28 @@ być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz o
 wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
 Żeby temu zaradzić umieszczono pomiędzy śmigłem a dnem kubka metalową podkłądkę po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
 jednak nie rozwiązało problemu ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
-Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliowść obrotu ale ma większy moment obrotowy.
-Dodatkową zaletą nowego silnika jest jego wał w kształcie litery "D". Pozwala to na znacznie lużniejsze spasowanie otworu śmigła z wałem przez co 
-demontaż śmigła jest znacząco łatwiejszy.
+Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliowść obrotu (około 1000RPM zamiast 4000RPM) ale ma większy moment obrotowy.
+Dodatkową zaletą nowego silnika jest jego wał w kształcie litery "D". Pozwala to na znacznie luźniejsze spasowanie otworu śmigła z wałem przez co 
+demontaż śmigła jest znacznie łatwiejszy.
 
+Zdjecia:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/całosc_front.png}
+    \caption{\label{fig:gotowy}gotowy}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/kubek_smiglo_uchwyt.png}
+    \caption{\label{fig:kubek}kubek}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/main_board.png}
+    \caption{\label{fig:mainboard}Płytka do montażu elektroniki}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TODO
 %1. oświetlenie 
