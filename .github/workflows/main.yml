@@ -53,14 +53,14 @@ jobs:
           path: ./logs/main.log
 
       # Commit and push the PDF and logs to the repository
-      - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global --add safe.directory $GITHUB_WORKSPACE
-          git add main.pdf ./logs/main.log
-          git commit -m "Add compiled PDF and LaTeX logs [skip ci]" || echo "No changes to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
+      # - name: Commit and push changes
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --global --add safe.directory $GITHUB_WORKSPACE
+      #     git add main.pdf ./logs/main.log
+      #     git commit -m "Add compiled PDF and LaTeX logs [skip ci]" || echo "No changes to commit"
+      #     git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
 
