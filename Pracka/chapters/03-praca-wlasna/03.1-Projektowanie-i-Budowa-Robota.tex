@@ -66,8 +66,8 @@ procesora, która teraz utrzymuje się w granicach $40^{\circ}$C, co zapewnia st
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/now_we_are_cool.png}
-    \caption{\label{fig:zimno}zimno}
+    \includegraphics[width=0.25\linewidth, trim={0mm 50mm 0mm 120mm}, clip]{chapters/03-praca-wlasna/figures/now_we_are_cool.png}
+    \caption{\label{fig:zimno}Dodane radiatory}
 \end{figure}
 
 Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
@@ -76,17 +76,15 @@ zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/nie_widac.png}
-    \caption{\label{fig:nie_widac}gorzej}
+    \caption{\label{fig:nie_widac}Teksturowana kość}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/widac.png}
-    \caption{\label{fig:widac}lepiej}
+    \caption{\label{fig:widac}Jednobarwna kość}
 \end{figure}
 
-%TODO
-%wstawic zdjeicei oswietlonego kubka
 
 W obu wariantach dużym problemem był słaby obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
 LED sterowanych za pomocą układu ULN2803A Darlington. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
@@ -99,8 +97,8 @@ została minimalna.
 
 \begin{figure}[H]
     \centering
-    \rotatebox{90}{\includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg}}
-    \caption{\label{fig:jasno}jasno}
+    \rotatebox{-90}{\includegraphics[width=0.25\linewidth]{chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg}}
+    \caption{\label{fig:jasno}Oświetlone wnętrze kubka}
 \end{figure}
 
 Po skonstruowaniu obu wersji robota oczywistym stało się, że wariant blendera będzie znacznie szybciej (około 3-krotnie) generował wyniki. 
@@ -149,12 +147,36 @@ Projekt pierwszego uchwytu mocującego silnik składał się z miejsca do umiesz
 było zaprojektowanie drugiego uchwytu. Podczas projektowania tego drugiego uchwytu wzorowano sie na projekcie pierwszego jednak dodano dodatkowy trzeci
 cylindryczny słupek na śrubę, która miała służyć do kontrolowania wychylenia całego uchwytu na boki. 
 
+Śmigło zaprojektowano w taki sposób żeby obracając się przy samym dnie kubka, po uderzeniu w kość, wybijało ją w górę. Ten efekt uzyskano
+dzięki niskiemu profilowi śmigła oraz bocznych ścian śmigła nachylonych pod kątem $45^{\circ}$.
+
+Podczas testów ostatecznej wersji robota napotkano problem z pierwotnie wykorzystywanym silnikiem. Silnik ten miał okrągły wał przez co śmigło musiało
+być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością, śmigło
+wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
+Żeby temu zaradzić umieszczono pomiędzy śmigłem a dnem kubka metalową podkłądkę po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
+jednak nie rozwiązało problemu ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
+Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliowść obrotu (około 1000RPM zamiast 4000RPM) ale ma większy moment obrotowy.
+Dodatkową zaletą nowego silnika jest jego wał w kształcie litery "D". Pozwala to na znacznie luźniejsze spasowanie otworu śmigła z wałem przez co 
+demontaż śmigła jest znacznie łatwiejszy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/kubek_smiglo_uchwyt.png}
+    \caption{\label{fig:kubek}Uchwyt silnika oraz śmigło względem kubka}
+\end{figure}
+
 Do mocowania Raspberry Pi zaprojektowano specjalną płykę mocowaną do boku obudowy. W projekcie tej płytki uwzględniono otwory do przymocowania Raspberry
 Pi oraz układu ULN2803A Darlington. Dodatkowo przygotowano specjalne miejsce do mocowania przycisku. Na płytnce pozostawiono również miejsce
 na zamontowanie szyny zasilania. Płytke tą umieszczono w obudowie w taki sposób żeby znajdowała się ona bezpośrednio nad wentylatorem. Dzięki temu
 strumień powietrza bezpośrednio chłodzi najważniejsze elementy elektroniczne robota. Przycisk zamocowano na tej samej płytce z wykorzystaniem
 dodatkowego elementu wydukowanego na drukarce 3D. Dzięki temu znalazł się on bezpośrednio przy ściance obudowy a dodatkowo jego mocowanie
 nadal spełnia założenie modułowości poprzez mocowanie za pomocą śrub i insertów.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/main_board.png}
+    \caption{\label{fig:mainboard}Płytka do montażu elektroniki}
+\end{figure}
 
 Układ sterujący silnikiem LN298 przykręcono do obudowy pośrednio poprzez specjalnie zaprojektowane mocowanie. Dzięki temu wykorzystano
 gotowe otwory na śruby znajdujące się w płytce układu LN298.
@@ -171,37 +193,8 @@ Podczas projektowania obudowy przewidziano także takie elemementy jak wycięcia
 oraz wycięcia w tylenej sciance służące za wylot powietrza. Dodatkowo w dnie umieszczono duży utwór możliwiający swobodne mocowanie oraz dostęp do 
 silnika, diod LED oraz gniazda zasilania.
 
-Podczas testów ostatecznej wersji robota napotkano problem z pierwotnie wykorzystywanym silnikiem. Silnik ten miał okrągły wał przez co śmigło musiało
-być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością, śmigło
-wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
-Żeby temu zaradzić umieszczono pomiędzy śmigłem a dnem kubka metalową podkłądkę po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
-jednak nie rozwiązało problemu ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
-Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliowść obrotu (około 1000RPM zamiast 4000RPM) ale ma większy moment obrotowy.
-Dodatkową zaletą nowego silnika jest jego wał w kształcie litery "D". Pozwala to na znacznie luźniejsze spasowanie otworu śmigła z wałem przez co 
-demontaż śmigła jest znacznie łatwiejszy.
-
-Zdjecia:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/całosc_front.png}
-    \caption{\label{fig:gotowy}gotowy}
+    \caption{\label{fig:gotowy}Projekt gotowego robota od frontu}
 \end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/kubek_smiglo_uchwyt.png}
-    \caption{\label{fig:kubek}kubek}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/main_board.png}
-    \caption{\label{fig:mainboard}Płytka do montażu elektroniki}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%TODO
-%1. oświetlenie 
-%2. dodać wiecej informacji
-%3. ostateczny projekt robota
-%4. całe mnóstwo poprawiania i dopracowywania tego tekstu
-%5. dodać zdjęcia/modele
