@@ -101,8 +101,10 @@ została minimalna.
     \caption{\label{fig:jasno}Oświetlone wnętrze kubka}
 \end{figure}
 
-Po skonstruowaniu obu wersji robota oczywistym stało się, że wariant blendera będzie znacznie szybciej (około 3-krotnie) generował wyniki. 
-Dodatkowo był ona zdecydowanie prostszy w budowie przez mniejszą liczbę ruchomych elementów. Z tego powodu do docelowego robota wybrano 
+Po skonstruowaniu obu wersji robota oczywistym stało się, że wariant blendera będzie znacznie szybciej (około 4-krotnie) wykonywał rzut kością.
+Ponadto wersja blendera jest znacznie stabilniejszą konstrukcją, ponieważ nie wymaga poruszania dużymi komponentami robota. 
+Największą zaletą wariantu blendera jest zdecydowanie prostsza budowa spowodowana mniejszą liczbę ruchomych elementów. Jest to ważne z punktu widzenia
+długotrwłej eksploatacji podczas, której bardziej skomplikowane mechanizmy łatwiej się zużywają. Z tych powodów do docelowego robota wybrano 
 wariant blendera. Dzięki temu projekt stał się mniej skomplikowany mechanicznie a jednocześnie jego użyteczność wzrosła, ponieważ
 głównym zadaniem tego robota jest generowanie liczb losowych a to zadanie szybciej był w stanie wykonywać wariant blendera.
 
@@ -128,7 +130,13 @@ jest dostęp do kamery lub diod LED wystarczy zdjąć tylną scianę robota oraz
 dobre przyleganie pokrywy do reszty obudowy. Ich dodatkową zaletą jest blokowanie pokrywy w ustalonej pozycji podczas umieszczania kości wewnątrz
 kubka.
 
-Kamera wraz z diodami LED służącymi do oświetlenia wnętrza kubka znajdujde się w pokrywie. Kamere zamontowano przy użyciu dwóch śrub M2 natomiast
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/pokrywa.png}
+    \caption{\label{fig:pokrywa}Pokrywa obudowy}
+\end{figure}
+
+Kamera wraz z diodami LED służącymi do oświetlenia wnętrza kubka znajdujde się w pokrywie. Kamerę zamontowano przy użyciu dwóch śrub M2 natomiast
 diody LED umieszczono w zaprojektowanych w wydruku otworach.
 
 W pokrywie znajdują się również dwa sześciokątne otwory na magnesy neodymowe. Dzięki temu że otwory są sześciokątne to walcowe magnesy idealnie
@@ -141,6 +149,12 @@ cztery mocowania za pomocą, których kubek jest przykręcany do obudowy. Dodatk
 do mocowania uchwytu silnika. Ostatnią modyfikacją było podwyższenie kubka w taki sposób żeby wysokością sięgał on aż do mocowania kamery - górnej pokrywy.
 Dzięki temu podczas rzutów zniknął problem z wypadającą kością co było dość częstym zajwiskiem podczas testów prototypu. Niestety takie Rozwiązanie
 spowodowało, że wnętrze kubka przestało być widoczne z zewnątrz. Jednak zostało uznane, że nie jest to konieczne do osiągnięcia celów projektu.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/kubek.png}
+    \caption{\label{fig:kubek}Kubek}
+\end{figure}
 
 Projekt pierwszego uchwytu mocującego silnik składał się z miejsca do umieszczenia silnika oraz dwóch cylindrycznych słupków służących za prowadnice
 śrub mocujących cały uchwyt do dna kubka. Jednak, ponieważ podczas testów pojawiły się problemy z pierwszym silnikiem i wymieniono go na inny konieczne
@@ -161,8 +175,14 @@ demontaż śmigła jest znacznie łatwiejszy.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/kubek_smiglo_uchwyt.png}
-    \caption{\label{fig:kubek}Uchwyt silnika oraz śmigło względem kubka}
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v1.png}
+    \caption{\label{fig:uchwyt_v1}Pierwsza wersja uchwytu silnika oraz śmigło względem kubka}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v2.png}
+    \caption{\label{fig:uchwyt}Druga wersja uchwytu silnika oraz śmigło względem kubka}
 \end{figure}
 
 Do mocowania Raspberry Pi zaprojektowano specjalną płykę mocowaną do boku obudowy. W projekcie tej płytki uwzględniono otwory do przymocowania Raspberry
@@ -182,6 +202,12 @@ Układ sterujący silnikiem LN298 przykręcono do obudowy pośrednio poprzez spe
 gotowe otwory na śruby znajdujące się w płytce układu LN298.
 
 Do dna obudowy robota przymocowano za pomocą śrub również wentylator.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/l298n.png}
+    \caption{\label{fig:steownik}Zamocowany sterownik L298N z widoczną płytką na której zamocowana jest Raspberry Pi 4b}
+\end{figure}
 
 Obudowę zaprojektowano w taki sposób żeby pomieściła wszystkie powyższe elementy. W jej scianach zaprojektowano otwory na wyjścia Raspberry Pi, 
 diody LED oraz gniazdo zasilania. W scianie obudowy na wysokości miejsca, w którym znajduje się wewnątrz przycisk, zaprojektowano specjalne wycięcie.
