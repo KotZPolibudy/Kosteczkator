@@ -33,15 +33,10 @@ h, s, v = hsv_image.split()
 blurred_v = s.filter(ImageFilter.GaussianBlur(radius=5))
 \end{verbatim}
 
-Na podstawie komponentu nasycenia (S) oraz progowania tworzona jest maska binarna, która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość):
+Na podstawie komponentu nasycenia (Saturation) oraz progowania tworzona jest maska binarna, która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość):
 
-\begin{verbatim}
-v_array = np.array(blurred_v)
-threshold = 224
-binary_mask = (v_array > threshold).astype(np.uint8) * 255
-\end{verbatim}
-
-W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego z wykorzystaniem strukturalnego elementu prostokątnego:
+W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego z wykorzystaniem strukturalnego elementu prostokątnego: \n
+TODO - cytowanie
 
 \begin{verbatim}
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
