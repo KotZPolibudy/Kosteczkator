@@ -202,8 +202,15 @@ try:
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
                 file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
 
-            # todo move to correct subfolder
-            # move ./filename to ./prediction/filename
+            # done move to correct subfolder
+            prediction_folder = os.path.join(folder_name, prediction)
+            os.makedirs(prediction_folder, exist_ok=True) #idk czy dobrze mieć to tutaj, czy nie zrobić ich raz a dobrze na początku przetwarzania, ale niech będzie na chwilę obecną na testy
+            new_path = os.path.join(prediction_folder, filename)
+
+            # KTO TAK TO NAZWAŁ, JAKIE RENAME, JA WALE, BEZ SENSU
+            # PROGRAMIŚCI PYTHONA CO WY ODWALILIŚCIE
+            # JA TAK NIE UMIEM
+            os.rename(title, new_path)
 
             if prediction == last_prediction:
                 failsafe += 1
