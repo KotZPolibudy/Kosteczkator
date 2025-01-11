@@ -74,7 +74,7 @@ def process_and_crop(image_path, size=(64, 64)):
 
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
     closed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_CLOSE, kernel)
-    mask = Image.fromarray(closed_mask)
+    # mask = Image.fromarray(closed_mask)
     # masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
 
     # Find bounding box of the mask and crop the image
@@ -98,6 +98,24 @@ def process_and_crop(image_path, size=(64, 64)):
 def predict_number(model, img_path):
     # Load the image in grayscale mode to match the model input
     img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')  # Ensure grayscale input
+    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
+    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+
+    # Make prediction
+    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    # print(prediction)
+    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
+
+    # List of class labels (from 1 to 8 for dice numbers)
+    class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
+    # print(predicted_class)
+    # Return the predicted label (the number corresponding to the class)
+    predicted_label = class_names[predicted_class[0]]
+    return predicted_label
+
+
+def predict_number_from_loaded_img(model, img):
+    # Load the image in grayscale mode to match the model input
     img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
     img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
 
@@ -162,17 +180,20 @@ try:
             # Przetwarzanie zdjęcia
             processed_image = process_and_crop(title)
 
+            # todo tutaj dodać check czy zdj jest czarne czy nie
             # Sprawdzanie, czy przetwarzanie się udało
             if processed_image is None:
                 print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
                 continue
 
             # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
-            processed_path = f"{folder_name}/processed_{filename}"
-            processed_image.save(processed_path)
+            # processed_path = f"{folder_name}/processed_{filename}"
+            # processed_image.save(processed_path)
 
             # Predykcja na przetworzonym obrazie
-            prediction = predict_number(model, processed_path)
+            # todo check czy to jest ok
+            # prediction = predict_number(model, processed_path)
+            prediction = predict_number_from_loaded_img(model, processed_image)
             
             end_time = time.time()  # Zapisz czas zakończenia iteracji
             iteration_time = end_time - start_time
@@ -181,6 +202,9 @@ try:
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
                 file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
 
+            # todo move to correct subfolder
+            # move ./filename to ./prediction/filename
+
             if prediction == last_prediction:
                 failsafe += 1
             else:
@@ -188,8 +212,6 @@ try:
             last_prediction = prediction
 
             print(f"{n+1} / {x} iteracji")
-
-            #todo check czy obrazek był "czarny"
 
             # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
             # ...lub nie mamy losowości, somehow
