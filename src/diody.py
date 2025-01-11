@@ -74,7 +74,7 @@ def process_and_crop(image_path, size=(64, 64)):
 
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
     closed_mask = cv2.morphologyEx(binary_mask, cv2.MORPH_CLOSE, kernel)
-    # mask = Image.fromarray(closed_mask)
+    mask = Image.fromarray(closed_mask)
     # masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
 
     # Find bounding box of the mask and crop the image
@@ -225,7 +225,7 @@ try:
             if failsafe > 12:
                 # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
                 break
-        
+
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
 
