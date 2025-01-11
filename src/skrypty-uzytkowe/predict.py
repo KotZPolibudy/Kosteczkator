@@ -45,5 +45,5 @@ for el in numnum:
 
 # print(predict_number(model, "../data/rescaled/6/20_2024-12-10_13-14-03.jpg"))
 
-print(predict_number(model, "../data_first/data/rescaled/2/k8_5_2024-11-22_19_06_03.jpg"))
+print(predict_number(model, "../../data_first/data/rescaled/2/k8_5_2024-11-22_19_06_03.jpg"))
 

@@ -55,7 +55,7 @@ if __name__ == "__main__":
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
 
     # Load the pre-trained model
-    model_path = "die_number_recognizer.keras"
+    model_path = "../die_number_recognizer.keras"
     model = load_model(model_path)
     print("Model loaded successfully.")
 

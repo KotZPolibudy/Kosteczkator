@@ -67,11 +67,11 @@ def rescale_image_and_gray(image, output_path, size=(64, 64)):
 
 
 # Main loop to process images
-input_base = Path("../data/raw")   # Base input directory
+input_base = Path("../../data/raw")   # Base input directory
 masked_output_base = Path("../data/masked")  # Base masked output directory
 cropped_output_base = Path("../data/cropped")  # Base cropped output directory
-rescaled_output_base = Path("../data/rescaled")  # Base rescaled output directory
-gray_output_base = Path("../data/gray")  # Base rescaled output directory
+rescaled_output_base = Path("../../data/rescaled")  # Base rescaled output directory
+gray_output_base = Path("../../data/gray")  # Base rescaled output directory
 
 for input_fn in glob.glob(str(input_base / "*/*.jpg")):  # Match all JPG files in subdirectories
     input_fn = Path(input_fn)
