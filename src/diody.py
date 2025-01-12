@@ -133,7 +133,7 @@ def predict_number_from_loaded_img(model, img):
 
 try:
     # Load the model
-    model = load_model("die_number_recognizer.keras")
+    model = load_model("na_nowych_final_unbalanced.keras")
     while True:
         print("Podaj liczbę zdjęć, jakie chcesz zrobić:")
         x = int(input())  # Konwertuj na liczbę całkowitą
