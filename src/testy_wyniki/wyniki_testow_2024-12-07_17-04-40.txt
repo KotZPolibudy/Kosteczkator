@@ -1,3 +1,5 @@
+# testowanie testy.py na python random module
+
 Przeanalizowane bity:  20001
 Entropia: 2.999
 Entropia procentowa: 99.976%
@@ -13,14 +15,14 @@ Wyniki testu chi-kwadrat
 7: 833
 Wynik: True (6.688)
 
-Test pojedynczych bitów:
+Test pojedynczych bitï¿½w:
 0: 10087
 1: 9914
 Wynik: True
 
 Testy serii:
 Dla 0
-Najd³u¿sza seria: 13
+Najdï¿½uï¿½sza seria: 13
 1: 2487
 2: 1271
 3: 590
@@ -28,7 +30,7 @@ Najd³u¿sza seria: 13
 5: 172
 6: 163
 Dla 1
-Najd³u¿sza seria: 13
+Najdï¿½uï¿½sza seria: 13
 1: 2501
 2: 1274
 3: 619
