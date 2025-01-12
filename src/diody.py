@@ -124,22 +124,22 @@ try:
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         folder_name = f"../serie/seria_{timestamp}"
         os.makedirs(folder_name, exist_ok=True)  # Tworzy folder, jeśli nie istnieje
-        #print(f"Utworzono folder: {folder_name}")
+        # print(f"Utworzono folder: {folder_name}")
         
         GPIO.output(LED, GPIO.HIGH)
         GPIO.output(dioda_red, GPIO.HIGH)
-        
+        last_prediction = 2137
+        failsafe = 0
         for n in range(x):
             start_time = time.time()  # Zapisz czas rozpoczęcia iteracji
-            
-            
+
             # Kręcenie silnikiem w aktualnym kierunku
             start_motor(direction)
-            #print("Silnik się kręci...")
+            # print("Silnik się kręci...")
             GPIO.output(dioda_green, GPIO.HIGH)
             time.sleep(0.3)  # Czas pracy silnika
             stop_motor()
-            #print("Silnik zatrzymany.")
+            # print("Silnik zatrzymany.")
             GPIO.output(dioda_green, GPIO.LOW)
             time.sleep(1)
             
@@ -157,7 +157,7 @@ try:
             camera.capture_file(title)
             camera.stop()
             GPIO.output(dioda_blue, GPIO.LOW)
-            #print(f"Zdjęcie zapisane jako {title}")
+            # print(f"Zdjęcie zapisane jako {title}")
 
             # Przetwarzanie zdjęcia
             processed_image = process_and_crop(title)
@@ -181,7 +181,21 @@ try:
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
                 file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
 
-            print(f"{n} / {x} iteracji")
+            if prediction == last_prediction:
+                failsafe += 1
+            else:
+                failsafe = 0
+            last_prediction = prediction
+
+            print(f"{n+1} / {x} iteracji")
+
+            #todo check czy obrazek był "czarny"
+
+            # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
+            # ...lub nie mamy losowości, somehow
+            if failsafe > 12:
+                # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
+                break
         
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)

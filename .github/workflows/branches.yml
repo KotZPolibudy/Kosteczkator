@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - Kotu*
-      - Kedra*
+      - kedra*
       - Julka
   pull_request:
     branches:
       - main
       - Kotu*
-      - Kedra*
+      - kedra*
       - Julka
 
 jobs:
