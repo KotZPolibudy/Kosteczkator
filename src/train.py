@@ -21,13 +21,9 @@ if not os.path.exists(DATASET_PATH):
 print("Loading dataset...")
 # todo można nawet więcej noise i innych udziwnień preprocessu
 datagen = ImageDataGenerator(
-    rescale=1.0 / 255.0,
+    rescale=1.0 / 255.0,  # zacząłem się zastanawiać czy to jest potrzebne, czy nie...
     validation_split=0.3,
     rotation_range=90,  # Rotate images up to 90 degrees
-    width_shift_range=0.2,  # Horizontal shift
-    height_shift_range=0.2,  # Vertical shift
-    shear_range=0.1,  # Shear transformation
-    zoom_range=0.1,  # Random zoom
     horizontal_flip=False,  # DONT MIRROR
     vertical_flip=False
 )
