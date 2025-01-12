@@ -1,7 +1,19 @@
 import math
 import random
-from datetime import date
 from datetime import datetime
+import os 
+import matplotlib.pyplot as plt
+import numpy as np
+
+na_bity = {}
+na_bity[1] = '001'
+na_bity[2] = '010'
+na_bity[3] = '011'
+na_bity[4] = '100'
+na_bity[5] = '101'
+na_bity[6] = '110'
+na_bity[7] = '111'
+na_bity[8] = '000'
 
 def data():
     data = str(datetime.today())
@@ -105,7 +117,7 @@ def zapisz(testy, wyniki):
     
     f.write("\nWyniki testu chi-kwadrat\n")
     for i in range(len(testy['chi'])):
-        f.writelines([str(i), ': ', str(testy['chi'][i]), '\n'])
+        f.writelines([str(i+1), ': ', str(testy['chi'][i]), '\n'])
     f.writelines(["Wynik: ", str(wyniki[0]), ' (', str(round(wyniki[6], 3)), ')\n\n'])
     
     f.write('Test pojedynczych bitów:\n')
@@ -135,10 +147,6 @@ def rzuc():
     x = random.randint(0,7)
     return(x)
 
-def na_bity(x):
-    x = str(bin(x))[2:].zfill(3)
-    return x
-
 def neguj(x):
     if x == 0:
         n = 1
@@ -148,11 +156,16 @@ def neguj(x):
 
 def aktualizuj(rzut, testy):
     #zliczanie, ile mamy już bitów
+    #print(testy)
     testy['ile'] = testy['ile'] + 3
     
     #zliczanie, ile razy wypadła każda ścianka (8 na kostce liczymy jako 0)
-    testy['chi'][rzut] += 1
-    bity = na_bity(rzut)
+    testy['chi'][rzut-1] += 1
+    bity = na_bity[rzut]
+    
+    if testy['ile'] > 20000:
+        testy['ile'] -= 1
+        bity = bity[:-1]
 
     #zliczanie wszystkich zer i jedynek
     testy['zera'] += bity.count('0')
@@ -197,10 +210,31 @@ def generuj():
         i -= 1
     return testy
 
+def czytaj(path):
+    os.chdir(path) 
+    i = 6667
+    for file in os.listdir():
+        file_path = f"{path}/{file}"
+        f = open(file_path, 'r')
+        for line in f:
+            if i > 0:
+                wynik = line.split(";")
+                wynik = int(wynik[2][1])
+                i -= 1
+                aktualizuj(wynik, testy)
+            else:
+                return testy
+    print(i)
+    return testy
+
 if __name__ == "__main__":
-    ocr = False
+    ocr = True
+    path = "C:/Users/Julka/Desktop/studia/semestrVII/inzynierka/wyniki"
     testy = start()
     if not ocr:
         testy = generuj()
+    else:
+        testy = czytaj(path)
     wyniki = czy_uczciwa(testy)
+    os.chdir("c:/Users/julka/Documents/GitHub/Kosteczkator") 
     zapisz(testy, wyniki)
