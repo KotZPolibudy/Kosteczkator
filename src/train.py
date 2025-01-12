@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Set dataset paths
 DATASET_PATH = "../data/gray"
-MODEL_SAVE_PATH = "na_nowych.keras"
+MODEL_SAVE_PATH = "na_nowych_balanced.keras"
 
 # Image parameters
 IMAGE_SIZE = (64, 64)
