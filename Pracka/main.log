@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  13 JAN 2025 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  13 JAN 2025 18:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -832,9 +832,20 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3.14}) 
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.28     \end{itemize}
-                       <./chapters/03-praca-wlasna/figures/całosc_front.png>]) (chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
+                       <./chapters/03-praca-wlasna/figures/całosc_front.png>]
+<chapters/03-praca-wlasna/figures/wymiary.png, id=426, 914.66719pt x 645.91313pt>
+File: chapters/03-praca-wlasna/figures/wymiary.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/wymiary.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/wymiary.png  used on input line 51.
+(pdftex.def)             Requested size: 404.6987pt x 285.78944pt.
+) (chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
 
-[16]
+[16
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.15}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.8 \chapter
+            {Odczytywanie losowego wyniku z kości} <./chapters/03-praca-wlasna/figures/wymiary.png>]
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 23.
  (C:\Users\jakub\AppData\Local\Programs\MiKTeX\tex/latex/polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
@@ -905,7 +916,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [27
 
 ]
-<wit/logo-pp.pdf, id=490, 422.57875pt x 422.57875pt>
+<wit/logo-pp.pdf, id=492, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
 Package pdftex.def Info: wit/logo-pp.pdf  used on input line 91.
@@ -930,17 +941,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 13B1CD37224F7AEBE07A3E302833DE79;10658.
  ) 
 Here is how much of TeX's memory you used:
- 14891 strings out of 473681
- 240974 string characters out of 5719194
- 669195 words of memory out of 5000000
- 37624 multiletter control sequences out of 15000+600000
+ 14900 strings out of 473681
+ 241354 string characters out of 5719194
+ 669243 words of memory out of 5000000
+ 37632 multiletter control sequences out of 15000+600000
  570142 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,719b,654s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0800.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plcsc10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt9.pfb>
-Output written on main.pdf (31 pages, 8194695 bytes).
+Output written on main.pdf (31 pages, 8281901 bytes).
 PDF statistics:
- 613 PDF objects out of 1000 (max. 8388607)
- 109 named destinations out of 1000 (max. 500000)
- 557 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 615 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+ 562 words of extra memory for PDF output out of 10000 (max. 10000000)
 
