@@ -37,6 +37,9 @@ Model jest wielowarstwową siecią konwolucyjną (CNN) składającą się z nast
 a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
 \end{itemize}
 
+W przypadku zmiany kości na taką z inną ilością ścianek, np. na również rozważane kości k4, k6, albo k16,
+ostatnia warstwa musiałaby również ulec odpowiedniej zmianie, tak aby ilość neuronów odpowiadała ilości ścianek na używanej kości.
+
 \subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
 
 Model został skompilowany z wykorzystaniem optymalizatora Adam,
@@ -74,14 +77,14 @@ Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{chapters/04-czytanie/figures/ModelAcc1}
-    \caption{Rys NUMER Wykres dokładności modelu.}
+    \caption{Wykres dokładności modelu.}
     \label{fig:ModelAcc}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{chapters/04-czytanie/figures/ModelLoss1}
-    \caption{Rys NUMER Wykres straty modelu.}
+    \caption{Wykres straty modelu.}
     \label{fig:ModelLoss}
 \end{figure}
 
