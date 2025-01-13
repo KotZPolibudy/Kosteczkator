@@ -113,6 +113,24 @@ def predict_number(model, img_path):
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
+
+def predict_number_from_loaded_img(model, img):
+    # Load the image in grayscale mode to match the model input
+    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
+    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+
+    # Make prediction
+    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    # print(prediction)
+    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
+
+    # List of class labels (from 1 to 8 for dice numbers)
+    class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
+    # print(predicted_class)
+    # Return the predicted label (the number corresponding to the class)
+    predicted_label = class_names[predicted_class[0]]
+    return predicted_label
+
 try:
     # Load the model
     model = load_model("die_number_recognizer.keras")
@@ -162,17 +180,20 @@ try:
             # Przetwarzanie zdjęcia
             processed_image = process_and_crop(title)
 
+            # todo tutaj dodać check czy zdj jest czarne czy nie
             # Sprawdzanie, czy przetwarzanie się udało
             if processed_image is None:
                 print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
                 continue
 
             # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
-            processed_path = f"{folder_name}/processed_{filename}"
-            processed_image.save(processed_path)
+            # processed_path = f"{folder_name}/processed_{filename}"
+            # processed_image.save(processed_path)
 
             # Predykcja na przetworzonym obrazie
-            prediction = predict_number(model, processed_path)
+            # todo check czy to jest ok
+            # prediction = predict_number(model, processed_path)
+            prediction = predict_number_from_loaded_img(model, processed_image)
             
             end_time = time.time()  # Zapisz czas zakończenia iteracji
             iteration_time = end_time - start_time
@@ -180,6 +201,16 @@ try:
             # Zapisz czas wykonania iteracji do pliku w folderze
             with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
                 file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
+
+            # done move to correct subfolder
+            prediction_folder = os.path.join(folder_name, prediction)
+            os.makedirs(prediction_folder, exist_ok=True) #idk czy dobrze mieć to tutaj, czy nie zrobić ich raz a dobrze na początku przetwarzania, ale niech będzie na chwilę obecną na testy
+            new_path = os.path.join(prediction_folder, filename)
+
+            # KTO TAK TO NAZWAŁ, JAKIE RENAME, JA WALE, BEZ SENSU
+            # PROGRAMIŚCI PYTHONA CO WY ODWALILIŚCIE
+            # JA TAK NIE UMIEM
+            os.rename(title, new_path)
 
             if prediction == last_prediction:
                 failsafe += 1
@@ -189,14 +220,12 @@ try:
 
             print(f"{n+1} / {x} iteracji")
 
-            #todo check czy obrazek był "czarny"
-
             # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
             # ...lub nie mamy losowości, somehow
             if failsafe > 12:
                 # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
                 break
-        
+
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
 

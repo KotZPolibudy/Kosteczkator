@@ -1,0 +1,59 @@
+# testy modelu 1 (jest źle)
+
+Przeanalizowane bity:  20000
+Entropia: 2.973
+Entropia procentowa: 99.095%
+
+Wyniki testu chi-kwadrat
+1: 849
+2: 682
+3: 952
+4: 831
+5: 866
+6: 1124
+7: 816
+8: 547
+Wynik: False (246.079)
+
+Test pojedynczych bit�w:
+0: 9306
+1: 10694
+Wynik: False
+
+Testy serii:
+Dla 0
+Najd�u�sza seria: 13
+1: 2717
+2: 1367
+3: 559
+4: 263
+5: 113
+6: 82
+Dla 1
+Najd�u�sza seria: 13
+1: 2303
+2: 1411
+3: 678
+4: 374
+5: 158
+6: 177
+Wynik: False
+
+Test pokerowy:
+0000: 197
+0001: 249
+0010: 277
+0011: 312
+0100: 279
+0101: 309
+0110: 363
+0111: 338
+1000: 255
+1001: 355
+1010: 311
+1011: 355
+1100: 322
+1101: 335
+1110: 366
+1111: 377
+Wynik: False (120.026)

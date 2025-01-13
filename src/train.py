@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Set dataset paths
 DATASET_PATH = "../data/gray"
-MODEL_SAVE_PATH = "die_number_recognizer.keras"
+MODEL_SAVE_PATH = "na_nowych_balanced.keras"
 
 # Image parameters
 IMAGE_SIZE = (64, 64)
@@ -19,15 +19,11 @@ if not os.path.exists(DATASET_PATH):
 
 # Load and preprocess data
 print("Loading dataset...")
-# todo można nawet więcej noise i innych udziwnień preprocessu
+
 datagen = ImageDataGenerator(
-    rescale=1.0 / 255.0,
+    rescale=1.0 / 255.0,  # zacząłem się zastanawiać czy to jest potrzebne, czy nie...
     validation_split=0.3,
     rotation_range=90,  # Rotate images up to 90 degrees
-    width_shift_range=0.2,  # Horizontal shift
-    height_shift_range=0.2,  # Vertical shift
-    shear_range=0.1,  # Shear transformation
-    zoom_range=0.1,  # Random zoom
     horizontal_flip=False,  # DONT MIRROR
     vertical_flip=False
 )
@@ -60,7 +56,6 @@ def create_model():
     model = models.Sequential([
         layers.Input(shape=(64, 64, 1)),  # Input layer
 
-        # todo a co jeśli tu dać więcej neuronów, a potem zmniejszać?
         layers.Conv2D(32, (3, 3), activation='relu'),
         layers.MaxPooling2D((2, 2)),
 

@@ -52,3 +52,9 @@ data/
 
 # *.keras - dodaje model na gita, żeby na malinie go pociągnąć ;)
 /serie/*
+
+
+# wypad mi z tą pracką lokalnie kompilowaną :P
+Pracka/main.log
+Pracka/main.pdf
+
