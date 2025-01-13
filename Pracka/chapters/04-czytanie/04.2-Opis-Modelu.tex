@@ -1,13 +1,16 @@
 \section{Opis Modelu SI}\label{sec:opis-modelu-si}
 
-Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć ośmiościennych kości do jednej z ośmiu klas, odpowiadających cyfrom od 1 do 8.
+Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości k8 (ośmiościennych) do jednej z ośmiu klas, odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
 Do implementacji modelu wykorzystano moduły scikit-learn oraz wchodzący w jego skład Keras, obecnie jako część modułu Tensorflow, który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 \textit{Biblioteka Keras jest wygodnym opakowaniem (wrapperem) dla modeli DL używanych do oszacowań klasyfikacji lub regresji]} [Donald J. Norris, 2020 s. 355 wydanie APN PROMISE SA]
+
+--- TODO --- \\
+cytowanie dodać do bibtex
 
 \subsection{Przygotowanie danych}\label{subsec:przygotowanie-danych}
 
 Dane wejściowe zostały podzielone na zestawy treningowy i walidacyjny w proporcji 70:30.
-W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów, takie jak:
+W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów dostępne w klasie ImageDataGenerator, takie jak:
 
 \begin{itemize}
     \item obrót o losowy kąt w zakresie do 90°,
@@ -16,45 +19,28 @@ W celu zwiększenia różnorodności danych treningowych zastosowano techniki au
     \item losowe powiększenia (zoom) .
 \end{itemize}
 
-Przykład konfiguracji generatora danych:
+W szczególności należy zaznaczyć, że finalnie uniknięto początkowo przeoczonego błędu,
+jakim jest tworzenie obrazów lustrzanych w wyżej wymienionych transformacjach, gdyż obrazy lustrzane
+sprawiały że ścianki `2' oraz `5' były znacznie gorzej rozróżnialne przez wytrenowany model.
 
-\begin{verbatim}
-datagen = ImageDataGenerator(
-    rescale=1.0 / 255.0,
-    validation_split=0.3,
-    rotation_range=90,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    shear_range=0.1,
-    zoom_range=0.1
-)
-\end{verbatim}
+% TODO - check czy quote na ściankach się kompiluje
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
 
 Model jest wielowarstwową siecią konwolucyjną (CNN) składającą się z następujących elementów:
 
 \begin{itemize}
-    \item Warstwy wejściowej
-    \begin {verbatim}
-    layers.Input(shape=(64, 64, 1))
-    \end {verbatim}
+    \item Warstwy wejściowej w rozmiarze 64 \times 64 piksele, ale o jednym kanale (skala szarości)
     \item Trzech warstw konwolucyjnych z funkcją aktywacji ReLU:
-    \begin{verbatim}
-    layers.Conv2D(32, (3, 3), activation='relu')
-    layers.MaxPooling2D((2, 2))
-    \end{verbatim}
     \item Warstwy spłaszczającej (Flatten),
-    \item Dwóch w pełni połączonych warstw (Dense), z których ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas:
-    \begin{verbatim}
-    layers.Dense(128, activation='relu')
-    layers.Dense(8, activation='softmax')
-    \end{verbatim}
+    \item Dwóch w pełni połączonych warstw (Dense), z których pierwsza również używa aktywacji ReLu,
+a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
 \end{itemize}
 
 \subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
 
-Model został skompilowany z wykorzystaniem optymalizatora Adam, funkcji strat sparse categorical crossentropy oraz metryki dokładności.
+Model został skompilowany z wykorzystaniem optymalizatora Adam,
+funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności.
 Proces trenowania obejmował 20 epok:
 
 \begin{verbatim}
@@ -88,16 +74,17 @@ Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{chapters/04-czytanie/figures/ModelAcc1}
-    \caption{Wykres dokładności modelu.}
+    \caption{Rys NUMER Wykres dokładności modelu.}
     \label{fig:ModelAcc}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{chapters/04-czytanie/figures/ModelLoss1}
-    \caption{Wykres straty modelu.}
+    \caption{Rys NUMER Wykres straty modelu.}
     \label{fig:ModelLoss}
 \end{figure}
 
-Model został zapisany w formacie \texttt{keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości, opisanym w kolejnej sekcji.
+Model został zapisany w formacie \texttt{keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości,
+opisanym w kolejnej sekcji.
 
