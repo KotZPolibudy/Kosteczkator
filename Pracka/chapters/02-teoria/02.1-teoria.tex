@@ -1,29 +1,9 @@
 \chapter{Fragment teoretyczny}
 
-Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych, które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność. Najlepiej spełniają te wymagania generatory liczb losowych oparte na fizycznych zjawiskach, zwane TRNG (True Random Number Generator). TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe oraz generowanie kluczy szyfrujących.
+---- TODO ---- \\
 
-\section{Zalety dostępnych rozwiązań}
+Co i dlaczego tak w sumie budujemy? \\
+może coś o kostkach, w tym konwencja nazywania kostek  \\
+czemu k8 zamiast tradycyjnej k6 \\
+dlaczego k8 a nie d8?  \\
 
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-\section{Wady dostępnych rozwiązań TRNG}
-
-Generatory Liczb Losowych Oparte na Zjawiskach Fizycznych (TRNG) oferują niezrównaną jakość losowości, jednak ich wdrożenie i użytkowanie wiąże się z pewnymi wyzwaniami. Do najważniejszych problemów można zaliczyć wydajność, koszty implementacji, stabilność, złożoność integracji oraz aspekty bezpieczeństwa.
-
-\subsection{Wydajność, koszty i stabilność}
-
-Wydajność TRNG jest zazwyczaj niższa niż w przypadku generatorów pseudolosowych (PRNG). Proces generowania liczb losowych przy użyciu zjawisk fizycznych, takich jak szum termiczny czy fluktuacje kwantowe, może być czasochłonny, co sprawia, że TRNG mogą nie spełniać wymagań aplikacji o wysokiej częstotliwości operacji kryptograficznych.
-
-Urządzenia TRNG, szczególnie te oparte na zaawansowanych technologiach, są kosztowne w produkcji i utrzymaniu. Wysokie koszty związane są z wykorzystaniem specjalistycznych komponentów, takich jak elementy fotoniki kwantowej czy czujniki szumów kwantowych. Jednocześnie jakość generowanych liczb losowych może być wrażliwa na czynniki zewnętrzne, takie jak zakłócenia elektromagnetyczne czy zmiany temperatury, co wymaga dodatkowych mechanizmów korekcji.
-
-\subsection{Integracja i skalowalność}
-
-Integracja TRNG z istniejącymi systemami może być skomplikowana, szczególnie w przypadku systemów wbudowanych. Konieczne bywa dostosowanie sprzętu lub oprogramowania, co zwiększa złożoność projektu i jego koszty. Ponadto TRNG nie zawsze są skalowalne, co może być problematyczne w aplikacjach wymagających elastyczności lub masowej produkcji.
-
-\subsection{Bezpieczeństwo i inne ograniczenia}
-
-Chociaż TRNG oferują wyższy poziom bezpieczeństwa niż PRNG, nie są one całkowicie odporne na ataki. Manipulacje fizyczne lub przechwytywanie sygnałów generowanych przez urządzenie mogą prowadzić do obniżenia jakości generowanych liczb losowych. W przypadku rozwiązań opartych na chmurze istnieje dodatkowe ryzyko związane z transmisją danych, co może wpływać na ich bezpieczeństwo.
-
-\section{Podsumowanie wad TRNG}
-
-TRNG oferują wysoki poziom losowości, ale wiążą się z wyzwaniami, takimi jak niska wydajność, wysokie koszty, wrażliwość na zakłócenia, skomplikowana integracja oraz zagadnienia bezpieczeństwa. Mimo to są niezastąpione w aplikacjach wymagających maksymalnego poziomu ochrony danych, a dalszy rozwój technologii może przyczynić się do przezwyciężenia obecnych ograniczeń.
