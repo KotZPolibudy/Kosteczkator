@@ -6,7 +6,7 @@
 Przy całym procesie budowy robota wykorzystano technologię druku 3D. Pozwala na szybkie modyfikacje przy 
 jednoczesnym zachowaniu bardzo wysokiej dokładności i jakości wykonania elementów. Dzięki temu podczas budowy prototypów a 
 pózniej ostatecznej wersji robota można było w prosty sposób modyfikować, projektować i zmieniać każdy element składowy 
-robota. Pomimo tego, że proces druku 3D w szczególności dużych skomplikowanych elementów jest dość czasochłonny to jest to
+robota. Pomimo tego, że proces druku 3D w szczególności dużych skomplikowanych elementów jest stosunkowo czasochłonny to jest to
 najlepsza dostępna nam technologia do wykorzystania w tego rodzaju projektach.
 
 Głównym założeniem podczas projektowania i budowy robota było założenie modułowości. Oznacza to, że każdy element jest wymienny i łatwo dostępny.
@@ -18,7 +18,7 @@ Po przeanalizowaniu kilku pomysłów, zdecydowano się na rozwiązanie wykorzyst
 kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano betoniarką od podobnej 
 zasady działania. Taki mechanizm zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a 
 jednocześnie jest prosty w konstrukcji. Obracający się kubek został 
-zaprojektowany tak, aby jego prędkość obrotową i czas trwania obrotu można było w prosty sposób kontrolować.
+zaprojektowany tak, aby jego prędkość obrotową i czas trwania obrotu można było w prosty sposób kontrolować poprzez kod napisany w Pythonie.
 W celach testowych został skonstruowany prototypowy model robota.
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
@@ -44,8 +44,19 @@ Silnik ten obraca układem dwóch kół zębatych.
     \caption{\label{fig:zebatki}Koła zębate}
 \end{figure}
 
-Do pierwszych testów robota zaprojektowano kilka wariantów kształtów kubków. Najlepszym wariantem okazał się być cylindryczny
-kubek z dodatkowymi pionowymi żebrami, o które kostka się odbijała podczas kręcenia.
+Do pierwszych testów robota zaprojektowano kilka wariantów kształtów kubków. Przyjęto, że odpowiedni do tego zadania kubek powinien
+zawierać pewnego rodzaju nieróności na ściankach. Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
+będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
+o gładkich ściankach. Zaprojektowano cztery wersje kubka, które następnie przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka.
+Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (numer 3 na poniższym zdjęciu), o które kostka się odbijała podczas kręcenia. Jego główną zaletą
+nad resztą testowanych kubków był fakt, że nie posiada on narożników, w których kość trafiając podczas obracania kubkiem mogła utknąć dociskana przez 
+siłę odśrodkową.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth, trim={35mm 290mm 20mm 180mm}, clip]{chapters/03-praca-wlasna/figures/kubki.jpg}
+    \caption{\label{fig:kubki}Testowane warianty kubków}
+\end{figure}
 
 Podczas testów pierwszej wersji robota wykorzytującej obrotowy kubek powstał pomysł alternatywnego rozwiązania.
 Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wyhylać go,
