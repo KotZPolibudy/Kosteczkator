@@ -1,22 +1,17 @@
 \section{Funkcja predict}
 
 W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
-która przekształca obraz do odpowiedniego formatu i zwraca przewidywaną klasę.
+która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
 Funkcja działa w następujących krokach:
 
 \subsection{Wczytanie i przetworzenie obrazu}
 
-W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać. Krok ten jest pomijany gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
-TODO (to jeszcze nie istnieje, ale będzie istnieć w finalnej części, gdzie przetwarzanie będzie bardziej ``potokowe'' niźli wstadowe jak teraz, jeśli tak to można określić)
-Obraz wejściowy wczytywany jest w trybie skali szarości i zmieniany na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli):
+W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać.
+Krok ten jest pomijany, gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
+Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach na których trenowany był model,
+a więc skalowany jest na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli) oraz zmieniany w skalę szarości.
 
-\begin{verbatim}
-img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')
-img_array = image.img_to_array(img) / 255.0
-img_array = np.expand_dims(img_array, axis=0)
-\end{verbatim}
-
-Obraz jest normalizowany do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
+Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
 
 \subsection{Predykcja klasy}
 
@@ -33,10 +28,10 @@ Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwi
 
 Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8):
 
-\begin{verbatim}
-class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
-predicted_label = class_names[predicted_class[0]]
-return predicted_label
-\end{verbatim}
+Wynik funkcji jest tą etykietą odpowiadająca numerowi na kości,
+co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
 
-Wynik funkcji to etykieta odpowiadająca numerowi na kości, co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
+W dalszym przetwarzaniu, aby przejść z cyfr w systemie dziesiętnym na zapis bitowy, dokonywana jest jedna nieoczywista transformacja.
+Zakres $[1, 8]$ da się zapisać za pomocą trzech bitów, wykorzystując go w pełni (co było również przesłanką w wyborze kości o dokładnie takiej ilości ścianek).
+Zdecydowano się interpretować ściankę `8' jako cyfrę `0', wobec czego, w `tłumaczeniu' na zapis bitowy, 8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
+
