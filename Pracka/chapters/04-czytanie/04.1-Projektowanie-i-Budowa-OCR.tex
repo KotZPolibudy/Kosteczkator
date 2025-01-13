@@ -10,7 +10,12 @@ o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia ca
 \subsection{algorytm}
 
 Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a workflow prezentuje się tak:
-Obraz wejściowy -> Odnalezienie kości za pomocą maski na komponencie nasycenia -> Stworzenie i wycięcie prostokąta "Bounding Box" wokół maski -> Przeskalowanie do odpowiedniego rozmiaru -> Konwersja do skali szarości -> Zapisanie gotowego obrazu
+1. Wczytanie obrazu wejściowy \\
+2. Odnalezienie kości za pomocą maski na komponencie nasycenia \\
+3. Stworzenie i wycięcie prostokąta "Bounding Box" wokół maski \\
+4. Przeskalowanie do odpowiedniego rozmiaru \\
+5. Konwersja do skali szarości \\
+6. Zapisanie gotowego obrazu \\
 
 Na rysunkach <NUMERY> przedstawiono przykładowe zdjęcie surowe oraz poddane już wstępnemu przetwarzaniu.
 
@@ -18,15 +23,15 @@ Na rysunkach <NUMERY> przedstawiono przykładowe zdjęcie surowe oraz poddane ju
 
 \begin{figure}[H]
     \centering
-    \includegraphics{chapters/04-czytanie/figures/4raw}
-    \caption{}
+    \includegraphics[width=0.25\linewidth]{chapters/04-czytanie/figures/4raw}
+    \caption{Rysunek <numer>}
     \label{fig:4raw}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics{chapters/04-czytanie/figures/4processed}
-    \caption{}
+    \includegraphics[width=0.25\linewidth]{chapters/04-czytanie/figures/4processed}
+    \caption{Rysunek <numer>}
     \label{fig:4proc}
 \end{figure}
 
@@ -60,7 +65,7 @@ powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija 
 
 \begin{figure}[H]
     \centering
-    \includegraphics{chapters/04-czytanie/figures/blask_raw}
+    \includegraphics[width=0.25\linewidth]{chapters/04-czytanie/figures/blask_raw}
     \caption{}
     \label{fig:blaskraw}
 \end{figure}
@@ -68,7 +73,7 @@ powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija 
 
 \begin{figure}[H]
     \centering
-    \includegraphics{chapters/04-czytanie/figures/blask_proc}
+    \includegraphics[width=0.25\linewidth]{chapters/04-czytanie/figures/blask_proc}
     \caption{}
     \label{fig:blaskproc}
 \end{figure}
