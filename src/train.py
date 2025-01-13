@@ -51,6 +51,10 @@ val_data = datagen.flow_from_directory(
 print(f"Training samples: {train_data.samples}")
 print(f"Validation samples: {val_data.samples}")
 
+print(train_data.class_indices)
+print(val_data.class_indices)
+
+
 # Define the CNN model
 def create_model():
     model = models.Sequential([
