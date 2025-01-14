@@ -6,12 +6,14 @@ on:
       - Kotu*
       - kedra*
       - Julka
+      - yoshida
   pull_request:
     branches:
       - main
       - Kotu*
       - kedra*
       - Julka
+      - yoshida
 
 jobs:
   build:
