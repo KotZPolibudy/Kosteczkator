@@ -52,6 +52,91 @@ oraz poddane wstępnemu przetwarzaniu (część b).
 
 ---- TODO ---- Czy np. dodać elementy pośrednie? - tak, dodam.
 
+PRÓBA PIERWSZA!!!
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_1.jpg}
+        \caption{Etap 1: Surowe zdjęcie.}
+        \label{fig:step1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_2.jpg}
+        \caption{Etap 2: Skalowanie.}
+        \label{fig:step2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_3.jpg}
+        \caption{Etap 3: Filtracja.}
+        \label{fig:step3}
+    \end{subfigure}
+
+    \vspace{0.5cm} % Odstęp między wierszami obrazków
+
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_4.jpg}
+        \caption{Etap 4: Segmentacja.}
+        \label{fig:step4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_5.jpg}
+        \caption{Etap 5: Wynik końcowy.}
+        \label{fig:step5}
+    \end{subfigure}
+
+    \caption{Kolejne etapy przetwarzania obrazu.}
+    \label{fig:steps_all}
+\end{figure}
+
+
+PRÓBA DRUGA - DLA TESTU:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_1.jpg}
+        \caption{Etap 1: Surowe zdjęcie.}
+        \label{fig:step12}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_2.jpg}
+        \caption{Etap 2: Skalowanie.}
+        \label{fig:step22}
+    \end{subfigure}
+
+    \vspace{0.5cm} % Odstęp między wierszami obrazków
+
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_3.jpg}
+        \caption{Etap 3: Filtracja.}
+        \label{fig:step32}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_4.jpg}
+        \caption{Etap 4: Segmentacja.}
+        \label{fig:step42}
+    \end{subfigure}
+
+    \caption{Pierwsze cztery etapy przetwarzania obrazu.}
+    \label{fig:steps_partial}
+\end{figure}
+
+
+
 
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
 
