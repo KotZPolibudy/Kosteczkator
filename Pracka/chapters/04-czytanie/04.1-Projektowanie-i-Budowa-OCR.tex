@@ -1,5 +1,14 @@
 \chapter{Odczytywanie losowego wyniku z kości}
 
+---TODO graficzny schemat przepływu pracy---
+\begin{verbatim}
+    Maszyna (robot) wykonuje rzut kością
+    Kamera umieszczona w jego górnej części robi zdjęcie
+    Zdjęcie to jest przekazywane do algorytmu wykonującego preprocessing
+    Następnie, wyuczony przez nas model SI odczytuje wyrzucony na kości wynik i zwraca cyfrę
+    Cyfra jest przekazywana na wyjście
+\end{verbatim}
+
 \section{Przetwarzanie wstępne obrazów}
 
 W niniejszym rozdziale omówiono proces przetwarzania wstępnego obrazów kości,
@@ -7,19 +16,17 @@ który przekształca dane pochodzące z fizycznego komponentu naszej maszyny (zd
 Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości,
 o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia całego bębna maszyny.
 
-\subsection{algorytm}
+\subsection{Algorytm}
 
-Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a workflow prezentuje się tak:
-1. Wczytanie obrazu wejściowy \\
+Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a przepływ pracy prezentuje się tak: \\
+1. Wczytanie obrazu wejściowego \\
 2. Odnalezienie kości za pomocą maski na komponencie nasycenia \\
-3. Stworzenie i wycięcie prostokąta "Bounding Box" wokół maski \\
+3. Stworzenie i wycięcie ramki ograniczającej (ang. bounding box) wokół maski \\
 4. Przeskalowanie do odpowiedniego rozmiaru \\
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
 
-Na rysunkach <NUMERY> przedstawiono przykładowe zdjęcie surowe oraz poddane już wstępnemu przetwarzaniu.
-
-%% Czy np. dodać elementy pośrednie? - idk
+Na rysunkach\ref{fig:4raw} oraz\ref{fig:4proc} przedstawiono przykładowe zdjęcie surowe oraz poddane już wstępnemu przetwarzaniu.
 
 \begin{figure}[H]
     \centering
@@ -37,6 +44,8 @@ Na rysunkach <NUMERY> przedstawiono przykładowe zdjęcie surowe oraz poddane ju
         \label{fig:4proc}
     \end{minipage}
 \end{figure}
+
+%% TODO Czy np. dodać elementy pośrednie? - idk
 
 
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
