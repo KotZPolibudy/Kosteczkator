@@ -129,7 +129,7 @@ Institute of Computing Science
 \pretitle{\vspace{4cm}\begin{center}%
 \if@pppolish%
   \if@ppbachelor 
-     Praca dyplomowa licencjacka
+     Praca dyplomowa inżynierska
    \else 
      Praca dyplomowa magisterska
    \fi

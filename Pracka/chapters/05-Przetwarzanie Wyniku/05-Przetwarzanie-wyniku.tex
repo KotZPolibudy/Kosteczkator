@@ -1,10 +1,12 @@
-\section{Przetwarzanie wyniku}
+\chapter{Przetwarzanie wyniku}
+%TODO - ten rozdział w większości należy już do Kuby(P)
 
-Finalnie, zaetykietowany wynik przetwarzany jest na ciąg trzech bitów, odpowiadających etykiecie klasy.
-Wyjątkiem w tym przetwarzaniu jest etykieta 8, gdyż w zapisie binarnym zawierała by 4 bity, zamiast oczekiwanych trzech, jednak biorąc 3 najmniej znaczące bity (000) jesteśmy w stanie zapewnić unikatowe kodowanie każdemu wynikowi.
-W ten sposób, klasy 1-7 generują bity będące ich dosłowną reprezentacją binarną, a 8 jest równoznaczne wyrzuceniu "zera" na kostce.
+Po odczytaniu wartości z kości przez model następuje zagregowanie bitowych reprezentacji wyników w kolejkę FIFO z której grupami po 8 bitów wysyłane są kolejne generowane ciągi, bla bla bla
+a właściwie po co grupować je po 8?
+wsm nie wiem, Kuba wytłumacz mi, proszę.
+Dlaczego nie możemy wypluwać tak po 3 tak jak generujemy, tylko akurat po 8
 
+bo mamy k8? XDD
+(hehe)
 
-
-%TODO - ten rozdział w większości należy już do Kuby(P), ale zacząłem go jeszcze ja. Chyba że uważacie że ten szczegół należy zawrzeć jeszcze przy modelu, lub wprost tam zaetykietować klasę 8 jako 0 i przekazywać już 0, zamiast tłumaczyć 8 na 0 w tym miejscu tutaj.
-
+nie no, chodzi o (int) prawda? czy jakaś łatwiejsza komunikacja, albo coś?

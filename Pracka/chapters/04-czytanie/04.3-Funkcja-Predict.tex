@@ -3,6 +3,12 @@
 W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
 która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
 Funkcja działa w następujących krokach:
+\begin{itemize}
+    \item Wczytanie i przetworzenie obrazu
+    \item Predykcji klasy (klasyfikacji obrazu)
+    \item Interpretacja wyniku
+\end{itemize}
+Opisanych w następujących podrozdziałach.
 
 \subsection{Wczytanie i przetworzenie obrazu}
 
@@ -18,20 +24,21 @@ Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczni
 Przygotowany obraz jest przekazywany do modelu w celu uzyskania wyników predykcji:
 
 \begin{verbatim}
-prediction = model.predict(img_array)
-predicted_class = np.argmax(prediction, axis=1)
+prediction = model.predict(obraz_wejściowy)
+klasyfikacja = np.argmax(prediction, axis=1)
 \end{verbatim}
 
 Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwie.
 
 \subsection{Interpretacja wyniku}
 
-Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8):
-
+Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8).
 Wynik funkcji jest tą etykietą odpowiadająca numerowi na kości,
 co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
 
 W dalszym przetwarzaniu, aby przejść z cyfr w systemie dziesiętnym na zapis bitowy, dokonywana jest jedna nieoczywista transformacja.
 Zakres $[1, 8]$ da się zapisać za pomocą trzech bitów, wykorzystując go w pełni (co było również przesłanką w wyborze kości o dokładnie takiej ilości ścianek).
-Zdecydowano się interpretować ściankę 8 jako cyfrę 0, wobec czego, w `tłumaczeniu' na zapis bitowy, 8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
+Zdecydowano się interpretować ściankę 8 jako cyfrę 0, wobec czego, w transformacji na zapis bitowy,
+8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
 
+Finalnie, zaetykietowany wynik przetwarzany jest na ciąg trzech bitów, odpowiadających etykiecie klasy.

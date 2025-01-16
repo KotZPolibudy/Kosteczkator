@@ -1,5 +1,25 @@
 \chapter{Odczytywanie losowego wyniku z kości}
 
+Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
+jednak jak pokazano na schemacie \ref{fig:schemat_workflow}
+najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
+
+Schemat \ref{fig:schemat_workflow} w formie tekstowej
+\begin{verbatim}
+    Maszyna (robot) wykonuje rzut kością
+    Kamera umieszczona w jego górnej części robi zdjęcie
+    Zdjęcie to jest przekazywane do algorytmu wykonującego preprocessing
+    Następnie, wyuczony przez nas model SI odczytuje wyrzucony na kości wynik i zwraca cyfrę
+    Cyfra jest przekazywana na wyjście
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/schemat}
+    \caption{Ten schemat jest do zmiany na ładniejszy, ale ja nie umiem rysować więc jest taki "na teraz"}
+    \label{fig:schemat_workflow}
+\end{figure}
+
 \section{Przetwarzanie wstępne obrazów}
 
 W niniejszym rozdziale omówiono proces przetwarzania wstępnego obrazów kości,
@@ -7,57 +27,127 @@ który przekształca dane pochodzące z fizycznego komponentu naszej maszyny (zd
 Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości,
 o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia całego bębna maszyny.
 
-\subsection{algorytm}
+\subsection{Algorytm}
 
-Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a workflow prezentuje się tak:
-1. Wczytanie obrazu wejściowy \\
+Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a przepływ pracy prezentuje się tak: \\
+1. Wczytanie obrazu wejściowego \\
 2. Odnalezienie kości za pomocą maski na komponencie nasycenia \\
-3. Stworzenie i wycięcie prostokąta "Bounding Box" wokół maski \\
+3. Stworzenie i wycięcie ramki ograniczającej (ang. bounding box) wokół maski \\
 4. Przeskalowanie do odpowiedniego rozmiaru \\
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
 
-Na rysunkach <NUMERY> przedstawiono przykładowe zdjęcie surowe oraz poddane już wstępnemu przetwarzaniu.
-
-%% Czy np. dodać elementy pośrednie? - idk
+\iffalse
+Na rysunku \ref{fig:4combined} przedstawiono przykładowe zdjęcie surowe (część a)
+oraz poddane wstępnemu przetwarzaniu (część b).
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4raw}
-        \caption{Surowe zdjęcie z kamery urządzenia}
+        \caption{Surowe zdjęcie z kamery urządzenia.}
         \label{fig:4raw}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4processed}
-        \caption{Zdjęcie poddane preprocessingowi}
+        \caption{Zdjęcie poddane preprocessingowi.}
         \label{fig:4proc}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie zdjęcia surowego i po preprocessing’u.}
+    \label{fig:4combined}
+\end{figure}
+\fi
+
+
+Na rysunku \ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe \ref{fig:step1}
+oraz kolejne etapy przetwarzania, aż do finalnego etapu \ref{fig:step5}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_1.jpg}
+        \caption{Etap 1: Surowe zdjęcie.}
+        \label{fig:step1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_2.jpg}
+        \caption{Etap 2: Nałożenie maski}
+        \label{fig:step2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_3.jpg}
+        \caption{Etap 3: Wycięcie obszaru zainteresowania}
+        \label{fig:step3}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_4.jpg}
+        \caption{Etap 4: Skala szarości}
+        \label{fig:step4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_5.jpg}
+        \caption{Etap 5: Wynik końcowy.}
+        \label{fig:step5}
+    \end{subfigure}
+
+    \caption{Kolejne etapy przetwarzania obrazu. Wszystkie obrazy mają równą wysokość.}
+    \label{fig:preproc_steps}
 \end{figure}
 
 
+
+--- TODO --- refator this part, bo nieczytelne \\
+-- TODO -- cytowania, dokumentacje Pillow i OpenCV?
+
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
 
-Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni kolorów RGB, co zapewnia jednolitość formatów danych wejściowych.
+Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni barw RGB, co zapewnia jednolitość formatów danych wejściowych.
 
 Obrazy są przekształcane do przestrzeni barw HSV, aby oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
-Nasycenie jest następnie wygładzane przy użyciu filtra Gaussa:
+Nasycenie jest następnie wygładzane przy użyciu filtru Gaussa:
 
 --- TODO ---
 jakieś cytowanie, o tym czemu filtr Gaussa?
+oraz dodać coś o parametrach filtru, konkretnie
 
-Na podstawie komponentu nasycenia (Saturation) oraz progowania tworzona jest maska binarna, która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość).
+Na podstawie komponentu nasycenia za pomocą progowania tworzona jest maska binarna,
+która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość).
 
-W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego z wykorzystaniem strukturalnego elementu prostokątnego z zaimportowanego modułu cv2
+Próg został dobrany eksperymentalnie, kończąc na wartości *wartość!*, tak aby w kontrolowanym środowisku, jakim jest bęben robota,
+przy stałym oświetleniu opisanym w poprzednim rozdziale generowana maska obejmowała obszar zainteresowania - kość, ale nie obejmowała tła (kubka).
+Korzysta to przede wszystkim z tego że kubek został wytworzony z czarnego materiału, a używana kość jest jednolitego, jasnego koloru.
 
-TODO - cytowanie o zamknięciu morfologicznym?  \\
+W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego.
+Operacja ta jest szczególnie adekwatna w przypadku niejednolitej kości, takiej,
+która zawierałaby obszary o wyższym, jak i o niższym nasyceniu.
+W takim przypadku powstała maska mogłaby nie obejmować całej kości przy obecnie ustawionym progu nasycenia lub taka,
+która obejmowałaby osobno dwie rozłączne części kości.
+W związku z tym operacja domknięcia morfologicznego ujednolica maskę przed dalszym przetwarzaniem.
 
-Maska jest analizowana w celu zlokalizowania największego konturu, który określa obszar zainteresowania.
+--- TODO --- cytowanie o zamknięciu morfologicznym. \\
+
+Następnie maska jest analizowana w celu zlokalizowania największego konturu <otaczającego> z wykorzystaniem strukturalnego elementu prostokątnego,
+o dynamicznie dobranym rozmiarze obejmującym całość obliczonej w poprzednim kroku maski nasycenia,
+którego implementacja została zaczerpnięta z biblioteki OpenCV [tu cytowanie], które określa obszar zainteresowania.
+
 Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
-a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli:
+a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
+
+--- TODO --- to cytowanie wyżej z OpenCV \\
 
 Ostatecznie obraz jest konwertowany do skali szarości, co redukuje wymiarowość danych
 i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
@@ -65,57 +155,82 @@ i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
 Dodatkowo, konwersja do skali szarości pozwala znacznie lepiej poradzić sobie z problemem odblasków,
 powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija światło którejś z diód wprost do kamery.
 
-\subsection{Potencjalne trudności}
+--- TODO --- tu koniec tego segmentu do refactoru, jest okropny
+
+\subsection{Zidentyfikowane trudności i ich rozwiązania}
 
 Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kostki.
-Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu, co pokazują rysunki 4.3 oraz 4.4.
+Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
+uwidaczniając widoczną na kości cyfrę, co pokazują rysunki 4.3 oraz 4.4.
+
+Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
+od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/blask_raw}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Odblask na przeskalowanym zdjęciu.}
         \label{fig:blaskraw}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/blask_proc}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Odblask po zmianie na skalę szarości.}
         \label{fig:blaskproc}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie przetwarzania odblasku: część a) i b).}
+    \label{fig:blaskcombined}
 \end{figure}
 
+
 Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
-w wyniku problemu z działaniem diod, o czym więcej będzie powiedziane w rozdziale o problemach
---- TODO --- Tak zakładam, że to powinno być w innym, bo to sprzętowe i średnio tu pasuje, chyba (?)
+w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware --
+pomogło lepsze zaizolowanie przewodów kamery i diód.
+
+Mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku,
+który nadarzy się gdy do preprocessu trafi zupełnie czarne zdjęcie -- taki przypadek jest pomijany.
+W przypadku trzech takich nieprawidłowych zdjęć pod rząd generator przerywa pracę zgłaszając błąd.
+W podobny sposób postarano się o wykrycie zacięcia się śmigła,
+co znaczy że preprocess dostaje cały czas takie same zdjęcie do obróbki.
+Tu również zadbano o to, by to wykrywać, jednak w związku z ryzykiem losowego podobieństwa kilku rzutów następujących po sobie,
+a więc ryzyka nieprawidłowego wykrycia błędu, % nie wiem jak to nazwaććććć
+przerwanie pracy następuje dopiero po 12 identycznych odczytach z rzędu.
+Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
+$\frac{1}{8^{12}} \approx 1.455 \times 10^{-11}$
+
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
 a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
-Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym, przez co wynik może być niejednoznaczny.
+Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym,
+przez co wynik może być niejednoznaczny, co pokazano na rysunkach \ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!!! XD
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/niepewne}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Kość zatrzymana na śmigle (ujęcie 1).}
         \label{fig:niepewne}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/smiglo}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Kość zatrzymana na śmigle (ujęcie 2).}
         \label{fig:smiglo}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie dwóch ujęć kości zatrzymanej na śmigle.}
+    \label{fig:smiglocombined}
 \end{figure}
 
-Rozwiązaniem tego problemu jest model dokonujący predykcji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
-który jest bardziej widoczny, ponieważ podczas uczenia został wyposażony również w takie niejednoznaczne sytuacje,
-które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby nauczenia modelu.
+
+Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
+który jest bardziej widoczny, ponieważ podczas uczenia model miał do czynienia z takimi niejednoznacznymi sytuacjami,
+które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby treningu modelu.
 
 Zdarzają się oczywiście rzadkie przypadki, w których kość wyląduje równo na śmigle, tak że wynik jest idealnie czytelny,
 tak jakby wylądowała normalnie na podstawce kubka, ale wtedy problem z lądowaniem na śmigle nie istnieje,
@@ -123,24 +238,27 @@ gdyż nie przeszkadza to w tym że kość i tak zostanie podbita przy następnym
 
 
 Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kostka nie skończyła jeszcze swojej fazy lotu,
-lub wpadła w bardzo długie wirowanie - efektywnie uniemożliwiając odczytanie wyniku.
+lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/wir}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Wirująca kość.}
         \label{fig:wir}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/wir2}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Kość w ruchu.}
         \label{fig:wir2}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Nieczytelne ujęcia wynikające z dłuższego niż przewidywany ruchu kości}
+    \label{fig:wircombined}
 \end{figure}
+
 
 Rozwiązaniem większości wypadków w których zachodziła ta sytuacja okazało się spowolnienie działania maszyny.
 Obecnie, oczekiwaniem aż kość zatrzyma się w miejscu steruje parametr czasowy, przyjmujący wartość jednej sekundy od zakończenia pracy śmigła.
@@ -153,13 +271,14 @@ jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo ni�
 --- TODO ---
 jakoś to trzeba pewnie sprawdzić, bo nie mogę sobie tak gadać, nie?
 Bo nie wiem, ale coś bym o tym pewnie napisał.
+O, jednak można tak gadać, ale to nadal w TODO (for now!)
 
 
 
-\section{Podsumowanie}
+\subsection{Podsumowanie}
 
 Przedstawiony algorytm przetwarzania wstępnego pozwala na skuteczne przygotowanie danych wejściowych dla modelu sztucznej inteligencji.
 Automatyzuje proces identyfikacji i kadrowania obiektów zainteresowania w obrazach, co znacząco poprawia jakość danych.
 Rozwiązanie zostało zaprojektowane z myślą o łatwej adaptacji do innych zastosowań wymagających podobnego przetwarzania obrazów,
-dla przykładu przypadku zmiany kości w maszynie na inną, lub z inną ilością ścianek.
+dla przykładu przypadku zmiany kości w maszynie na inną, lub z inną liczbą ścianek.
 
