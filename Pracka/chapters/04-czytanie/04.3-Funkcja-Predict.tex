@@ -3,6 +3,12 @@
 W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
 która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
 Funkcja działa w następujących krokach:
+\begin{itemize}
+    \item Wczytanie i przetworzenie obrazu
+    \item Predykcji klasy (klasyfikacji obrazu)
+    \item Interpretacja wyniku
+\end{itemize}
+Opisanych w następujących podrozdziałach.
 
 \subsection{Wczytanie i przetworzenie obrazu}
 
@@ -18,16 +24,15 @@ Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczni
 Przygotowany obraz jest przekazywany do modelu w celu uzyskania wyników predykcji:
 
 \begin{verbatim}
-prediction = model.predict(img_array)
-predicted_class = np.argmax(prediction, axis=1)
+prediction = model.predict(obraz_wejściowy)
+klasyfikacja = np.argmax(prediction, axis=1)
 \end{verbatim}
 
 Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwie.
 
 \subsection{Interpretacja wyniku}
 
-Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8):
-
+Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8).
 Wynik funkcji jest tą etykietą odpowiadająca numerowi na kości,
 co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
 
