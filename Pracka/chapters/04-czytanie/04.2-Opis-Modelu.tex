@@ -1,6 +1,6 @@
 \section{Opis Modelu SI}\label{sec:opis-modelu-si}
 
-Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości k8 (ośmiościennych) do jednej z ośmiu klas, odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
+Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości ośmiościennych k8 do jednej z ośmiu klas, odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
 Do implementacji modelu wykorzystano moduły scikit-learn oraz wchodzący w jego skład Keras, obecnie jako część modułu Tensorflow, który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 \textit{Biblioteka Keras jest wygodnym opakowaniem (wrapperem) dla modeli DL używanych do oszacowań klasyfikacji lub regresji]} [Donald J. Norris, 2020 s. 355 wydanie APN PROMISE SA]
 
@@ -27,23 +27,38 @@ sprawiały że ścianki 2 oraz 5 były znacznie gorzej rozróżnialne przez wytr
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
 
-Model jest wielowarstwową siecią konwolucyjną (CNN) składającą się z następujących elementów:
+Model jest wielowarstwową siecią splotową (ang. convolutional neural net (CNN))
+składającą się z następujących elementów:
 
 \begin{itemize}
     \item Warstwy wejściowej w rozmiarze 64 na 64 piksele, ale o jednym kanale (skala szarości)
-    \item Trzech warstw konwolucyjnych z funkcją aktywacji ReLU:
+    \item Trzech warstw splotowych z funkcją aktywacji ReLU:
+    \begin{itemize}
+        \item warstwa 1
+        \item warstwa 2
+        \item warstwa 3
+    \end{itemize}
     \item Warstwy spłaszczającej (Flatten),
     \item Dwóch w pełni połączonych warstw (Dense), z których pierwsza również używa aktywacji ReLu,
 a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
 \end{itemize}
 
-W przypadku zmiany kości na taką z inną ilością ścianek, np. na również rozważane kości k4, k6, albo k16,
-ostatnia warstwa musiałaby również ulec odpowiedniej zmianie, tak aby ilość neuronów odpowiadała ilości ścianek na używanej kości.
+\subsection{Użyte funkcje aktywacji}
+--- TODO --- opis
+\begin{itemize}
+    \item ReLu
+    \item Softmax
+\end{itemize}
+
+W przypadku zmiany kości na taką z inną liczbą ścianek, np.
+na również rozważane w fazie koncepcyjnej kości czworościenną, sześciościenną, albo szesnastościenną,
+ostatnia warstwa musiałaby również ulec odpowiedniej zmianie,
+tak aby ilość neuronów odpowiadała ilości ścianek na używanej kości.
 
 \subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
 
-Model został skompilowany z wykorzystaniem optymalizatora Adam,
-funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności.
+Model został nauczony z wykorzystaniem optymalizatora Adam,
+funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności (ang. accuracy).
 Proces trenowania obejmował 20 epok:
 
 \begin{verbatim}
@@ -66,10 +81,10 @@ history = model.fit(
 Podczas trenowania osiągnięto następujące końcowe wyniki:
 
 \begin{itemize}
-    \item Dokładność na zbiorze treningowym: 0,9375 \texttt{final\_train\_acc},
-    \item Dokładność na zbiorze walidacyjnym: 1,0  \texttt{final\_val\_acc},
-    \item Strata na zbiorze treningowym: 0,0786  \texttt{final\_train\_loss},
-    \item Strata na zbiorze walidacyjnym: 0,0274  \texttt{final\_val\_loss}.
+    \item Dokładność na zbiorze treningowym: 0,9375
+    \item Dokładność na zbiorze walidacyjnym: 1,0
+    \item Strata na zbiorze treningowym: 0,0786
+    \item Strata na zbiorze walidacyjnym: 0,0274
 \end{itemize}
 
 Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę dokładności i straty w trakcie trenowania.
