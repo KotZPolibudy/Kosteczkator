@@ -1,6 +1,10 @@
 \chapter{Odczytywanie losowego wyniku z kości}
 
----TODO graficzny schemat przepływu pracy---
+Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
+jednak jak pokazano na schemacie \ref{fig:schemat_workflow}
+najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
+
+Schemat \ref{fig:schemat_workflow} w formie tekstowej
 \begin{verbatim}
     Maszyna (robot) wykonuje rzut kością
     Kamera umieszczona w jego górnej części robi zdjęcie
@@ -8,6 +12,13 @@
     Następnie, wyuczony przez nas model SI odczytuje wyrzucony na kości wynik i zwraca cyfrę
     Cyfra jest przekazywana na wyjście
 \end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{chapters/04-czytanie/figures/schemat}
+    \caption{Ten schemat jest do zmiany na ładniejszy, ale ja nie umiem rysować więc jest taki "na teraz"}
+    \label{fig:schemat_workflow}
+\end{figure}
 
 \section{Przetwarzanie wstępne obrazów}
 
