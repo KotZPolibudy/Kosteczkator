@@ -15,7 +15,7 @@ Schemat \ref{fig:schemat_workflow} w formie tekstowej
 
 \begin{figure}[H]
     \centering
-    \includegraphics{chapters/04-czytanie/figures/schemat}
+    \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/schemat}
     \caption{Ten schemat jest do zmiany na ładniejszy, ale ja nie umiem rysować więc jest taki "na teraz"}
     \label{fig:schemat_workflow}
 \end{figure}
@@ -37,10 +37,10 @@ Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano p
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
 
+\iffalse
 Na rysunku \ref{fig:4combined} przedstawiono przykładowe zdjęcie surowe (część a)
 oraz poddane wstępnemu przetwarzaniu (część b).
 
-\iffalse
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.45\linewidth}
@@ -61,6 +61,9 @@ oraz poddane wstępnemu przetwarzaniu (część b).
 \end{figure}
 \fi
 
+
+Na rysunku \ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe \ref{fig:step1}
+oraz kolejne etapy przetwarzania, aż do finalnego etapu \ref{fig:step5}.
 
 \begin{figure}[H]
     \centering
@@ -106,6 +109,10 @@ oraz poddane wstępnemu przetwarzaniu (część b).
 \end{figure}
 
 
+
+--- TODO --- refator this part, bo nieczytelne \\
+-- TODO -- cytowania, dokumentacje Pillow i OpenCV?
+
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
 
 Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni barw RGB, co zapewnia jednolitość formatów danych wejściowych.
@@ -131,7 +138,7 @@ W takim przypadku powstała maska mogłaby nie obejmować całej kości przy obe
 która obejmowałaby osobno dwie rozłączne części kości.
 W związku z tym operacja domknięcia morfologicznego ujednolica maskę przed dalszym przetwarzaniem.
 
-%% TODO - cytowanie o zamknięciu morfologicznym. \\
+--- TODO --- cytowanie o zamknięciu morfologicznym. \\
 
 Następnie maska jest analizowana w celu zlokalizowania największego konturu <otaczającego> z wykorzystaniem strukturalnego elementu prostokątnego,
 o dynamicznie dobranym rozmiarze obejmującym całość obliczonej w poprzednim kroku maski nasycenia,
@@ -140,7 +147,7 @@ którego implementacja została zaczerpnięta z biblioteki OpenCV [tu cytowanie]
 Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
 a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
 
-%% --- TODO --- to cytowanie wyżej \\
+--- TODO --- to cytowanie wyżej z OpenCV \\
 
 Ostatecznie obraz jest konwertowany do skali szarości, co redukuje wymiarowość danych
 i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
@@ -148,10 +155,16 @@ i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
 Dodatkowo, konwersja do skali szarości pozwala znacznie lepiej poradzić sobie z problemem odblasków,
 powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija światło którejś z diód wprost do kamery.
 
-\subsection{Potencjalne trudności}
+--- TODO --- tu koniec tego segmentu do refactoru, jest okropny
+
+\subsection{Zidentyfikowane trudności i ich rozwiązania}
 
 Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kostki.
-Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu, co pokazują rysunki 4.3 oraz 4.4.
+Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
+uwidaczniając widoczną na kości cyfrę, co pokazują rysunki 4.3 oraz 4.4.
+
+Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
+od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
 
 \begin{figure}[H]
     \centering
@@ -174,12 +187,25 @@ Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się t
 
 
 Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
-w wyniku problemu z działaniem diod, o czym więcej będzie powiedziane w rozdziale o problemach
---- TODO --- Tak zakładam, że to powinno być w innym, bo to sprzętowe i średnio tu pasuje, chyba (?)
+w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware --
+pomogło lepsze zaizolowanie przewodów kamery i diód.
+
+Mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku,
+który nadarzy się gdy do preprocessu trafi zupełnie czarne zdjęcie -- taki przypadek jest pomijany.
+W przypadku trzech takich nieprawidłowych zdjęć pod rząd generator przerywa pracę zgłaszając błąd.
+W podobny sposób postarano się o wykrycie zacięcia się śmigła,
+co znaczy że preprocess dostaje cały czas takie same zdjęcie do obróbki.
+Tu również zadbano o to, by to wykrywać, jednak w związku z ryzykiem losowego podobieństwa kilku rzutów następujących po sobie,
+a więc ryzyka nieprawidłowego wykrycia błędu, % nie wiem jak to nazwaććććć
+przerwanie pracy następuje dopiero po 12 identycznych odczytach z rzędu.
+Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
+$\frac{1}{8^{12}} \approx 1.455 \times 10^{-11}$
+
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
 a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
-Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym, przez co wynik może być niejednoznaczny.
+Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym,
+przez co wynik może być niejednoznaczny, co pokazano na rysunkach \ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!!! XD
 
 \begin{figure}[H]
@@ -203,8 +229,8 @@ Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle na
 
 
 Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
-który jest bardziej widoczny, ponieważ podczas uczenia został wyposażony również w takie niejednoznaczne sytuacje,
-które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby nauczenia modelu.
+który jest bardziej widoczny, ponieważ podczas uczenia model miał do czynienia z takimi niejednoznacznymi sytuacjami,
+które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby treningu modelu.
 
 Zdarzają się oczywiście rzadkie przypadki, w których kość wyląduje równo na śmigle, tak że wynik jest idealnie czytelny,
 tak jakby wylądowała normalnie na podstawce kubka, ale wtedy problem z lądowaniem na śmigle nie istnieje,
