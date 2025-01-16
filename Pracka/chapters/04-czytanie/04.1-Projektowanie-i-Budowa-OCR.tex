@@ -26,47 +26,67 @@ Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano p
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
 
-Na rysunkach\ref{fig:4raw} oraz\ref{fig:4proc} przedstawiono przykładowe zdjęcie surowe oraz poddane już wstępnemu przetwarzaniu.
+Na rysunku \ref{fig:4combined} przedstawiono przykładowe zdjęcie surowe (część a)
+oraz poddane wstępnemu przetwarzaniu (część b).
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4raw}
-        \caption{Surowe zdjęcie z kamery urządzenia}
+        \caption{Surowe zdjęcie z kamery urządzenia.}
         \label{fig:4raw}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4processed}
-        \caption{Zdjęcie poddane preprocessingowi}
+        \caption{Zdjęcie poddane preprocessingowi.}
         \label{fig:4proc}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie zdjęcia surowego i po preprocessing’u.}
+    \label{fig:4combined}
 \end{figure}
 
-%% TODO Czy np. dodać elementy pośrednie? - idk
+
+---- TODO ---- Czy np. dodać elementy pośrednie? - tak, dodam.
 
 
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
 
-Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni kolorów RGB, co zapewnia jednolitość formatów danych wejściowych.
+Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni barw RGB, co zapewnia jednolitość formatów danych wejściowych.
 
 Obrazy są przekształcane do przestrzeni barw HSV, aby oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
-Nasycenie jest następnie wygładzane przy użyciu filtra Gaussa:
+Nasycenie jest następnie wygładzane przy użyciu filtru Gaussa:
 
 --- TODO ---
 jakieś cytowanie, o tym czemu filtr Gaussa?
+oraz dodać coś o parametrach filtru, konkretnie
 
-Na podstawie komponentu nasycenia (Saturation) oraz progowania tworzona jest maska binarna, która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość).
+Na podstawie komponentu nasycenia za pomocą progowania tworzona jest maska binarna,
+która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość).
 
-W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego z wykorzystaniem strukturalnego elementu prostokątnego z zaimportowanego modułu cv2
+Próg został dobrany eksperymentalnie, kończąc na wartości *wartość!*, tak aby w kontrolowanym środowisku, jakim jest bęben robota,
+przy stałym oświetleniu opisanym w poprzednim rozdziale generowana maska obejmowała obszar zainteresowania - kość, ale nie obejmowała tła (kubka).
+Korzysta to przede wszystkim z tego że kubek został wytworzony z czarnego materiału, a używana kość jest jednolitego, jasnego koloru.
 
-TODO - cytowanie o zamknięciu morfologicznym?  \\
+W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego.
+Operacja ta jest szczególnie adekwatna w przypadku niejednolitej kości, takiej,
+która zawierałaby obszary o wyższym, jak i o niższym nasyceniu.
+W takim przypadku powstała maska mogłaby nie obejmować całej kości przy obecnie ustawionym progu nasycenia lub taka,
+która obejmowałaby osobno dwie rozłączne części kości.
+W związku z tym operacja domknięcia morfologicznego ujednolica maskę przed dalszym przetwarzaniem.
 
-Maska jest analizowana w celu zlokalizowania największego konturu, który określa obszar zainteresowania.
+%% TODO - cytowanie o zamknięciu morfologicznym. \\
+
+Następnie maska jest analizowana w celu zlokalizowania największego konturu <otaczającego> z wykorzystaniem strukturalnego elementu prostokątnego,
+o dynamicznie dobranym rozmiarze obejmującym całość obliczonej w poprzednim kroku maski nasycenia,
+którego implementacja została zaczerpnięta z biblioteki OpenCV [tu cytowanie], które określa obszar zainteresowania.
+
 Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
-a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli:
+a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
+
+%% --- TODO --- to cytowanie wyżej \\
 
 Ostatecznie obraz jest konwertowany do skali szarości, co redukuje wymiarowość danych
 i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
@@ -162,10 +182,11 @@ jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo ni�
 --- TODO ---
 jakoś to trzeba pewnie sprawdzić, bo nie mogę sobie tak gadać, nie?
 Bo nie wiem, ale coś bym o tym pewnie napisał.
+O, jednak można tak gadać, ale to nadal w TODO (for now!)
 
 
 
-\section{Podsumowanie}
+\subsection{Podsumowanie}
 
 Przedstawiony algorytm przetwarzania wstępnego pozwala na skuteczne przygotowanie danych wejściowych dla modelu sztucznej inteligencji.
 Automatyzuje proces identyfikacji i kadrowania obiektów zainteresowania w obrazach, co znacząco poprawia jakość danych.
