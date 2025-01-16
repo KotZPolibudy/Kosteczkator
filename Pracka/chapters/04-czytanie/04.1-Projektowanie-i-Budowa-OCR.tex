@@ -102,20 +102,23 @@ Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się t
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/blask_raw}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Odblask na przeskalowanym zdjęciu.}
         \label{fig:blaskraw}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/blask_proc}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Odblask po zmianie na skalę szarości.}
         \label{fig:blaskproc}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie przetwarzania odblasku: część a) i b).}
+    \label{fig:blaskcombined}
 \end{figure}
+
 
 Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
 w wyniku problemu z działaniem diod, o czym więcej będzie powiedziane w rozdziale o problemach
@@ -128,22 +131,25 @@ Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle na
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/niepewne}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Kość zatrzymana na śmigle (ujęcie 1).}
         \label{fig:niepewne}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/smiglo}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Kość zatrzymana na śmigle (ujęcie 2).}
         \label{fig:smiglo}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Porównanie dwóch ujęć kości zatrzymanej na śmigle.}
+    \label{fig:smiglocombined}
 \end{figure}
 
-Rozwiązaniem tego problemu jest model dokonujący predykcji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
+
+Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
 który jest bardziej widoczny, ponieważ podczas uczenia został wyposażony również w takie niejednoznaczne sytuacje,
 które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby nauczenia modelu.
 
@@ -157,20 +163,23 @@ lub wpadła w bardzo długie wirowanie - efektywnie uniemożliwiając odczytanie
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/wir}
-        \caption{Odblask na przeskalowanym zdjęciu}
+        \caption{Wirująca kość.}
         \label{fig:wir}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[t]{0.45\linewidth}
+    \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/wir2}
-        \caption{Odblask po zmianie na skalę szarości}
+        \caption{Kość w ruchu.}
         \label{fig:wir2}
-    \end{minipage}
+    \end{subfigure}
+    \caption{Nieczytelne ujęcia wynikające z dłuższego niż przewidywany ruchu kości}
+    \label{fig:wircombined}
 \end{figure}
+
 
 Rozwiązaniem większości wypadków w których zachodziła ta sytuacja okazało się spowolnienie działania maszyny.
 Obecnie, oczekiwaniem aż kość zatrzyma się w miejscu steruje parametr czasowy, przyjmujący wartość jednej sekundy od zakończenia pracy śmigła.
