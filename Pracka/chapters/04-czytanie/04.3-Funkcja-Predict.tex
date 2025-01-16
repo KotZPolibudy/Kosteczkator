@@ -38,5 +38,7 @@ co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
 
 W dalszym przetwarzaniu, aby przejść z cyfr w systemie dziesiętnym na zapis bitowy, dokonywana jest jedna nieoczywista transformacja.
 Zakres $[1, 8]$ da się zapisać za pomocą trzech bitów, wykorzystując go w pełni (co było również przesłanką w wyborze kości o dokładnie takiej ilości ścianek).
-Zdecydowano się interpretować ściankę 8 jako cyfrę 0, wobec czego, w `tłumaczeniu' na zapis bitowy, 8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
+Zdecydowano się interpretować ściankę 8 jako cyfrę 0, wobec czego, w transformacji na zapis bitowy,
+8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
 
+Finalnie, zaetykietowany wynik przetwarzany jest na ciąg trzech bitów, odpowiadających etykiecie klasy.
