@@ -36,7 +36,7 @@ ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwac
 czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. Po rozważeniu innych alternatyw
 ztecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej 
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
-mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a jednocześnie jest prosty w konstrukcji. \cite{PK} Obrotowy kubek został zaprojektowany w taki 
+mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka.\cite{PK} Obrotowy kubek został zaprojektowany w taki 
 sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu, możliwe jest ustawienie częstotliwości obrotu oraz określenie, jak długo ma się obracać. Wszystkie te ustawienia 
 można zmieniać za pomocą programu napisanego w Pythonie. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
 Raspberry Pi. Dzięki temu za pomocą komend w kodzie możliwa jest zmiana, jak szybko i na jak długo kubek ma się obracać.
@@ -57,23 +57,21 @@ Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersj
 
 Do pierwszych testów robota zaprojektowano cztery warianty kształtów kubków. Przy ich projektowaniu wymiary wzorowano na dostępnych tradycyjnych kubkach do gry w kości.
 Średnice kubków do gry z reguły są w przedziale 70-90mm.\cite{cup} Przyjęto, że odpowiedni do tego zadania kubek powinien
-zawierać pewnego rodzaju nieróności na ściankach.\cite{PK} Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
+zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie.\cite{PK} Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
 będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
-o gładkich ściankach. Zaprojektowano cztery wersje kubka, które następnie przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka.
-Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr. 3 na Rys.\ref{fig:kubki}), o które kostka się odbijała podczas kręcenia. Jego główną zaletą
-nad resztą testowanych kubków był fakt, że nie posiada on narożników, w których kość, trafiając podczas obracania kubkiem, mogła utknąć dociskana przez 
-siłę odśrodkową.
+o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz Rys.\ref{fig:kubki}): kubek kwadratowy (nr. 4), kubek sześcienny (nr. 2), kubek sześcienny z dodadkowymi żebrami (nr. 1)
+oraz kubek cylindryczny z dodatkowymi żebrami (nr. 3). 
+Następnie je przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
+ponieważ kości ośmiościenne, które wykorzystywano do testów utykały w narożnikach dociskane przez siłę odśrodkową. Podobny problem pojawiał się przy testach kubka kwadratowego.
+Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr. 3 na Rys.\ref{fig:kubki}), o które kostka się odbijała podczas kręcenia.
+Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z reszta testowanych wariantów co ma duże znaczenie 
+przy obracaniu całego kubka ze względu na moment bezwaładności. \cite{bezwladnosc}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\linewidth, trim={35mm 380mm 20mm 240mm}, clip]{chapters/03-praca-wlasna/figures/kubki.jpg}
     \caption{\label{fig:kubki}Testowane warianty kubków}
 \end{figure}
-
-W trakcie poszukiwania literatury w temacie rzutów kością natrafiono na artykuł opisujący eksperyment, który wykorzystywał bardzo podobne urządzenie.
-Urządzenie opisano w następujący sposób: \textit{For the machine-throwing, we used a newly constructed, electrically-driven machine which had a rectangular 
-cage, 25 inches in length and four by four inches at the ends, made of quarter-inch wire mesh. This cage rotated on an axis through the middle, throwing the dice
-from one end to the other over a rough course which made them bound about considerably.}\cite{PK}
 
 Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
 wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie
