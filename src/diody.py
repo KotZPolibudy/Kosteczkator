@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 import os
+import threading
 from picamera2 import Picamera2
 import numpy as np
 from tensorflow.keras.preprocessing import image
@@ -45,6 +46,17 @@ duty_cycle = 100  # Wypełnienie PWM w procentach (dla 5.5V z 12V)
 
 # Zmienna przechowująca kierunek obrotu
 direction = True  # True: zgodnie z ruchem wskazówek zegara, False: przeciwnie
+
+# Zmienne dla wątków
+x = 0 # Liczba zdjęć do wygenerowania
+n = 0 # Obecnie przetwarzane
+# Mogłem dać inne nazwy ale te już były w kodzie
+current_folder_name = ""
+queue = []
+queue_empty = threading.Event()
+queue_full = threading.Event()
+queue_lock = threading.Lock()
+
 
 # Funkcje sterowania silnikiem
 def start_motor(direction):
@@ -131,7 +143,169 @@ def predict_number_from_loaded_img(model, img):
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
+
+def prediction_thread():
+    global x
+    global n
+    global queue
+    global current_folder_name
+    
+    last_prediction = 2137
+    failsafe = 0
+
+    while n<x:
+        # Wstawiłem czas tutaj bo w sumie jeśli czekamy na wykonanie rzutu
+        # To mamy czas razem z rzutem a jeśli jest jakieś zdjęcie to tylko czas przetwarzania modelu
+        start_time = time.time()  # Zapisz czas rozpoczęcia iteracji
+        if(len(queue)<1):
+            queue_empty.wait()
+            queue_empty.clear()
+        # do_prediction(queue[0])
+        queue_lock.acquire()
+        title = queue.pop()
+        queue_lock.release()
+        
+        # Przetwarzanie zdjęcia
+        processed_image = process_and_crop(title)
+
+        # todo tutaj dodać check czy zdj jest czarne czy nie
+        # Sprawdzanie, czy przetwarzanie się udało
+        if processed_image is None:
+            print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
+            continue
+        
+        folder_name = current_folder_name
+        filename = title.replace(folder_name,"")
+        
+        # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
+        # processed_path = f"{folder_name}/processed_{filename}"
+        # processed_image.save(processed_path)
+
+        # Predykcja na przetworzonym obrazie
+        # todo check czy to jest ok
+        # prediction = predict_number(model, processed_path)
+        prediction = predict_number_from_loaded_img(model, processed_image)
+        
+        end_time = time.time()  # Zapisz czas zakończenia iteracji
+        iteration_time = end_time - start_time
+        
+        # Zapisz czas wykonania iteracji do pliku w folderze
+        with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
+            file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
+
+        # done move to correct subfolder
+        prediction_folder = os.path.join(folder_name, prediction)
+        os.makedirs(prediction_folder, exist_ok=True) #idk czy dobrze mieć to tutaj, czy nie zrobić ich raz a dobrze na początku przetwarzania, ale niech będzie na chwilę obecną na testy
+        new_path = os.path.join(prediction_folder, filename)
+
+        # KTO TAK TO NAZWAŁ, JAKIE RENAME, JA WALE, BEZ SENSU
+        # PROGRAMIŚCI PYTHONA CO WY ODWALILIŚCIE
+        # JA TAK NIE UMIEM
+        os.rename(title, new_path)
+
+        if prediction == last_prediction:
+            failsafe += 1
+        else:
+            failsafe = 0
+        last_prediction = prediction
+
+        print(f"{n+1} / {x} iteracji")
+
+        # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
+        # ...lub nie mamy losowości, somehow
+        if failsafe > 12:
+            # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
+            break
+        
+        n += 1
+        if(len(queue)<5):      
+            queue_full.set()        
+    queue_full.set()
+
+def single_thread(x,timestamp,folder_name):
+    last_prediction = 2137
+    failsafe = 0
+    for n in range(x):
+        start_time = time.time()  # Zapisz czas rozpoczęcia iteracji
+
+        # Kręcenie silnikiem w aktualnym kierunku
+        start_motor(direction)
+        # print("Silnik się kręci...")
+        GPIO.output(dioda_green, GPIO.HIGH)
+        time.sleep(0.3)  # Czas pracy silnika
+        stop_motor()
+        # print("Silnik zatrzymany.")
+        GPIO.output(dioda_green, GPIO.LOW)
+        time.sleep(1)
+        
+        # Zmiana kierunku obrotów na kolejny rzut
+        direction = not direction
+        
+        # Robienie zdjęcia
+        GPIO.output(dioda_blue, GPIO.HIGH)
+        t = datetime.datetime.now()
+        t_str = t.strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"{n + 1}_{t_str}.jpg"
+        title = f"{folder_name}/{filename}"  # Ścieżka do zdjęcia
+        
+        camera.start()
+        camera.capture_file(title)
+        camera.stop()
+        GPIO.output(dioda_blue, GPIO.LOW)
+        # print(f"Zdjęcie zapisane jako {title}")
+
+        # Przetwarzanie zdjęcia
+        processed_image = process_and_crop(title)
+
+        # todo tutaj dodać check czy zdj jest czarne czy nie
+        # Sprawdzanie, czy przetwarzanie się udało
+        if processed_image is None:
+            print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
+            continue
+
+        # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
+        # processed_path = f"{folder_name}/processed_{filename}"
+        # processed_image.save(processed_path)
+
+        # Predykcja na przetworzonym obrazie
+        # todo check czy to jest ok
+        # prediction = predict_number(model, processed_path)
+        prediction = predict_number_from_loaded_img(model, processed_image)
+        
+        end_time = time.time()  # Zapisz czas zakończenia iteracji
+        iteration_time = end_time - start_time
+        
+        # Zapisz czas wykonania iteracji do pliku w folderze
+        with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
+            file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
+
+        # done move to correct subfolder
+        prediction_folder = os.path.join(folder_name, prediction)
+        os.makedirs(prediction_folder, exist_ok=True) #idk czy dobrze mieć to tutaj, czy nie zrobić ich raz a dobrze na początku przetwarzania, ale niech będzie na chwilę obecną na testy
+        new_path = os.path.join(prediction_folder, filename)
+
+        # KTO TAK TO NAZWAŁ, JAKIE RENAME, JA WALE, BEZ SENSU
+        # PROGRAMIŚCI PYTHONA CO WY ODWALILIŚCIE
+        # JA TAK NIE UMIEM
+        os.rename(title, new_path)
+
+        if prediction == last_prediction:
+            failsafe += 1
+        else:
+            failsafe = 0
+        last_prediction = prediction
+
+        print(f"{n+1} / {x} iteracji")
+
+        # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
+        # ...lub nie mamy losowości, somehow
+        if failsafe > 12:
+            # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
+            break
+
+
 try:
+    parallel = False
     # Load the model
     model = load_model("na_nowych_final_unbalanced.keras")
     while True:
@@ -146,86 +320,12 @@ try:
         
         GPIO.output(LED, GPIO.HIGH)
         GPIO.output(dioda_red, GPIO.HIGH)
-        last_prediction = 2137
-        failsafe = 0
-        for n in range(x):
-            start_time = time.time()  # Zapisz czas rozpoczęcia iteracji
-
-            # Kręcenie silnikiem w aktualnym kierunku
-            start_motor(direction)
-            # print("Silnik się kręci...")
-            GPIO.output(dioda_green, GPIO.HIGH)
-            time.sleep(0.3)  # Czas pracy silnika
-            stop_motor()
-            # print("Silnik zatrzymany.")
-            GPIO.output(dioda_green, GPIO.LOW)
-            time.sleep(1)
+        
+        if(parallel):
+            print("parallel")
+        else:
+            single_thread(x,timestamp,folder_name)
             
-            # Zmiana kierunku obrotów na kolejny rzut
-            direction = not direction
-            
-            # Robienie zdjęcia
-            GPIO.output(dioda_blue, GPIO.HIGH)
-            t = datetime.datetime.now()
-            t_str = t.strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"{n + 1}_{t_str}.jpg"
-            title = f"{folder_name}/{filename}"  # Ścieżka do zdjęcia
-            
-            camera.start()
-            camera.capture_file(title)
-            camera.stop()
-            GPIO.output(dioda_blue, GPIO.LOW)
-            # print(f"Zdjęcie zapisane jako {title}")
-
-            # Przetwarzanie zdjęcia
-            processed_image = process_and_crop(title)
-
-            # todo tutaj dodać check czy zdj jest czarne czy nie
-            # Sprawdzanie, czy przetwarzanie się udało
-            if processed_image is None:
-                print(f"Przetwarzanie nie powiodło się dla obrazu {title}.")
-                continue
-
-            # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
-            # processed_path = f"{folder_name}/processed_{filename}"
-            # processed_image.save(processed_path)
-
-            # Predykcja na przetworzonym obrazie
-            # todo check czy to jest ok
-            # prediction = predict_number(model, processed_path)
-            prediction = predict_number_from_loaded_img(model, processed_image)
-            
-            end_time = time.time()  # Zapisz czas zakończenia iteracji
-            iteration_time = end_time - start_time
-            
-            # Zapisz czas wykonania iteracji do pliku w folderze
-            with open(f"{folder_name}/czas_iteracji.txt", "a") as file:
-                file.write(f"{filename} ; {iteration_time:.2f} ; {prediction}\n")
-
-            # done move to correct subfolder
-            prediction_folder = os.path.join(folder_name, prediction)
-            os.makedirs(prediction_folder, exist_ok=True) #idk czy dobrze mieć to tutaj, czy nie zrobić ich raz a dobrze na początku przetwarzania, ale niech będzie na chwilę obecną na testy
-            new_path = os.path.join(prediction_folder, filename)
-
-            # KTO TAK TO NAZWAŁ, JAKIE RENAME, JA WALE, BEZ SENSU
-            # PROGRAMIŚCI PYTHONA CO WY ODWALILIŚCIE
-            # JA TAK NIE UMIEM
-            os.rename(title, new_path)
-
-            if prediction == last_prediction:
-                failsafe += 1
-            else:
-                failsafe = 0
-            last_prediction = prediction
-
-            print(f"{n+1} / {x} iteracji")
-
-            # Check, przy tak długiej serii wysoce prawdopodobne jest zacięcie silnika
-            # ...lub nie mamy losowości, somehow
-            if failsafe > 12:
-                # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
-                break
-
         GPIO.output(LED, GPIO.LOW)
         GPIO.output(dioda_red, GPIO.LOW)
 
