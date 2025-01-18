@@ -351,6 +351,7 @@ def single_thread(x,timestamp,folder_name):
             break
 
 def parallelized():
+    global n
     n = 0
         
     t_roll = threading.Thread(target=roll_thread,daemon=True)
@@ -361,7 +362,10 @@ def parallelized():
 
     t_roll.join()
     t_predict.join()
-
+    
+    queue_full.clear()
+    queue_empty.clear()
+    queue.clear()
     
 
 try:
