@@ -33,11 +33,13 @@ wibracje czy przeciążenia powstałe podczas pracy. Bez odpowiedniej sztywnośc
 a w efekcie całkowite uszkodzenie się robota.
 Co więcej, projektowanie i wykonanie tłoków wraz z precyzyjnym układem sterowania wymagałoby znacznych nakładów czasu i kosztów. W przypadku pracy 
 ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwacji i napraw mechanizmu, aby zapewnić jego długotrwałą sprawność. Wszystko to 
-czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy.
-obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano betoniarką od podobnej 
-zasady działania. Taki mechanizm zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a 
-jednocześnie jest prosty w konstrukcji. Obracający się kubek został 
-zaprojektowany tak, aby jego prędkość obrotową i czas trwania obrotu można było w prosty sposób kontrolować poprzez kod napisany w Pythonie.
+czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. Po rozważeniu innych alternatyw
+ztecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej 
+zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
+mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a jednocześnie jest prosty w konstrukcji. \cite{PK} Obrotowy kubek został zaprojektowany w taki 
+sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu, możliwe jest ustawienie częstotliwości obrotu oraz określenie, jak długo ma się obracać. Wszystkie te ustawienia 
+można zmieniać za pomocą programu napisanego w Pythonie. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
+Raspberry Pi. Dzięki temu za pomocą komend w kodzie możliwa jest zmiana, jak szybko i na jak długo kubek ma się obracać.
 W celach testowych został skonstruowany prototypowy model robota.
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
