@@ -143,12 +143,58 @@ def predict_number_from_loaded_img(model, img):
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
+def roll_thread():
+    global x
+    global n
+    global queue
+    global direction
+    
+    while n<x:
+        if(len(queue)<10):
+            # print("Does roll")
+        
+            # Kręcenie silnikiem w aktualnym kierunku
+            start_motor(direction)
+            # print("Silnik się kręci...")
+            GPIO.output(dioda_green, GPIO.HIGH)
+            time.sleep(0.3)  # Czas pracy silnika
+            stop_motor()
+            # print("Silnik zatrzymany.")
+            GPIO.output(dioda_green, GPIO.LOW)
+            time.sleep(1)
+            
+            # Zmiana kierunku obrotów na kolejny rzut
+            direction = not direction
+            
+            # Robienie zdjęcia
+            GPIO.output(dioda_blue, GPIO.HIGH)
+            t = datetime.datetime.now()
+            t_str = t.strftime("%Y-%m-%d_%H-%M-%S")
+            filename = f"{n + 1}_{t_str}.jpg"
+            title = f"{folder_name}/{filename}"  # Ścieżka do zdjęcia
+            
+            camera.start()
+            camera.capture_file(title)
+            camera.stop()
+            GPIO.output(dioda_blue, GPIO.LOW)
+            # print(f"Zdjęcie zapisane jako {title}")
+            
+            queue_lock.acquire()
+            queue.append(title)
+            queue_lock.release()
+            queue_empty.set()
+        else:
+            # print("Full")
+            queue_full.wait()  
+            queue_full.clear()    
+    
 
 def prediction_thread():
     global x
     global n
     global queue
     global current_folder_name
+    global model
     
     last_prediction = 2137
     failsafe = 0
@@ -223,6 +269,7 @@ def prediction_thread():
     queue_full.set()
 
 def single_thread(x,timestamp,folder_name):
+    global model
     last_prediction = 2137
     failsafe = 0
     for n in range(x):
@@ -303,10 +350,24 @@ def single_thread(x,timestamp,folder_name):
             # THROW ERROR #todo Kuba LEDy dla Ciebie ;)
             break
 
+def parallelized():
+    n = 0
+        
+    t_roll = threading.Thread(target=roll_thread,daemon=True)
+    t_predict = threading.Thread(target=prediction_thread,daemon=True)
+
+    t_roll.start()
+    t_predict.start()
+
+    t_roll.join()
+    t_predict.join()
+
+    
 
 try:
-    parallel = False
+    parallel = True
     # Load the model
+    global model
     model = load_model("na_nowych_final_unbalanced.keras")
     while True:
         print("Podaj liczbę zdjęć, jakie chcesz zrobić:")
@@ -315,6 +376,7 @@ try:
         # Tworzenie nowego folderu dla serii zdjęć
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         folder_name = f"../serie/seria_{timestamp}"
+        current_folder_name = folder_name
         os.makedirs(folder_name, exist_ok=True)  # Tworzy folder, jeśli nie istnieje
         # print(f"Utworzono folder: {folder_name}")
         
@@ -322,7 +384,7 @@ try:
         GPIO.output(dioda_red, GPIO.HIGH)
         
         if(parallel):
-            print("parallel")
+            parallelized()
         else:
             single_thread(x,timestamp,folder_name)
             
