@@ -3,19 +3,38 @@
 \section{Projektowanie robota}
 \subsection{Prototypowanie}
 
-Przy całym procesie budowy robota wykorzystano technologię druku 3D. Pozwala na szybkie modyfikacje przy 
-jednoczesnym zachowaniu bardzo wysokiej dokładności i jakości wykonania elementów. Dzięki temu podczas budowy prototypów a 
-pózniej ostatecznej wersji robota można było w prosty sposób modyfikować, projektować i zmieniać każdy element składowy 
-robota. Pomimo tego, że proces druku 3D w szczególności dużych skomplikowanych elementów jest stosunkowo czasochłonny to jest to
-najlepsza dostępna nam technologia do wykorzystania w tego rodzaju projektach.
+Przy całym procesie budowy robota wykorzystano technologię FDM \textit{(Fused Deposition Modeling)} druku 3D. Pomimo tego, że proces druku 3D, zwłaszcza w przypadku dużych i skomplikowanych elementów, może być czasochłonny, jest to najlepsza dostępna
+technologia do realizacji tego rodzaju projektów. Druk 3D umożliwia tworzenie niestandardowych, precyzyjnie dopasowanych komponentów, które można 
+szybko zmodyfikować w fazie projektowania i łatwo wydrukować ponownie w przypadku wprowadzenia zmian. Dzięki temu, prototypowanie w projektach takich 
+jak budowa robotów czy urządzeń mechanicznych jest znacznie bardziej elastyczne i tańsze w porównaniu do tradycyjnych metod, takich jak obróbka 
+mechaniczna czy formowanie wtryskowe, które często wymagają kosztownego sprzętu i specjalistycznej wiedzy.
+Drukarki 3D są także stosunkowo przystępne cenowo. Pozwalają one na wykorzystanie różnorodnych materiałów, takich jak tworzywa sztuczne, które są lekkie 
+i trwałe, czy bardziej zaawansowane filamenty kompozytowe. Ta wszechstronność materiałowa umożliwia dostosowanie właściwości mechanicznych części, takich 
+jak wytrzymałość, elastyczność lub odporność na wysokie temperatury, w zależności od wymagań projektu.
+Co więcej, technologia druku 3D pozwala tworzyć skomplikowane kształty, których wykonanie innymi metodami mogłoby być niemożliwe lub wymagać kosztownych 
+narzędzi. Możliwość drukowania prototypów bezpośrednio na miejscu skraca czas od koncepcji do gotowego produktu, co jest szczególnie cenne w dynamicznych 
+projektach inżynierskich, takich jak konstrukcja robotów. To czyni druk 3D idealnym narzędziem w projektach, które wymagają wielokrotnego 
+testowania i wprowadzania ulepszeń.
 
 Głównym założeniem podczas projektowania i budowy robota było założenie modułowości. Oznacza to, że każdy element jest wymienny i łatwo dostępny.
 Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
 są znacząco prostsze i przede wszystkim szybsze niż gdyby cały robot był jednolitą bryłą.
 
-Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością.
-Po przeanalizowaniu kilku pomysłów, zdecydowano się na rozwiązanie wykorzystujące obrotowy 
-kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano betoniarką od podobnej 
+Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box.
+Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia - jednak to rozwiązanie odrzucono ze względu na 
+skomlikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa również odrzucono ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
+wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa.
+Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. Kolejnym etapem była decyzja w jaki sposób 
+będzie wykonywany rzut kością. Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. Po pierwsze, tłoki 
+generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
+wielokrotne uderzenia w mechanizm mogą prowadzić do jego szybkiego zużycia, co w konsekwencji mogłoby spowodować awarię.
+Dodatkowo, konstrukcja takiego systemu tłokowego wymagałaby solidnego montażu i zastosowania materiałów odpornych na dynamiczne obciążenia, takie jak 
+wibracje czy przeciążenia powstałe podczas pracy. Bez odpowiedniej sztywności konstrukcji, częste uderzenia i ruchy mogłyby powodować luzy w mechanizmie, 
+a w efekcie całkowite uszkodzenie się robota.
+Co więcej, projektowanie i wykonanie tłoków wraz z precyzyjnym układem sterowania wymagałoby znacznych nakładów czasu i kosztów. W przypadku pracy 
+ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwacji i napraw mechanizmu, aby zapewnić jego długotrwałą sprawność. Wszystko to 
+czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy.
+obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano betoniarką od podobnej 
 zasady działania. Taki mechanizm zapewnia rzut zbliżony do takiego wykonanego przez człowieka, a 
 jednocześnie jest prosty w konstrukcji. Obracający się kubek został 
 zaprojektowany tak, aby jego prędkość obrotową i czas trwania obrotu można było w prosty sposób kontrolować poprzez kod napisany w Pythonie.
@@ -38,7 +57,7 @@ Przyjęto, że odpowiedni do tego zadania kubek powinien
 zawierać pewnego rodzaju nieróności na ściankach. Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
 będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
 o gładkich ściankach. Zaprojektowano cztery wersje kubka, które następnie przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka.
-Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (numer 3 na poniższym zdjęciu), o które kostka się odbijała podczas kręcenia. Jego główną zaletą
+Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr. 3 na Rys.\ref{fig:kubki}), o które kostka się odbijała podczas kręcenia. Jego główną zaletą
 nad resztą testowanych kubków był fakt, że nie posiada on narożników, w których kość, trafiając podczas obracania kubkiem, mogła utknąć dociskana przez 
 siłę odśrodkową.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  18 JAN 2025 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  18 JAN 2025 11:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -735,112 +735,111 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
 [6]
 
-pdfTeX warning: pdflatex (file ./chapters/03-praca-wlasna/figures/pierwszy.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=369, 475.82146pt x 844.0292pt>
-File: chapters/03-praca-wlasna/figures/pierwszy.pdf Graphic file (type pdf)
-<use chapters/03-praca-wlasna/figures/pierwszy.pdf>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on input line 32.
-(pdftex.def)             Requested size: 106.5pt x 209.91083pt.
-
-
 [7
 
 ]
-<chapters/03-praca-wlasna/figures/kubki.jpg, id=375, 2276.505pt x 4047.12pt>
-File: chapters/03-praca-wlasna/figures/kubki.jpg Graphic file (type jpg)
-<use chapters/03-praca-wlasna/figures/kubki.jpg>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/kubki.jpg  used on input line 47.
-(pdftex.def)             Requested size: 276.8974pt x 298.16544pt.
+
+pdfTeX warning: pdflatex (file ./chapters/03-praca-wlasna/figures/pierwszy.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<chapters/03-praca-wlasna/figures/pierwszy.pdf, id=374, 475.82146pt x 844.0292pt>
+File: chapters/03-praca-wlasna/figures/pierwszy.pdf Graphic file (type pdf)
+<use chapters/03-praca-wlasna/figures/pierwszy.pdf>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/pierwszy.pdf  used on input line 51.
+(pdftex.def)             Requested size: 106.5pt x 209.91083pt.
 
 
 [8 <./chapters/03-praca-wlasna/figures/pierwszy.pdf>]
-<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=387, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/kubki.jpg, id=386, 2276.505pt x 4047.12pt>
+File: chapters/03-praca-wlasna/figures/kubki.jpg Graphic file (type jpg)
+<use chapters/03-praca-wlasna/figures/kubki.jpg>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/kubki.jpg  used on input line 66.
+(pdftex.def)             Requested size: 276.8974pt x 298.16544pt.
+<chapters/03-praca-wlasna/figures/koła_zębowe.png, id=389, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/koła_zębowe.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/koła_zębowe.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  used on input line 65.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/koła_zębowe.png  used on input line 84.
 (pdftex.def)             Requested size: 106.5pt x 166.0669pt.
 
 
 [9 <./chapters/03-praca-wlasna/figures/kubki.jpg>]
-<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=399, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/now_we_are_cool.png, id=400, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/now_we_are_cool.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/now_we_are_cool.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  used on input line 89.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/now_we_are_cool.png  used on input line 108.
 (pdftex.def)             Requested size: 106.5pt x 160.87831pt.
-<chapters/03-praca-wlasna/figures/nie_widac.png, id=401, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/nie_widac.png, id=402, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/nie_widac.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/nie_widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used on input line 98.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/nie_widac.png  used on input line 117.
 (pdftex.def)             Requested size: 106.5pt x 167.22043pt.
 
 
 [10 <./chapters/03-praca-wlasna/figures/koła_zębowe.png> <./chapters/03-praca-wlasna/figures/now_we_are_cool.png>]
-<chapters/03-praca-wlasna/figures/widac.png, id=412, 955.57pt x 1927.2pt>
+<chapters/03-praca-wlasna/figures/widac.png, id=413, 955.57pt x 1927.2pt>
 File: chapters/03-praca-wlasna/figures/widac.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/widac.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on input line 104.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/widac.png  used on input line 123.
 (pdftex.def)             Requested size: 106.5pt x 167.22043pt.
-<chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg, id=414, 4047.12pt x 2276.505pt>
+<chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg, id=415, 4047.12pt x 2276.505pt>
 File: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg Graphic file (type jpg)
 <use chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg  used on input line 120.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg  used on input line 139.
 (pdftex.def)             Requested size: 191.6987pt x 107.82248pt.
 
 
 [11 <./chapters/03-praca-wlasna/figures/nie_widac.png> <./chapters/03-praca-wlasna/figures/widac.png>]
 
 [12 <./chapters/03-praca-wlasna/figures/i_stala_sie_jasnosc.jpg>]
-<chapters/03-praca-wlasna/figures/pokrywa.png, id=428, 2055.68pt x 925.4575pt>
+<chapters/03-praca-wlasna/figures/pokrywa.png, id=429, 2055.68pt x 925.4575pt>
 File: chapters/03-praca-wlasna/figures/pokrywa.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/pokrywa.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/pokrywa.png  used on input line 159.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/pokrywa.png  used on input line 178.
 (pdftex.def)             Requested size: 404.6987pt x 182.19334pt.
-<chapters/03-praca-wlasna/figures/kubek.png, id=429, 1927.2pt x 853.1875pt>
+<chapters/03-praca-wlasna/figures/kubek.png, id=430, 1927.2pt x 853.1875pt>
 File: chapters/03-praca-wlasna/figures/kubek.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/kubek.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/kubek.png  used on input line 179.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/kubek.png  used on input line 198.
 (pdftex.def)             Requested size: 404.6987pt x 179.16164pt.
 
 
 [13 <./chapters/03-praca-wlasna/figures/pokrywa.png>]
-<chapters/03-praca-wlasna/figures/uchwyt_v1.png, id=436, 1927.2pt x 853.1875pt>
+<chapters/03-praca-wlasna/figures/uchwyt_v1.png, id=437, 1927.2pt x 853.1875pt>
 File: chapters/03-praca-wlasna/figures/uchwyt_v1.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/uchwyt_v1.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/uchwyt_v1.png  used on input line 203.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/uchwyt_v1.png  used on input line 222.
 (pdftex.def)             Requested size: 404.6987pt x 179.16164pt.
 
 
 [14 <./chapters/03-praca-wlasna/figures/kubek.png>]
-<chapters/03-praca-wlasna/figures/uchwyt_v2.png, id=443, 1927.2pt x 853.1875pt>
+<chapters/03-praca-wlasna/figures/uchwyt_v2.png, id=444, 1927.2pt x 853.1875pt>
 File: chapters/03-praca-wlasna/figures/uchwyt_v2.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/uchwyt_v2.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/uchwyt_v2.png  used on input line 209.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/uchwyt_v2.png  used on input line 228.
 (pdftex.def)             Requested size: 404.6987pt x 179.16164pt.
-<chapters/03-praca-wlasna/figures/main_board.png, id=444, 2055.68pt x 925.4575pt>
+<chapters/03-praca-wlasna/figures/main_board.png, id=445, 2055.68pt x 925.4575pt>
 File: chapters/03-praca-wlasna/figures/main_board.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/main_board.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/main_board.png  used on input line 222.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/main_board.png  used on input line 241.
 (pdftex.def)             Requested size: 404.6987pt x 182.19334pt.
 
 
 [15 <./chapters/03-praca-wlasna/figures/uchwyt_v1.png> <./chapters/03-praca-wlasna/figures/uchwyt_v2.png>]
-<chapters/03-praca-wlasna/figures/l298n.png, id=453, 1927.2pt x 853.1875pt>
+<chapters/03-praca-wlasna/figures/l298n.png, id=454, 1927.2pt x 853.1875pt>
 File: chapters/03-praca-wlasna/figures/l298n.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/l298n.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/l298n.png  used on input line 233.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/l298n.png  used on input line 252.
 (pdftex.def)             Requested size: 404.6987pt x 179.16164pt.
 
 
 [16 <./chapters/03-praca-wlasna/figures/main_board.png> <./chapters/03-praca-wlasna/figures/l298n.png>]
-<chapters/03-praca-wlasna/figures/całosc_front.png, id=463, 2055.68pt x 925.4575pt>
+<chapters/03-praca-wlasna/figures/całosc_front.png, id=464, 2055.68pt x 925.4575pt>
 File: chapters/03-praca-wlasna/figures/całosc_front.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/całosc_front.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/całosc_front.png  used on input line 251.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/całosc_front.png  used on input line 270.
 (pdftex.def)             Requested size: 404.6987pt x 182.19334pt.
 ) (chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex
 
 [17 <./chapters/03-praca-wlasna/figures/całosc_front.png>]
-<chapters/03-praca-wlasna/figures/wymiary.png, id=481, 914.66719pt x 645.91313pt>
+<chapters/03-praca-wlasna/figures/wymiary.png, id=482, 914.66719pt x 645.91313pt>
 File: chapters/03-praca-wlasna/figures/wymiary.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/wymiary.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/wymiary.png  used on input line 49.
@@ -848,12 +847,12 @@ Package pdftex.def Info: chapters/03-praca-wlasna/figures/wymiary.png  used on i
 
 
 [18]
-<chapters/03-praca-wlasna/figures/komponenty.png, id=490, 913.91437pt x 646.66594pt>
+<chapters/03-praca-wlasna/figures/komponenty.png, id=491, 913.91437pt x 646.66594pt>
 File: chapters/03-praca-wlasna/figures/komponenty.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/komponenty.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/komponenty.png  used on input line 55.
 (pdftex.def)             Requested size: 404.6987pt x 286.34947pt.
-<chapters/03-praca-wlasna/figures/electronics circut_schem.png, id=491, 388.0899pt x 374.8404pt>
+<chapters/03-praca-wlasna/figures/electronics circut_schem.png, id=492, 388.0899pt x 374.8404pt>
 File: chapters/03-praca-wlasna/figures/electronics circut_schem.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/electronics circut_schem.png>
 Package pdftex.def Info: chapters/03-praca-wlasna/figures/electronics circut_schem.png  used on input line 61.
@@ -871,7 +870,7 @@ Overfull \hbox (56.99579pt too wide) in paragraph at lines 12--12
 []    \OT4/cmtt/m/n/10 Nast�pnie, wyuczony przez nas model SI odczytuje wyrzucony na ko�ci wynik i zwraca cyfr�[] 
  []
 
-<chapters/04-czytanie/figures/schemat.jpg, id=506, 1308.89pt x 1088.065pt>
+<chapters/04-czytanie/figures/schemat.jpg, id=507, 1308.89pt x 1088.065pt>
 File: chapters/04-czytanie/figures/schemat.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/schemat.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/schemat.jpg  used on input line 18.
@@ -885,7 +884,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--39
 
  []
 
-<chapters/04-czytanie/figures/2_1.jpg, id=516, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/2_1.jpg, id=517, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/2_1.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_1.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_1.jpg  used on input line 72.
@@ -895,7 +894,7 @@ Overfull \hbox (15.13959pt too wide) in paragraph at lines 72--73
  [][] 
  []
 
-<chapters/04-czytanie/figures/2_2.jpg, id=517, 790.152pt x 593.5776pt>
+<chapters/04-czytanie/figures/2_2.jpg, id=518, 790.152pt x 593.5776pt>
 File: chapters/04-czytanie/figures/2_2.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_2.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_2.jpg  used on input line 79.
@@ -905,17 +904,17 @@ Overfull \hbox (15.16972pt too wide) in paragraph at lines 79--80
  [][] 
  []
 
-<chapters/04-czytanie/figures/2_3.jpg, id=518, 467.7475pt x 453.695pt>
+<chapters/04-czytanie/figures/2_3.jpg, id=519, 467.7475pt x 453.695pt>
 File: chapters/04-czytanie/figures/2_3.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_3.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_3.jpg  used on input line 86.
 (pdftex.def)             Requested size: 117.33626pt x 113.81102pt.
-<chapters/04-czytanie/figures/2_4.jpg, id=519, 467.7475pt x 453.695pt>
+<chapters/04-czytanie/figures/2_4.jpg, id=520, 467.7475pt x 453.695pt>
 File: chapters/04-czytanie/figures/2_4.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_4.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_4.jpg  used on input line 95.
 (pdftex.def)             Requested size: 117.33626pt x 113.81102pt.
-<chapters/04-czytanie/figures/2_5.jpg, id=520, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/2_5.jpg, id=521, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/2_5.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_5.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_5.jpg  used on input line 102.
@@ -939,12 +938,12 @@ Overfull \hbox (0.25076pt too wide) in paragraph at lines 162--165
 []\OT4/cmr/m/n/10 Wspomniane wcze-�niej od-bla-ski znacz-nie po-gar-szaj� sku-tecz-no�� od-czy-ty-wa-nia wy-niku z kostki.
  []
 
-<chapters/04-czytanie/figures/blask_raw.jpg, id=531, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/blask_raw.jpg, id=532, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/blask_raw.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/blask_raw.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/blask_raw.jpg  used on input line 173.
 (pdftex.def)             Requested size: 191.6987pt x 191.71478pt.
-<chapters/04-czytanie/figures/blask_proc.jpg, id=532, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/blask_proc.jpg, id=533, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/blask_proc.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/blask_proc.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/blask_proc.jpg  used on input line 180.
@@ -952,22 +951,22 @@ Package pdftex.def Info: chapters/04-czytanie/figures/blask_proc.jpg  used on in
 
 
 [24 <./chapters/04-czytanie/figures/blask_raw.jpg> <./chapters/04-czytanie/figures/blask_proc.jpg>]
-<chapters/04-czytanie/figures/niepewne.jpg, id=540, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/niepewne.jpg, id=541, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/niepewne.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/niepewne.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/niepewne.jpg  used on input line 215.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/smiglo.jpg, id=541, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/smiglo.jpg, id=542, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/smiglo.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/smiglo.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/smiglo.jpg  used on input line 222.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/wir.jpg, id=542, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/wir.jpg, id=543, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/wir.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/wir.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/wir.jpg  used on input line 247.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/wir2.jpg, id=543, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/wir2.jpg, id=544, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/wir2.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/wir2.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/wir2.jpg  used on input line 254.
@@ -977,7 +976,7 @@ Package pdftex.def Info: chapters/04-czytanie/figures/wir2.jpg  used on input li
 [25 <./chapters/04-czytanie/figures/niepewne.jpg> <./chapters/04-czytanie/figures/smiglo.jpg> <./chapters/04-czytanie/figures/wir.jpg> <./chapters/04-czytanie/figures/wir2.jpg>]) (chapters/04-czytanie/04.2-Opis-Modelu.tex
 
 [26]
-<chapters/04-czytanie/figures/ModelAcc1.png, id=557, 642.4pt x 481.8pt>
+<chapters/04-czytanie/figures/ModelAcc1.png, id=558, 642.4pt x 481.8pt>
 File: chapters/04-czytanie/figures/ModelAcc1.png Graphic file (type png)
 <use chapters/04-czytanie/figures/ModelAcc1.png>
 Package pdftex.def Info: chapters/04-czytanie/figures/ModelAcc1.png  used on input line 150.
@@ -985,7 +984,7 @@ Package pdftex.def Info: chapters/04-czytanie/figures/ModelAcc1.png  used on inp
 
 
 [27]
-<chapters/04-czytanie/figures/ModelLoss1.png, id=562, 642.4pt x 481.8pt>
+<chapters/04-czytanie/figures/ModelLoss1.png, id=563, 642.4pt x 481.8pt>
 File: chapters/04-czytanie/figures/ModelLoss1.png Graphic file (type png)
 <use chapters/04-czytanie/figures/ModelLoss1.png>
 Package pdftex.def Info: chapters/04-czytanie/figures/ModelLoss1.png  used on input line 157.
@@ -1028,7 +1027,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [36
 
 ]
-<wit/logo-pp.pdf, id=616, 422.57875pt x 422.57875pt>
+<wit/logo-pp.pdf, id=617, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
 Package pdftex.def Info: wit/logo-pp.pdf  used on input line 94.
@@ -1061,9 +1060,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,606b,656s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0800.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plcsc10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt9.pfb>
-Output written on main.pdf (40 pages, 21378096 bytes).
+Output written on main.pdf (40 pages, 21381442 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
+ 750 PDF objects out of 1000 (max. 8388607)
  141 named destinations out of 1000 (max. 500000)
  703 words of extra memory for PDF output out of 10000 (max. 10000000)
 
