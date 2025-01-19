@@ -71,7 +71,7 @@ Zewnętrzny zasilacz dostarcza napięcie 12V, które zasila zarówno silnik, jak
 Do podłączenia zestawu trzech diod LED (czerwonej, niebieskiej oraz zielonej umieszczonych w gotowym robocie w ściance obudowy robota), wykorzystano rezystory ograniczające napięcie, które podłączono 
 do anod poszczególnych diod. Wartości rezystancji dobrano na podstawie zalecanych wartości napięcia dla tych diod oraz w taki sposób żeby ich światło nie było zbyt jasne, ponieważ 
 mają to być diody służące tylko do sygnalizowania procesów wykonywanych przez robota. Z tego powodu rezystory, które wybrano mają wyższe wartości rezystancji niż te, które są zalecane, jednak było to
-działanie celowe. Piny GPIO Raspberry Pi odpowiadają za kontrolę włączania poszczególnych kolorów poprzez sterowanie układem ULN2803A.
+działanie celowe. Dla diod zielonej i niebieskiej wybrano rezystor $10k\Omega$ dla każdej osobno, natomiast dla czerwonej $2,2k\Omega$. Piny GPIO Raspberry Pi odpowiadają za kontrolę włączania poszczególnych diod poprzez sterowanie układem ULN2803A.
 Białe diody LED są połączone szeregowo i sterowane za pomocą tranzystorowego układu ULN2803A. W układzie zastosowano rezystory ograniczające napięcie. Każda z tych diod powinna być 
 zasilana napięciem od 3V do 3,2V, co oznacza, że po połączeniu szeregowym ich układ powinien być zasilany napięciem 12V, które dostarcza im układ ULN2803A. Zdecydowano się na zastosowanie
 rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie o czym jest mowa w punkcie
@@ -82,7 +82,7 @@ Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty prz
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/electronics circut_schem.png}
-    \caption{\label{fig:electronics}Schemat elektryczny}
+    \caption{\label{fig:electronics}Schemat elektryczny.}
 \end{figure}
 
 \subsection{Software}
