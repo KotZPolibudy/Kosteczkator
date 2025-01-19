@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  19 JAN 2025 16:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.10)  19 JAN 2025 18:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -873,29 +873,30 @@ Package pdftex.def Info: chapters/03-praca-wlasna/figures/gotowy2.png  used on i
 ) (chapters/03-praca-wlasna/03.2-Dokumentacja-techniczna.tex
 
 [18 <./chapters/03-praca-wlasna/figures/l298n.png> <./chapters/03-praca-wlasna/figures/gotowy2.png>]
-
-[19]
-<chapters/03-praca-wlasna/figures/komponenty.png, id=532, 913.91437pt x 646.66594pt>
-File: chapters/03-praca-wlasna/figures/komponenty.png Graphic file (type png)
-<use chapters/03-praca-wlasna/figures/komponenty.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/komponenty.png  used on input line 47.
-(pdftex.def)             Requested size: 404.6987pt x 286.34947pt.
-<chapters/03-praca-wlasna/figures/wymiary.png, id=533, 914.66719pt x 645.91313pt>
+<chapters/03-praca-wlasna/figures/wymiary.png, id=511, 914.66719pt x 645.91313pt>
 File: chapters/03-praca-wlasna/figures/wymiary.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/wymiary.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/wymiary.png  used on input line 61.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/wymiary.png  used on input line 12.
 (pdftex.def)             Requested size: 404.6987pt x 285.78944pt.
 
 
-[20 <./chapters/03-praca-wlasna/figures/komponenty.png>]
-<chapters/03-praca-wlasna/figures/electronics circut_schem.png, id=538, 388.0899pt x 374.8404pt>
+[19 <./chapters/03-praca-wlasna/figures/wymiary.png>]
+<chapters/03-praca-wlasna/figures/komponenty.png, id=528, 913.91437pt x 646.66594pt>
+File: chapters/03-praca-wlasna/figures/komponenty.png Graphic file (type png)
+<use chapters/03-praca-wlasna/figures/komponenty.png>
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/komponenty.png  used on input line 53.
+(pdftex.def)             Requested size: 404.6987pt x 286.34947pt.
+
+
+[20]
+
+[21 <./chapters/03-praca-wlasna/figures/komponenty.png>]
+<chapters/03-praca-wlasna/figures/electronics circut_schem.png, id=544, 388.0899pt x 374.8404pt>
 File: chapters/03-praca-wlasna/figures/electronics circut_schem.png Graphic file (type png)
 <use chapters/03-praca-wlasna/figures/electronics circut_schem.png>
-Package pdftex.def Info: chapters/03-praca-wlasna/figures/electronics circut_schem.png  used on input line 67.
+Package pdftex.def Info: chapters/03-praca-wlasna/figures/electronics circut_schem.png  used on input line 84.
 (pdftex.def)             Requested size: 404.6987pt x 390.90582pt.
-
-
-[21 <./chapters/03-praca-wlasna/figures/wymiary.png>]) (chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
+) (chapters/04-czytanie/04.1-Projektowanie-i-Budowa-OCR.tex
 
 [22 <./chapters/03-praca-wlasna/figures/electronics circut_schem.png>]
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 8.
@@ -906,7 +907,7 @@ Overfull \hbox (56.99579pt too wide) in paragraph at lines 12--12
 []    \OT4/cmtt/m/n/10 Nast¦pnie, wyuczony przez nas model SI odczytuje wyrzucony na ko±ci wynik i zwraca cyfr¦[] 
  []
 
-<chapters/04-czytanie/figures/schemat.jpg, id=552, 1308.89pt x 1088.065pt>
+<chapters/04-czytanie/figures/schemat.jpg, id=554, 1308.89pt x 1088.065pt>
 File: chapters/04-czytanie/figures/schemat.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/schemat.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/schemat.jpg  used on input line 18.
@@ -920,7 +921,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--39
 
  []
 
-<chapters/04-czytanie/figures/2_1.jpg, id=562, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/2_1.jpg, id=564, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/2_1.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_1.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_1.jpg  used on input line 72.
@@ -930,7 +931,7 @@ Overfull \hbox (15.13959pt too wide) in paragraph at lines 72--73
  [][] 
  []
 
-<chapters/04-czytanie/figures/2_2.jpg, id=563, 790.152pt x 593.5776pt>
+<chapters/04-czytanie/figures/2_2.jpg, id=565, 790.152pt x 593.5776pt>
 File: chapters/04-czytanie/figures/2_2.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_2.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_2.jpg  used on input line 79.
@@ -940,17 +941,17 @@ Overfull \hbox (15.16972pt too wide) in paragraph at lines 79--80
  [][] 
  []
 
-<chapters/04-czytanie/figures/2_3.jpg, id=564, 467.7475pt x 453.695pt>
+<chapters/04-czytanie/figures/2_3.jpg, id=566, 467.7475pt x 453.695pt>
 File: chapters/04-czytanie/figures/2_3.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_3.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_3.jpg  used on input line 86.
 (pdftex.def)             Requested size: 117.33626pt x 113.81102pt.
-<chapters/04-czytanie/figures/2_4.jpg, id=565, 467.7475pt x 453.695pt>
+<chapters/04-czytanie/figures/2_4.jpg, id=567, 467.7475pt x 453.695pt>
 File: chapters/04-czytanie/figures/2_4.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_4.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_4.jpg  used on input line 95.
 (pdftex.def)             Requested size: 117.33626pt x 113.81102pt.
-<chapters/04-czytanie/figures/2_5.jpg, id=566, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/2_5.jpg, id=568, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/2_5.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/2_5.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/2_5.jpg  used on input line 102.
@@ -974,12 +975,12 @@ Overfull \hbox (0.25076pt too wide) in paragraph at lines 162--165
 []\OT4/cmr/m/n/10 Wspomniane wcze-±niej od-bla-ski znacz-nie po-gar-szaj¡ sku-tecz-no±¢ od-czy-ty-wa-nia wy-niku z kostki.
  []
 
-<chapters/04-czytanie/figures/blask_raw.jpg, id=576, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/blask_raw.jpg, id=578, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/blask_raw.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/blask_raw.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/blask_raw.jpg  used on input line 173.
 (pdftex.def)             Requested size: 191.6987pt x 191.71478pt.
-<chapters/04-czytanie/figures/blask_proc.jpg, id=577, 64.24pt x 64.24pt>
+<chapters/04-czytanie/figures/blask_proc.jpg, id=579, 64.24pt x 64.24pt>
 File: chapters/04-czytanie/figures/blask_proc.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/blask_proc.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/blask_proc.jpg  used on input line 180.
@@ -987,22 +988,22 @@ Package pdftex.def Info: chapters/04-czytanie/figures/blask_proc.jpg  used on in
 
 
 [26 <./chapters/04-czytanie/figures/blask_raw.jpg> <./chapters/04-czytanie/figures/blask_proc.jpg>]
-<chapters/04-czytanie/figures/niepewne.jpg, id=585, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/niepewne.jpg, id=587, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/niepewne.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/niepewne.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/niepewne.jpg  used on input line 215.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/smiglo.jpg, id=586, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/smiglo.jpg, id=588, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/smiglo.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/smiglo.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/smiglo.jpg  used on input line 222.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/wir.jpg, id=587, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/wir.jpg, id=589, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/wir.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/wir.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/wir.jpg  used on input line 247.
 (pdftex.def)             Requested size: 191.6987pt x 143.97258pt.
-<chapters/04-czytanie/figures/wir2.jpg, id=588, 3292.3pt x 2473.24pt>
+<chapters/04-czytanie/figures/wir2.jpg, id=590, 3292.3pt x 2473.24pt>
 File: chapters/04-czytanie/figures/wir2.jpg Graphic file (type jpg)
 <use chapters/04-czytanie/figures/wir2.jpg>
 Package pdftex.def Info: chapters/04-czytanie/figures/wir2.jpg  used on input line 254.
@@ -1012,7 +1013,7 @@ Package pdftex.def Info: chapters/04-czytanie/figures/wir2.jpg  used on input li
 [27 <./chapters/04-czytanie/figures/niepewne.jpg> <./chapters/04-czytanie/figures/smiglo.jpg> <./chapters/04-czytanie/figures/wir.jpg> <./chapters/04-czytanie/figures/wir2.jpg>]) (chapters/04-czytanie/04.2-Opis-Modelu.tex
 
 [28]
-<chapters/04-czytanie/figures/ModelAcc1.png, id=603, 642.4pt x 481.8pt>
+<chapters/04-czytanie/figures/ModelAcc1.png, id=604, 642.4pt x 481.8pt>
 File: chapters/04-czytanie/figures/ModelAcc1.png Graphic file (type png)
 <use chapters/04-czytanie/figures/ModelAcc1.png>
 Package pdftex.def Info: chapters/04-czytanie/figures/ModelAcc1.png  used on input line 150.
@@ -1020,7 +1021,7 @@ Package pdftex.def Info: chapters/04-czytanie/figures/ModelAcc1.png  used on inp
 
 
 [29]
-<chapters/04-czytanie/figures/ModelLoss1.png, id=608, 642.4pt x 481.8pt>
+<chapters/04-czytanie/figures/ModelLoss1.png, id=609, 642.4pt x 481.8pt>
 File: chapters/04-czytanie/figures/ModelLoss1.png Graphic file (type png)
 <use chapters/04-czytanie/figures/ModelLoss1.png>
 Package pdftex.def Info: chapters/04-czytanie/figures/ModelLoss1.png  used on input line 157.
@@ -1063,7 +1064,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [38
 
 ]
-<wit/logo-pp.pdf, id=666, 422.57875pt x 422.57875pt>
+<wit/logo-pp.pdf, id=667, 422.57875pt x 422.57875pt>
 File: wit/logo-pp.pdf Graphic file (type pdf)
 <use wit/logo-pp.pdf>
 Package pdftex.def Info: wit/logo-pp.pdf  used on input line 95.
@@ -1085,20 +1086,20 @@ LaTeX2e <2024-11-01>
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0C3FED38A86A9C68E322581AD6EFDE00;12113.
+(rerunfilecheck)             Checksum: DD8CA4A3CA0CF5640CA8143CB715B109;12131.
  ) 
 Here is how much of TeX's memory you used:
  17024 strings out of 473681
  286074 string characters out of 5719194
- 710333 words of memory out of 5000000
+ 709333 words of memory out of 5000000
  39695 multiletter control sequences out of 15000+600000
  570142 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,606b,656s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0800.pk> <C:\Users\jakub\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plcsc10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr8.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti9.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.pfb><C:/Users/jakub/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt9.pfb>
-Output written on main.pdf (42 pages, 28282458 bytes).
+Output written on main.pdf (42 pages, 28285911 bytes).
 PDF statistics:
- 801 PDF objects out of 1000 (max. 8388607)
+ 802 PDF objects out of 1000 (max. 8388607)
  149 named destinations out of 1000 (max. 500000)
  723 words of extra memory for PDF output out of 10000 (max. 10000000)
 
