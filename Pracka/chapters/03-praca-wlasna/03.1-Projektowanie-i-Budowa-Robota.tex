@@ -77,8 +77,8 @@ Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego ef
 wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie
 serwomechanizmu jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów, ma
 ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$ a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
-Ostatecznie w tym celu wybrano mały silnik krokowy momentem obrotowym 34.3 mN.m, który jest wystarczający do wychylania kubka. 
-Silnik ten obraca układem dwóch kół zębatych przedstawionych na zdjęciu poniżej.
+Ostatecznie w tym celu wybrano mały silnik krokowy 28BYJ-48, którego moment obrotowy 34,3mNm jest w pełni wystarczający do wychylenia kubka. 
+Silnik ten obraca układem dwóch kół zębatych przedstawionych na rysunku \ref{fig:zebatki}.
 
 \begin{figure}[H]
     \centering
@@ -90,7 +90,7 @@ Podczas testów pierwszej wersji robota wykorzytującej obrotowy kubek powstał 
 Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wychylać go,
 wykorzystany został trwale zamontowany kubek, na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
 Takie rozwiązanie znacząco upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby. Ten wariant 
-nazwano roboczo blenderem, również od podobnej zasady działania mechanizmu.
+nazwano roboczo \textit{blenderem} -- podobnie jak wariant \textit{betoniarki} -- od podobnej zasady działania mechanizmu.
 
 Przy projektowaniu drugiego wariantu robota został wykorzystany ten sam stelaż złożony z metalowych prętów co w 
 pierwszym wariancie. Na drukarce 3D wydrukowano dodatkowe części, niezbędne do realizacji tego wariantu.
@@ -99,10 +99,14 @@ silnika prądu stałego oraz śmigła.
 
 W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temperatur podczas intensywnej pracy, 
 co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
-zastosowanie radiatorów, które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
-wspomagał cyrkulację powietrza wokół procesora. Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy 
+zastosowanie radiatorów (Rys.\ref{fig:zimno}), które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
+wspomagał cyrkulację powietrza wokół procesora. Jest to działanie zalecane w oficjalnej dokumentacji na stronie Raspberry Pi, mające przeciwdziałać 
+ograniczaniu wydajności w celu ochrony przed przegrzaniem \textit{(Thermal throttling)}.\cite{cooling} 
+Dodatkowym problemem wynikającym z rozgrzewania się procesora do wysokich temperatur jest materiał PLA, z którego wykonywane były komponenty robota
+oraz prototypów. Materiał ten zaczyna się deformować przy temeraturze $60^{\circ}$C.\cite{plaprusa} Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy 
 procesora, która teraz utrzymuje się w granicach $55^{\circ}$C w czasie rzutów i spada po ich zakończeniu do około $45^{\circ}$C,
 co zapewnia stabilne i bezpieczne działanie całego systemu. 
+\textcolor{red}{TODO sprawdzic te wartości porównac z włączonym i wyłączonym wentylatorem + dodatkowo sterowanie wentylatorem}
 
 \begin{figure}[H]
     \centering
