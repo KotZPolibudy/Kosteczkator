@@ -6,6 +6,8 @@ Wymiary zewnętrzne: 180mm x  134mm x 84mm
 
 Masa: 0,5 Kg
 
+Pozostałe najważeniejsze wymiary przedstawiono na Rys.\ref{fig:wymiary} na końcu tego podrozdziału.
+
 \subsubsection{Elektronika}
     \begin{itemize}
         \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0. \cite{malina}
@@ -20,7 +22,7 @@ Masa: 0,5 Kg
     \end{itemize}
 
 \subsubsection{Elementy strukturalne:}
-Wszystkie elementy strukturalne wymienione poniżej zostały wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
+Wszystkie elementy strukturalne wymienione poniżej są zaznaczone na Rys.\ref{fig:komponenty}. Zostały one wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
 PLA \textit{(Polylactic Acid)}. Wyboru dokonano po porównaniu właściwości fizycznych, cen i łatwości wydruku różnych materiałów. Wzięto pod uwagę
 PLA, PETG \textit{(Polyethylene Terephthalate Glycol-modified)} oraz ABS \textit{(Acrylonitrile Butadiene Styrene)}. Ostatecznie wybrano PLA, ze względu na jego sztywność, dużą popularność,
 niską cenę oraz prostotę procesu druku. ABS odrzucono ze względu na szkodliwe opary podczas druku i potrzebę zamkniętej komory drukarki. PETG najprawdopodobniej
@@ -30,15 +32,25 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
         \item obudowa,
         \item tylna ściana obudowy,
         \item górna pokrywa,
+        \item kubek,
         \item płytka do montażu kamery i diod LED,
         \item uchwyt do silnika,
         \item płytka do montażu elektroniki,
-        \item śmigło.
+        \item mocowanie przycisku,
+        \item mocowanie sterownika L298,
+        \item belka,
+        \item śmigło,
+        \item nóżki.
     \end{itemize}\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty.png}
+        \caption{\label{fig:komponenty}Komponenty robota}
+    \end{figure}
 
 \subsubsection{Zasilanie:}
 \begin{itemize}
-    \item Zasilacz DC 12V - wejście Power Jack 5,5 x 2,1 mm. Wykorzystano zasilacz o mocy 60W, jednak w zupełności do zasilania robota wystarczyłby zasilacz o mocy 
+    \item Zasilacz DC 12V - wejście Power Jack 5,5 x 2,1 mm. Wykorzystano zasilacz o mocy 60W, jednak w zupełności do zasilania robota wystarczyłby zasilacz o mocy \textcolor{red}{TODO obliczyć moc i zamieścić tu}
 \end{itemize}
 
 
@@ -48,12 +60,6 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/wymiary.png}
     \caption{\label{fig:wymiary}Wymiary zewnętrzne}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty.png}
-    \caption{\label{fig:komponenty}Komponenty robota}
 \end{figure}
 
 \begin{figure}[H]
