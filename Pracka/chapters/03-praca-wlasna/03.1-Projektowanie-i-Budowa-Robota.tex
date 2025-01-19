@@ -17,8 +17,8 @@ projektach inżynierskich, takich jak konstrukcja robotów. To czyni druk 3D ide
 testowania i wprowadzania ulepszeń.
 
 Głównym założeniem podczas projektowania i budowy robota było założenie modułowości. Oznacza to, że każdy element jest wymienny i łatwo dostępny.
-Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
-są znacząco prostsze i przede wszystkim szybsze niż gdyby cały robot był jednolitą bryłą.
+Dzięki takiemu podejściu, wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota,
+są znacząco prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
 
 Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box.
 Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia - jednak to rozwiązanie odrzucono ze względu na 
@@ -129,7 +129,6 @@ zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic 
     \caption{\label{fig:widac}Jednobarwna kość}
 \end{figure}
 
-
 W obu wariantach dużym problemem był złej jakości obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
 LED sterowanych przy pomocy układu tranzystorów Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
 robienie zdjęć lepszej jakości. Zdjęcie oświetlonego kubka przedstawiono na Rys.\ref{fig:jasno}. Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
@@ -145,6 +144,36 @@ jest minimalna, ponieważ wystarczają dwa przewody do podłączenia całego uk�
     \caption{\label{fig:jasno}Oświetlone wnętrze kubka}
 \end{figure}
 
+Podczas testów prototypów konieczne było również określenie wysokości na której może znajdywać się kamera nad kubkiem. Wysokość tą określono na podstawie 
+jakości zdjęć jako najlepszą, podczas testów prototypów. W tym celu wykonano zdjęcia z różną odległością kamery od dna kubka (patrz Rys.\ref{fig:wysoko}-\ref{fig:ideolo}). Głównym celem było znalezienie minimalnej odległości kamery od dna kubka, które nie powodowałoby, 
+znacznego pogorszenia się jakości zjęć co utrudniałoby rozpoznawanie wyników na kości. Dodatkową zaletą obniżenia kamery względem kubka był fakt, że kamera 
+znajdująca się niżej miała w swoim zasięgu widoku tylko dno kubka co również miało za zadanie ułatwić rozpoznawanie kości oraz jej wartości. W trakcie testowania
+odległość tą wyznaczono na 120mm.
+
+\begin{figure}[h]
+    \centering
+    % Pierwsze zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/wysoko.jpg}
+        \caption{\label{fig:wysoko}Pierwsze ustawienie}
+    \end{minipage}
+    \hfill
+    % Drugie zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/niżej.jpg}
+        \caption{\label{fig:nizej}Drugie ustawienie}
+    \end{minipage}
+    \hfill
+    % Trzecie zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/ideolo.jpg}
+        \caption{\label{fig:ideolo}Trzecie ustawienie}
+    \end{minipage}
+\end{figure}
+
 Po skonstruowaniu obu wersji robota i wstępnym przetestowaniu ich, okazało się, że wariant blendera będzie znacznie szybciej (około 4-krotnie) wykonywał rzut kością.
 Pojedyńczy rzut kością za pomocą \textit{bledera} wraz ze zrobieniem zdjęcia trwa około 1,7 sekundy.
 Ponadto wersja blendera jest znacznie stabilniejszą konstrukcją, ponieważ nie wymaga poruszania dużymi komponentami robota. 
@@ -156,10 +185,13 @@ głównym zadaniem tego robota jest generowanie liczb losowych, a to zadanie szy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Ostateczna wersja robota}
-Projektowanie ostatecznej wersji robota rozpoczęto od przeanalizowania wad, zalet oraz ogólnych cech (takich jak wymiary) prototypów.
-Postanowiono, że finalna wersja robota będzie wykorzystywała kubek o tej samej średnicy co prototypowa. Dookoła tych wymiarów zaprojektowano 
-resztę konstrukcji. Obudowę zaprojektowano w taki sposób żeby była w stanie pomieścić
-kubek oraz kamerę umieszczoną na wysokości 120mm nad dnem kubka. Wysokość tą określono na podstawie jakości zdjęć jako najlepszą, podczas testów prototypów.
+Projektowanie ostatecznej wersji robota rozpoczęto od przeanalizowania wad, zalet oraz ogólnych cech prototypów. Postanowiono, że komputer oraz układy sterujące będą
+umieszczone z boku kubka nie nad tak jak w prototypach, ponieważ sprawiało to, że robot był zbyt wysoki, względem założenia kompaktowego urządzenia.
+Na podstawie testów prototypów wywnioskowano, że najlepszym rozwiązaniem będzie zaprojektowanie obudowy umożliwającej łatwy dostęp do wszystkich komponentów.
+Postanowiono, że finalna wersja robota będzie wykorzystywała kubek o tej samej średnicy co w prototypie. Oznaczało to, że kubek będzie miał zwenętrzną średnicę 80mm
+i ścianki o grubości 2 mm, na których tak jak w protoypie będą pionowe żebra (patrz nr. 3 na Rys.\ref{fig:kubki}). Dookoła kubka, którego ostateczne wymiary wyniosły 126x80mm,
+zaprojektowano resztę konstrukcji. Obudowę zaprojektowano w taki sposób żeby była w stanie pomieścić
+kubek oraz kamerę umieszczoną na wysokości 120mm nad dnem kubka.
 Dodatkowo w tylnej oraz dolnej części obudowy pozostawiono przestrzeń na resztę
 elementów składowych robota. Rozmiar tej przestrzeni wyznaczono poprzez zwymiarowanie pozostałych elementów takich jak silnik, sterownik, wentylator 
 czy Raspberry Pi. Te wymiary posłużyły do wyznaczenia minimalnej potrzebnej przestrzeni. To minimum zwiększono w taki sposób
