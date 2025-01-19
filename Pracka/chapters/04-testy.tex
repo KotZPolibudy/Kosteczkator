@@ -1,6 +1,7 @@
 \chapter{Testy}
 
 \section{Użyte testy}
+\label{testyOpis}
 
 \textit{Najszerzej stosowanym w świecie narzędziem weryfikacji generatorów
 (z racji dominowania standardów amerykańskich w dziedzinie ochrony informacji) jest zestaw testów podany przez normę 
@@ -8,8 +9,9 @@ amerykańską FIPS-140-2, dotyczącą bezpieczeństwa modułów kryptograficznyc
 norma przewiduje cztery testy istotności. Każdy z nich przeprowadzany jest dla ciągu długości 20000 bitów (w przypadku 
 wykorzystywania dłuższych ciągów przebadane muszą być kolejne podciągi o tej długości). Poziom istotności tych testów, 
 czyli prawdopodobieństwo odrzucenia ciągu mogącego pochodzić z prawidłowego źródła bitów, jest równy 0,0001.}
-[Kotulski, 2001, s. 60] \par
-W punktach 6.1.2 - 6.1.5 zostały opisane testy wskazane w owej normie. Zostały one zaimplementowane w języku Python.
+\cite{Kotulski2001} \par
+W punktach \ref{monbitOpis} - \ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
+są zgodnee z nomrami przedstawionymi w FIPS 140-2 \cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
 Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}. Niestety, do zastosowania nawet 
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
@@ -19,8 +21,8 @@ zrezygnowano z wykorzystania tej biblioteki.
 
 \subsection{Test chi-kwadrat}
 Sformuowano następującą hipotezę:
-\par \begin{math} H_0 \end{math}: Rozkład wszystkich odczytanych wartości ścianek kości jest równy.
-\par \begin{math} H_1 \end{math}: Rozkład wszystkich odczytanych wartości ścianek kości nie jest równy.
+\par \begin{math} H_0 \end{math}: Rozkład prawdopodobieństwa wyników jest równomierny.
+\par \begin{math} H_1 \end{math}: Rozkład prawdopodobieństwa wyników nie jest równomierny.
 \par Aby zweryfikować hipotezę zerową, dla wszystkich \begin{math} n \end{math} rzutów odczytano, ile razy wypadła każda z 
 \begin{math} k \end{math} ścian kości ośmiościennej (\begin{math}O_i\end{math}). Wyniki te porównano z oczekiwaną
 liczbą wyrzucenia każdej ze ścianek \begin{math}E_i = \frac{n}{k}\end{math}. 
@@ -32,9 +34,6 @@ Ponieważ do generowania liczb losowych użyto kości ośmiościennej, to \begin
 \begin{displaymath}
     \chi^2 = \sum^{8}_{i=1} \left( \frac{O_i - E_i}{E_i} \right)^2
 \end{displaymath}
-\textit{Poziomem istotności (\begin{math} \alpha \end{math}) nazywa się prawdopodobieństwo popełnienia błędu pierwszego 
-rzędu. Najczęściej przyjmuje się poziom istotności \begin{math} \alpha = 0{,}05\end{math}.} 
-[Koziarska i Metelski, 2016, s. 82]
 \par Stopień swobody przy \begin{math} k = 8 \end{math} równa się:
 \begin{displaymath}
     k - 1 = 8 - 1 = 7
@@ -45,6 +44,7 @@ hipotezy zerowej.
 
 
 \subsection{Test monobitowy}
+\label{monbitOpis}
 Test monobitowy bada proporcję między liczbą zer a liczbą jedynek w otrzymanym ciągu bitów. Dla wszystkich 
 wygenerowanych bitów zliczono liczbę jedynek w ciągu (\textit{X}). Oczekiwana liczba jedynek w ciągu wynosi:
 \begin{displaymath}
@@ -57,12 +57,13 @@ wygenerowanych bitów zliczono liczbę jedynek w ciągu (\textit{X}). Oczekiwana
 Celem testu serii jest zliczenie tak zwanych \textit{serii}, czyli nieprzerwanych ciągów takich samych bitów. Test serii
 sprawdza, czy ilość serii każdej długości jest zgodna z oczekiwanymi wartościami. Test serii bada, czy zmiany między 
 wartościami bitów nie są zbyt częste bądź zbyt rzadkie. Oczekiwane rozkłady wystąpień poszczególnych serii przedstawiono
-w tabeli 6.1.
+w tabeli \ref{serieOczekiwane}.
 \par \begin{math} H_0 \end{math}: Rozkład wystąpień serii bitów jest zgodny z przyjętym rozkładem.
 \par \begin{math} H_1 \end{math}: Rozkład wystąpień serii bitów nie jest zgodny z przyjętym rozkładem.
 \begin{table}[h]
     \centering
     \caption{Oczekiwane liczby wystąpień serii}
+    \label{serieOczekiwane}
     \begin{tabular}{|c|c|} 
         \hline
         Długość serii & Przedział \\
@@ -88,9 +89,10 @@ samych bitów. Ciągi 20 000 bitów nie powinny zawierać serii dłuższych niż
 \par \begin{math} H_1 \end{math}: Wygenerowany ciąg zawiera długą serię.
 
 \subsection{Test pokerowy}
-Test pokerowy wykorzystuje statystykę chi-kwadrat. Polega na podziale badanego ciągu na segmenty 4-bitowe i zliczeniu
-liczby wystąpień każdej możliwej z szesnastu kombinacji \begin{math}s_i\end{math}. Następnie oblicza się statystykę
-testową:
+\label{pokerowyOpis}
+Test pokerowy wykorzystuje statystykę rozkładu chi-kwadrat. Polega na podziale badanego ciągu na segmenty 4-bitowe i 
+zliczeniu liczby wystąpień każdej możliwej z szesnastu kombinacji \begin{math}s_i\end{math}. Następnie oblicza się 
+statystykę testową:
 \begin{displaymath}
     X = \frac{16}{5000} \sum^{15}_{i=0} s_i^2 - 5000
 \end{displaymath}
@@ -104,67 +106,76 @@ Rozkład sekwencji w ciągu jest zgodny z oczekiwanym, gdy:
 
 
 \section{Wyniki testów}
-Przedstawione w sekcji 6.1 testy zostały wykorzystane do sprawdzenia losowości ciągu wygenerowanego przez robota i 
-odczytywnane przez model sztucznej inteligencji. Ich wyniki przedstawiono w poniższej sekcji.
+Przedstawione w sekcji \ref{testyOpis} testy zostały wykorzystane do sprawdzenia losowości ciągu wygenerowanego przez robota i 
+odczytywnane przez oba modele sztucznej inteligencji. Ich wyniki przedstawiono w poniższej sekcji.
 \subsection{Test chi-kwadrat}
-Dla odczytanych rzutów kością otrzymano statystykę testową chi-kwadrat równą 246{,}079, która znacznie przekroczyła 
-przyjętą wartość krytyczną równą \begin{math} 14{,}0671 \end{math}. Odrzucono hipotezę \begin{math} H_0 \end{math} i 
-przyjęto hipotezę \begin{math} H_1 \end{math}: rozkład odczytanych wyników rzutów kością nie jest równy. Otrzymany 
-rozkład przedstawiono w tabeli 6.2.
+\label{chiWyniki}
+Dla odczytanych wyników rzutów kością przez pierwszy modelotrzymano wartość statystyki testowej chi-kwadrat równą 
+246{,}079, która znacznie przekroczyła przyjętą wartość krytyczną równą \begin{math} 14{,}0671 \end{math}. 
+Odrzucono hipotezę \begin{math} H_0 \end{math} i przyjęto hipotezę \begin{math} H_1 \end{math}: rozkład odczytanych 
+wyników rzutów kością nie jest równy. 
+Otrzymany rozkład przedstawiono w tabeli \ref{chiTabela}.
 \begin{table}[h]
     \centering
     \caption{Rozkład otrzymanych wyników rzutu kością}
-    \begin{tabular}{|c|c|} 
+    \label{chiTabela}
+    \begin{tabular}{|c|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{2cm}|}
         \hline
-        Ścianka & Ilość otrzymanych rzutów \\
+        & \multicolumn{2}{c|}{Liczba otrzymanych rzutów} \\
         \hline
-        1 & 849 \\
+        Wynik & Model 1 & Model 2 \\
         \hline
-        2 & 682 \\
+        1 & 849 & 870 \\
         \hline
-        3 & 952 \\
+        2 & 682 & 841 \\
         \hline
-        4 & 831 \\
+        3 & 952 & 838 \\
         \hline
-        5 & 866 \\
+        4 & 831 & 819 \\
         \hline
-        6 & 1124 \\
+        5 & 866 & 836 \\
+        \hline
+        6 & 1124 & 737 \\
         \hline  
-        7 & 816 \\
+        7 & 816 & 818 \\
         \hline 
-        8 & 547 \\
+        8 & 547 & 908 \\
         \hline 
     \end{tabular} 
 \end{table}
 
 
 \subsection{Test monobitowy}
+\label{monbitWyniki}
 Dla otrzymanego ciągu zliczono 10694 bitów o wartości 1. Jest ona większa od oczekiwanej liczby jedynek. Hipotezę zerową
 odrzucono.
 
 \subsection{Test serii}
 
-Wyniki testów serii przedstawiono w tabeli 6.3. Rozkład serii w badanym ciągu nie jest zgodny z oczekiwanymi dla obu 
+Wyniki testów serii przedstawiono w tabeli \ref{serieTabela}. Rozkład serii w badanym ciągu nie jest zgodny z oczekiwanymi dla obu 
 serii o długości 1, obu serii o długości 2, serii jedynek o długości 4 i serii zer o długości 6 lub więcej. Hipotezę
 zerową odrzucono.
 \begin{table}[h]
     \centering
     \caption{Liczby wystąpień serii w ciągu}
-    \begin{tabular}{|c|c|c|c|} 
+    \label{serieTabela}
+    \begin{tabular}{|c|c|c|c|c|c|} 
         \hline
-        Długość serii & Przedział & Serie zer & Serie jedynek \\
+        \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{Model 1} & \multicolumn{2}{c|}{Model 2} \\
         \hline
-        1 & 2343 - 2657 & 2717 & 2303 \\
+        Długość serii & Przedział & Serie zer & Serie jedynek & Serie zer & Serie jedynek \\
         \hline
-        2 & 1135 - 1365 & 559 & 1141 \\
+        1 & 2343 - 2657 & 2717 & 2303 & 2405 & 2477 \\
         \hline
-        3 & 542 - 708 & 559 & 678 \\
+        2 & 1135 - 1365 & 1367 & 1141 & 1212 & 1250 \\
         \hline
-        4 & 251 - 373 & 263 & 374 \\
+        3 & 542 - 708 & 559 & 678 & 612 & 593 \\
         \hline
-        5 & 111 - 201 & 113 & 158 \\
+        4 & 251 - 373 & 263 & 374 & 338 & 290 \\
         \hline
-        6 i więcej & 111 - 201 & 82 & 177 \\
+        5 & 111 - 201 & 113 & 158 & 162 & 155 \\
+        \hline
+        6 i więcej & 111 - 201 & 82 & 177 & 194 & 159 \\
         \hline  
     \end{tabular} 
 \end{table}   
@@ -175,39 +186,59 @@ większa od maksymalnej przyjętej długości najdłuższego ciągu bitów, wyno
 zerowej.
 
 \subsection{Test pokerowy}
+\label{pokerWyniki}
 Dla testu pokerowego otrzymano statystykę testową równą 120{,}026. Jest ona większa od oczekiwanej, zatem odrzucono 
-hipotezę zerową. Rozkład segmentów w ciągu przedstawiono w tabeli 6.4.
+hipotezę zerową. Rozkład segmentów w ciągu przedstawiono w tabeli \ref{pokerTabela}.
 \begin{table}[h]
     \centering
     \caption{Liczby wystąpień kombinacji bitów}
-    \begin{tabular}{|c|c|c|c|} 
+    \label{pokerTabela}
+    \begin{tabular}{|c|c|c|} 
         \hline
-        Kombinacja bitów & Liczba wystąpień & Kombinacja bitów & Liczba wystąpień \\
+        & \multicolumn{2}{c|}{Liczba wystąpień} \\
         \hline
-        0000 & 197 & 1000 & 255 \\
+        Kombinacja bitów & Model 1 & Model 2 \\
         \hline
-        0001 & 249 & 1001 & 355 \\
+        0000 & 197 & 361 \\
         \hline
-        0010 & 277 & 1010 & 311 \\
+        0001 & 249 & 310 \\
         \hline
-        0011 & 312 & 1011 & 355 \\
+        0010 & 277 & 347 \\
         \hline
-        0100 & 279 & 1100 & 322 \\
+        0011 & 312 & 317 \\
         \hline
-        0101 & 309 & 1101 & 335 \\
+        0100 & 279 & 246 \\
+        \hline
+        0101 & 309 & 280  \\
         \hline  
-        0110 & 363 & 1110 & 366 \\
+        0110 & 363 & 283 \\
         \hline  
-        0111 & 338 & 1111 & 377 \\
+        0111 & 338 & 294 \\
+        \hline  
+        1000 & 255 & 321 \\
+        \hline  
+        1001 & 355  & 276 \\
+        \hline  
+        1010 & 311 & 298 \\
+        \hline  
+        1011 & 355 & 322 \\
+        \hline  
+        1100 & 322 & 320 \\
+        \hline  
+        1101 & 335 & 297 \\
+        \hline  
+        1110 & 366 & 318 \\
+        \hline  
+        1111 & 377 & 310 \\
         \hline  
     \end{tabular} 
 \end{table} 
 
 \subsection{Wnioski}
-Dla czterech z pięciu testów odrzucono hipotezę zerową. W wynikach testu chi-kwadrat (6.2.1) można zauważyć, że liczba
-6 jest odczytywana ponad dwa razy częściej niż liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba
-6 jest interpretowana jako 110, a liczb 8 na 000, co można zaobserwować w wynikach pozostałych testów. Sprawia to, że 
-jedynki pojawiają się częściej w ciągu niż zera, co ukazuje już test monobitowy (6.2.2), gdzie liczba jedynek w ciągu
-jest większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (6.2.5), gdzie segmenty
-zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające więcej bitów o 
-wartości 0. 
+Dla czterech z pięciu testów odrzucono hipotezę zerową. W wynikach testu statystyki rozkładu chi-kwadrat 
+(\ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż liczba 8. Ma to 
+bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a liczb 8 na 000, 
+co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się częściej w ciągu niż zera, 
+co ukazuje już test monobitowy (\ref{chiWyniki}), gdzie liczba jedynek w ciągu jest większa niż oczekiwana. 
+Podobny problem można zaobserwować w wynikach testu pokerowego (\ref{pokerWyniki}), gdzie segmenty zawierające 
+trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające więcej bitów o wartości 0. 

@@ -1,31 +1,33 @@
 \section{Dokumentacja techniczna}
 \subsection{Hardware}
-\label{subsec:hardware}
 \subsubsection{Ogólne parametry robota:}
 Wymiary zewnętrzne: 180mm x  134mm x 84mm
 
 Masa: 0,5 Kg
 
-\subsubsection{Elektronika}
+\subsubsection{Komponenty:}
+Elektronika:
     \begin{itemize}
-        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0. \cite{malina}
-        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219. \cite{malina}
-        \item L298 - Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników.\cite{L298}.
-        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcjyjnych.\cite{ULN2803a},
-        \item silnik N20 DC 12V z metalową przekładnią 2000RPM.
-        \item trzy diody LED 3mm białe.
-        \item trzy diody LED 3mm czerwona, niebieska, zielona.
-        \item przycisk monostabliny THT.
+        \item Raspberry Pi 4B,
+        \item Raspberry Pi Camera V2,
+        \item L298 - \textit{The L298 is an integrated monolithic circuit in a 15-lead multiwatt and PowerSO-20
+        packages. It is a high-voltage, high-current dual full-bridge driver designed to accept
+        standard TTL logic levels and drive inductive loads such as relays, solenoids, DC
+        and stepping motors.}.\cite{L298},
+        \item ULN2803A - \textit{The ULN2801A, ULN2802A, ULN2803A and
+        ULN2804A each contain eight Darlington
+        transistors with common emitters and integral
+        suppression diodes for inductive loads. Each
+        Darlington features a peak load current rating of
+        600 mA (500 mA continuous) and can withstand
+        at least 50 V in the OFF state.}.\cite{ULN2803a},
+        \item silnik DC 12V,
+        \item diody LED 3mm,
+        \item przycisk monostabliny THT,
         \item gniazdo wtykowe DC w formacie 5,5 x 2,1 mm.
     \end{itemize}
 
-\subsubsection{Elementy strukturalne:}
-Wszystkie elementy strukturalne wymienione poniżej zostały wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
-PLA \textit{(Polylactic Acid)}. Wyboru dokonano po porównaniu właściwości fizycznych, cen i łatwości wydruku różnych materiałów. Wzięto pod uwagę
-PLA, PETG \textit{(Polyethylene Terephthalate Glycol-modified)} oraz ABS \textit{(Acrylonitrile Butadiene Styrene)}. Ostatecznie wybrano PLA, ze względu na jego sztywność, dużą popularność,
-niską cenę oraz prostotę procesu druku. ABS odrzucono ze względu na szkodliwe opary podczas druku i potrzebę zamkniętej komory drukarki. PETG najprawdopodobniej
-byłby również odpowiednim materiałem do wydrukowania potrzebnych w tym projekcje części, jednak jest on podatny na nitkowanie w czasie druku. Ta cecha
-obniżała by jakość wydruku komponentów robota, które zawierają wiele otworów drukowanych w płaszczyźnie pionowej a to sprzyjałoby nitkowaniu. \cite{PLA} \cite{PETG} \cite{ABS} \cite{PLA2}
+Elementy strukturalne (Wydrukowane na drukarce 3D. Materiał, którego użyto to PLA):
     \begin{itemize}
         \item obudowa,
         \item tylna ściana obudowy,
@@ -36,9 +38,9 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
         \item śmigło.
     \end{itemize}\
 
-\subsubsection{Zasilanie:}
+Zasilanie:
 \begin{itemize}
-    \item Zasilacz DC 12V - wejście Power Jack 5,5 x 2,1 mm. Wykorzystano zasilacz o mocy 60W, jednak w zupełności do zasilania robota wystarczyłby zasilacz o mocy 
+    \item Zasilacz DC 12V - wtyczka 5,5 x 2,1 mm.
 \end{itemize}
 
 
@@ -54,12 +56,6 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty.png}
     \caption{\label{fig:komponenty}Komponenty robota}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/electronics circut_schem.png}
-    \caption{\label{fig:electronics}Schemat elektryczny}
 \end{figure}
 
 \subsection{Software}
