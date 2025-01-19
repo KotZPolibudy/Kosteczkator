@@ -1,8 +1,6 @@
 # testy modelu 1 (jest źle)
 
 Przeanalizowane bity:  20000
-Entropia: 2.973
-Entropia procentowa: 99.095%
 
 Wyniki testu chi-kwadrat
 1: 849
