@@ -131,13 +131,13 @@ zamonotowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic 
 
 
 W obu wariantach dużym problemem był złej jakości obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
-LED sterowanych przy pomocy układu ULN2803A. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
-robienie zdjęć lepszej jakości. Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
+LED sterowanych przy pomocy układu tranzystorów Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze co pozwala kamerze na
+robienie zdjęć lepszej jakości. Zdjęcie oświetlonego kubka przedstawiono na Rys.\ref{fig:jasno}. Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
 jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Spowodowało to że wysokość prototypu zmniejszyła się o około 5cm - 
 co było znaczącą poprawą, ponieważ jednym z założeń postawionych na początku budowy było stworzenie urządzenia o niewielkich rozmiarach.
 Dzięki tym zabiegom otrzymywane zdjęcia stały się dużo bardziej wyraźne oraz pole widzenia kamery było ograniczone tylko do dna kubka.
-Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo dzięki czemu nie trzeba było wykorzystywać dodatkowych rezystorów a ilość połączeń
-została minimalna.
+Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo. Dzięki temu nie trzeba było wykorzystywać dodatkowych rezystorów a ilość połączeń
+jest minimalna, ponieważ wystarczają dwa przewody do podłączenia całego układu diod.
 
 \begin{figure}[H]
     \centering
@@ -146,12 +146,14 @@ została minimalna.
 \end{figure}
 
 Po skonstruowaniu obu wersji robota oczywistym stało się, że wariant blendera będzie znacznie szybciej (około 4-krotnie) wykonywał rzut kością.
-Pojedyńczy rzut kością wraz ze zrobieniem zdjęcia trwa około 1.7 sekundy.
+Pojedyńczy rzut kością wraz ze zrobieniem zdjęcia trwa około 1,7 sekundy.
 Ponadto wersja blendera jest znacznie stabilniejszą konstrukcją, ponieważ nie wymaga poruszania dużymi komponentami robota. 
-Największą zaletą wariantu blendera jest prostsza - w porównaniu z wariantem betoniarki - budowa spowodowana mniejszą liczbą ruchomych elementów. Jest to ważne z punktu widzenia
+Największą zaletą wariantu blendera jest prostsza -- w porównaniu z wariantem betoniarki -- budowa spowodowana mniejszą liczbą ruchomych elementów. Jest to ważne z punktu widzenia
 długotrwłej eksploatacji podczas, której bardziej skomplikowane mechanizmy szybciej się zużywają. Z tych powodów do docelowego robota wybrano 
 wariant blendera. Dzięki temu projekt stał się mniej skomplikowany mechanicznie a jednocześnie jego użyteczność wzrosła, ponieważ
 głównym zadaniem tego robota jest generowanie liczb losowych a to zadanie szybciej był w stanie wykonywać właśnie ten wariant.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Ostateczna wersja robota}
 Projektowanie ostatecznej wersji robota rozpoczęto od przeanalizowania wad, zalet oraz ogólnych cech (takich jak wymiary) prototypów.
