@@ -1,0 +1,57 @@
+# model 2 (jest super)
+
+Przeanalizowane bity:  20000
+
+Wyniki testu chi-kwadrat
+1: 870
+2: 841
+3: 838
+4: 819
+5: 836
+6: 737
+7: 818
+8: 908
+Wynik: False (20.072)
+
+Test pojedynczych bit�w:
+0: 10195
+1: 9805
+Wynik: True
+
+Testy serii:
+Dla 0
+Najd�u�sza seria: 17
+1: 2405
+2: 1212
+3: 612
+4: 338
+5: 162
+6: 194
+Dla 1
+Najd�u�sza seria: 16
+1: 2477
+2: 1250
+3: 593
+4: 290
+5: 155
+6: 159
+Wynik: True
+
+Test pokerowy:
+0000: 361
+0001: 310
+0010: 347
+0011: 317
+0100: 346
+0101: 280
+0110: 283
+0111: 294
+1000: 321
+1001: 276
+1010: 298
+1011: 322
+1100: 320
+1101: 297
+1110: 318
+1111: 310
+Wynik: True (28.794)
