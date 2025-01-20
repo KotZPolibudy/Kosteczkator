@@ -4,9 +4,9 @@ W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono fu
 która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
 Funkcja działa w następujących krokach:
 \begin{itemize}
-    \item Wczytanie i przetworzenie obrazu
-    \item Klasyfikacja obrazu (odczytanie wyniku)
-    \item Interpretacja wyniku
+    \item Wczytanie i przetworzenie obrazu.
+    \item Klasyfikacja obrazu (odczytanie wyniku).
+    \item Interpretacja wyniku.
 \end{itemize}
 Opisanych w następujących podrozdziałach.
 
@@ -14,7 +14,7 @@ Opisanych w następujących podrozdziałach.
 
 W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać.
 Krok ten jest pomijany, gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
-Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach na których trenowany był model,
+Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach, na których trenowany był model,
 a więc skalowany jest na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli), zmieniany w skalę szarości, oraz normalizujemy.
 
 \subsection{Klasyfikacja obrazu}\label{subsec:klasyfikacja-obrazu}
