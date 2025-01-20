@@ -2,10 +2,10 @@
 
 Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości ośmiościennych k8 do jednej z ośmiu klas,
 odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
-Do implementacji modelu wykorzystano przede wszystkim moduł tensorflow oraz wchodzący obecnie w jego skład Keras,
+Do implementacji modelu wykorzystano przede wszystkim moduł TensorFlow \cite{tensorflow_docs}
+oraz wchodzący obecnie w jego skład Keras \cite{keras_docs},
 który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 
---- TODO --- linki z przypisami, cytowania dokumentacji Keras, Tensorflow
 
 %% uselesss :(( \textit{Biblioteka Keras jest wygodnym opakowaniem (wrapperem) dla modeli DL używanych do oszacowań klasyfikacji lub regresji]} [Donald J. Norris, 2020 s. 355 wydanie APN PROMISE SA]
 
@@ -13,38 +13,38 @@ który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 \subsection{Przygotowanie danych}\label{subsec:przygotowanie-danych}
 
 Dane wejściowe zostały podzielone na zestawy treningowy i walidacyjny w proporcji 70:30.
-W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów dostępne w klasie ImageDataGenerator, takie jak:
+W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów dostępne w klasie
+\texttt{ImageDataGenerator} \cite{keras_imagedatagenerator}, takie jak:
 
 --- TODO --- cytowanie dokumentacji ImageDataGenerator
 
 \begin{itemize}
     \item obrót o losowy kąt w zakresie do 90°,
     \item przesunięcia poziome i pionowe,
-    \item transformacje perspektywiczne (shear) ,
-    \item losowe powiększenia (zoom) .
+    \item transformacje perspektywiczne (shear),
+    \item losowe powiększenia (zoom).
 \end{itemize}
 
-\iffalse
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_raw.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_raw}
         \caption{Obraz surowy.}
         \label{fig:5raw}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_rotate.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_rotate}
         \caption{Obraz po obrocie.}
         \label{fig:5rotate}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_move.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_shift}
         \caption{Obraz po przesunięciu.}
         \label{fig:5move}
     \end{subfigure}
@@ -53,43 +53,57 @@ W celu zwiększenia różnorodności danych treningowych zastosowano techniki au
 
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_shear.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_shear}
         \caption{Obraz po ścinaniu.}
         \label{fig:5shear}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_zoom.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_zoom}
         \caption{Obraz po powiększeniu.}
         \label{fig:5zoom}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_combined.jpg}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/combined_1}
         \caption{Obraz wynikowy.}
         \label{fig:5combined}
     \end{subfigure}
 
-    \caption{Kolejne etapy przetwarzania obrazu, od surowego do wynikowego.}
-    \label{fig:5processing}
+    \caption{Różne składowe augmentacji obrazów uczących}
+    \label{fig:5augment}
 \end{figure}
-
-\fi
-
---- TODO --- dać obrazek surowy i każdą transformację. może też jakieś ich wszystkich złożenie, więc 6 obrazków?
-dodatkowo, niech to będą obrazki 5 i potem porównanie lustrzanej 5 i 2 !!!
 
 
 W szczególności należy zaznaczyć, że finalnie uniknięto początkowo przeoczonego błędu,
 jakim jest tworzenie obrazów lustrzanych w wyżej wymienionych transformacjach, gdyż obrazy lustrzane
-sprawiały że ścianki 2 oraz 5 były znacznie gorzej rozróżnialne przez wytrenowany model.
+sprawiały, że ścianki 2 oraz 5 były znacznie gorzej rozróżnialne przez wytrenowany model.
+Problem nie był początkowo łatwy do wykrycia, gdyż zdjęcia odbite zarówno w pionowej jak i poziomej osi były poprawne,
+a niepoprawne były te odbite tylko wobec jednej osi.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_preprocessed}
+        \caption{Zdjęcie przedstawiające 5}
+        \label{fig:5_confusion}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/2_mirror}
+        \caption{Zdjęcie przedstawiające 2, odbite lustrzanie}
+        \label{fig:2_confusion}
+    \end{subfigure}
+    \caption{Nieczytelne ujęcia wynikające z dłuższego niż przewidywany ruchu kości}
+    \label{fig:confusion}
+\end{figure}
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
-
---- TODO --- opis sieci splotowych CNN, czym są
-opis warstwy gęstej, opisy funkcji aktywacji
 
 Model jest wielowarstwową siecią splotową (ang. convolutional neural net (CNN))
 składającą się z następujących elementów:
@@ -107,11 +121,37 @@ składającą się z następujących elementów:
 a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
 \end{itemize}
 
-\subsection{Użyte funkcje aktywacji}
---- TODO --- opis
+\subsection{Użyte funkcje aktywacji i rodzaje warstw}
+
+\subsubsection{Sieci splotowe (CNN)}
+Sieci splotowe to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
+z przetwarzaniem obrazów, takich jak rozpoznawanie obiektów, klasyfikacja czy segmentacja.
+Główna różnica między siecią splotową a tradycyjną siecią neuronową polega na tym,
+że w sieciach splotowych stosuje się operację splotu, która umożliwia wydobycie lokalnych cech z obrazu,
+redukując liczbę parametrów i umożliwiając efektywniejsze uczenie się reprezentacji obrazu. \\
+Warstwy splotowe w sieci CNN wykonują operację splotu, polegającą na zastosowaniu filtrów (jąder) na obrazie wejściowym,
+co pozwala na wyodrębnienie różnych cech (np. krawędzi, tekstur) w różnych lokalizacjach obrazu.
+Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę postępującej abstrakcji,
+dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
+
+\subsubsection{Warstwa gęsta (Dense)}
+Warstwa gęsta, czyli \textit{fully connected layer}, to warstwa, w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
+Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
+z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
+W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
+które reprezentują cechy odpowiednie do klasyfikacji.
+
+
+Użyte funkcje aktywacji:
 \begin{itemize}
-    \item ReLu
-    \item Softmax
+    \item ReLu -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
+    Jest to funkcja, która zwraca 0 dla wszystkich ujemnych wartości i zachowuje wartość dodatnią dla wszystkich liczb dodatnich.
+    ReLU pozwala na szybkie i efektywne uczenie się sieci, eliminując problem zanikania gradientu,
+    który występuje w tradycyjnych funkcjach aktywacji, takich jak sigmoidalna.
+    \item Softmax -- to funkcja aktywacji, która jest używana w zadaniach klasyfikacyjnych,
+    szczególnie w przypadku, gdy mamy do czynienia z wieloma klasami.
+    Softmax przekształca wyjścia z warstwy gęstej w rozkład prawdopodobieństwa,
+    gdzie suma prawdopodobieństw dla wszystkich klas wynosi 1.
 \end{itemize}
 
 W przypadku zmiany kości na taką z inną liczbą ścianek, np.
@@ -124,7 +164,7 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 Model został nauczony z wykorzystaniem optymalizatora Adam,
 funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności (ang. accuracy).
 Proces trenowania obejmował 20 epok.
-Na wejściu, model oczekiwał obrazu przedstawiającego wnętrze robota, wraz z kostką, znormalizowanego do przedziału $[0, 1]$.
+Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w \ref{sec:preprocessing}.
 
 --- TODO ---
 cytowania dot.
@@ -159,11 +199,11 @@ Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę
     \label{fig:ModelLoss}
 \end{figure}
 
-Model został zapisany w formacie \texttt{keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości,
+Model został zapisany w formacie \texttt{.keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości,
 opisanym w kolejnej sekcji.
 
 
 \subsection{Podsumowanie}
 
 --- TODO ---
-if needed, to be checked i guess
+czy jest tutaj potrzebne?
