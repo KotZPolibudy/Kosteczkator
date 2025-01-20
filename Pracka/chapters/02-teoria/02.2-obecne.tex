@@ -33,8 +33,8 @@ takich jak bankowość elektroniczna czy systemy wojskowe.
 W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu.
 Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
 Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach.
-Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, czyli seed'owanie PRNG za pomocą danych pochodzących z kamery, ze zdjęć ściany lamp lawowych*,
-nieprzewidywalnego fizycznie trójstopniowego wahadła, rozpadu radioaktywnego Uranu oraz procesów związane z tzw. „chaosem kwantowym”.
+Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, czyli seed'owanie PRNG za pomocą danych pochodzących z kamery,
+ze zdjęć ściany lamp lawowych~\ref{fig:lavarand}, nieprzewidywalnego fizycznie trójstopniowego wahadła, czy rozpadu radioaktywnego Uranu.
 Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
 
 *LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy, na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
@@ -43,7 +43,7 @@ jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszęd
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{chapters/02-teoria/figures/lavarandCamera}
-    \caption{Widok z kamery w biurze Cloudflare \cite{cloudflare_lavarand}.}
+    \caption{Widok z kamery w biurze Cloudflare~\cite{cloudflare_lavarand}.}
     \label{fig:lavarand}
 \end{figure}
 
@@ -54,13 +54,13 @@ Dzięki wykorzystaniu globalnej infrastruktury Cloudflare generowane liczby loso
 szeroko dostępne i charakteryzują się dużą niezawodnością oraz odpornością na ataki.
 
 
-        -----TODO---- \\
-    Zrobić mniej poszatkowane \\
-    idk kto to zrobi najlepiej, ale w wolnej chwili zerknijcie tu proszę \\
-    I TAK ZOSTAWIAM TO W PDF, ŻEBYŚCIE PRZEGLĄDAJĄC NA TO TRAFILI! \\
+%        -----TODO---- \\
+%    Zrobić mniej poszatkowane \\
+%    idk kto to zrobi najlepiej, ale w wolnej chwili zerknijcie tu proszę \\
+%    I TAK ZOSTAWIAM TO W PDF, ŻEBYŚCIE PRZEGLĄDAJĄC NA TO TRAFILI! \\
 
 
-\section{Wady dostępnych rozwiązań TRNG}
+\section{Wady dostępnych rozwiązań TRNG}\label{sec:wady-dostepnych-rozwiazan-trng}
 
 Mimo że Generatory Liczb Losowych Oparte na Zjawiskach Fizycznych (TRNG) oferują wysoki poziom bezpieczeństwa i losowości,
 istnieje kilka istotnych wad i ograniczeń związanych z ich implementacją i użytkowaniem. Pierwszym z nich jest 
