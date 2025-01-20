@@ -1,4 +1,5 @@
-\section{Dokumentacja techniczna}
+\section{Dokumentacja techniczna}\label{sec:dokumentacja-techniczna}
+
 \subsection{Hardware}
 \label{subsec:hardware}
 \subsubsection{Ogólne parametry robota:}
@@ -6,20 +7,20 @@ Wymiary zewnętrzne: 180mm x  134mm x 84mm
 
 Masa: 0,5 Kg
 
-Pozostałe najważeniejsze wymiary przedstawiono na Rys.\ref{fig:wymiary}.
+Pozostałe najważniejsze wymiary przedstawiono na Rys.\ref{fig:wymiary}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/wymiary.png}
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/wymiary}
     \caption{\label{fig:wymiary}Wymiary zewnętrzne.}
 \end{figure}
 \textcolor{red}{TODO jak załączyć model 3d}
 
 \subsubsection{Elektronika}
     \begin{itemize}
-        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0. \cite{malina}
-        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219. \cite{malina}
+        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0~\cite{malina}.
+        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219~\cite{malina}.
         \item L298N - Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników.\cite{L298}.
-        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcjyjnych.\cite{ULN2803a},
+        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcyjnych.\cite{ULN2803a},
         \item silnik N20 DC 12V z metalową przekładnią 2000RPM.
         \item trzy diody LED 3mm białe.
         \item trzy diody LED 3mm czerwona, niebieska, zielona.
@@ -33,7 +34,7 @@ PLA \textit{(Polylactic Acid)}. Wyboru dokonano po porównaniu właściwości fi
 PLA, PETG \textit{(Polyethylene Terephthalate Glycol-modified)} oraz ABS \textit{(Acrylonitrile Butadiene Styrene)}. Ostatecznie wybrano PLA, ze względu na jego sztywność, dużą popularność,
 niską cenę oraz prostotę procesu druku. ABS odrzucono ze względu na szkodliwe opary podczas druku i potrzebę zamkniętej komory drukarki. PETG najprawdopodobniej
 byłby również odpowiednim materiałem do wydrukowania potrzebnych w tym projekcje części, jednak jest on podatny na nitkowanie w czasie druku. Ta cecha
-obniżała by jakość wydruku komponentów robota, które zawierają wiele otworów drukowanych w płaszczyźnie pionowej a to sprzyjałoby nitkowaniu. \cite{PLA} \cite{PETG} \cite{ABS} \cite{PLA2}
+obniżała by jakość wydruku komponentów robota, które zawierają wiele otworów drukowanych w płaszczyźnie pionowej a to sprzyjałoby nitkowaniu~\cite{PLA,PETG,ABS,PLA2}.
     \begin{itemize}
         \item obudowa,
         \item tylna ściana obudowy,
@@ -50,7 +51,7 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
     \end{itemize}\
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty.png}
+        \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty}
         \caption{\label{fig:komponenty}Komponenty robota}
     \end{figure}
 
@@ -61,11 +62,11 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
 
 \subsubsection{Podłączenie elektroniki}
 
-Schemat na Rys. \ref{fig:electronics} przedstawia wszystkie elementy układu eletronicznego wrac z połączeniami, które zostały wykorzystane w robocie.
+Schemat na Rys.~\ref{fig:electronics} przedstawia wszystkie elementy układu elektronicznego wraz z połączeniami, które zostały wykorzystane w robocie.
 Złącza GPIO mikrokontrolera Raspberry Pi 4b zostały użyte do kontrolowania poszczególnych elementów, takich jak silnik prądu stałego oraz diody LED, które są sterowane za 
 pośrednictwem układów L298N oraz ULN2803A. Raspberry Pi jest zasilane przez port USB-C, a wszystkie podzespoły dzielą wspólną masę.
 Silnik prądu stałego (oznaczony jako M1) jest sterowany za pomocą układu L298N, który umożliwia kontrolę prędkości z jaką obraca się silnik, poprzez kontrolę współczynnika wypełnienia \textit{(Duty cycle)} 
-za pomocą sygnału PWM generowanego przez Raspbery Pi i dostarczanego na pin ENB poprzez złącze GPIO. Układ L298N pozwala również na kontrolę kierunku, w którą obraca się silnik poprzez
+za pomocą sygnału PWM generowanego przez Raspberry Pi i dostarczanego na pin ENB poprzez złącze GPIO. Układ L298N pozwala również na kontrolę kierunku, w którą obraca się silnik poprzez
 odpowiednie ustawienie stanów wysokiego i niskiego na pinach IN3 oraz IN4.
 Zewnętrzny zasilacz dostarcza napięcie 12V, które zasila zarówno silnik, jak i oba sterowniki - L298N oraz ULN2803A.
 Do podłączenia zestawu trzech diod LED (czerwonej, niebieskiej oraz zielonej umieszczonych w gotowym robocie w ściance obudowy robota), wykorzystano rezystory ograniczające napięcie, które podłączono 
@@ -81,9 +82,9 @@ Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty prz
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/electronics circut_schem.png}
+    \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/electronics circut_schem}
     \caption{\label{fig:electronics}Schemat elektryczny.}
 \end{figure}
 
-\subsection{Software}
+\subsection{Software}\label{subsec:software}
 bbbbbbbbbbbbbbbbbbbbb
