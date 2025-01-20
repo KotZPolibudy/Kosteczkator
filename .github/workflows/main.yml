@@ -21,9 +21,21 @@ jobs:
         run: |
           cd ./Pracka
           pdflatex -interaction=nonstopmode -file-line-error main.tex
-        
+
+      # Run bibtex for bibliography
+      - name: Run bibtex
+        run: |
+          cd ./Pracka
+          bibtex main
+
       # Compile LaTeX (2nd pass)
       - name: Compile LaTeX (2nd pass)
+        run: |
+          cd ./Pracka
+          pdflatex -interaction=nonstopmode -file-line-error main.tex
+
+      # Compile LaTeX (3rd pass, for bibliography links)
+      - name: Compile LaTeX (3rd pass)
         run: |
           cd ./Pracka
           pdflatex -interaction=nonstopmode -file-line-error main.tex
