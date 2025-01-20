@@ -158,15 +158,16 @@ powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija 
 --- TODO --- tu koniec tego segmentu do refactoru, jest okropny
 \fi
 
-Przedstawiony algorytm został zaimplementowany w języku Python,a jego zadaniem jest identyfikacja,
+Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja,
 wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania na zdjęciach.
 
-Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow \cite{pillow_docs},
-która umożliwia konwersję obrazów do przestrzeni barw RGB, zapewniając jednolitość formatów danych wejściowych.
+Zdjęcia w formacie JPEG są wczytywane za pomocą modułu Pillow \cite{pillow_docs},
+który umożliwia konwersję obrazów do przestrzeni barw RGB, zapewniając jednolitość formatów danych wejściowych.
 Następnie obrazy są przekształcane do przestrzeni barw HSV,
 co pozwala oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
 
 Komponent nasycenia (S) jest wygładzany za pomocą filtru Gaussa \cite{gaussian_filter},
+również dostępnego w ramach tego samego modułu,
 co redukuje szumy i pozwala na bardziej precyzyjną analizę.
 Wykorzystano parametry filtru z maską o wymiarach $5 \times 5$ pikseli oraz odchyleniem standardowym równym 1.
 Takie ustawienia zapewniają balans między wygładzeniem a zachowaniem szczegółów obrazu.
@@ -177,7 +178,7 @@ Próg został dobrany eksperymentalnie, kończąc na wartości \textbf{224},
 tak aby w kontrolowanym środowisku (opisanym w poprzednim rozdziale) maska obejmowała obszar zainteresowania,
 ale nie obejmowała tła (np. czarnego kubka).
 Korzysta to z faktu, że kubek wykonany jest z materiału o niskim nasyceniu,
-a używana kość ma jednolity, jasny kolor.
+a używana kość ma jednolity, jasny kolor, a więc i wysokie nasycenie.
 
 W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego \cite{morphological_closure}.
 Operacja ta ujednolica maskę, co jest szczególnie istotne w przypadku obiektów o niejednorodnej strukturze nasycenia,
@@ -186,15 +187,15 @@ gdzie maska mogłaby zawierać rozłączne fragmenty obiektu.
 Po zastosowaniu zamknięcia morfologicznego maska jest analizowana w celu
 zlokalizowania największego konturu obejmującego obszar zainteresowania.
 W tym celu wykorzystano funkcje biblioteki OpenCV \cite{opencv_docs},
-które umożliwiają wykrycie konturu i obliczenie otaczającego go prostokąta.
+które umożliwiają zarówno zastosowanie domknięcia morfologicznego, jak i wykrycie konturu i obliczenie otaczającego go prostokąta.
 Rozmiar prostokąta jest dynamicznie dopasowywany do obszaru maski.
 
 Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
 a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
 Ostatecznie obraz jest konwertowany do skali szarości, co zmniejsza wymiarowość danych
 i pozwala sieci neuronowej skupić się na strukturze obrazu.
-Konwersja do skali szarości dodatkowo minimalizuje wpływ odblasków powstających,
-gdy kość odbija światło wprost do kamery, co poprawia niezawodność analizy.
+Konwersja do skali szarości dodatkowo minimalizuje negatywny wpływ odblasków,
+powstających gdy kość odbija światło wprost do kamery, co poprawia niezawodność analizy.
 
 
 
@@ -247,7 +248,7 @@ Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze ur
 a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
 Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym,
 przez co wynik może być niejednoznaczny, co pokazano na rysunkach \ref{fig:smiglocombined}.
-% TODO check nazwy śmigło!!! XD
+% TODO check nazwy śmigło!
 
 \begin{figure}[H]
     \centering
@@ -307,13 +308,6 @@ Jest to wystarczające rozwiązanie, gdyż obecnie sytuacje niepewne z tego powo
 
 Istnieje możliwość udoskonalenia tego rozwiązania, poprzez stosowanie detekcji ruchu kości,
 jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo niż to proste czekanie stosowane obecnie.
-
-
---- TODO ---
-jakoś to trzeba pewnie sprawdzić, bo nie mogę sobie tak gadać, nie?
-Bo nie wiem, ale coś bym o tym pewnie napisał.
-O, jednak można tak gadać, ale to nadal w TODO (for now!)
-
 
 
 \subsection{Podsumowanie}
