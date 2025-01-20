@@ -105,9 +105,6 @@ a niepoprawne były te odbite tylko wobec jednej osi.
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
 
---- TODO --- opis sieci splotowych CNN, czym są
-opis warstwy gęstej, opisy funkcji aktywacji
-
 Model jest wielowarstwową siecią splotową (ang. convolutional neural net (CNN))
 składającą się z następujących elementów:
 
@@ -124,11 +121,37 @@ składającą się z następujących elementów:
 a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
 \end{itemize}
 
-\subsection{Użyte funkcje aktywacji}
---- TODO --- opis
+\subsection{Użyte funkcje aktywacji i rodzaje warstw}
+
+\subsubsection{Sieci splotowe (CNN)}
+Sieci splotowe to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
+z przetwarzaniem obrazów, takich jak rozpoznawanie obiektów, klasyfikacja czy segmentacja.
+Główna różnica między siecią splotową a tradycyjną siecią neuronową polega na tym,
+że w sieciach splotowych stosuje się operację splotu, która umożliwia wydobycie lokalnych cech z obrazu,
+redukując liczbę parametrów i umożliwiając efektywniejsze uczenie się reprezentacji obrazu. \\
+Warstwy splotowe w sieci CNN wykonują operację splotu, polegającą na zastosowaniu filtrów (jąder) na obrazie wejściowym,
+co pozwala na wyodrębnienie różnych cech (np. krawędzi, tekstur) w różnych lokalizacjach obrazu.
+Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę postępującej abstrakcji,
+dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
+
+\subsubsection{Warstwa gęsta (Dense)}
+Warstwa gęsta, czyli \textit{fully connected layer}, to warstwa, w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
+Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
+z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
+W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
+które reprezentują cechy odpowiednie do klasyfikacji.
+
+
+Użyte funkcje aktywacji:
 \begin{itemize}
-    \item ReLu
-    \item Softmax
+    \item ReLu -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
+    Jest to funkcja, która zwraca 0 dla wszystkich ujemnych wartości i zachowuje wartość dodatnią dla wszystkich liczb dodatnich.
+    ReLU pozwala na szybkie i efektywne uczenie się sieci, eliminując problem zanikania gradientu,
+    który występuje w tradycyjnych funkcjach aktywacji, takich jak sigmoidalna.
+    \item Softmax -- to funkcja aktywacji, która jest używana w zadaniach klasyfikacyjnych,
+    szczególnie w przypadku, gdy mamy do czynienia z wieloma klasami.
+    Softmax przekształca wyjścia z warstwy gęstej w rozkład prawdopodobieństwa,
+    gdzie suma prawdopodobieństw dla wszystkich klas wynosi 1.
 \end{itemize}
 
 W przypadku zmiany kości na taką z inną liczbą ścianek, np.
@@ -141,7 +164,7 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 Model został nauczony z wykorzystaniem optymalizatora Adam,
 funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności (ang. accuracy).
 Proces trenowania obejmował 20 epok.
-Na wejściu, model oczekiwał obrazu przedstawiającego wnętrze robota, wraz z kostką, znormalizowanego do przedziału $[0, 1]$.
+Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w \ref{sec:preprocessing}.
 
 --- TODO ---
 cytowania dot.
