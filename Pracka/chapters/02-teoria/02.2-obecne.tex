@@ -1,8 +1,10 @@
-\section{Przegląd komercyjnych rozwiązań TRNG}
+\section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
 
-Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych, które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność. Najlepiej spełniają do generatory liczb losowych oparte na fizycznych zjawiskach, zwane TRNG (True Random Number Generator). TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
+Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych, które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
+Najlepiej spełniają do generatory liczb losowych oparte na fizycznych zjawiskach, zwane TRNG (True Random Number Generator).
+TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
 
-\subsection{Rozwiązania sprzętowe}
+\subsection{Rozwiązania sprzętowe}\label{subsec:rozwiazania-sprzetowe}
 
 Wśród komercyjnych rozwiązań sprzętowych, wiodącymi producentami są firmy takie jak
 \textbf{ID Quantique}, \textbf{Microchip Technology} i \textbf{Semtech},
@@ -26,14 +28,17 @@ takich jak bankowość elektroniczna czy systemy wojskowe.
      które znajdują szerokie zastosowanie w urządzeniach IoT oraz w systemach komunikacji bezprzewodowej.
 \end{itemize}
 
-\subsection{Generatory TRNG w chmurze}
+\subsection{Generatory TRNG w chmurze}\label{subsec:generatory-trng-w-chmurze}
 
-W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu. Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym. Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach.
+W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu.
+Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
+Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach.
 Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, czyli seed'owanie PRNG za pomocą danych pochodzących z kamery, ze zdjęć ściany lamp lawowych*,
 nieprzewidywalnego fizycznie trójstopniowego wahadła, rozpadu radioaktywnego Uranu oraz procesów związane z tzw. „chaosem kwantowym”.
 Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
 
-*LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy, na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające, jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
+*LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy, na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
+jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
 
 \begin{figure}[H]
     \centering
