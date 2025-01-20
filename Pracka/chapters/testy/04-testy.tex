@@ -3,15 +3,14 @@
 \section{Użyte testy}
 \label{testyOpis}
 
-\textit{Najszerzej stosowanym w świecie narzędziem weryfikacji generatorów
-(z racji dominowania standardów amerykańskich w dziedzinie ochrony informacji) jest zestaw testów podany przez normę 
-amerykańską FIPS-140-2, dotyczącą bezpieczeństwa modułów kryptograficznych. W badaniu generatorów ciągów bitów losowych 
-norma przewiduje cztery testy istotności. Każdy z nich przeprowadzany jest dla ciągu długości 20000 bitów (w przypadku 
-wykorzystywania dłuższych ciągów przebadane muszą być kolejne podciągi o tej długości). Poziom istotności tych testów, 
-czyli prawdopodobieństwo odrzucenia ciągu mogącego pochodzić z prawidłowego źródła bitów, jest równy 0,0001.}
-\cite{Kotulski2001} \par
+Do przetestowania ciągów odczytanych przez modele zaprezentowane w rozdziale \ref{sec:opis-modelu-si} użyto pięć 
+testów statystycznych. Pierwszy z nich to statystyka rozkładu chi-kwadrat, aby zbadać, czy rozkład otrzymywanych 
+wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2 \cite{NIST2001}. Każdy z nich 
+jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001 \cite{Kotulski2001}.
+
+
 W punktach \ref{monbitOpis} - \ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
-są zgodnee z nomrami przedstawionymi w FIPS 140-2 \cite{NIST2001}. Zostały one zaimplementowane w języku Python.
+są zgodnie z nomrami przedstawionymi w FIPS 140-2 \cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
 Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}. Niestety, do zastosowania nawet 
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
@@ -24,9 +23,8 @@ Sformuowano następującą hipotezę:
 \par \begin{math} H_0 \end{math}: Rozkład prawdopodobieństwa wyników jest równomierny.
 \par \begin{math} H_1 \end{math}: Rozkład prawdopodobieństwa wyników nie jest równomierny.
 \par Aby zweryfikować hipotezę zerową, dla wszystkich \begin{math} n \end{math} rzutów odczytano, ile razy wypadła każda z 
-\begin{math} k \end{math} ścian kości ośmiościennej (\begin{math}O_i\end{math}). Wyniki te porównano z oczekiwaną
+\begin{math} k \end{math} ścian kości (\begin{math}O_i\end{math}). Wyniki te porównano z oczekiwaną
 liczbą wyrzucenia każdej ze ścianek \begin{math}E_i = \frac{n}{k}\end{math}. 
-
 \begin{displaymath}
     \chi^2 = \sum_{i=1}^{k} \left( \frac{O_i - E_i}{E_i} \right)^2
 \end{displaymath}
@@ -38,9 +36,12 @@ Ponieważ do generowania liczb losowych użyto kości ośmiościennej, to \begin
 \begin{displaymath}
     k - 1 = 8 - 1 = 7
 \end{displaymath}
-Zatem dla otrzymanego stopnia swobody oraz założonego stopnia istotności, wartość krytyczna wynosi \begin{math} 
-14{,}0671 \end{math}. Jeśli otrzymana wartość będzie mniejsza od wartości krtycznej, nie ma podstaw do odrzucenia 
+Ponieważ w tabeli wartości krytycznych dla rozkładu chi-kwadrat zaprezentowanej przez NIST \cite{NIST2012} nie 
+uwzględniono poziomów istotności z rozwinięciem do czterech cyfr po przecinku, przyjęto poziom istotności dla 
+najmniejszego z dostępnych poziomów istotności, czyli równego 0{,}001. Odczytana z tabeli wartość krytyczna wynosi
+24{,}322. Jeśli otrzymana wartość będzie mniejsza od wartości krtycznej, nie ma podstaw do odrzucenia 
 hipotezy zerowej.
+\\-- jeśli poziomy istotności nie mogą być różne to może z kalkulatora albo excela???? 
 
 
 \subsection{Test monobitowy}
@@ -110,11 +111,14 @@ Przedstawione w sekcji \ref{testyOpis} testy zostały wykorzystane do sprawdzeni
 odczytywnane przez oba modele sztucznej inteligencji. Ich wyniki przedstawiono w poniższej sekcji.
 \subsection{Test chi-kwadrat}
 \label{chiWyniki}
-Dla odczytanych wyników rzutów kością przez pierwszy modelotrzymano wartość statystyki testowej chi-kwadrat równą 
-246{,}079, która znacznie przekroczyła przyjętą wartość krytyczną równą \begin{math} 14{,}0671 \end{math}. 
-Odrzucono hipotezę \begin{math} H_0 \end{math} i przyjęto hipotezę \begin{math} H_1 \end{math}: rozkład odczytanych 
-wyników rzutów kością nie jest równy. 
-Otrzymany rozkład przedstawiono w tabeli \ref{chiTabela}.
+Dla odczytanych wyników rzutów kością przez pierwszy model otrzymano wartość statystyki testowej chi-kwadrat równą 
+246{,}079, która znacznie przekroczyła przyjętą wartość krytyczną równą \begin{math} 24{,}322 \end{math}. 
+Odrzucono hipotezę \begin{math} H_0 \end{math} i przyjęto hipotezę \begin{math} H_1 \end{math}: rozkład 
+prawdopodobieństwa wyników nie jest równomierny. \par
+Natomiast dla drugiego modelu wartość statystyki testowej chi-kwadrat jest równa 20{,}072. Jest ona mniejsza od 
+przyjętej wartości krytycznej, zatem nie ma podstaw do odrzucenia hipotezy zerowej: rozkład prawdopodobieństwa 
+wyników jest równomierny. \par
+Otrzymany rozkład dla obu modeli przedstawiono w tabeli \ref{chiTabela}.
 \begin{table}[h]
     \centering
     \caption{Rozkład otrzymanych wyników rzutu kością}
@@ -147,15 +151,18 @@ Otrzymany rozkład przedstawiono w tabeli \ref{chiTabela}.
 
 \subsection{Test monobitowy}
 \label{monbitWyniki}
-Dla otrzymanego ciągu zliczono 10694 bitów o wartości 1. Jest ona większa od oczekiwanej liczby jedynek. Hipotezę zerową
-odrzucono.
+Dla modelu pierwszego dla otrzymanego ciągu zliczono 10694 bitów o wartości 1. Jest ona większa od oczekiwanej liczby 
+jedynek. Hipotezę zerową odrzucono. Natomiast dla modelu drugiego zliczono 9805 bitów o wartości jeden. Jest to liczba
+zgodna z oczekiwaną. Brak podstaw do odrzucenia hipotezy zerowej dla modelu drugiego.
 
 \subsection{Test serii}
 
-Wyniki testów serii przedstawiono w tabeli \ref{serieTabela}. Rozkład serii w badanym ciągu nie jest zgodny z oczekiwanymi dla obu 
-serii o długości 1, obu serii o długości 2, serii jedynek o długości 4 i serii zer o długości 6 lub więcej. Hipotezę
-zerową odrzucono.
-\begin{table}[h]
+Wyniki testów serii dla obu modeli przedstawiono w tabeli \ref{serieTabela}. Rozkład serii w badanym ciągu odczytanym
+przez modelu pierwszego nie jest zgodny z oczekiwanymi dla obu serii o długości 1, obu serii o długości 2, serii jedynek 
+o długości 4 i serii zer o długości 6 lub więcej. Hipotezę zerową dla modelu pierwszego odrzucono.
+
+Dla modelu drugiego rozkłady wszystkich serii są zgodne z oczekiwanymi. Brak podstaw do odrzucenia hipotezy zerowej.
+\begin{table}[H]
     \centering
     \caption{Liczby wystąpień serii w ciągu}
     \label{serieTabela}
@@ -181,14 +188,18 @@ zerową odrzucono.
 \end{table}   
 
 \subsection{Test długich serii}
-W wygenerowanym ciągu zarówno dla zer, jak i dla jedynek, najdłuższa znaleziona seria zawierała 13 bitów. Jest to liczba
-większa od maksymalnej przyjętej długości najdłuższego ciągu bitów, wynoszącej 25. Nie ma podstaw do odrzucenia hipotezy 
-zerowej.
+W wygenerowanym ciągu odczytanym przez model pierwszy zarówno dla zer, jak i dla jedynek, najdłuższa znaleziona seria 
+zawierała 13 bitów. Jest to liczba mniejsza od maksymalnej przyjętej długości najdłuższego ciągu bitów wynoszącej 25. 
+Nie ma podstaw do odrzucenia hipotezy zerowej dla modelu pierwszego. \par
+Natomiast dla modelu pierwszego najdłuższy nieprzerwany ciąg zer miał długość 17, a dla jedynek 16. To również są 
+mniejsze wartości od maksymalnych przyjętych, zatem nie ma podstaw do odrzucenia hipotezy zerowej dla modelu drugiego.
 
 \subsection{Test pokerowy}
 \label{pokerWyniki}
-Dla testu pokerowego otrzymano statystykę testową równą 120{,}026. Jest ona większa od oczekiwanej, zatem odrzucono 
-hipotezę zerową. Rozkład segmentów w ciągu przedstawiono w tabeli \ref{pokerTabela}.
+Dla testu pokerowego dla modelu pierwszego otrzymano statystykę testową równą 120{,}026. Jest ona większa od oczekiwanej,
+zatem odrzucono hipotezę zerową. Dla modelu drugiego statystyka testowa jest równa 28{,}794. Jest ona zgodna z wartością
+oczekiwaną, zatem nie ma podstaw do odrzucenia hipotezy zerowej.
+Rozkład segmentów w ciągach odczytanych przez oba modele przedstawiono w tabeli \ref{pokerTabela}.
 \begin{table}[h]
     \centering
     \caption{Liczby wystąpień kombinacji bitów}
@@ -235,10 +246,25 @@ hipotezę zerową. Rozkład segmentów w ciągu przedstawiono w tabeli \ref{poke
 \end{table} 
 
 \subsection{Wnioski}
-Dla czterech z pięciu testów odrzucono hipotezę zerową. W wynikach testu statystyki rozkładu chi-kwadrat 
-(\ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż liczba 8. Ma to 
-bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a liczb 8 na 000, 
-co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się częściej w ciągu niż zera, 
-co ukazuje już test monobitowy (\ref{chiWyniki}), gdzie liczba jedynek w ciągu jest większa niż oczekiwana. 
-Podobny problem można zaobserwować w wynikach testu pokerowego (\ref{pokerWyniki}), gdzie segmenty zawierające 
-trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające więcej bitów o wartości 0. 
+Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów odrzucono. W wynikach testu statystyki 
+rozkładu chi-kwadrat (\ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
+liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a 
+liczba 8 jako 000, co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się 
+częściej w ciągu niż zera. Ukazuje to już test monobitowy (\ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
+większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (\ref{pokerWyniki}), 
+gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające 
+więcej bitów o wartości 0. 
+\par
+Przez wzgląd na niezadowalające wyniki modelu pierwszego, dokonano jego poprawy (rozdział \ref{sec:opis-modelu-si}) i
+utworzono drugi modelu sztucznej inteligencji. Dla wszystkich przeprowadzonych testów nie było podstaw do odrzucenia
+hipotezy zerowej. W przeciwieństwie do pierwszego modelu, najczęściej odczytywanym wynikiem jest 8, a najrzadziej - 6.
+Różnica w liczbie odczytów tych wyników nie jest aż tak znacząca (737 dla 6 i 908 dla 8), jak dla pierwszego modelu 
+(1124 dla 6 i 547 dla 8). Częstsze wystąpienia wyniku 8 widać w teście monobitowym, gdzie zliczonych zer jest więcej
+niż jedynek. Dysproporcja między nimi jest niewielka, wynosi zaledwie niecałe 400 bitów, kiedy dla pierwszego modelu
+różnica wynosiła prawie 1400 bitów. Podobnie dla testu serii liczby poszczególnych serii dla zer i jedynek są dużo
+bardziej zrównoważone dla drugiego modelu niż pierwszego.
+\par
+Wyniki dla drugiego modelu są zadowalające, dla którego nie ma przesłanek do odrzucenia żadnej z hipotez zerowych, 
+jednakże w przyszłości możliwa jest implementacja lepszego modelu, który
+potencjalnie mógłby otrzymywać jeszcze lepsze wyniki (odwołanie). Prowadzi to do wniosku, że uzyskanie prawdziwej 
+losowości jest możliwe, mimo deterministycznego charakteru działania maszyny.
