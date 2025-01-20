@@ -221,7 +221,7 @@ def prediction_thread():
             continue
         
         folder_name = current_folder_name
-        filename = title.replace(folder_name,"")
+        filename = title.replace(folder_name+"/","")
         
         # Tymczasowe zapisanie przetworzonego obrazu do predykcji (opcjonalne)
         # processed_path = f"{folder_name}/processed_{filename}"
