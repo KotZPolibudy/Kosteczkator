@@ -13,22 +13,22 @@ Wyniki testu chi-kwadrat
 8: 547
 Wynik: False (246.079)
 
-Test pojedynczych bit�w:
+Test pojedynczych bitów:
 0: 9306
 1: 10694
 Wynik: False
 
 Testy serii:
 Dla 0
-Najd�u�sza seria: 13
+Najdłuższa seria: 13
 1: 2717
-2: 1367
+2: 1367 
 3: 559
 4: 263
 5: 113
 6: 82
 Dla 1
-Najd�u�sza seria: 13
+Najdłuższa seria: 13
 1: 2303
 2: 1411
 3: 678
