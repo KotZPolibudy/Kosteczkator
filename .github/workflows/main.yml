@@ -3,7 +3,17 @@ name: Push Compiled Latex to repository
 on:
   push:
     branches:
+      - Kotu*
+      - kedra*
+      - Julka
+      - yoshida
+  pull_request:
+    branches:
       - main
+      - Kotu*
+      - kedra*
+      - Julka
+      - yoshida
 
 jobs:
   build:
