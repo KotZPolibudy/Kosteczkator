@@ -1,10 +1,10 @@
-\chapter{Odczytywanie losowego wyniku z kości}
+\chapter{Odczytywanie losowego wyniku z kości}\label{ch:odczytywanie-losowego-wyniku-z-kosci}
 
 Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
-jednak jak pokazano na schemacie \ref{fig:schemat_workflow}
+jednak jak pokazano na schemacie~\ref{fig:schemat_workflow}
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
-Schemat \ref{fig:schemat_workflow} w formie tekstowej
+Schemat~\ref{fig:schemat_workflow} w formie tekstowej
 \begin{verbatim}
     Maszyna (robot) wykonuje rzut kością
     Kamera umieszczona w jego górnej części robi zdjęcie
@@ -27,7 +27,7 @@ który przekształca dane pochodzące z fizycznego komponentu naszej maszyny (zd
 Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości,
 o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia całego bębna maszyny.
 
-\subsection{Algorytm}
+\subsection{Algorytm}\label{subsec:algorytm}
 
 Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a przepływ pracy prezentuje się tak: \\
 1. Wczytanie obrazu wejściowego \\
@@ -37,53 +37,29 @@ Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano p
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
 
-\iffalse
-Na rysunku \ref{fig:4combined} przedstawiono przykładowe zdjęcie surowe (część a)
-oraz poddane wstępnemu przetwarzaniu (część b).
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4raw}
-        \caption{Surowe zdjęcie z kamery urządzenia.}
-        \label{fig:4raw}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/4processed}
-        \caption{Zdjęcie poddane preprocessingowi.}
-        \label{fig:4proc}
-    \end{subfigure}
-    \caption{Porównanie zdjęcia surowego i po preprocessing’u.}
-    \label{fig:4combined}
-\end{figure}
-\fi
-
-
-Na rysunku \ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe \ref{fig:step1}
-oraz kolejne etapy przetwarzania, aż do finalnego etapu \ref{fig:step5}.
+Na rysunku~\ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe~\ref{fig:step1}
+oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_1.jpg}
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_1}
         \caption{Etap 1: Surowe zdjęcie.}
         \label{fig:step1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_2.jpg}
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_2}
         \caption{Etap 2: Nałożenie maski}
         \label{fig:step2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_3.jpg}
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_3}
         \caption{Etap 3: Wycięcie obszaru zainteresowania}
         \label{fig:step3}
     \end{subfigure}
@@ -92,14 +68,14 @@ oraz kolejne etapy przetwarzania, aż do finalnego etapu \ref{fig:step5}.
 
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
-        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_4.jpg}
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_4}
         \caption{Etap 4: Skala szarości}
         \label{fig:step4}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
-        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_5.jpg}
+        \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_5}
         \caption{Etap 5: Wynik końcowy.}
         \label{fig:step5}
     \end{subfigure}
@@ -109,64 +85,15 @@ oraz kolejne etapy przetwarzania, aż do finalnego etapu \ref{fig:step5}.
 \end{figure}
 
 
-\iffalse
---- TODO --- refator this part, bo nieczytelne \\
--- TODO -- cytowania, dokumentacje Pillow i OpenCV?
-
-Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja, wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania w zdjęciach.
-
-Zdjęcia w formacie JPEG są wczytywane za pomocą biblioteki Pillow, a następnie konwertowane do przestrzeni barw RGB, co zapewnia jednolitość formatów danych wejściowych.
-
-Obrazy są przekształcane do przestrzeni barw HSV, aby oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
-Nasycenie jest następnie wygładzane przy użyciu filtru Gaussa:
-
---- TODO ---
-jakieś cytowanie, o tym czemu filtr Gaussa?
-oraz dodać coś o parametrach filtru, konkretnie
-
-Na podstawie komponentu nasycenia za pomocą progowania tworzona jest maska binarna,
-która identyfikuje obszary o wysokim nasyceniu (a więc naszą kość).
-
-Próg został dobrany eksperymentalnie, kończąc na wartości *wartość!*, tak aby w kontrolowanym środowisku, jakim jest bęben robota,
-przy stałym oświetleniu opisanym w poprzednim rozdziale generowana maska obejmowała obszar zainteresowania - kość, ale nie obejmowała tła (kubka).
-Korzysta to przede wszystkim z tego że kubek został wytworzony z czarnego materiału, a używana kość jest jednolitego, jasnego koloru.
-
-W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego.
-Operacja ta jest szczególnie adekwatna w przypadku niejednolitej kości, takiej,
-która zawierałaby obszary o wyższym, jak i o niższym nasyceniu.
-W takim przypadku powstała maska mogłaby nie obejmować całej kości przy obecnie ustawionym progu nasycenia lub taka,
-która obejmowałaby osobno dwie rozłączne części kości.
-W związku z tym operacja domknięcia morfologicznego ujednolica maskę przed dalszym przetwarzaniem.
-
---- TODO --- cytowanie o zamknięciu morfologicznym. \\
-
-Następnie maska jest analizowana w celu zlokalizowania największego konturu <otaczającego> z wykorzystaniem strukturalnego elementu prostokątnego,
-o dynamicznie dobranym rozmiarze obejmującym całość obliczonej w poprzednim kroku maski nasycenia,
-którego implementacja została zaczerpnięta z biblioteki OpenCV [tu cytowanie], które określa obszar zainteresowania.
-
-Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
-a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
-
---- TODO --- to cytowanie wyżej z OpenCV \\
-
-Ostatecznie obraz jest konwertowany do skali szarości, co redukuje wymiarowość danych
-i umożliwia naszej sieci neuronowej skupienie się na strukturze obrazu.
-
-Dodatkowo, konwersja do skali szarości pozwala znacznie lepiej poradzić sobie z problemem odblasków,
-powstających gdy kość niefortunnie ułoży się pod takim kątem, że odbija światło którejś z diód wprost do kamery.
-
---- TODO --- tu koniec tego segmentu do refactoru, jest okropny
-\fi
-
 Przedstawiony algorytm został zaimplementowany w języku Python, a jego zadaniem jest identyfikacja,
 wycięcie i przeskalowanie obszarów zawierających obiekty zainteresowania na zdjęciach.
 
-Zdjęcia w formacie JPEG są wczytywane za pomocą modułu Pillow \cite{pillow_docs},
+Zdjęcia w formacie JPEG są wczytywane za pomocą modułu Pillow~\cite{pillow_docs},
 który umożliwia konwersję obrazów do przestrzeni barw RGB, zapewniając jednolitość formatów danych wejściowych.
 Następnie obrazy są przekształcane do przestrzeni barw HSV,
 co pozwala oddzielić komponenty odpowiadające za barwę (H), nasycenie (S) oraz jasność (V).
 
-Komponent nasycenia (S) jest wygładzany za pomocą filtru Gaussa \cite{gaussian_filter},
+Komponent nasycenia (S) jest wygładzany za pomocą filtru Gaussa~\cite{gaussian_filter},
 również dostępnego w ramach tego samego modułu,
 co redukuje szumy i pozwala na bardziej precyzyjną analizę.
 Wykorzystano parametry filtru z maską o wymiarach $5 \times 5$ pikseli oraz odchyleniem standardowym równym 1.
@@ -180,13 +107,13 @@ ale nie obejmowała tła (np. czarnego kubka).
 Korzysta to z faktu, że kubek wykonany jest z materiału o niskim nasyceniu,
 a używana kość ma jednolity, jasny kolor, a więc i wysokie nasycenie.
 
-W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego \cite{morphological_closure}.
+W celu usunięcia niewielkich luk w masce binarnej stosowana jest operacja zamknięcia morfologicznego~\cite{morphological_closure}.
 Operacja ta ujednolica maskę, co jest szczególnie istotne w przypadku obiektów o niejednorodnej strukturze nasycenia,
 gdzie maska mogłaby zawierać rozłączne fragmenty obiektu.
 
 Po zastosowaniu zamknięcia morfologicznego maska jest analizowana w celu
 zlokalizowania największego konturu obejmującego obszar zainteresowania.
-W tym celu wykorzystano funkcje biblioteki OpenCV \cite{opencv_docs},
+W tym celu wykorzystano funkcje biblioteki OpenCV~\cite{opencv_docs},
 które umożliwiają zarówno zastosowanie domknięcia morfologicznego, jak i wykrycie konturu i obliczenie otaczającego go prostokąta.
 Rozmiar prostokąta jest dynamicznie dopasowywany do obszaru maski.
 
@@ -199,7 +126,7 @@ powstających gdy kość odbija światło wprost do kamery, co poprawia niezawod
 
 
 
-\subsection{Zidentyfikowane trudności i ich rozwiązania}
+\subsection{Zidentyfikowane trudności i ich rozwiązania}\label{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}
 
 Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kostki.
 Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
@@ -230,7 +157,7 @@ od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na k
 
 Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
 w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware --
-pomogło lepsze zaizolowanie przewodów kamery i diód.
+pomogło lepsze zaizolowanie przewodów kamery i diod.
 
 Mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku,
 który nadarzy się gdy do preprocessu trafi zupełnie czarne zdjęcie -- taki przypadek jest pomijany.
@@ -247,7 +174,7 @@ $\frac{1}{8^{12}} \approx 1.455 \times 10^{-11}$
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
 a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
 Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym,
-przez co wynik może być niejednoznaczny, co pokazano na rysunkach \ref{fig:smiglocombined}.
+przez co wynik może być niejednoznaczny, co pokazano na rysunkach~\ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!
 
 \begin{figure}[H]
@@ -310,7 +237,7 @@ Istnieje możliwość udoskonalenia tego rozwiązania, poprzez stosowanie detekc
 jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo niż to proste czekanie stosowane obecnie.
 
 
-\subsection{Podsumowanie}
+\subsection{Podsumowanie}\label{subsec:podsumowanie}
 
 Przedstawiony algorytm przetwarzania wstępnego pozwala na skuteczne przygotowanie danych wejściowych dla modelu sztucznej inteligencji.
 Automatyzuje proces identyfikacji i kadrowania obiektów zainteresowania w obrazach, co znacząco poprawia jakość danych.

@@ -2,8 +2,8 @@
 
 Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości ośmiościennych k8 do jednej z ośmiu klas,
 odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
-Do implementacji modelu wykorzystano przede wszystkim moduł TensorFlow \cite{tensorflow_docs}
-oraz wchodzący obecnie w jego skład Keras \cite{keras_docs},
+Do implementacji modelu wykorzystano przede wszystkim moduł TensorFlow~\cite{tensorflow_docs}
+oraz wchodzący obecnie w jego skład Keras~\cite{keras_docs},
 który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 
 
@@ -14,15 +14,16 @@ który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
 
 Dane wejściowe zostały podzielone na zestawy treningowy i walidacyjny w proporcji 70:30.
 W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów dostępne w klasie
-\texttt{ImageDataGenerator} \cite{keras_imagedatagenerator}, takie jak:
+\texttt{ImageDataGenerator}~\cite{keras_imagedatagenerator}, takie jak:
 
---- TODO --- cytowanie dokumentacji ImageDataGenerator
 
 \begin{itemize}
     \item obrót o losowy kąt w zakresie do 90°,
     \item przesunięcia poziome i pionowe,
     \item transformacje perspektywiczne (shear),
     \item losowe powiększenia (zoom).
+    \item Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$,
+    co pozwala na skuteczniejsze działanie sieci neuronowej.
 \end{itemize}
 
 
@@ -30,8 +31,8 @@ W celu zwiększenia różnorodności danych treningowych zastosowano techniki au
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_raw}
-        \caption{Obraz surowy.}
+        \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_preprocessed}
+        \caption{Obraz po preprocessingu, bazowy dla augmentacji.}
         \label{fig:5raw}
     \end{subfigure}
     \hfill
@@ -100,28 +101,34 @@ a niepoprawne były te odbite tylko wobec jednej osi.
         \label{fig:2_confusion}
     \end{subfigure}
     \caption{Nieczytelne ujęcia wynikające z dłuższego niż przewidywany ruchu kości}
-    \label{fig:confusion}
+    \label{fig:25confusion}
 \end{figure}
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
 
-Model jest wielowarstwową siecią splotową (ang. convolutional neural net (CNN))
+Model jest wielowarstwową siecią splotową (ang. convolutional neural network, CNN),
 składającą się z następujących elementów:
 
 \begin{itemize}
-    \item Warstwy wejściowej w rozmiarze 64 na 64 piksele, ale o jednym kanale (skala szarości)
-    \item Trzech warstw splotowych z funkcją aktywacji ReLU:
+    \item Warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
+    \item Trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
     \begin{itemize}
-        \item warstwa 1
-        \item warstwa 2
-        \item warstwa 3
+        \item Pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
+        \item Druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
+        \item Trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
     \end{itemize}
-    \item Warstwy spłaszczającej (Flatten),
-    \item Dwóch w pełni połączonych warstw (Dense), z których pierwsza również używa aktywacji ReLu,
-a ostatnia używa funkcji aktywacji softmax do klasyfikacji na 8 klas.
+    \item Warstwa spłaszczająca (Flatten),
+    \item Dwóch w pełni połączonych warstw (Dense):
+    \begin{itemize}
+        \item Pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
+        \item Druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
+    \end{itemize}
 \end{itemize}
 
-\subsection{Użyte funkcje aktywacji i rodzaje warstw}
+\subsection{Użyte funkcje aktywacji i rodzaje warstw}\label{subsec:uzyte-funkcje-aktywacji-i-rodzaje-warstw}
 
 \subsubsection{Sieci splotowe (CNN)}
 Sieci splotowe to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
@@ -161,16 +168,12 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 
 \subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
 
-Model został nauczony z wykorzystaniem optymalizatora Adam,
-funkcji strat sparse categorical crossentropy dostępnej w module tensorflow oraz metryki dokładności (ang. accuracy).
+Model został nauczony z wykorzystaniem optymalizatora Adam~\cite{kingma2014adam, keras_adam},
+funkcji strat sparse categorical crossentropy dostępnej w module tensorflow~\cite{tensorflow_loss},
+oraz metryki dokładności (ang. accuracy)~\cite{tensorflow_accuracy}.
 Proces trenowania obejmował 20 epok.
-Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w \ref{sec:preprocessing}.
+Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
 
---- TODO ---
-cytowania dot.
-- Adam
-- sparse categorical crossentropy
-- accuracy
 
 \subsection{Wyniki}\label{subsec:wyniki}
 
@@ -203,7 +206,7 @@ Model został zapisany w formacie \texttt{.keras} i jest gotowy do użycia w sys
 opisanym w kolejnej sekcji.
 
 
-\subsection{Podsumowanie}
+\subsection{Podsumowanie}\label{subsec:podsumowanie42}
 
 --- TODO ---
 czy jest tutaj potrzebne?

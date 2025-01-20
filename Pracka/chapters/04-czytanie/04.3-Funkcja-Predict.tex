@@ -1,27 +1,25 @@
-\section{Funkcja predict}
+\section{Funkcja predict}\label{sec:funkcja-predict}
 
 W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
 która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
 Funkcja działa w następujących krokach:
 \begin{itemize}
-    \item Wczytanie i przetworzenie obrazu
-    \item Predykcji klasy (klasyfikacji obrazu)
-    \item Interpretacja wyniku
+    \item Wczytanie i przetworzenie obrazu.
+    \item Klasyfikacja obrazu (odczytanie wyniku).
+    \item Interpretacja wyniku.
 \end{itemize}
 Opisanych w następujących podrozdziałach.
 
-\subsection{Wczytanie i przetworzenie obrazu}
+\subsection{Wczytanie i przetworzenie obrazu}\label{subsec:wczytanie-i-przetworzenie-obrazu}
 
 W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać.
 Krok ten jest pomijany, gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
-Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach na których trenowany był model,
-a więc skalowany jest na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli) oraz zmieniany w skalę szarości.
+Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach, na których trenowany był model,
+a więc skalowany jest na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli), zmieniany w skalę szarości, oraz normalizujemy.
 
-Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
+\subsection{Klasyfikacja obrazu}\label{subsec:klasyfikacja-obrazu}
 
-\subsection{Predykcja klasy}
-
-Przygotowany obraz jest przekazywany do modelu w celu uzyskania wyników predykcji:
+Przygotowany obraz jest przekazywany do modelu w celu uzyskania wyników klasyfikacji:
 
 \begin{verbatim}
 prediction = model.predict(obraz_wejściowy)
@@ -30,7 +28,7 @@ klasyfikacja = np.argmax(prediction, axis=1)
 
 Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwie.
 
-\subsection{Interpretacja wyniku}
+\subsection{Interpretacja wyniku}\label{subsec:interpretacja-wyniku}
 
 Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8).
 Wynik funkcji jest tą etykietą odpowiadająca numerowi na kości,
