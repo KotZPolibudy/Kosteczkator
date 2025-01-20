@@ -3,6 +3,7 @@ name: Push Compiled Latex to repository
 on:
   push:
     branches:
+      - main
       - Kotu*
       - kedra*
       - Julka
