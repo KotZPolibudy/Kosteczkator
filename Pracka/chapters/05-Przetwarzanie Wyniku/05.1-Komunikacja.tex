@@ -20,7 +20,7 @@ Odbywa się to przez wykonanie następującego algorytmu:\\
 5. Wydobycie bajtu ze zmiennej a i wysłanie go \\
 
 W powyższym algorytmie dane wysyłane są po bajcie danych ponieważ dane w pamięci 
-są wyrównane do bajtów więc jest najmniejszą jednostką, którą możemy przekazać na raz.
+są wyrównane do bajtów więc jest najmniejszą jednostką, którą można przekazać na raz.
 Głównym założeniem tego trybu pracy jest wykorzystanie go jako dodatkowe źródło entropii w systemie Linux, 
 dla zobrazowania tego wykonany został diagram~\ref{fig:interface_a}.
 
@@ -32,6 +32,9 @@ dla zobrazowania tego wykonany został diagram~\ref{fig:interface_a}.
 \end{figure}
 
 \subsection{Wykonywanie pojedyńczych rzutów}
+Aby wykorzystać ten tryb pracy należy wysłać do robota przez port szeregowy znak 'd'.
+W tym trybie zadaniem jest oczekiwanie na polecenie wykonania rzutu, czyli znak 'r'.
+Kolejnie wykonanie rzutu kością i odpowiedź otrzymaną liczbą. Następnie otrzymaną liczbę można wykorzystać w swoim programie. Działanie to zobrazowano na diagramie~\ref{fig:interface_b}.
 
 \begin{figure}[H]
     \centering
