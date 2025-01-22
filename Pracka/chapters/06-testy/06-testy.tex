@@ -3,14 +3,14 @@
 \section{Użyte testy}
 \label{testyOpis}
 
-Do przetestowania ciągów odczytanych przez modele zaprezentowane w rozdziale \ref{sec:opis-modelu-si} użyto pięć 
+Do przetestowania ciągów odczytanych przez modele zaprezentowane w rozdziale~\ref{sec:opis-modelu-si} użyto pięć
 testów statystycznych. Pierwszy z nich to statystyka rozkładu chi-kwadrat, aby zbadać, czy rozkład otrzymywanych 
-wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2 \cite{NIST2001}. Każdy z nich 
-jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001 \cite{Kotulski2001}.
+wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2~\cite{NIST2001}. Każdy z nich
+jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
 
 
-W punktach \ref{monbitOpis} - \ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
-są zgodnie z nomrami przedstawionymi w FIPS 140-2 \cite{NIST2001}. Zostały one zaimplementowane w języku Python.
+W punktach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
+są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
 Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}. Niestety, do zastosowania nawet 
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
@@ -36,7 +36,7 @@ Ponieważ do generowania liczb losowych użyto kości ośmiościennej, to \begin
 \begin{displaymath}
     k - 1 = 8 - 1 = 7
 \end{displaymath}
-Ponieważ w tabeli wartości krytycznych dla rozkładu chi-kwadrat zaprezentowanej przez NIST \cite{NIST2012} nie 
+Ponieważ w tabeli wartości krytycznych dla rozkładu chi-kwadrat zaprezentowanej przez NIST~\cite{NIST2012} nie
 uwzględniono poziomów istotności z rozwinięciem do czterech cyfr po przecinku, przyjęto poziom istotności dla 
 najmniejszego z dostępnych poziomów istotności, czyli równego 0{,}001. Odczytana z tabeli wartość krytyczna wynosi
 24{,}322. Jeśli otrzymana wartość będzie mniejsza od wartości krtycznej, nie ma podstaw do odrzucenia 

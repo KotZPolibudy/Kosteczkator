@@ -1,8 +1,13 @@
 \section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
 
-Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych, które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
-Najlepiej spełniają do generatory liczb losowych oparte na fizycznych zjawiskach, zwane TRNG (True Random Number Generator).
-TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
+Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych,
+które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
+Najlepiej spełniają do generatory liczb prawdziwie losowych, czyli te oparte na fizycznych zjawiskach,
+jednak powszechnie używane są generatory pseudolosowe (ang. PRNG -- Pseudorandom Number Generator).
+PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. seed).
+
+TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych,
+takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
 
 \subsection{Rozwiązania sprzętowe}\label{subsec:rozwiazania-sprzetowe}
 
@@ -12,6 +17,8 @@ które oferują zaawansowane urządzenia bazujące na TRNG.
 Produkty te zapewniają wysoki poziom bezpieczeństwa i są stosowane w wymagających aplikacjach,
 takich jak bankowość elektroniczna czy systemy wojskowe.
 
+-- TODO --
+porównanie jest AI-GEN, jeszcze dodać do tego źródła
 \begin{itemize}
     \item \textbf{ID Quantique} jest jednym z liderów w dziedzinie generatorów liczb losowych opartych na technologii fotoniki.
      Firma oferuje urządzenia, które wykorzystują detekcję fotonów w celu generowania liczb losowych.
@@ -30,14 +37,19 @@ takich jak bankowość elektroniczna czy systemy wojskowe.
 
 \subsection{Generatory TRNG w chmurze}\label{subsec:generatory-trng-w-chmurze}
 
-W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu.
+W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu,
+za to na przykład za pośrednictwem API dostępnego w~\cite{drand_documentation}.
 Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
-Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach.
-Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, czyli seed'owanie PRNG za pomocą danych pochodzących z kamery,
-ze zdjęć ściany lamp lawowych~\ref{fig:lavarand}, nieprzewidywalnego fizycznie trójstopniowego wahadła, czy rozpadu radioaktywnego Uranu.
+Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
+Dodatkowo, \textbf{Cloudflare} korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, które pobiera entropię z kamery
+ustawionej na ścianę lamp lawowych~\ref{fig:lavarand}, nieprzewidywalnego fizycznie trójstopniowego wahadła, czy rozpadu radioaktywnego uranu.
+Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
 Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
 
-*LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy, na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
+Najpopularniejszy z tych niecodziennych generatorów -- LavaRand -- inspirowany był podobnym systemem zbudowanym i
+opatentowanym przez \textbf{Silicon Graphics}~\cite{SiliconGraphics}.
+LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
+na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
 jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
 
 \begin{figure}[H]
@@ -61,6 +73,10 @@ szeroko dostępne i charakteryzują się dużą niezawodnością oraz odpornośc
 
 
 \section{Wady dostępnych rozwiązań TRNG}\label{sec:wady-dostepnych-rozwiazan-trng}
+
+Tu było AI GEN STUFF, teraz schowane
+% to jest AI GEN
+\iffalse
 
 Mimo że Generatory Liczb Losowych Oparte na Zjawiskach Fizycznych (TRNG) oferują wysoki poziom bezpieczeństwa i losowości,
 istnieje kilka istotnych wad i ograniczeń związanych z ich implementacją i użytkowaniem. Pierwszym z nich jest 
@@ -120,3 +136,6 @@ Należy do nich niska wydajność, wysokie koszty implementacji, problemy ze sta
 złożoność integracji z systemami oraz ryzyko związane z bezpieczeństwem. W miarę jak technologia będzie się rozwijać,
 możliwe jest, że te ograniczenia zostaną przezwyciężone,
 jednak obecnie stanowią one istotne wyzwanie dla szerokiego przyjęcia TRNG w różnych aplikacjach.
+
+
+\fi

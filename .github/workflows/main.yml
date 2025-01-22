@@ -61,11 +61,11 @@ jobs:
           path: ./main.pdf
 
       # Upload LaTeX logs for debugging (optional)
-      - name: Upload LaTeX logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: latex-logs
-          path: ./logs/main.log
+      # - name: Upload LaTeX logs
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: latex-logs
+      #     path: ./logs/main.log
 
       # Commit and push the PDF and logs to the repository
       # - name: Commit and push changes

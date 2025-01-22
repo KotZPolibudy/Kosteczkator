@@ -41,7 +41,8 @@ Jednakże większość tych rozwiązań opiera się na generatorach pseudolosowy
 które, mimo swojej wydajności, w istocie generują liczby deterministyczne.
 W praktyce może to prowadzić do problemów z bezpieczeństwem i nieprzewidywalnością w sytuacjach, gdzie prawdziwa losowość jest kluczowa.
 
-Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier RPG i planszowych.
+Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych (ang. HRNG -- Hardware Random Number Generator)
+było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier RPG i planszowych.
 Gry te, od wieków korzystające z kostek jako narzędzia generowania losowości, stanowią idealny przykład zastosowania fizycznych mechanizmów do uzyskiwania nieprzewidywalnych wyników.
 Projekt bazuje na hipotezie, że poprzez zautomatyzowanie procesu rzutu kością możliwe jest uzyskanie prawdziwej losowości, mimo deterministycznego charakteru działania maszyny.
 
@@ -50,80 +51,14 @@ Projekt ten zakłada stworzenie urządzenia, które będzie w stanie rzucać ko�
 jednak z losowym efektem wynikającym z natury procesów fizycznych, takich jak tarcie, turbulencje czy drgania.
 Dodatkowo praca ma na celu ocenę możliwości praktycznego zastosowania takiego generatora jako źródła entropii w systemie Linux.
 
-Realizacja takiego urządzenia pozwoli nam także w prosty sposób zautomatyzować statystyczne badanie różnych kości do gry pod względem sprawdzania ich potencjalnej nieuczciwości.
-%rozwinąć ten akapit lub dorzucić do poprzedniego, nie zaczynać zdania od `realizacja`, by się nie powtarzało z kolejnym zdaniem
+Realizacja takiego urządzenia pozwoli nam także w prosty sposób zautomatyzować statystyczne badanie różnych
+kości do gry pod względem sprawdzania ich potencjalnej nieuczciwości,
+co było wyjściowym pomysłem od którego dopiero powstała idea stworzenia sprzętowego generatora liczb prawdziwie losowych (ang.
+HTRNG -- Hardware True Random Number Generator) opartego na rzucie kością.
 
-Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności takiego podejścia,
-%przed chwilą mowa była o kostkach a teraz mowa o `takim podejściu` - doprecyzować o co chodzi lub sformuować inaczej
+Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności podejścia opartego o rzuty kośćmi,
 ale również na pogłębienie wiedzy o granicach między deterministycznymi systemami a losowością,
 stanowiąc wkład w rozwój technologii oraz praktycznych zastosowań w obszarach wymagających prawdziwej losowości.
-
----- TODO ---- \\
-Struktura pracy jest następująca. \\
-W rozdziale~\ref{ch:fragment-teoretyczny} przedstawiono fragment teoretyczny\\
-Rozdział~\ref{ch:budowa-sprzetowego-generatora} jest poświęcony budowie robota\\
-Rozdział~\ref{ch:odczytywanie-losowego-wyniku-z-kosci} zawiera dokładny opis metody odczytywania wyniku rzutu kością \\
-W rozdziale~\ref{ch:przetwarzanie-wyniku} Yoshida sobie coś tam zrobi wreszcie \\
-
----- TODO ---- \\
-ej musimy we wstępie gdzieś wcisnąć ze einstein tez uważał ze rzuty kością są losowe bo powiedział Bog nie rzuca kośćmi \\
-~ Jakub Kędra
-\newpage
-Realizacja projektu została podzielona w sposób przedstawiony w tabeli~\ref{tab:podzial}.
-\begin{table} [H]
-    \centering
-    \caption{Podział obowiązków w projekcie}
-    \label{tab:podzial}
-    \begin{tabular}{|l|l|}
-        \hline
-        Imię i nazwisko & Zakres pracy \\
-        \hline
-        \multirow{9}{*}{Jakub Kędra} 
-            & Projekt i wydruk w technologii druku 3D prototypów oraz ostatecznej \\
-            & wersji urządzenia. \\
-            & Projekt układu elektronicznego. \\
-            & Montaż elementów strukuralnych, połączenie elementów elektrycznych \\
-            & i elektronicznych. \\
-            & Implementacja oprogramowania sterującego komponentami urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Zaprojektowanie przepływu pracy. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{11}{*}{Wojciech Kot} 
-            & Projekt i implementacja części związanej z odczytem i przetwarzaniem \\
-            & zdjęć z kamery. \\
-            & Projekt i implementacja sieci neuronowej dokonującej klasyfikacji \\
-            & wyniku rzutu kością. \\
-            & Przygotowanie zbiorów treningowych i testowych do trenowania sieci \\
-            & neuronowej. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Zaprojektowanie przepływu pracy. \\
-            & Główny pomysłodawca projektu. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{7}{*}{Jakub Prusak} 
-            & Zaprojektowanie i implementacja interfejsu komunikacji i sterowania \\
-            & urządzeniem\\
-            & Przygotowanie komunikacji maszyny z innymi urządzeniami. \\
-            & Zrównoleglenie przetwarzania. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{7}{*}{Julia Samp} 
-            & Opracowanie i przeprowadzenie testów statystycznych otrzymanych \\
-            & wyników. \\
-            & Implementacja testów zgodnie z standardem FIPS. \\
-            & Porównanie i interpretacja wyników otrzymanych dla obu modeli. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Korekta tekstu. \\
-            & Przegląd literatury. \\
-        \hline  
-    \end{tabular} 
-\end{table}   
 
 
 
