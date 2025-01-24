@@ -12,7 +12,7 @@ jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tyc
 W punktach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
 są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
-Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}. Niestety, do zastosowania nawet 
+Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01} \cite{TestU01}. Niestety, do zastosowania nawet 
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
 wzgląd na ograniczenia czasowe oraz ryzyko nadmiernej eksploatacji robota przy generowaniu tak dużej ilości danych, 
 zrezygnowano z wykorzystania tej biblioteki.
@@ -247,11 +247,11 @@ Rozkład segmentów w ciągach odczytanych przez oba modele przedstawiono w tabe
 
 \subsection{Wnioski}
 Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów odrzucono. W wynikach testu statystyki 
-rozkładu chi-kwadrat (\ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
+rozkładu chi-kwadrat (punt \ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
 liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a 
 liczba 8 jako 000, co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się 
-częściej w ciągu niż zera. Ukazuje to już test monobitowy (\ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
-większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (\ref{pokerWyniki}), 
+częściej w ciągu niż zera. Ukazuje to już test monobitowy (punkt \ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
+większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (punkt \ref{pokerWyniki}), 
 gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające 
 więcej bitów o wartości 0. 
 \par
