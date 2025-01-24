@@ -6,7 +6,7 @@
 
 \subsection{Prototypowanie}\label{subsec:prototypowanie}
 
-Przy całym procesie budowy robota wykorzystano technologię FDM \textit{(Fused Deposition Modeling)} druku 3D. Pomimo tego, że proces druku 3D, zwłaszcza w przypadku dużych i skomplikowanych elementów, może być czasochłonny, jest to najlepsza dostępna
+Przy całym procesie budowy robota wykorzystano technologię FDM \textit{(ang. Fused Deposition Modeling)} druku 3D. Pomimo tego, że proces druku 3D, zwłaszcza w przypadku dużych i skomplikowanych elementów, może być czasochłonny, jest to najlepsza dostępna
 technologia do realizacji tego rodzaju projektów. Druk 3D umożliwia tworzenie niestandardowych, precyzyjnie dopasowanych komponentów, które można 
 szybko zmodyfikować w fazie projektowania i łatwo wydrukować ponownie w przypadku wprowadzenia zmian. Dzięki temu, prototypowanie w projektach takich 
 jak budowa robotów czy urządzeń mechanicznych jest znacznie bardziej elastyczne i tańsze w porównaniu do tradycyjnych metod, takich jak obróbka 
@@ -39,7 +39,7 @@ ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwac
 czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. Po rozważeniu innych alternatyw
 zdecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
-mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka.\cite{PK} Obrotowy kubek został zaprojektowany w taki 
+mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
 sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu, możliwe jest ustawienie częstotliwości obrotu oraz określenie, jak długo ma się obracać. Wszystkie te ustawienia 
 można zmieniać za pomocą programu napisanego w Pythonie. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
 Raspberry Pi. Dzięki temu za pomocą komend w kodzie możliwa jest zmiana, jak szybko i na jak długo kubek ma się obracać.
@@ -59,16 +59,16 @@ Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersj
 \end{figure}
 
 Do pierwszych testów robota zaprojektowano cztery warianty kształtów kubków. Przy ich projektowaniu wymiary wzorowano na dostępnych tradycyjnych kubkach do gry w kości.
-Średnice kubków do gry z reguły są w przedziale 70-90mm.\cite{cup} Przyjęto, że odpowiedni do tego zadania kubek powinien
-zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie.\cite{PK} Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
+Średnice kubków do gry z reguły są w przedziale 70-90mm \cite{cup}. Przyjęto, że odpowiedni do tego zadania kubek powinien
+zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie \cite{PK}. Dzięki temu kostka nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
 będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
-o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz Rys.\ref{fig:kubki}): kubek kwadratowy (nr. 4), kubek sześcienny (nr. 2), kubek sześcienny z dodatkowymi żebrami (nr. 1)
+o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz Rys.~\ref{fig:kubki}): kubek kwadratowy (nr. 4), kubek sześcienny (nr. 2), kubek sześcienny z dodatkowymi żebrami (nr. 1)
 oraz kubek cylindryczny z dodatkowymi żebrami (nr. 3). 
 Następnie je przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
 ponieważ kości ośmiościenne, które wykorzystywano do testów utykały w narożnikach dociskane przez siłę odśrodkową. Podobny problem pojawiał się przy testach kubka kwadratowego.
 Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr. 3 na Rys.\ref{fig:kubki}), o które kostka się odbijała podczas kręcenia.
 Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z reszta testowanych wariantów co ma duże znaczenie 
-przy obracaniu całego kubka ze względu na moment bezwładności~\cite{bezwladnosc}.
+przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladnosc}.
 
 \begin{figure}[H]
     \centering
@@ -104,9 +104,9 @@ W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temp
 co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
 zastosowanie radiatorów (Rys.\ref{fig:zimno}), które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
 wspomagał cyrkulację powietrza wokół procesora. Jest to działanie zalecane w oficjalnej dokumentacji na stronie Raspberry Pi, mające przeciwdziałać 
-ograniczaniu wydajności w celu ochrony przed przegrzaniem \textit{(Thermal throttling)}.\cite{cooling} 
+ograniczaniu wydajności w celu ochrony przed przegrzaniem \textit{(Thermal throttling)} \cite{cooling}. 
 Dodatkowym problemem wynikającym z rozgrzewania się procesora do wysokich temperatur jest materiał PLA, z którego wykonywane były komponenty robota
-oraz prototypów. Materiał ten zaczyna się deformować przy temperature $60^{\circ}$C.\cite{plaprusa} Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy
+oraz prototypów. Materiał ten zaczyna się deformować przy temperature $60^{\circ}$C \cite{plaprusa}. Dzięki temu rozwiązaniu udało się obniżyć temperaturę pracy
 procesora, która teraz utrzymuje się w granicach $55^{\circ}$C w czasie rzutów i spada po ich zakończeniu do około $45^{\circ}$C,
 co zapewnia stabilne i bezpieczne działanie całego systemu. 
 \textcolor{red}{TODO sprawdzic te wartości porównac z włączonym i wyłączonym wentylatorem + dodatkowo sterowanie wentylatorem}
@@ -195,8 +195,8 @@ Postanowiono, że finalna wersja robota będzie wykorzystywała kubek o tej same
 i ścianki o grubości 2 mm, na których tak jak w prototypie będą pionowe żebra (patrz nr. 3 na Rys.\ref{fig:kubki}). Dookoła kubka, którego ostateczne wymiary wyniosły 126x80mm,
 zaprojektowano resztę konstrukcji. Obudowę zaprojektowano w taki sposób żeby była w stanie pomieścić kubek oraz kamerę umieszczoną na wysokości 120mm nad dnem kubka.
 Dodatkowo w tylnej oraz dolnej części obudowy pozostawiono przestrzeń na resztę
-elementów składowych robota. Wielkość tej przestrzeni wyznaczono poprzez zwymiarowanie pozostałych elementów takich jak silnik, sterownik, wentylator 
-czy Raspberry Pi. Te wymiary posłużyły do określenia minimalnej potrzebnej przestrzeni, którą wyznaczono na około 30mm z tyłu, 35mm od dołu oraz 10 od góry kubka. To minimum 
+elementów składowych robota. Wielkość tej przestrzeni wyznaczono poprzez zwymiarowanie pozostałych elementów takich jak silnik, sterownik \cite{L298}, wentylator 
+czy Raspberry Pi \cite{malina}. Te wymiary posłużyły do określenia minimalnej potrzebnej przestrzeni, którą wyznaczono na około 30mm z tyłu, 35mm od dołu oraz 10 od góry kubka. To minimum 
 zwiększono w taki sposób, żeby we wnętrzu pomieściły się również przewody i śruby oraz żeby po całkowitym złożeniu pozostała przestrzeń do swobodnego manipulowania
 elementami składowymi. \textcolor{red}{TODO wpisywac tu wymiary, odniesienie do dokumentacji robota, odniesienie do dokumentacji elementów?}
 
