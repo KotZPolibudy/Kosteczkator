@@ -11,8 +11,11 @@ takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy s
 
 \section{Obecnie stosowane rozwiązania}\label{sec:obecnie-stosowane-rozwiazania}
 
+%todo - opisać to lepiej, może Kuba (Yoshida) o linuxowych?
 Obecnie komputery osobiste wykorzystują generatory liczb losowych (ang. RNG -- Random Number Generator)
-wykorzystujące dostępne im źródła entropii takie jak ruchy myszy lub naciśnięcia przycisków, dostarczane przez użytkownika.
+wykorzystujące dostępne im źródła entropii dostarczane przez użytkownika, takie jak ruchy myszy lub naciśnięcia przycisków.
+W nowoczesnych procesorach stosuje się też liczby generowane przez dedykowane moduły takie jak \textbf{Intel DRNG} za pomocą \textit{Intel RDSEED} i \textit{RDRAND}~\cite{IntelRD}.
+System Linux dostarcza również interfejsy \textit{/dev/random} raz \textit{/dev/urandom} zapewniające liczby losowe.
 
 \section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
 
