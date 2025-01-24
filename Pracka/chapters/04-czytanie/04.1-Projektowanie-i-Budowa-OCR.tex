@@ -1,10 +1,10 @@
 \chapter{Odczytywanie losowego wyniku z kości}\label{ch:odczytywanie-losowego-wyniku-z-kosci}
 
 Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
-jednak jak pokazano na schemacie~\ref{fig:schemat_workflow}
+jednak jak pokazano na rysunku~\ref{fig:schemat_workflow}
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
-Schemat~\ref{fig:schemat_workflow} w formie tekstowej
+Rysunek~\ref{fig:schemat_workflow} w formie tekstowej
 \begin{verbatim}
     Maszyna (robot) wykonuje rzut kością
     Kamera umieszczona w jego górnej części robi zdjęcie
@@ -101,7 +101,7 @@ Takie ustawienia zapewniają balans między wygładzeniem a zachowaniem szczegó
 
 Na podstawie wygładzonego komponentu nasycenia za pomocą progowania tworzona jest maska binarna,
 która identyfikuje obszary o wysokim nasyceniu, odpowiadające obiektom zainteresowania (np. kości).
-Próg został dobrany eksperymentalnie, kończąc na wartości \textbf{224},
+Próg został dobrany eksperymentalnie, kończąc na wartości 224,
 tak aby w kontrolowanym środowisku (opisanym w poprzednim rozdziale) maska obejmowała obszar zainteresowania,
 ale nie obejmowała tła (np. czarnego kubka).
 Korzysta to z faktu, że kubek wykonany jest z materiału o niskim nasyceniu,
@@ -166,9 +166,13 @@ W podobny sposób postarano się o wykrycie zacięcia się śmigła,
 co znaczy że preprocess dostaje cały czas takie same zdjęcie do obróbki.
 Tu również zadbano o to, by to wykrywać, jednak w związku z ryzykiem losowego podobieństwa kilku rzutów następujących po sobie,
 a więc ryzyka nieprawidłowego wykrycia błędu, % nie wiem jak to nazwaććććć
-przerwanie pracy następuje dopiero po 12 identycznych odczytach z rzędu.
+przerwanie pracy następuje dopiero po 13 identycznych odczytach z rzędu.
 Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
-$\frac{1}{8^{12}} \approx 1.455 \times 10^{-11}$
+$\frac{1}{8^{12}} \approx 1{,}455 \times 10^{-11}$
+%tak, zmieniliśmy na 13 żeby tego nie przeliczać znowu.
+%a właściwie nie zmieniliśmy, bo w kodzie już było implementowane 13, bo tam zrobiłem ten sam off-by-one error, więc wszystko się zgadzało poza opisem
+%PS: Na probabilistyce jeszcze pamiętałem o takich rzeczach! Przepraszam!
+%%PPS: Mnie przepuścił Pana kolega, który potem niechcący zabrał mi miejsce na angielskim...
 
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
@@ -177,7 +181,7 @@ Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle na
 przez co wynik może być niejednoznaczny, co pokazano na rysunkach~\ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
@@ -209,7 +213,7 @@ gdyż nie przeszkadza to w tym że kość i tak zostanie podbita przy następnym
 Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kostka nie skończyła jeszcze swojej fazy lotu,
 lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{0.45\linewidth}
         \centering

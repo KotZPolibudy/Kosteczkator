@@ -1,18 +1,18 @@
-\chapter{Testy}
+\chapter{Testy}\label{ch:testy}
 
-\section{Użyte testy}
-\label{testyOpis}
 
-Do przetestowania ciągów odczytanych przez modele zaprezentowane w rozdziale \ref{sec:opis-modelu-si} użyto pięć 
+\section{Użyte testy}\label{testyOpis}
+
+Do przetestowania ciągów odczytanych przez modele zaprezentowane w rozdziale~\ref{sec:opis-modelu-si} użyto pięć
 testów statystycznych. Pierwszy z nich to statystyka rozkładu chi-kwadrat, aby zbadać, czy rozkład otrzymywanych 
-wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2 \cite{NIST2001}. Każdy z nich 
-jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001 \cite{Kotulski2001}.
+wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2~\cite{NIST2001}. Każdy z nich
+jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
 
 
-W punktach \ref{monbitOpis} - \ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
-są zgodnie z nomrami przedstawionymi w FIPS 140-2 \cite{NIST2001}. Zostały one zaimplementowane w języku Python.
+W punktach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
+są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
-Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}. Niestety, do zastosowania nawet 
+Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01} \cite{TestU01}. Niestety, do zastosowania nawet 
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
 wzgląd na ograniczenia czasowe oraz ryzyko nadmiernej eksploatacji robota przy generowaniu tak dużej ilości danych, 
 zrezygnowano z wykorzystania tej biblioteki.
@@ -36,7 +36,7 @@ Ponieważ do generowania liczb losowych użyto kości ośmiościennej, to \begin
 \begin{displaymath}
     k - 1 = 8 - 1 = 7
 \end{displaymath}
-Ponieważ w tabeli wartości krytycznych dla rozkładu chi-kwadrat zaprezentowanej przez NIST \cite{NIST2012} nie 
+Ponieważ w tabeli wartości krytycznych dla rozkładu chi-kwadrat zaprezentowanej przez NIST~\cite{NIST2012} nie
 uwzględniono poziomów istotności z rozwinięciem do czterech cyfr po przecinku, przyjęto poziom istotności dla 
 najmniejszego z dostępnych poziomów istotności, czyli równego 0{,}001. Odczytana z tabeli wartość krytyczna wynosi
 24{,}322. Jeśli otrzymana wartość będzie mniejsza od wartości krtycznej, nie ma podstaw do odrzucenia 
@@ -247,11 +247,11 @@ Rozkład segmentów w ciągach odczytanych przez oba modele przedstawiono w tabe
 
 \subsection{Wnioski}
 Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów odrzucono. W wynikach testu statystyki 
-rozkładu chi-kwadrat (\ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
+rozkładu chi-kwadrat (punt \ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
 liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a 
 liczba 8 jako 000, co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się 
-częściej w ciągu niż zera. Ukazuje to już test monobitowy (\ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
-większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (\ref{pokerWyniki}), 
+częściej w ciągu niż zera. Ukazuje to już test monobitowy (punkt \ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
+większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (punkt \ref{pokerWyniki}), 
 gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające 
 więcej bitów o wartości 0. 
 \par

@@ -1,58 +1,74 @@
-\chapter{Fragment teoretyczny}\label{ch:fragment-teoretyczny}
+\chapter{Obecnie stosowane generatory liczb losowych}\label{ch:przeglad-rynku}
 
----- TODO ---- \\
+Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych,
+które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
+Najlepiej spełniają do generatory liczb prawdziwie losowych, czyli te oparte na fizycznych zjawiskach,
+jednak powszechnie używane są generatory pseudolosowe (ang. PRNG -- Pseudorandom Number Generator).
+PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. seed).
 
-Co i dlaczego tak w sumie budujemy? \\
+TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych,
+takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
 
-Jedną z najważniejszych decyzji w trakcie realizacji projektu był wybór rodzaju kości, jaką miał odczytywać 
-i interpretować model sztucznej inteligencji.
-Jako najistotniejsze kryterium wyznaczono liczbę ścian będącą potęgą liczby dwa
-(już na wstępnym etapie projektowania odrzucając standardową kość sześciościenną) --
-w celu łatwej interpretacji wyniku w notacji binarnej, stosowanej powszechnie w informatyce oraz kryptografii.
-W następnej kolejności szukano kompromisu pomiędzy łatwością w odczycie ścianek a generowaniem jak największej liczby
-bitów jednym rzutem - czyli kości o jak największej liczbie ścianek. 
+\section{Obecnie stosowane rozwiązania}\label{sec:obecnie-stosowane-rozwiazania}
 
-Z dostępnych powszechnie na rynku kości tylko cztero-, ośmio- i szesnastościenne spełniają pierwszy z wymienionych wyżej kryteriów.
-Kość czterościenną odrzucono początkowo ze względu na jej kształt ostrosłupa foremnego o podstawie trójkąta,
-na której liczby zapisywane są na rogach a nie ściankach~(\ref{fig:k4}),
-jednak powróciła ona do dyskusji w postaci niestandardowych kształtów kości typu „k4”~\ref{fig:nietypowe_modern_k4}.
-Niestety nie na długo, z racji na bardzo niską dostępność na runku tego typu kości, oraz rzucające się w oczy problemy
-z odczytywaniem pustych(zaokrąglonych) ścianek kości typu modern~(\ref{fig:modern_k4}),
-oraz z bardzo małymi oznaczeniami, które przestałyby być widoczne przy nawet niewielkim przechyleniu kości
-dla ściętego ostrosłupa (\ref{fig:nietypowe_k4}).
+%todo - opisać to lepiej, może Kuba (Yoshida) o linuxowych?
+Obecnie komputery osobiste wykorzystują generatory liczb losowych (ang. RNG -- Random Number Generator)
+wykorzystujące dostępne im źródła entropii dostarczane przez użytkownika, takie jak ruchy myszy lub naciśnięcia przycisków.
+W nowoczesnych procesorach stosuje się też liczby generowane przez dedykowane moduły takie jak \textbf{Intel DRNG} za pomocą \textit{Intel RDSEED} i \textit{RDRAND}~\cite{IntelRD}.
+System Linux dostarcza również interfejsy \textit{/dev/random} raz \textit{/dev/urandom} zapewniające liczby losowe.
 
-Kość szesnanstościenną również odrzucono ze względu na mały rozmiar ścianek, który sprawia,
-że na zdjęciu robionym idealnie nad kością byłoby widoczne jest kilka ścianek jednocześnie (\ref{fig:k16}).
-Z pozostałych opcji tylko na kości ośmiościennej widać z góry dokładnie jedną ściankę~(\ref{fig:k8}), a do tego ma liczbę ścianek będącą potęgą 2,
-zatem to ten rodzaj kości został wybrany do użycia w projekcie.
+\section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
 
-\begin{figure}[H]
+Komercyjne rozwiązania bazują na przeróżnych źródłach entropii,
+najczęściej nie na takich dostarczanych przez użytkownika, aby wykluczyć możliwość ingerencji i ograniczyć przewidywalność.
+Najpopularniejszym medialnie RNG jest -- LavaRand~\cite{cloudflare_lavarand} -- który inspirowany był podobnym systemem,
+zbudowanym i opatentowanym przez \textbf{Silicon Graphics}~\cite{SiliconGraphics}.
+LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
+na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
+jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
+
+\begin{figure}[h]
     \centering
-      \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=.9\linewidth, trim={250mm 200mm 350mm 150mm}, clip]{chapters/02-teoria/figures/k4}
-        \caption{\label{fig:k4}Kość czterościenna}
-      \end{subfigure}%
-      \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=.9\linewidth, trim={250mm 200mm 350mm 150mm}, clip]{chapters/02-teoria/figures/k8}
-        \caption{\label{fig:k8}Kość ośmiościenna}
-      \end{subfigure}%
-       \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=.9\textwidth, trim={300mm 150mm 300mm 200mm}, clip]{chapters/02-teoria/figures/k16}
-        \caption{\label{fig:k16}Kość szesnastościenna}
-      \end{subfigure}
-    \caption{Zdjęcia kości z góry}
+    \includegraphics[width=0.4\linewidth]{chapters/02-teoria/figures/lavarandCamera}
+    \caption{Widok z kamery w biurze Cloudflare~\cite{cloudflare_lavarand}.}
+    \label{fig:lavarand}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-      \begin{subfigure}{.5\textwidth}
-        \includegraphics[width=.9\linewidth, trim={250mm 200mm 350mm 150mm}, clip]{chapters/02-teoria/figures/modern_k4}
-        \caption{\label{fig:modern_k4}Kość czworościenna typu „modern”}
-      \end{subfigure}%
-      \begin{subfigure}{.5\textwidth}
-        \includegraphics[width=.9\linewidth, trim={250mm 200mm 350mm 150mm}, clip]{chapters/02-teoria/figures/nietypowe_k4}
-        \caption{\label{fig:nietypowe_k4}Kość czworościenna ze ściętym czubkiem}
-      \end{subfigure}%
-    \caption{Nietypowe kości czworościenne}
-    \label{fig:nietypowe_modern_k4}
-\end{figure}
+Firma ta oferuje użytkownikom dostęp do generatora liczb losowych w chmurze, który jest wykorzystywany
+m.in. do tworzenia kluczy kryptograficznych oraz w innych zastosowaniach wymagających silnych zabezpieczeń.
+Dzięki wykorzystaniu globalnej infrastruktury Cloudflare generowane liczby losowe są
+szeroko dostępne i charakteryzują się dużą niezawodnością oraz odpornością na ataki.
+
+W ostatnich latach pojawiły się także inne rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu,
+za to na przykład za pośrednictwem API takiego jak drand~\cite{drand_documentation} lub podobnego.
+Przykładem takiego rozwiązania jest właśnie wspomniane \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
+Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
+Dodatkowo, \textbf{Cloudflare} korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, które pobiera entropię z kamery
+ustawionej na ścianę lamp lawowych~\ref{fig:lavarand}, nieprzewidywalnego fizycznie trójstopniowego wahadła, czy rozpadu radioaktywnego uranu.
+Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
+Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
+
+\subsection{Rozwiązania sprzętowe}\label{subsec:rozwiazania-sprzetowe}
+Wśród komercyjnych rozwiązań sprzętowych, wiodącymi producentami są firmy takie jak
+\textbf{ID Quantique}~\cite{IDQ}, \textbf{Microchip Technology}~\cite{MicrochipTechnology} i \textbf{Semtech}~\cite{Semtech},
+które oferują zaawansowane urządzenia bazujące na TRNG.
+Produkty te zapewniają wysoki poziom bezpieczeństwa i są stosowane w wymagających tego aplikacjach,
+takich jak bankowość elektroniczna czy systemy wojskowe.
+
+\begin{itemize}
+    \item \textbf{ID Quantique} jest jednym z liderów w dziedzinie generatorów liczb losowych opartych na technologii fotoniki i mechanizmach kwantowych.
+     Firma oferuje urządzenia, które wykorzystują detekcję fotonów w celu generowania liczb losowych.
+     Dzięki temu rozwiązania ID Quantique charakteryzują się bardzo wysoką jakością losowości,
+     a jednocześnie są odporne na ataki związane z analizą i przewidywaniem generowanych liczb.
+
+    \item \textbf{Microchip Technology} w swojej ofercie posiada różne moduły TRNG, w tym układy scalone,
+     które generują liczby losowe na podstawie fluktuacji szumów termicznych.
+    Produkty te znajdują zastosowanie w szerokim zakresie aplikacji, od urządzeń mobilnych po systemy wbudowane.
+
+    \item \textbf{Semtech} natomiast oferuje rozwiązania, które wykorzystują zjawiska losowe
+     zachodzące w obwodach analogowych do generowania liczb losowych.
+     Firma ta jest jednym z głównych dostawców układów IoT, które wykorzystują własne generatory TRNG
+     do generowania wartości losowych w systemach komunikacji bezprzewodowej.
+\end{itemize}
+
+

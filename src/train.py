@@ -21,11 +21,15 @@ if not os.path.exists(DATASET_PATH):
 print("Loading dataset...")
 
 datagen = ImageDataGenerator(
-    rescale=1.0 / 255.0,  # zacząłem się zastanawiać czy to jest potrzebne, czy nie...
+    rescale=1.0 / 255.0,
     validation_split=0.3,
-    rotation_range=90,  # Rotate images up to 90 degrees
-    horizontal_flip=False,  # DONT MIRROR
-    vertical_flip=False
+    rotation_range=90,  # Obrót o losowy kąt w zakresie od -90° do 90°
+    width_shift_range=0.2,  # Przesunięcie w poziomie w zakresie od -20% do 20% szerokości obrazu
+    height_shift_range=0.2,  # Przesunięcie w pionie w zakresie od -20% do 20% wysokości obrazu
+    shear_range=0.1,  # Transformacja perspektywiczna (shear) w zakresie od -10% do 10%
+    zoom_range=0.1,  # Losowe przybliżenia lub oddalenia w zakresie od 90% do 110% oryginalnego rozmiaru
+    horizontal_flip=False,  # Brak poziomego odbicia
+    vertical_flip=False  # Brak pionowego odbicia
 )
 
 

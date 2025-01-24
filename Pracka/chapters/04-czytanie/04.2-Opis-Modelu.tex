@@ -16,18 +16,18 @@ Dane wejściowe zostały podzielone na zestawy treningowy i walidacyjny w propor
 W celu zwiększenia różnorodności danych treningowych zastosowano techniki augmentacji obrazów dostępne w klasie
 \texttt{ImageDataGenerator}~\cite{keras_imagedatagenerator}, takie jak:
 
-
 \begin{itemize}
     \item obrót o losowy kąt w zakresie do 90°,
-    \item przesunięcia poziome i pionowe,
-    \item transformacje perspektywiczne (shear),
-    \item losowe powiększenia (zoom).
-    \item Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$,
-    co pozwala na skuteczniejsze działanie sieci neuronowej.
+    \item przesunięcia poziome i pionowe w zakresie $\pm 20\%$ wymiarów obrazu,
+    \item transformacje perspektywiczne (ang. shear) w zakresie $\pm 10\%$,
+    \item losowe przybliżenia lub oddalenia (ang. zoom) w zakresie $90\%-110\%$ oryginalnego obrazu.
 \end{itemize}
 
+Wszystkie augmentacje przedstawiono na rysunkach~\ref{fig:5augment}
+Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
 
-\begin{figure}[H]
+
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
@@ -82,10 +82,10 @@ W szczególności należy zaznaczyć, że finalnie uniknięto początkowo przeoc
 jakim jest tworzenie obrazów lustrzanych w wyżej wymienionych transformacjach, gdyż obrazy lustrzane
 sprawiały, że ścianki 2 oraz 5 były znacznie gorzej rozróżnialne przez wytrenowany model.
 Problem nie był początkowo łatwy do wykrycia, gdyż zdjęcia odbite zarówno w pionowej jak i poziomej osi były poprawne,
-a niepoprawne były te odbite tylko wobec jednej osi.
+a niepoprawne były te odbite tylko wobec jednej osi, czego przykład można zaobserwować na rysunku~\ref{fig:25confusion}.
 
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
@@ -100,33 +100,11 @@ a niepoprawne były te odbite tylko wobec jednej osi.
         \caption{Zdjęcie przedstawiające 2, odbite lustrzanie}
         \label{fig:2_confusion}
     \end{subfigure}
-    \caption{Nieczytelne ujęcia wynikające z dłuższego niż przewidywany ruchu kości}
+    \caption{Wizualne przedstawienie problemu dot. odbicia lustrzanego}
     \label{fig:25confusion}
 \end{figure}
 
 \subsection{Architektura modelu}\label{subsec:architektura-modelu}
-
-Model jest wielowarstwową siecią splotową (ang. convolutional neural network, CNN),
-składającą się z następujących elementów:
-
-\begin{itemize}
-    \item Warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
-    \item Trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
-    \begin{itemize}
-        \item Pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-    \end{itemize}
-    \item Warstwa spłaszczająca (Flatten),
-    \item Dwóch w pełni połączonych warstw (Dense):
-    \begin{itemize}
-        \item Pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
-        \item Druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
-    \end{itemize}
-\end{itemize}
 
 \subsection{Użyte funkcje aktywacji i rodzaje warstw}\label{subsec:uzyte-funkcje-aktywacji-i-rodzaje-warstw}
 
@@ -142,7 +120,7 @@ Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę pos
 dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
 
 \subsubsection{Warstwa gęsta (Dense)}
-Warstwa gęsta, czyli \textit{fully connected layer}, to warstwa, w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
+Warstwa gęsta (ang. Dense, fully connected layer), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
 Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
 z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
 W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
@@ -150,8 +128,10 @@ które reprezentują cechy odpowiednie do klasyfikacji.
 
 
 Użyte funkcje aktywacji:
+%o, sprawdziłem nawet, to NIE JEST to co mi chat geenrował, bo mi się nie podobało i przepisywałem XD
+% zupełnie zapomniałem o tym XDD
 \begin{itemize}
-    \item ReLu -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
+    \item ReLU -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
     Jest to funkcja, która zwraca 0 dla wszystkich ujemnych wartości i zachowuje wartość dodatnią dla wszystkich liczb dodatnich.
     ReLU pozwala na szybkie i efektywne uczenie się sieci, eliminując problem zanikania gradientu,
     który występuje w tradycyjnych funkcjach aktywacji, takich jak sigmoidalna.
@@ -161,6 +141,29 @@ Użyte funkcje aktywacji:
     gdzie suma prawdopodobieństw dla wszystkich klas wynosi 1.
 \end{itemize}
 
+\subsection{Budowa sieci neuronowej}\label{subsec:budowa-sieci-neuronowej}
+Model jest wielowarstwową siecią splotową (ang. convolutional neural network, CNN),
+składającą się z następujących elementów:
+
+\begin{enumerate}
+    \item Warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
+    \item Trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
+    \begin{enumerate}
+        \item Pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
+        \item Druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
+        \item Trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
+        \item Warstwa max poolingu z jądrem 2x2,
+    \end{enumerate}
+    \item Warstwa spłaszczająca (Flatten),
+    \item Dwóch w pełni połączonych warstw (Dense):
+    \begin{enumerate}
+        \item Pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
+        \item Druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
+    \end{enumerate}
+\end{enumerate}
+
 W przypadku zmiany kości na taką z inną liczbą ścianek, np.
 na również rozważane w fazie koncepcyjnej kości czworościenną, sześciościenną, albo szesnastościenną,
 ostatnia warstwa musiałaby również ulec odpowiedniej zmianie,
@@ -169,9 +172,9 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 \subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
 
 Model został nauczony z wykorzystaniem optymalizatora Adam~\cite{kingma2014adam, keras_adam},
-funkcji strat sparse categorical crossentropy dostępnej w module tensorflow~\cite{tensorflow_loss},
+funkcji straty entropii krzyżowej~\cite{crossentropy} dostępnej w module tensorflow jako sparse categorical crossentropy~\cite{tensorflow_loss},
 oraz metryki dokładności (ang. accuracy)~\cite{tensorflow_accuracy}.
-Proces trenowania obejmował 20 epok.
+Proces trenowania obejmował dobraną eksperymentalnie liczbę 20 epok, gdyż dalsze zwiększanie liczby epok nie przynosiło istotnej poprawy wydajności zwiększając jedynie czas obliczeń.
 Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
 
 
@@ -186,7 +189,8 @@ Podczas trenowania osiągnięto następujące końcowe wyniki:
     \item Strata na zbiorze walidacyjnym: 0,0274
 \end{itemize}
 
-Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę dokładności i straty w trakcie trenowania.
+Wyniki zostały również zwizualizowane na wykresach (rysunki~\ref{fig:ModelAcc} oraz~\ref{fig:ModelLoss})
+przedstawiających zmianę dokładności i straty w trakcie trenowania.
 
 \begin{figure}[H]
     \centering
@@ -204,9 +208,3 @@ Wyniki zostały również zwizualizowane na wykresach przedstawiających zmianę
 
 Model został zapisany w formacie \texttt{.keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości,
 opisanym w kolejnej sekcji.
-
-
-\subsection{Podsumowanie}\label{subsec:podsumowanie42}
-
---- TODO ---
-czy jest tutaj potrzebne?

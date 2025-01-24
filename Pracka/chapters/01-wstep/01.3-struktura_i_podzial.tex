@@ -1,0 +1,71 @@
+\section{Struktura pracy oraz podział obowiązków}\label{sec:struktura-pracy-oraz-podzia-obowiazkow}
+
+Struktura pracy jest następująca. \\
+W rozdziale~\ref{ch:przeglad-rynku} przedstawiono przegląd obecnie dostępnych rozwiązań,
+w tym liderów na rynku oraz innych rozwiązań, zbliżonych do naszego.
+Rozdział~\ref{ch:budowa-sprzetowego-generatora} jest poświęcony budowie sprzętowej części robota.
+Kolejne rozdziały skupiają się już jedynie na oprogramowaniu
+Rozdział~\ref{ch:odczytywanie-losowego-wyniku-z-kosci} zawiera dokładny opis metody odczytywania wyniku rzutu kością,
+wraz z opisem wykorzystanej sieci neuronowej.
+W rozdziale~\ref{ch:komunikacja} znajduje się opis protokołu komunikacji z innym urządzeniem odbierającym wynik pracy robota. \\
+Następnie w rozdziale~\ref{ch:testy} opisano wykorzystane testy statystyczne i kryptograficzne, wraz z ich wynikami i wnioskami.
+Ostateczne wnioski z całej pracy zawarto w rozdziale~\ref{ch:zakonczenie}.
+%---- TODO ---- \\
+%ej musimy we wstępie gdzieś wcisnąć ze einstein tez uważał ze rzuty kością są losowe bo powiedział Bog nie rzuca kośćmi \\
+%~ Jakub Kędra
+
+Realizacja projektu została podzielona w sposób przedstawiony w tabeli~\ref{tab:podzial}.
+\begin{table} [h]
+    \centering
+    \caption{Podział obowiązków w projekcie}
+    \label{tab:podzial}
+    \begin{tabular}{|l|l|}
+        \hline
+        Imię i nazwisko & Zakres pracy \\
+        \hline
+        \multirow{9}{*}{Jakub Kędra} 
+            & Projekt i wydruk w technologii druku 3D prototypów oraz ostatecznej \\
+            & wersji urządzenia. \\
+            & Projekt układu elektronicznego. \\
+            & Montaż elementów strukuralnych, połączenie elementów elektrycznych \\
+            & i elektronicznych. \\
+            & Implementacja oprogramowania sterującego komponentami urządzenia. \\
+            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
+            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
+            & Zaprojektowanie przepływu pracy. \\
+            & Przegląd literatury. \\
+        \hline
+        \multirow{11}{*}{Wojciech Kot} 
+            & Projekt i implementacja części związanej z odczytem i przetwarzaniem \\
+            & zdjęć z kamery. \\
+            & Projekt i implementacja sieci neuronowej dokonującej klasyfikacji \\
+            & wyniku rzutu kością. \\
+            & Przygotowanie zbiorów treningowych i testowych do trenowania sieci \\
+            & neuronowej. \\
+            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
+            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
+            & Zaprojektowanie przepływu pracy. \\
+            & Główny pomysłodawca projektu. \\
+            & Przegląd literatury. \\
+        \hline
+        \multirow{7}{*}{Jakub Prusak} 
+            & Zaprojektowanie i implementacja interfejsu komunikacji i sterowania \\
+            & urządzeniem\\
+            & Przygotowanie komunikacji maszyny z innymi urządzeniami. \\
+            & Zrównoleglenie przetwarzania. \\
+            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
+            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
+            & Przegląd literatury. \\
+        \hline
+        \multirow{7}{*}{Julia Samp} 
+            & Opracowanie i przeprowadzenie testów statystycznych otrzymanych \\
+            & wyników. \\
+            & Implementacja testów zgodnie z standardem FIPS. \\
+            & Porównanie i interpretacja wyników otrzymanych dla obu modeli. \\
+            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
+            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
+            & Korekta tekstu. \\
+            & Przegląd literatury. \\
+        \hline  
+    \end{tabular} 
+\end{table}   

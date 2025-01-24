@@ -1,39 +1,9 @@
 \chapter{Wstęp}\label{ch:wstep}
 
-%Wstęp do pracy powinien zawierać następujące elementy:
-%\begin{itemize}
-%    \item krótkie uzasadnienie podjęcia tematu;
-%    \item cel pracy (patrz niżej);
-%    \item zakres (przedmiotowy, podmiotowy, czasowy) wyjaśniający, w jakim rozmiarze praca będzie realizowana;
-%    \item ewentualne hipotezy, które autor zamierza sprawdzić lub udowodnić;
-%    \item krótką charakterystykę źródeł, zwłaszcza literaturowych;
-%    \item układ pracy (patrz niżej), czyli zwięzłą charakterystykę zawartości poszczególnych rozdziałów;
-%    \item ewentualne uwagi dotyczące realizacji tematu pracy np.~trudności, które pojawiły się w trakcie
-%    realizacji poszczególnych zadań, uwagi dotyczące wykorzystywanego sprzętu, współpraca z firmami zewnętrznymi.
-%\end{itemize}
-
-% \noindent
-% \textbf{Wstęp do pracy musi się kończyć dwoma następującymi akapitami:}
-% \begin{quote}
-% Celem pracy jest opracowanie / wykonanie analizy / zaprojektowanie / ...........
-% \end{quote}
-% oraz:
-% \begin{quote}
-% Struktura pracy jest następująca. W rozdziale 2 przedstawiono przegląd literatury na temat ........
-% Rozdział 3 jest poświęcony ....... (kilka zdań).
-% Rozdział 4 zawiera ..... (kilka zdań) ............ itd.
-% Rozdział X stanowi podsumowanie pracy.
-% \end{quote}
-%
-% W przypadku prac inżynierskich zespołowych lub magisterskich 2-osobowych, po tych dwóch w/w akapitach
-% musi w pracy znaleźć się akapit, w którym będzie opisany udział w pracy poszczególnych członków zespołu. Na przykład:
-%
-% \begin{quote}
-% Jan Kowalski w ramach niniejszej pracy wykonał projekt tego i tego, opracował ......
-% Grzegorz Brzęczyszczykiewicz wykonał ......, itd.
-% \end{quote}
-
-%---Koniec Template---
+%todo ale boga czy Boga, oraz czy to dopisywać?
+%W swoim liście z 1926r. Albert Einstein pisał do Maxa Borna podkreślając swą wiarę w deterministyczny świat.
+%\textit{„Ja w każdym razie jestem głęboko przeświadczony, że On nie gra w kości.”}
+%Dla komputerów również wszystko jest deterministyczne, a jednak korzystamy z losowości przy tak wielu operacjach... bla bla, dobra, Kuba sam se wstaw ten cytat bo ja bardzo nie umiem tego ubrać w słowa
 
 Współczesne systemy komputerowe i technologie wykorzystują liczne algorytmy generowania liczb losowych, które stanowią podstawę w takich dziedzinach jak kryptografia,
 symulacje komputerowe czy gry komputerowe.
@@ -41,89 +11,22 @@ Jednakże większość tych rozwiązań opiera się na generatorach pseudolosowy
 które, mimo swojej wydajności, w istocie generują liczby deterministyczne.
 W praktyce może to prowadzić do problemów z bezpieczeństwem i nieprzewidywalnością w sytuacjach, gdzie prawdziwa losowość jest kluczowa.
 
-Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier RPG i planszowych.
+Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych (ang. HRNG -- Hardware Random Number Generator)
+było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier RPG i planszowych.
 Gry te, od wieków korzystające z kostek jako narzędzia generowania losowości, stanowią idealny przykład zastosowania fizycznych mechanizmów do uzyskiwania nieprzewidywalnych wyników.
 Projekt bazuje na hipotezie, że poprzez zautomatyzowanie procesu rzutu kością możliwe jest uzyskanie prawdziwej losowości, mimo deterministycznego charakteru działania maszyny.
 
 Celem pracy jest zbudowanie urządzenia zdolnego do generowania liczb losowych poprzez mechaniczny rzut kością oraz analiza stopnia losowości uzyskanych wyników.
 Projekt ten zakłada stworzenie urządzenia, które będzie w stanie rzucać kością w sposób powtarzalny i przewidywalny,
 jednak z losowym efektem wynikającym z natury procesów fizycznych, takich jak tarcie, turbulencje czy drgania.
-Dodatkowo praca ma na celu ocenę możliwości praktycznego zastosowania takiego generatora jako źródła entropii w systemie Linux.
+Dodatkowo praca ma na celu praktyczne zastosowanie stworzonego generatora jako źródła entropii w systemie Linux.
 
-Realizacja takiego urządzenia pozwoli nam także w prosty sposób zautomatyzować statystyczne badanie różnych kości do gry pod względem sprawdzania ich potencjalnej nieuczciwości.
-%rozwinąć ten akapit lub dorzucić do poprzedniego, nie zaczynać zdania od `realizacja`, by się nie powtarzało z kolejnym zdaniem
+Realizacja takiego urządzenia pozwoli nam także w prosty sposób zautomatyzować statystyczne badanie różnych
+kości do gry pod względem sprawdzania ich potencjalnej nieuczciwości,
+co było wyjściowym pomysłem, od którego dopiero powstała idea stworzenia sprzętowego generatora liczb prawdziwie losowych (ang.
+HTRNG -- Hardware True Random Number Generator) opartego na rzucie kością.
 
-Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności takiego podejścia,
-%przed chwilą mowa była o kostkach a teraz mowa o `takim podejściu` - doprecyzować o co chodzi lub sformuować inaczej
+Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności podejścia opartego o rzuty kośćmi,
 ale również na pogłębienie wiedzy o granicach między deterministycznymi systemami a losowością,
 stanowiąc wkład w rozwój technologii oraz praktycznych zastosowań w obszarach wymagających prawdziwej losowości.
-
----- TODO ---- \\
-Struktura pracy jest następująca. \\
-W rozdziale~\ref{ch:fragment-teoretyczny} przedstawiono fragment teoretyczny\\
-Rozdział~\ref{ch:budowa-sprzetowego-generatora} jest poświęcony budowie robota\\
-Rozdział~\ref{ch:odczytywanie-losowego-wyniku-z-kosci} zawiera dokładny opis metody odczytywania wyniku rzutu kością \\
-W rozdziale~\ref{ch:przetwarzanie-wyniku} Yoshida sobie coś tam zrobi wreszcie \\
-
----- TODO ---- \\
-ej musimy we wstępie gdzieś wcisnąć ze einstein tez uważał ze rzuty kością są losowe bo powiedział Bog nie rzuca kośćmi \\
-~ Jakub Kędra
-\newpage
-Realizacja projektu została podzielona w sposób przedstawiony w tabeli~\ref{tab:podzial}.
-\begin{table} [H]
-    \centering
-    \caption{Podział obowiązków w projekcie}
-    \label{tab:podzial}
-    \begin{tabular}{|l|l|}
-        \hline
-        Imię i nazwisko & Zakres pracy \\
-        \hline
-        \multirow{9}{*}{Jakub Kędra} 
-            & Projekt i wydruk w technologii druku 3D prototypów oraz ostatecznej \\
-            & wersji urządzenia. \\
-            & Projekt układu elektronicznego. \\
-            & Montaż elementów strukuralnych, połączenie elementów elektrycznych \\
-            & i elektronicznych. \\
-            & Implementacja oprogramowania sterującego komponentami urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Zaprojektowanie przepływu pracy. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{11}{*}{Wojciech Kot} 
-            & Projekt i implementacja części związanej z odczytem i przetwarzaniem \\
-            & zdjęć z kamery. \\
-            & Projekt i implementacja sieci neuronowej dokonującej klasyfikacji \\
-            & wyniku rzutu kością. \\
-            & Przygotowanie zbiorów treningowych i testowych do trenowania sieci \\
-            & neuronowej. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Zaprojektowanie przepływu pracy. \\
-            & Główny pomysłodawca projektu. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{7}{*}{Jakub Prusak} 
-            & Zaprojektowanie i implementacja interfejsu komunikacji i sterowania \\
-            & urządzeniem\\
-            & Przygotowanie komunikacji maszyny z innymi urządzeniami. \\
-            & Zrównoleglenie przetwarzania. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Przegląd literatury. \\
-        \hline
-        \multirow{7}{*}{Julia Samp} 
-            & Opracowanie i przeprowadzenie testów statystycznych otrzymanych \\
-            & wyników. \\
-            & Implementacja testów zgodnie z standardem FIPS. \\
-            & Porównanie i interpretacja wyników otrzymanych dla obu modeli. \\
-            & Wykonanie testów sprawdzających poprawność działania urządzenia. \\
-            & Oznaczanie przykładów uczących dla sieci neuronowej. \\
-            & Korekta tekstu. \\
-            & Przegląd literatury. \\
-        \hline  
-    \end{tabular} 
-\end{table}   
-
-
 
