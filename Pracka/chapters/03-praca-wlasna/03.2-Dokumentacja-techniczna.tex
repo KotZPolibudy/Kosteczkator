@@ -3,6 +3,8 @@
 \subsection{Hardware}
 \label{subsec:hardware}
 \subsubsection{Ogólne parametry robota:}
+Model 3D całego robota znajduje się na repozytorium projektu pod linkiem: .
+
 Wymiary zewnętrzne: 180mm x  134mm x 84mm
 
 Masa: 0,5 kg
@@ -13,20 +15,6 @@ Pozostałe najważniejsze wymiary przedstawiono na rysunku~\ref{fig:wymiary}.
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/wymiary}
     \caption{\label{fig:wymiary}Wymiary zewnętrzne.}
 \end{figure}
-\textcolor{red}{TODO jak załączyć model 3d}
-
-\subsubsection{Elektronika}
-    \begin{itemize}
-        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0~\cite{malina}.
-        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219~\cite{malina}.
-        \item L298N - Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników~\cite{L298}.
-        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcyjnych~\cite{ULN2803a}.
-        \item Silnik N20 DC 12V z metalową przekładnią 2000RPM.
-        \item Trzy diody LED 3mm białe.
-        \item Trzy diody LED 3mm czerwona, niebieska, zielona.
-        \item Przycisk monostabliny THT.
-        \item Gniazdo wtykowe DC w formacie 5,5 x 2,1 mm.
-    \end{itemize}
 
 \subsubsection{Elementy strukturalne:}
 Wszystkie elementy strukturalne wymienione poniżej są zaznaczone na rysunku~\ref{fig:komponenty}. Zostały one wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
@@ -54,6 +42,20 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
         \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/komponenty}
         \caption{\label{fig:komponenty}Komponenty robota}
     \end{figure}
+
+\subsubsection{Elektronika}
+    \begin{itemize}
+        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0~\cite{malina}.
+        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219~\cite{malina}.
+        \item L298N - Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników~\cite{L298}.
+        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcyjnych~\cite{ULN2803a}.
+        \item Silnik N20 DC 12V z metalową przekładnią 2000RPM.
+        \item Trzy diody LED 3mm białe.
+        \item Trzy diody LED 3mm czerwona, niebieska, zielona.
+        \item Przycisk monostabliny THT.
+        \item Gniazdo wtykowe DC w formacie 5,5 x 2,1 mm.
+    \end{itemize}
+
 
 \subsubsection{Zasilanie:}
 \begin{itemize}
