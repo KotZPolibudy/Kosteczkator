@@ -1,4 +1,70 @@
 \chapter{Przegląd rynku}\label{ch:przeglad-rynku}
 
+Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych,
+które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
+Najlepiej spełniają do generatory liczb prawdziwie losowych, czyli te oparte na fizycznych zjawiskach,
+jednak powszechnie używane są generatory pseudolosowe (ang. PRNG -- Pseudorandom Number Generator).
+PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. seed).
 
---- TODO --- no to przeniesione, ale co teraz wstawić tu?
+TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych,
+takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących.
+
+\section{Obecnie stosowane rozwiązania}\label{sec:obecnie-stosowane-rozwiazania}
+
+Obecnie komputery osobiste wykorzystują generatory liczb losowych (ang. RNG -- Random Number Generator)
+wykorzystujące dostępne im źródła entropii takie jak ruchy myszy lub naciśnięcia przycisków, dostarczane przez użytkownika.
+
+\section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
+
+Wśród komercyjnych rozwiązań sprzętowych, wiodącymi producentami są firmy takie jak
+\textbf{ID Quantique}~\cite{IDQ}, \textbf{Microchip Technology}~\cite{MicrochipTechnology} i \textbf{Semtech}~\cite{Semtech},
+które oferują zaawansowane urządzenia bazujące na TRNG.
+Produkty te zapewniają wysoki poziom bezpieczeństwa i są stosowane w wymagających tego aplikacjach,
+takich jak bankowość elektroniczna czy systemy wojskowe.
+
+\begin{itemize}
+    \item \textbf{ID Quantique} jest jednym z liderów w dziedzinie generatorów liczb losowych opartych na technologii fotoniki i mechanizmach kwantowych.
+     Firma oferuje urządzenia, które wykorzystują detekcję fotonów w celu generowania liczb losowych.
+     Dzięki temu rozwiązania ID Quantique charakteryzują się bardzo wysoką jakością losowości,
+     a jednocześnie są odporne na ataki związane z analizą i przewidywaniem generowanych liczb.
+
+    \item \textbf{Microchip Technology} w swojej ofercie posiada różne moduły TRNG, w tym układy scalone,
+     które generują liczby losowe na podstawie fluktuacji szumów termicznych.
+    Produkty te znajdują zastosowanie w szerokim zakresie aplikacji, od urządzeń mobilnych po systemy wbudowane.
+
+    \item \textbf{Semtech} natomiast oferuje rozwiązania, które wykorzystują zjawiska losowe
+     zachodzące w obwodach analogowych do generowania liczb losowych.
+     Firma ta jest jednym z głównych dostawców układów IoT, które wykorzystują własne generatory TRNG
+     do generowania wartości losowych w systemach komunikacji bezprzewodowej.
+\end{itemize}
+
+\subsection{Generatory TRNG w chmurze}\label{subsec:generatory-trng-w-chmurze}
+
+W ostatnich latach pojawiły się także rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu,
+za to na przykład za pośrednictwem API dostępnego w~\cite{drand_documentation}.
+Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
+Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
+Dodatkowo, \textbf{Cloudflare} korzysta z technologii opartych na zjawiskach fizycznych, takich jak „Entropy Wall”, które pobiera entropię z kamery
+ustawionej na ścianę lamp lawowych~\ref{fig:lavarand}, nieprzewidywalnego fizycznie trójstopniowego wahadła, czy rozpadu radioaktywnego uranu.
+Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
+Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
+
+Najpopularniejszy z tych niecodziennych generatorów -- LavaRand -- inspirowany był podobnym systemem zbudowanym i
+opatentowanym przez \textbf{Silicon Graphics}~\cite{SiliconGraphics}.
+LavaRand pozostaje dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
+na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające,
+jednak wciąż pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{chapters/02-teoria/figures/lavarandCamera}
+    \caption{Widok z kamery w biurze Cloudflare~\cite{cloudflare_lavarand}.}
+    \label{fig:lavarand}
+\end{figure}
+
+
+Firma ta oferuje użytkownikom dostęp do generatora liczb losowych w chmurze, który jest wykorzystywany
+m.in. do tworzenia kluczy kryptograficznych oraz w innych zastosowaniach wymagających silnych zabezpieczeń.
+Dzięki wykorzystaniu globalnej infrastruktury Cloudflare generowane liczby losowe są
+szeroko dostępne i charakteryzują się dużą niezawodnością oraz odpornością na ataki.
+
