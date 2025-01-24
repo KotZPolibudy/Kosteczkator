@@ -1,4 +1,4 @@
-name: Push Compiled Latex to repository
+name: Compile Latex from repository
 
 on:
   push:
