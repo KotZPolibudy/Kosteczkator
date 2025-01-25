@@ -1,7 +1,7 @@
 \chapter{Odczytywanie losowego wyniku z kości}\label{ch:odczytywanie-losowego-wyniku-z-kosci}
 
-Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
-jednak jak pokazano na rys.~\ref{fig:schemat_workflow}
+Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości.
+Jak pokazano na rys.~\ref{fig:schemat_workflow}
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
 Rys.~\ref{fig:schemat_workflow} w formie tekstowej
@@ -32,7 +32,7 @@ o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia ca
 Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a przepływ pracy prezentuje się tak: \\
 1. Wczytanie obrazu wejściowego \\
 2. Odnalezienie kości za pomocą maski na komponencie nasycenia \\
-3. Stworzenie i wycięcie ramki ograniczającej (ang. bounding box) wokół maski \\
+3. Stworzenie i wycięcie ramki ograniczającej (ang. \textit{bounding box}) wokół maski \\
 4. Przeskalowanie do odpowiedniego rozmiaru \\
 5. Konwersja do skali szarości \\
 6. Zapisanie gotowego obrazu \\
@@ -163,7 +163,7 @@ Mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątk
 który nadarzy się gdy do preprocessu trafi zupełnie czarne zdjęcie -- taki przypadek jest pomijany.
 W przypadku trzech takich nieprawidłowych zdjęć pod rząd generator przerywa pracę zgłaszając błąd.
 W podobny sposób postarano się o wykrycie zacięcia się śmigła,
-co znaczy że preprocess dostaje cały czas takie same zdjęcie do obróbki.
+co oznacza, że preprocess dostaje cały czas takie same zdjęcie do obróbki.
 Tu również zadbano o to, by to wykrywać, jednak w związku z ryzykiem losowego podobieństwa kilku rzutów następujących po sobie,
 a więc ryzyka nieprawidłowego wykrycia błędu, % nie wiem jak to nazwaććććć
 przerwanie pracy następuje dopiero po 13 identycznych odczytach z rzędu.
@@ -176,7 +176,7 @@ $\frac{1}{8^{12}} \approx 1{,}455 \times 10^{-11}$
 
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
-a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
+a więc moment, gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
 Najczęściej jest to spowodowane tym, że kość zatrzymała się na śmigle napędowym,
 przez co wynik może być niejednoznaczny, co pokazano na rys.~\ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!
@@ -205,11 +205,9 @@ Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, kt
 który jest bardziej widoczny, ponieważ podczas uczenia model miał do czynienia z takimi niejednoznacznymi sytuacjami,
 które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby treningu modelu.
 
-Zdarzają się oczywiście rzadkie przypadki, w których kość wyląduje równo na śmigle, tak że wynik jest idealnie czytelny,
-tak jakby wylądowała normalnie na podstawce kubka, ale wtedy problem z lądowaniem na śmigle nie istnieje,
-gdyż nie przeszkadza to w tym że kość i tak zostanie podbita przy następnym obrocie śmigła.
-
-
+Zdarzają się oczywiście rzadkie przypadki, w których kość wyląduje równo na śmigle. Jednakże w takim wypadku wynik jest idealnie czytelny,
+tak jakby wylądowała normalnie na podstawce kubka. Wtedy problem z lądowaniem na śmigle nie istnieje,
+gdyż nie przeszkadza to w tym, że kość i tak zostanie podbita przy następnym obrocie śmigła. 
 Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kość nie skończyła jeszcze swojej fazy lotu,
 lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
 
@@ -233,8 +231,8 @@ lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytani
 \end{figure}
 
 
-Rozwiązaniem większości wypadków w których zachodziła ta sytuacja okazało się spowolnienie działania maszyny.
-Obecnie, oczekiwaniem aż kość zatrzyma się w miejscu steruje parametr czasowy, przyjmujący wartość jednej sekundy od zakończenia pracy śmigła.
+Rozwiązaniem większości wypadków, w których zachodziła ta sytuacja, okazało się spowolnienie działania maszyny.
+Obecnie oczekiwaniem aż kość zatrzyma się w miejscu steruje parametr czasowy, przyjmujący wartość jednej sekundy od zakończenia pracy śmigła.
 Jest to wystarczające rozwiązanie, gdyż obecnie sytuacje niepewne z tego powodu zdarzają się bardzo rzadko (około 1 raz na 5000 rzutów).
 
 Istnieje możliwość udoskonalenia tego rozwiązania, poprzez stosowanie detekcji ruchu kości,
