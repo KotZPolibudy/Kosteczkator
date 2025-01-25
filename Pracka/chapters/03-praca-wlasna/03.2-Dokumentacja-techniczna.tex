@@ -18,8 +18,8 @@ Pozostałe najważniejsze wymiary przedstawiono na rys.~\ref{fig:wymiary}.
 
 \subsubsection{Elementy strukturalne}
 Wszystkie elementy strukturalne wymienione poniżej są zaznaczone na rys.~\ref{fig:komponenty}. Zostały one wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
-PLA \textit{(ang. Polylactic Acid)} \cite{plaprusa}. Wyboru dokonano po porównaniu właściwości fizycznych, cen i łatwości wydruku różnych materiałów. Wzięto pod uwagę
-PLA, PETG \textit{(ang. Polyethylene Terephthalate Glycol-modified)} \cite{PETG} oraz ABS \textit{(ang. Acrylonitrile Butadiene Styrene)} \cite{ABS}. Ostatecznie wybrano PLA, ze względu na jego sztywność, dużą popularność,
+PLA (ang. \textit{Polylactic Acid}) \cite{plaprusa}. Wyboru dokonano po porównaniu właściwości fizycznych, cen i łatwości wydruku różnych materiałów. Wzięto pod uwagę
+PLA, PETG (ang. \textit{Polyethylene Terephthalate Glycol-modified}) \cite{PETG} oraz ABS (ang. \textit{Acrylonitrile Butadiene Styrene}) \cite{ABS}. Ostatecznie wybrano PLA ze względu na jego sztywność, dużą popularność,
 niską cenę oraz prostotę procesu druku. ABS odrzucono ze względu na szkodliwe opary podczas druku i potrzebę zamkniętej komory drukarki. PETG najprawdopodobniej
 byłby również odpowiednim materiałem do wydrukowania potrzebnych w tym projekcje części, jednak jest on podatny na nitkowanie w czasie druku. Ta cecha
 obniżała by jakość wydruku komponentów robota, które zawierają wiele otworów drukowanych w płaszczyźnie pionowej co sprzyjałoby nitkowaniu~\cite{PLA, PLA2}.
@@ -45,10 +45,10 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
 
 \subsubsection{Elektronika}
     \begin{itemize}
-        \item Raspberry Pi 4B - Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0~\cite{malina}.
-        \item Raspberry Pi Camera V2 - Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219~\cite{malina}.
-        \item L298N - Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników~\cite{L298}.
-        \item ULN2803A - Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcyjnych~\cite{ULN2803a}.
+        \item Raspberry Pi 4B -- Komputer wyposażony w czterordzeniowy procesor ARM Cortex-72. Posiada on możliwość łączenia Wi-Fi 802.11ac oraz Bluetooth 5.0~\cite{malina}.
+        \item Raspberry Pi Camera V2 -- Kamera przystosowana do łączenia z Raspberry Pi za pomocą taśmy Raspberry Pi. Posiada ona 8-megapixelowy sensor Sony IMX219~\cite{malina}.
+        \item L298N -- Układ zaprojektowany do przyjmowania standardowych sygnałów TTL wykorzystywany jako sterownik silników~\cite{L298}.
+        \item ULN2803A -- Układ ten zawiera osiem tranzystorów Darlingtona. Posiada on wspólne emitery oraz wbudowane diody tłumiące dla obciążeń indukcyjnych~\cite{ULN2803a}.
         \item Silnik N20 DC 12 V z metalową przekładnią 2000RPM.
         \item Trzy diody LED 3mm białe.
         \item Trzy diody LED 3mm czerwona, niebieska, zielona.
@@ -59,7 +59,7 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
 
 \subsubsection{Zasilanie}
 \begin{itemize}
-    \item Zasilacz DC 12 V - wejście Power Jack 5,5 x 2,1 mm. Wykorzystano zasilacz o mocy 60 W, jednak w zupełności do zasilania robota wystarczyłby zasilacz o mocy \textcolor{red}{TODO obliczyć moc i zamieścić tu}
+    \item Zasilacz DC 12 V -- wejście Power Jack 5,5 x 2,1 mm. Wykorzystano zasilacz o mocy 60 W, jednak w zupełności do zasilania robota wystarczyłby zasilacz o mocy \textcolor{red}{TODO obliczyć moc i zamieścić tu}
 \end{itemize}
 
 \subsubsection{Podłączenie elektroniki}
@@ -67,19 +67,19 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
 Schemat na rys.~\ref{fig:electronics} przedstawia wszystkie elementy układu elektronicznego wraz z połączeniami, które zostały wykorzystane w robocie.
 Złącza GPIO mikrokontrolera Raspberry Pi 4b zostały użyte do kontrolowania poszczególnych elementów, takich jak silnik prądu stałego oraz diody LED, które są sterowane za 
 pośrednictwem układów L298N oraz ULN2803A. Raspberry Pi jest zasilane przez port USB-C, a wszystkie podzespoły dzielą wspólną masę.
-Silnik prądu stałego (oznaczony jako M1) jest sterowany za pomocą układu L298N, który umożliwia kontrolę prędkości z jaką obraca się silnik, poprzez kontrolę współczynnika wypełnienia \textit{(Duty cycle)} 
+Silnik prądu stałego (oznaczony jako M1) jest sterowany za pomocą układu L298N, który umożliwia kontrolę prędkości z jaką obraca się silnik, poprzez kontrolę współczynnika wypełnienia (ang. \textit{Duty cycle})
 za pomocą sygnału PWM generowanego przez Raspberry Pi i dostarczanego na pin ENB poprzez złącze GPIO. Układ L298N pozwala również na kontrolę kierunku, w którą obraca się silnik poprzez
 odpowiednie ustawienie stanów wysokiego i niskiego na pinach IN3 oraz IN4.
-Zewnętrzny zasilacz dostarcza napięcie 12V, które zasila zarówno silnik, jak i oba sterowniki - L298N oraz ULN2803A.
-Do podłączenia zestawu trzech diod LED (czerwonej, niebieskiej oraz zielonej umieszczonych w gotowym robocie w ściance obudowy robota), wykorzystano rezystory ograniczające napięcie, które podłączono 
-do anod poszczególnych diod. Wartości rezystancji dobrano na podstawie zalecanych wartości napięcia dla tych diod oraz w taki sposób żeby ich światło nie było zbyt jasne, ponieważ 
+Zewnętrzny zasilacz dostarcza napięcie 12V, które zasila zarówno silnik, jak i oba sterowniki -- L298N oraz ULN2803A.
+Do podłączenia zestawu trzech diod LED (czerwonej, niebieskiej oraz zielonej umieszczonych w gotowym robocie w ściance obudowy robota) wykorzystano rezystory ograniczające napięcie, które podłączono 
+do anod poszczególnych diod. Wartości rezystancji dobrano na podstawie zalecanych wartości napięcia dla tych diod oraz w taki sposób, żeby ich światło nie było zbyt jasne, ponieważ 
 mają to być diody służące tylko do sygnalizowania procesów wykonywanych przez robota. Z tego powodu rezystory, które wybrano mają wyższe wartości rezystancji niż te, które są zalecane, jednak było to
 działanie celowe. Dla diod zielonej i niebieskiej wybrano rezystor $10 k\Omega$ dla każdej osobno, natomiast dla czerwonej $2,2 k\Omega$. Piny GPIO Raspberry Pi odpowiadają za kontrolę włączania poszczególnych diod poprzez sterowanie układem ULN2803A.
 Białe diody LED są połączone szeregowo i sterowane za pomocą tranzystorowego układu ULN2803A. W układzie zastosowano rezystory ograniczające napięcie. Każda z tych diod powinna być 
 zasilana napięciem od 3 V do 3,2 V, co oznacza, że po połączeniu szeregowym ich układ powinien być zasilany napięciem 12V, które dostarcza im układ ULN2803A. Zdecydowano się na zastosowanie
-rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie o czym jest mowa w punkcie
+rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie, o czym jest mowa w punkcie
 i ostatecznie wybrano dwa rezystory połączone szeregowo o rezystancji $2,2 k\Omega$ dające łącznie $4,4 k\Omega$. \textcolor{red}{TODO sprawdzic te wartości bo cos mi nie pasuje}
-Dodatkowo układ zawiera mały wentylator (Fan1), zasilany napięciem 12V. W rzeczywistości w robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
+Dodatkowo układ zawiera mały wentylator (Fan1) zasilany napięciem 12V. W rzeczywistości w robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
 Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty przełącznik do wywołania sygnału wejściowego na jednym z pinów GPIO Raspberry Pi.
 
 \begin{figure}[H]
