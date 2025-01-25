@@ -1,10 +1,10 @@
 \chapter{Odczytywanie losowego wyniku z kości}\label{ch:odczytywanie-losowego-wyniku-z-kosci}
 
 Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości,
-jednak jak pokazano na rysunku~\ref{fig:schemat_workflow}
+jednak jak pokazano na rys.~\ref{fig:schemat_workflow}
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
-Rysunek~\ref{fig:schemat_workflow} w formie tekstowej
+Rys.~\ref{fig:schemat_workflow} w formie tekstowej
 \begin{verbatim}
     Maszyna (robot) wykonuje rzut kością
     Kamera umieszczona w jego górnej części robi zdjęcie
@@ -16,7 +16,7 @@ Rysunek~\ref{fig:schemat_workflow} w formie tekstowej
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{chapters/04-czytanie/figures/schemat}
-    \caption{Ten schemat jest do zmiany na ładniejszy, ale ja nie umiem rysować więc jest taki "na teraz"}
+    \caption{Ten schemat jest do zmiany na ładniejszy, ale ja nie umiem rys. więc jest taki "na teraz"}
     \label{fig:schemat_workflow}
 \end{figure}
 
@@ -38,7 +38,7 @@ Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano p
 6. Zapisanie gotowego obrazu \\
 
 
-Na rysunku~\ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe~\ref{fig:step1}
+Na rys.~\ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe~\ref{fig:step1}
 oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
 
 \begin{figure}[H]
@@ -128,9 +128,9 @@ powstających gdy kość odbija światło wprost do kamery, co poprawia niezawod
 
 \subsection{Zidentyfikowane trudności i ich rozwiązania}\label{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}
 
-Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kostki.
+Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kości.
 Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
-uwidaczniając widoczną na kości cyfrę, co pokazują rysunki 4.3 oraz 4.4.
+uwidaczniając widoczną na kości cyfrę, co pokazują rys. 4.3 oraz 4.4.
 
 Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
 od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
@@ -177,8 +177,8 @@ $\frac{1}{8^{12}} \approx 1{,}455 \times 10^{-11}$
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
 a więc moment gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
-Najczęściej jest to spowodowane tym, że kostka zatrzymała się na śmigle napędowym,
-przez co wynik może być niejednoznaczny, co pokazano na rysunkach~\ref{fig:smiglocombined}.
+Najczęściej jest to spowodowane tym, że kość zatrzymała się na śmigle napędowym,
+przez co wynik może być niejednoznaczny, co pokazano na rys.~\ref{fig:smiglocombined}.
 % TODO check nazwy śmigło!
 
 \begin{figure}[h]
@@ -210,7 +210,7 @@ tak jakby wylądowała normalnie na podstawce kubka, ale wtedy problem z lądowa
 gdyż nie przeszkadza to w tym że kość i tak zostanie podbita przy następnym obrocie śmigła.
 
 
-Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kostka nie skończyła jeszcze swojej fazy lotu,
+Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kość nie skończyła jeszcze swojej fazy lotu,
 lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
 
 \begin{figure}[h]

@@ -11,20 +11,20 @@ Jednakże większość tych rozwiązań opiera się na generatorach pseudolosowy
 które, mimo swojej wydajności, w istocie generują liczby deterministyczne.
 W praktyce może to prowadzić do problemów z bezpieczeństwem i nieprzewidywalnością w sytuacjach, gdzie prawdziwa losowość jest kluczowa.
 
-Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych (ang. HRNG -- Hardware Random Number Generator)
-było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier RPG i planszowych.
-Gry te, od wieków korzystające z kostek jako narzędzia generowania losowości, stanowią idealny przykład zastosowania fizycznych mechanizmów do uzyskiwania nieprzewidywalnych wyników.
-Projekt bazuje na hipotezie, że poprzez zautomatyzowanie procesu rzutu kością możliwe jest uzyskanie prawdziwej losowości, mimo deterministycznego charakteru działania maszyny.
+Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych (HRNG, z ang. \textit{Hardware Random Number Generator})
+było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier planszowych i RPG.
+Gry te, od wieków korzystające z kości jako narzędzia generowania losowości, stanowią idealny przykład zastosowania fizycznych mechanizmów do uzyskiwania nieprzewidywalnych wyników.
+Projekt bazuje na hipotezie, że poprzez zautomatyzowanie procesu rzutu kością możliwe jest uzyskanie prawdziwej losowości mimo deterministycznego charakteru działania maszyny.
 
 Celem pracy jest zbudowanie urządzenia zdolnego do generowania liczb losowych poprzez mechaniczny rzut kością oraz analiza stopnia losowości uzyskanych wyników.
 Projekt ten zakłada stworzenie urządzenia, które będzie w stanie rzucać kością w sposób powtarzalny i przewidywalny,
 jednak z losowym efektem wynikającym z natury procesów fizycznych, takich jak tarcie, turbulencje czy drgania.
 Dodatkowo praca ma na celu praktyczne zastosowanie stworzonego generatora jako źródła entropii w systemie Linux.
 
-Realizacja takiego urządzenia pozwoli nam także w prosty sposób zautomatyzować statystyczne badanie różnych
+Realizacja takiego urządzenia pozwoli także w prosty sposób zautomatyzować statystyczne badanie różnych
 kości do gry pod względem sprawdzania ich potencjalnej nieuczciwości,
-co było wyjściowym pomysłem, od którego dopiero powstała idea stworzenia sprzętowego generatora liczb prawdziwie losowych (ang.
-HTRNG -- Hardware True Random Number Generator) opartego na rzucie kością.
+co było wyjściowym pomysłem, od którego dopiero powstała idea stworzenia sprzętowego generatora liczb prawdziwie losowych 
+(HTRNG, z ang. \textit{Hardware True Random Number Generator}) opartego na rzucie kością.
 
 Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności podejścia opartego o rzuty kośćmi,
 ale również na pogłębienie wiedzy o granicach między deterministycznymi systemami a losowością,
