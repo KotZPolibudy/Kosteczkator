@@ -118,18 +118,50 @@ co zapewnia stabilne i bezpieczne działanie całego systemu.
 \end{figure}
 
 Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
-zamontowaną kamerę. Poniżej przedstawiono dwa przykłady zdjęć i różnic w ich czytelności zależnych od koloru kości.
+zamontowaną kamerę. Na Rys.~\ref{fig:zielona} - Rys.~\ref{fig:blue} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
+Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu, najlepiej kontrastuje ze ścianami kości przez co jest on najlepiej widoczny
+właśnie na tej kości.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.25\linewidth, trim={0mm 30mm 0mm 120mm}, clip]{chapters/03-praca-wlasna/figures/nie_widac}
-    \caption{\label{fig:nie_widac}Kość z teksturą.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.25\linewidth, trim={0mm 30mm 0mm 120mm}, clip]{chapters/03-praca-wlasna/figures/widac}
-    \caption{\label{fig:widac}Jednobarwna kość.}
+    % Pierwsze zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zielona.jpg}
+        \caption{\label{fig:zielona}Pierwsze ustawienie.}
+    \end{minipage}
+    \hfill
+    % Drugie zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/czerwona.jpg}
+        \caption{\label{fig:czerwona}Drugie ustawienie.}
+    \end{minipage}
+    \hfill
+    % Trzecie zdjęcie
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/fiolet.jpg}
+        \caption{\label{fig:fiolet}Trzecie ustawienie.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/pomaranczowa.jpg}
+        \caption{\label{fig:orange}Trzecie ustawienie.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zolte.jpg}
+        \caption{\label{fig:yellow}Trzecie ustawienie.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/niebieska.jpg}
+        \caption{\label{fig:blue}Trzecie ustawienie.}
+    \end{minipage}
 \end{figure}
 
 W obu wariantach dużym problemem był złej jakości obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
@@ -177,6 +209,26 @@ odległość tą wyznaczono na 120mm.
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/ideolo}
         \caption{\label{fig:ideolo}Trzecie ustawienie.}
+    \end{minipage}
+\end{figure}
+
+W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzytany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
+co objawiało się poprzez duże odblaski na powierzchni kości, które stanowiły jeden z głównych problemów dla modelu sieci neuronowej odczytującego wyniki rzutów o czym jest mowa
+w sekcji \ref{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}. Z tego powodu eksperymentalnie wybrano rezystory, których zadaniem było
+ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świecenia układu diod przedstawiono na Rys.~\ref{fig:za jasno} oraz Rys.~\ref{fig:w sam raz}.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/za jasno.jpg}
+        \caption{\label{fig:za jasno}Oświetlone wnętrze kubka bez rezystorów ograniczających napięcia zasilającego diody LED.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/w sam raz.jpg}
+        \caption{\label{fig:w sam raz}Oświetlone wnętrze kubka z rezystorami ograniczającymi napięcie zasilające diody LED.}
     \end{minipage}
 \end{figure}
 
