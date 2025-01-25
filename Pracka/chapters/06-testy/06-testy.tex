@@ -41,7 +41,6 @@ uwzględniono poziomów istotności z rozwinięciem do czterech cyfr po przecink
 najmniejszego z dostępnych poziomów istotności, czyli równego 0{,}001. Odczytana z tabeli wartość krytyczna wynosi
 24{,}322. Jeśli otrzymana wartość będzie mniejsza od wartości krtycznej, nie ma podstaw do odrzucenia 
 hipotezy zerowej.
-\\-- jeśli poziomy istotności nie mogą być różne to może z kalkulatora albo excela???? 
 
 
 \subsection{Test monobitowy}
@@ -56,7 +55,7 @@ wygenerowanych bitów zliczono liczbę jedynek w ciągu (\textit{X}). Oczekiwana
 
 \subsection{Test serii}
 Celem testu serii jest zliczenie tak zwanych \textit{serii}, czyli nieprzerwanych ciągów takich samych bitów. Test serii
-sprawdza, czy ilość serii każdej długości jest zgodna z oczekiwanymi wartościami. Test serii bada, czy zmiany między 
+sprawdza, czy ilość serii każdej długości jest zgodna z oczekiwanymi wartościami oraz bada, czy zmiany między 
 wartościami bitów nie są zbyt częste bądź zbyt rzadkie. Oczekiwane rozkłady wystąpień poszczególnych serii przedstawiono
 w tabeli \ref{serieOczekiwane}.
 \par \begin{math} H_0 \end{math}: Rozkład wystąpień serii bitów jest zgodny z przyjętym rozkładem.
@@ -256,15 +255,15 @@ gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacz
 więcej bitów o wartości 0. 
 \par
 Przez wzgląd na niezadowalające wyniki modelu pierwszego, dokonano jego poprawy (rozdział \ref{sec:opis-modelu-si}) i
-utworzono drugi modelu sztucznej inteligencji. Dla wszystkich przeprowadzonych testów nie było podstaw do odrzucenia
-hipotezy zerowej. W przeciwieństwie do pierwszego modelu, najczęściej odczytywanym wynikiem jest 8, a najrzadziej - 6.
-Różnica w liczbie odczytów tych wyników nie jest aż tak znacząca (737 dla 6 i 908 dla 8), jak dla pierwszego modelu 
+utworzono drugi model sztucznej inteligencji. Dla wszystkich przeprowadzonych testów nie było podstaw do odrzucenia
+hipotezy zerowej. W przeciwieństwie do pierwszego modelu, najczęściej odczytywanym wynikiem jest 8, a najrzadziej -- 6.
+Różnica w liczbie odczytów tych wyników nie jest aż tak znacząca (737 dla 6 i 908 dla 8) jak dla pierwszego modelu 
 (1124 dla 6 i 547 dla 8). Częstsze wystąpienia wyniku 8 widać w teście monobitowym, gdzie zliczonych zer jest więcej
 niż jedynek. Dysproporcja między nimi jest niewielka, wynosi zaledwie niecałe 400 bitów, kiedy dla pierwszego modelu
 różnica wynosiła prawie 1400 bitów. Podobnie dla testu serii liczby poszczególnych serii dla zer i jedynek są dużo
 bardziej zrównoważone dla drugiego modelu niż pierwszego.
 \par
-Wyniki dla drugiego modelu są zadowalające, dla którego nie ma przesłanek do odrzucenia żadnej z hipotez zerowych, 
-jednakże w przyszłości możliwa jest implementacja lepszego modelu, który
+Wyniki dla drugiego modelu są zadowalające, dla którego nie ma przesłanek do odrzucenia żadnej z hipotez zerowych.
+Jednakże w przyszłości możliwa jest implementacja lepszego modelu, który
 potencjalnie mógłby otrzymywać jeszcze lepsze wyniki (odwołanie). Prowadzi to do wniosku, że uzyskanie prawdziwej 
 losowości jest możliwe, mimo deterministycznego charakteru działania maszyny.
