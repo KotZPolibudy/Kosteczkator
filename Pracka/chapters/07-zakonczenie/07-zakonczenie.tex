@@ -1,21 +1,34 @@
 
 \chapter{Zakończenie}\label{ch:zakonczenie}
 
-W ramach realizacji projektu udało się spełnić jego cele, jakim było stworzenie sprzętowego generatora liczb losowych.
-Wykorzystuje on rzut kością, a wynik jest odczytywany i interpretowany przez model sztucznej inteligencji.
-Przeprowadzono testy statystyczne, badające losowość otrzymanych wyników.
-Pokazały one, że możliwe jest uzyskanie prawdziwej losowości zautomatyzowanego rzutu kością,
-mimo deterministycznego działania wykonującej go maszyny.
+W ramach realizacji projektu udało się spełnić jego główny cel, jakim było stworzenie sprzętowego generatora liczb losowych.
+Wykorzystuje on rzut kością, a wynik jest odczytywany i interpretowany przez model sztucznej inteligencji. Przeprowadzono
+testy statystyczne, badające losowość otrzymanych wyników. Pokazały one, że możliwe jest uzyskanie prawdziwej losowości 
+zautomatyzowanego rzutu kością, mimo deterministycznego działania wykonującej go maszyny.
+
+Mimo osiągnięcia celów projektu, możliwe jest wprowadzenie wielu usprawnien, które poprawią jego jakość i wygodę użytkownika.
+Korzystnym ulepszeniem byłoby zintegrowanie maszyny nie tylko z systemem Linux, ale również z popularnym systemem
+Windows. Rozwiązaniem, które na pewno zachęciłoby wielu fanów gier planszowych i RPG, byłoby rozszerzenie modelu 
+sztucznej inteligencji o odczytywanie kości w innych wzorach i kolorach, a także o innych ilościach ścianek.
+
+Jednym z najambitniejszych do zaimplementowania usprawnien jest nauczenie modelu sztucznej inteligencji odczytywania 
+wyników kilku kości na raz. Pozwoliłoby to na generowanie kilkukrotnie większej liczby bitów w tym samym czasie. Dzięki
+temu udałoby się choć częściowo zmniejszyć największą wadę zrealizowanego projektu, jakim jest wolne generowanie nowych
+liczb.
+
+Wśród innych planów na najbliższą przyszczłość znajduje się również dodanie praktycznego zastosowania dla guzika robota,
+której nie udało się zaimplementować wcześniej przez ogarniczenia czasowe. Wśród rozważanych funkcjonalności znajduje się
+przełączanie między trybami robota (opisanymi w rozdziale \ref{sec:tryby}) bądź wykonywanie pojedynczych rzutów kością.
+
+Kolejnym z planowanych ulepszeń jest wymiana komputera Raspberry Pi na tańszy model. Ponieważ rozważana jest komercjalizacja
+produktu, taka zmiana pozwoliłaby obniżyć jego cenę. Sama maszyna mogłaby znaleźć zastosowanie w kryptografii, gdzie 
+szybkość generowania nowych liczb nie jest kluczowa. Byłaby również ciekawym gadżetem dla fanów gier planszowych i RPG,
+oraz oferować rzuty kością dla takich gier online.
+
+[jakiś ładny akapit na zakończenie]
 
 
-%todo nazwać to lepiej i przepisać, bo obecnie to draft!!
-\section{Plany na przyszłość]}
-Mimo osiągnięcia celów projektu, możliwe jest wprowadzenie wielu usprawnień, które poprawią jego jakość i wygodę użytkownika.
-Korzystnym ulepszeniem byłoby zintegrowanie maszyny nie tylko z systemem Linux, ale również z popularnym systemem Windows.
-Dodatkowo, można również zwrócić uwagę na obecnie używane metody przetwarzania zdjęć, oraz czy nie jest możliwe uzyskanie „czystszych” zdjęć wejściowych dla sieci neuronowej, np.
-poprzez dokładniejsze wycięcie tła, lub poprzez może lepszy hardware (kamerę o małej ogniskowej, lepsze oświetlenie)
-Rozwiązaniem, które na pewno zachęciłoby wielu fanów gier planszowych i RPG, byłoby rozszerzenie funkcjonalności robota do
-zbierania statystyk dowolnej kości, a więc rozszerzenie modelu sztucznej inteligencji o odczytywanie kości w innych wzorach i kolorach,
-a także o innych ilościach ścianek.
-W ten sposób można by wykryć potencjalne nieprawidłowości w budowie sprawdzanej kości, które mogą zaburzać rozkład generowanych przez nią wyników.
-
+%uwzględnić te rzeczy wyżej
+%Dodatkowo, można również zwrócić uwagę na obecnie używane metody przetwarzania zdjęć, oraz czy nie jest możliwe uzyskanie „czystszych” zdjęć wejściowych dla sieci neuronowej, np.
+%poprzez dokładniejsze wycięcie tła, lub poprzez może lepszy hardware (kamerę o małej ogniskowej, lepsze oświetlenie)
+%zbieranie statystyk W ten sposób można by wykryć potencjalne nieprawidłowości w budowie sprawdzanej kości, które mogą zaburzać rozkład generowanych przez nią wyników.
