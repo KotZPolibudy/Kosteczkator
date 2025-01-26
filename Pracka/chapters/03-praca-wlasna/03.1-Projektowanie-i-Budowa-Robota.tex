@@ -4,7 +4,7 @@
 
 \section{Projektowanie robota}\label{sec:projektowanie-robota}
 
-\subsection{Prototypowanie}\label{subsec:prototypowanie}
+\subsection{Planowanie}\label{subsec:Planowanie}
 
 Przy całym procesie budowy robota wykorzystano technologię FDM \textit{(ang. Fused Deposition Modeling)} druku 3D. Pomimo tego, że proces druku 3D, zwłaszcza w przypadku dużych i skomplikowanych elementów, może być czasochłonny, jest to najlepsza dostępna
 technologia do realizacji tego rodzaju projektów. Druk 3D umożliwia tworzenie niestandardowych, precyzyjnie dopasowanych komponentów, które można 
@@ -21,14 +21,16 @@ testowania i wprowadzania ulepszeń.
 
 Głównym założeniem podczas projektowania i budowy robota było założenie modułowości. Oznacza to, że każdy element jest wymienny i łatwo dostępny.
 Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
-są znacząco prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
+są znacznie prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
 
 Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box.
 Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia, jednak to rozwiązanie odrzucono ze względu na 
 skomplikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa również odrzucono ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
 wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa.
 Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. Kolejnym etapem była decyzja w jaki sposób 
-będzie wykonywany rzut kością. Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. Po pierwsze, tłoki 
+będzie wykonywany rzut kością. Pierwszym pomysłem było skonstrułowanie mechanizmu, który będzie podrzucał kość w górę. Rozważano, żeby w tym celu wykorzystać tłoki, które unosiłyby cały
+kubek wraz z kością znajdującą się w środku w taki sposób, żeby kość została podrzucona a w momencie spadania uderzała o dno oraz ścianki kubka.
+Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. Po pierwsze, tłoki 
 generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
 wielokrotne uderzenia w mechanizm mogą prowadzić do jego szybkiego zużycia, co w konsekwencji mogłoby spowodować awarię.
 Dodatkowo, konstrukcja takiego systemu tłokowego wymagałaby solidnego montażu i zastosowania materiałów odpornych na dynamiczne obciążenia, takie jak 
@@ -36,7 +38,9 @@ wibracje czy przeciążenia powstałe podczas pracy. Bez odpowiedniej sztywnośc
 a w efekcie całkowite uszkodzenie się robota.
 Co więcej, projektowanie i wykonanie tłoków wraz z precyzyjnym układem sterowania wymagałoby znacznych nakładów czasu i kosztów. W przypadku pracy 
 ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwacji i napraw mechanizmu, aby zapewnić jego długotrwałą sprawność. Wszystko to 
-czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. Po rozważeniu innych alternatyw
+czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. 
+
+Po rozważeniu alternatyw
 zdecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
 mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
@@ -44,6 +48,8 @@ sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu możliw
 można zmieniać za pomocą programu napisanego w języku Python. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
 Raspberry Pi. Dzięki temu za pomocą komend w kodzie możliwa jest zmiana, jak szybko i na jak długo kubek ma się obracać.
 W celach testowych został skonstruowany prototypowy model robota.
+
+\subsection{Prototypowanie}\label{subsec:Prototypowanie}
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
 Tymi elementami były: kubek, ramię służące do montażu kubka, uchwyty do prętów oraz płytka mocująca do kamery. Dodatkowo
@@ -92,7 +98,7 @@ Silnik ten obraca układem dwóch kół zębatych przedstawionych na rys.~\ref{f
 Podczas testów pierwszej wersji robota wykorzystującej obrotowy kubek powstał pomysł alternatywnego rozwiązania.
 Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wychylać go,
 wykorzystany został trwale zamontowany kubek, na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
-Takie rozwiązanie znacząco upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby. Ten wariant 
+Takie rozwiązanie znacznie upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby. Ten wariant 
 nazwano roboczo \textit{blenderem} -- podobnie jak wariant \textit{betoniarki} -- od podobnej zasady działania mechanizmu.
 
 Przy projektowaniu drugiego wariantu robota został wykorzystany ten sam stelaż złożony z metalowych prętów co w 
