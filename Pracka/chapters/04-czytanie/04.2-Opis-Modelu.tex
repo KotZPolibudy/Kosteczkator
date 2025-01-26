@@ -19,8 +19,8 @@ W celu zwiększenia różnorodności danych treningowych zastosowano techniki au
 \begin{itemize}
     \item obrót o losowy kąt w zakresie do 90°,
     \item przesunięcia poziome i pionowe w zakresie $\pm 20\%$ wymiarów obrazu,
-    \item transformacje perspektywiczne (ang. shear) w zakresie $\pm 10\%$,
-    \item losowe przybliżenia lub oddalenia (ang. zoom) w zakresie $90\%-110\%$ oryginalnego obrazu.
+    \item transformacje perspektywiczne (ang. \textit{shear}) w zakresie $\pm 10\%$,
+    \item losowe przybliżenia lub oddalenia (ang. \textit{zoom}) w zakresie $90\%-110\%$ oryginalnego obrazu.
 \end{itemize}
 
 Wszystkie augmentacje przedstawiono na rys.~\ref{fig:5augment}
@@ -120,7 +120,7 @@ Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę pos
 dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
 
 \subsubsection{Warstwa gęsta (Dense)}
-Warstwa gęsta (ang. Dense, fully connected layer), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
+Warstwa gęsta (ang. \textit{Dense, fully connected layer}), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
 Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
 z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
 W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
@@ -142,7 +142,7 @@ Użyte funkcje aktywacji:
 \end{itemize}
 
 \subsection{Budowa sieci neuronowej}\label{subsec:budowa-sieci-neuronowej}
-Model jest wielowarstwową siecią splotową (ang. convolutional neural network, CNN),
+Model jest wielowarstwową siecią splotową (ang. \textit{convolutional neural network, CNN}),
 składającą się z następujących elementów:
 
 \begin{enumerate}
@@ -173,7 +173,7 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 
 Model został nauczony z wykorzystaniem optymalizatora Adam~\cite{kingma2014adam, keras_adam},
 funkcji straty entropii krzyżowej~\cite{crossentropy} dostępnej w module tensorflow jako sparse categorical crossentropy~\cite{tensorflow_loss},
-oraz metryki dokładności (ang. accuracy)~\cite{tensorflow_accuracy}.
+oraz metryki dokładności (ang. \textit{accuracy})~\cite{tensorflow_accuracy}.
 Proces trenowania obejmował dobraną eksperymentalnie liczbę 20 epok, gdyż dalsze zwiększanie liczby epok nie przynosiło istotnej poprawy wydajności zwiększając jedynie czas obliczeń.
 Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
 
