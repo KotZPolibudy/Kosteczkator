@@ -6,7 +6,7 @@ każde urządzenie z systemem Linux lub Windows.
 
 % \section{Komunikacja} % Bardzo możliwe że nazwa do zmiany 
 Komunikacja między robotem i drugim urządzeniem odbywa się za pośrednictwem przewodu USB.
-Do obsługi komunikacji wykorzystywany jest skrypt wykonany w języku python, który jest uruchamiany 
+Do obsługi komunikacji wykorzystywany jest skrypt wykonany w języku Python, który jest uruchamiany 
 przez \texttt{systemd}~\cite{systemd} po uruchomieniu robota. Po uruchomieniu robot czeka na komendę która wybierze jego tryb pracy.
 Obecnie do wyboru pracy obsługję znaki 'e' i 'd', w przypadku otrzymania innych znaków są one ignorowane a robot czeka aż otrzyma jeden z obsługiwanych znaków.
 Po rozpoczęciu jednego z trybów pracy możliwe jest zakończenie tego trybu wysyłając do robota znak 'q', sprawi to że robot wróci do stanu w którym czeka na wybranie 
@@ -14,7 +14,7 @@ trybu pracy.
 
 % https://docs.kernel.org/usb/gadget_serial.html
 
-\section{Tryb pracy} 
+\section{Tryb pracy} \label{sec:tryby}
 
 \subsection{Ciągłe generowanie danych}
 Aby wykorzystać ten tryb pracy należy wysłać do robota przez port szeregowy znak 'e'.
