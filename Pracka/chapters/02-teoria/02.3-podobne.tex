@@ -2,8 +2,22 @@
 
 tu ogólnie, to co jest obecnie wypisane na tym githubie którego Kuba podrzucił na issues
 
-\subsection{Rozwiązania podobne do naszego}
-    ---- TODO ---- \\
+\subsection{Podobne rozwiązania}
 
-Tutaj rozpiszemy to co dopiero niedawno trafiło na issues, czyli to jak ktoś zrobił elektroniczny smart-dice,
-oraz to jak ktoś zrobił to co nazwaliśm y wariantem "betoniarka" ale z 60 lat temu ;)
+Szukając dostępnych na rynku TRNG, szczególną uwagę poświęcono również tym najbardziej zbliżonym do realizowanego projektu.
+Wśród znalezionych rozwiązań zaledwie dwa inspirowały się fizycznym rzutem kością. 
+
+Pierwszym ze znalezionych rozwiązań był projekt \textit{The Smart Dice Cup}, zrealizowany przez Carstena Magerkurth, 
+Timo'a Engelke i Carstena Röcker \cite{SmartDice}. Jest on inspirowany tradycyjnymi kubkami do gry w kości, przypomina
+je w swojej konstrukcji i sposobie działania. Urządzeniem należy potrząsnąć, aby uzyskać losową 
+liczbę. Wynik takiego „rzutu” pokazywany jest na wyświetlaczu LED, zamontowanym na „pokrywce” urządzenia.
+
+Podstawową różnicą między realizowanym projektem a \textit{The Smart Dice Cup} jest brak wykorzystania prawdziwych 
+kości w drugim rozwiązaniu. Zamiast tego wynik jest generowany na podstawie zmiany prędkości, z jaką potrząsane jest 
+urządzenie.
+
+Drugim rozwiązaniem jest \textit{Dice thrown by cup and machine in PK tests} autorstwa J. B. Rhine \cite{betoniarka43}. 
+Jest on najbardziej zbliżony do przedstawionego w poniższej pracy projektu, ponieważ również wykonuje wprawienie kości w 
+ruch za pomocą obracającego się mechanicznie pojemnika. Z racji na dostępne technologie, z którymi pracował J. B. Rhine,
+odczytywanie wyników musiało odbywać się ręcznie, a nie za pomocą małej kamery i sztucznej inteligencji. Jednakże,
+konstrukcja urządzenia jest bardzo podobna do zaprezentowanego w sekcji \ref{subsec:prototypowanie} \textit{betoniarki}.
