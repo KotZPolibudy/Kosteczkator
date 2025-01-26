@@ -14,7 +14,7 @@ takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy s
 %todo - opisać to lepiej, może Kuba (Yoshida) o linuxowych?
 Obecnie komputery osobiste wykorzystują generatory liczb losowych (RNG, z ang. \textit{Random Number Generator})
 wykorzystujące dostępne im źródła entropii dostarczane przez użytkownika, takie jak ruchy myszy lub naciśnięcia przycisków.
-W nowoczesnych procesorach stosuje się też liczby generowane przez dedykowane moduły takie jak \textbf{Intel DRNG} za pomocą \textit{Intel RDSEED} i \textit{RDRAND}~\cite{IntelRD}.
+W nowoczesnych procesorach stosuje się też liczby generowane przez dedykowane moduły takie jak Intel DRNG za pomocą \textit{Intel RDSEED} i \textit{RDRAND}~\cite{IntelRD}.
 System Linux dostarcza również interfejsy \textit{/dev/random} raz \textit{/dev/urandom} zapewniające liczby losowe.
 
 \section{Przegląd komercyjnych rozwiązań TRNG}\label{sec:przeglad-komercyjnych-rozwiazan-trng}
@@ -22,7 +22,7 @@ System Linux dostarcza również interfejsy \textit{/dev/random} raz \textit{/de
 Komercyjne rozwiązania bazują na przeróżnych źródłach entropii,
 najczęściej nie na dostarczanych przez użytkownika, aby wykluczyć możliwość ingerencji i ograniczyć przewidywalność.
 Najpopularniejszym medialnie RNG jest LavaRand~\cite{cloudflare_lavarand}, który inspirowany był podobnym systemem,
-zbudowanym i opatentowanym przez \textbf{Silicon Graphics}~\cite{SiliconGraphics}.
+zbudowanym i opatentowanym przez Silicon Graphics~\cite{SiliconGraphics}.
 LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
 na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające.
 Wciąż jednak pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
@@ -42,9 +42,9 @@ szeroko dostępne i charakteryzują się dużą niezawodnością oraz odpornośc
 W ostatnich latach pojawiły się także inne rozwiązania chmurowe, które umożliwiają generowanie liczb losowych w czasie rzeczywistym bez potrzeby posiadania własnego sprzętu,
 za to na przykład za pośrednictwem API takiego jak \textit{drand}~\cite{drand_documentation} lub podobnego.
 % "lub podobnego" źle brzmi
-Przykładem takiego rozwiązania jest \textbf{Cloudflare} – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
+Przykładem takiego rozwiązania jest Cloudflare – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
 Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
-Dodatkowo \textbf{Cloudflare} korzysta z technologii opartych na zjawiskach fizycznych, takich jak rozpad radioaktywnego uranu, 
+Dodatkowo Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak rozpad radioaktywnego uranu, 
 nieprzewidywalnego fizycznie trójstopniowego wahadła, czy „Entropy Wall”, która pobiera entropię z kamery
 ustawionej na ścianę lamp lawowych, pokazanej na rys.~\ref{fig:lavarand}.
 Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
@@ -52,22 +52,22 @@ Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb loso
 
 \subsection{Rozwiązania sprzętowe}\label{subsec:rozwiazania-sprzetowe}
 Wiodącymi producentami komercyjnych rozwiązań sprzętowych są firmy takie jak
-\textbf{ID Quantique}~\cite{IDQ}, \textbf{Microchip Technology}~\cite{MicrochipTechnology} i \textbf{Semtech}~\cite{Semtech},
+ID Quantique~\cite{IDQ}, Microchip Technology~\cite{MicrochipTechnology} i Semtech~\cite{Semtech},
 które oferują zaawansowane urządzenia bazujące na TRNG.
 Produkty te zapewniają wysoki poziom bezpieczeństwa i są stosowane w wymagających tego aplikacjach,
 takich jak bankowość elektroniczna czy systemy wojskowe.
 
 \begin{itemize}
-    \item \textbf{ID Quantique} jest jednym z liderów w dziedzinie generatorów liczb losowych opartych na technologii fotoniki i mechanizmach kwantowych.
+    \item ID Quantique jest jednym z liderów w dziedzinie generatorów liczb losowych opartych na technologii fotoniki i mechanizmach kwantowych.
      Firma oferuje urządzenia, które wykorzystują detekcję fotonów w celu generowania liczb losowych.
      Dzięki temu rozwiązania ID Quantique charakteryzują się bardzo wysoką jakością losowości,
      a jednocześnie są odporne na ataki związane z analizą i przewidywaniem generowanych liczb.
 
-    \item \textbf{Microchip Technology} w swojej ofercie posiada różne moduły TRNG, w tym układy scalone,
+    \item Microchip Technology w swojej ofercie posiada różne moduły TRNG, w tym układy scalone,
      które generują liczby losowe na podstawie fluktuacji szumów termicznych.
     Produkty te znajdują zastosowanie w szerokim zakresie aplikacji, od urządzeń mobilnych po systemy wbudowane.
 
-    \item \textbf{Semtech} natomiast oferuje rozwiązania, które wykorzystują zjawiska losowe
+    \item Semtech natomiast oferuje rozwiązania, które wykorzystują zjawiska losowe
      zachodzące w obwodach analogowych do generowania liczb losowych.
      Firma ta jest jednym z głównych dostawców układów IoT, które wykorzystują własne generatory TRNG
      do generowania wartości losowych w systemach komunikacji bezprzewodowej.
