@@ -1,11 +1,18 @@
-\chapter{Komunikacja}\label{ch:komunikacja} % Bardzo możliwe że nazwa do zmiany
+\chapter{Komunikacja}\label{ch:komunikacja}
+Aby móc korzystać z robota opracowany został prosty protokół komunikacyjny, który 
+odbywa się wysyłając jednobajtowe znaki poprzez emulowany port szeregowy. Po stronie robota Raspberry Pi wykorzystuje 
+sterownik \texttt{g\_serial}~\cite{g_serial} który odopowiedzialny jest za tę emulację. Z robotem może komunikować się 
+każde urządzenie z systemem Linux lub Windows. 
 
-Komunikacja odbywa się między robotem i drugim urządzeniem za pośrednictwem przewodu usb.
-Raspberry pi w tym przypadku emuluje urządzenie szeregowe.
-Dzięki temu łatwo jest podłączyć i korzystać z robota na większości systemów operacyjnych. 
-Do obsługi komunikacji wykorzystywany jest skrypt wykonany w pythonie, który jest uruchamiany 
-przez systemd po podłączeniu robota. Po uruchomieniu robot czeka na komendę która wybierze jego tryb pracy. 
-% https://www.kernel.org/doc/Documentation/usb/gadget_serial.txt
+% \section{Komunikacja} % Bardzo możliwe że nazwa do zmiany 
+Komunikacja między robotem i drugim urządzeniem odbywa się za pośrednictwem przewodu USB.
+Do obsługi komunikacji wykorzystywany jest skrypt wykonany w języku python, który jest uruchamiany 
+przez \texttt{systemd}~\cite{systemd} po uruchomieniu robota. Po uruchomieniu robot czeka na komendę która wybierze jego tryb pracy.
+Obecnie do wyboru pracy obsługję znaki 'e' i 'd', w przypadku otrzymania innych znaków są one ignorowane a robot czeka aż otrzyma jeden z obsługiwanych znaków.
+Po rozpoczęciu jednego z trybów pracy możliwe jest zakończenie tego trybu wysyłając do robota znak 'q', sprawi to że robot wróci do stanu w którym czeka na wybranie 
+trybu pracy.
+
+% https://docs.kernel.org/usb/gadget_serial.html
 
 \section{Tryb pracy} 
 
