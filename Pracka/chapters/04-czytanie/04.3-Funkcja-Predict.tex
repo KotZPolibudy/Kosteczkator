@@ -1,4 +1,4 @@
-\section{Funkcja predict}\label{sec:funkcja-predict}
+\section{Rozpoznawanie liczb}\label{sec:funkcja-predict}
 
 W celu rozpoznawania liczb na zdjęciach przetworzonych przez model stworzono funkcję \texttt{predict\_number},
 która przekształca surowy obraz pobrany wcześniej z kamery do odpowiedniego formatu i zwraca przewidywaną klasę.
@@ -12,7 +12,7 @@ Opisanych w następujących podrozdziałach.
 
 \subsection{Wczytanie i przetworzenie obrazu}\label{subsec:wczytanie-i-przetworzenie-obrazu}
 
-W przypadku funkcji dokonującej predykcji na pliku, obraz należy najpierw wczytać.
+W przypadku funkcji dokonującej klasyfikacji na pliku, obraz należy najpierw wczytać.
 Krok ten jest pomijany, gdy do funkcji zostanie przekazany jako parametr obraz wczytany wcześniej.
 Obraz wejściowy następnie jest poddawany takim samym transformacjom, jak przy obrazach, na których trenowany był model,
 a więc skalowany jest na rozmiar zgodny z wymaganiami modelu ($64 \times 64$ pikseli), zmieniany w skalę szarości, oraz normalizujemy.
@@ -30,13 +30,12 @@ Funkcja \texttt{np.argmax} zwraca indeks klasy o najwyższym prawdopodobieństwi
 
 \subsection{Interpretacja wyniku}\label{subsec:interpretacja-wyniku}
 
-Na podstawie indeksu przewidywanej klasy wybierana jest odpowiadająca jej etykieta (od 1 do 8).
-Wynik funkcji jest tą etykietą odpowiadająca numerowi na kości,
-co umożliwia dalsze wykorzystanie tego wyniku w systemie rozpoznawania liczb.
+Na podstawie indeksu przewidywanej klasy przypisywana jest odpowiadająca mu etykieta (od 1 do 8).
+Wynikiem funkcji jest etykieta odpowiadająca numerowi na kości,
+co umożliwia dalsze wykorzystanie tego w systemie.
 
-W dalszym przetwarzaniu, aby przejść z cyfr w systemie dziesiętnym na zapis bitowy, dokonywana jest jedna nieoczywista transformacja.
-Zakres $[1, 8]$ da się zapisać za pomocą trzech bitów, wykorzystując go w pełni (co było również przesłanką w wyborze kości o dokładnie takiej ilości ścianek).
-Zdecydowano się interpretować ściankę 8 jako cyfrę 0, wobec czego, w transformacji na zapis bitowy,
-8 jest interpretowane jako 000, zamiast 1000 jak mogłoby się intuicyjnie wydawać.
-
-Finalnie, zaetykietowany wynik przetwarzany jest na ciąg trzech bitów, odpowiadających etykiecie klasy.
+W dalszym etapie przetwarzania, aby przejść z cyfr w systemie dziesiętnym na ich zapis binarny, wykonywana jest specyficzna transformacja.
+Zakres $[1, 8]$ da się zapisać za pomocą trzech bitów, co w pełni wykorzystuje dostępny zakres (ta właściwość była również kluczową przesłanką w wyborze kości o dokładnie ośmiu ściankach).
+Zdecydowano się interpretować ściankę oznaczoną numerem 8 jako cyfrę 0, co oznacza, że w transformacji na zapis binarny,
+liczba 8 jest interpretowane jako 000, a nie 1000 jak mogłoby się intuicyjnie wydawać.
+Finalnie, zaetykietowany wynik przetwarzany jest na ciąg trzech bitów, odpowiadających klasie.
