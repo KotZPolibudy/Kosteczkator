@@ -53,7 +53,7 @@ W celach testowych został skonstruowany prototypowy model robota.
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
 Tymi elementami były: kubek, ramię służące do montażu kubka, uchwyty do prętów oraz płytka mocująca do kamery. Dodatkowo
-wykorzystano silnik prądu stałego z przekładnią 48:1 napędzający kubek oraz sterownik służący do zasilania i sterowania ruchem silnika~\cite{wheel,L298}.
+wykorzystano silnik prądu stałego z przekładnią 48:1 napędzający kubek~\cite{wheel} oraz sterownik służący do zasilania i sterowania ruchem silnika~\cite{L298}.
 Pierwszy prototyp po złożeniu przedstawiono na rys.~\ref{fig:pierwszy}.
 
 Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersji robota znajdują się w sekcji~\ref{subsec:hardware}.
@@ -111,7 +111,7 @@ co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapo
 zastosowanie radiatorów (rys.~\ref{fig:zimno}), które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
 wspomagał cyrkulację powietrza wokół procesora. Jest to działanie zalecane w oficjalnej dokumentacji na stronie Raspberry Pi, mające przeciwdziałać 
 ograniczaniu wydajności w celu ochrony przed przegrzaniem (ang. \textit{Thermal throttling}) \cite{cooling}. 
-Dodatkowym problemem wynikającym z rozgrzewania się procesora do wysokich temperatur jest materiał PLA, z którego wykonywane były komponenty robota
+Dodatkowym problemem rozgrzewania się procesora do wysokich temperatur jest jego bliski kontakt w robocie z materiałem PLA, z którego wykonywane były komponenty robota
 oraz prototypów. Materiał ten zaczyna się deformować przy temperature $60^{\circ}$C \cite{plaprusa}. Dzięki wykorzystaniu radiatorów oraz wentylatora udało się obniżyć temperaturę pracy
 procesora, która teraz utrzymuje się w granicach $55^{\circ}$C w czasie rzutów i spada po ich zakończeniu do około $45^{\circ}$C,
 co zapewnia stabilne i bezpieczne działanie całego systemu. 
