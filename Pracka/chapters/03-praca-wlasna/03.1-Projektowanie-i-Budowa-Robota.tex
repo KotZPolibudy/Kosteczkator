@@ -43,13 +43,13 @@ czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliw
 Po rozważeniu alternatyw
 zdecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
-mechanizm, ponieważ zapewnia rzut zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
+mechanizm, ponieważ zapewnia efekt rzutu zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
 sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu możliwe jest ustawienie częstotliwości obrotu oraz określenie, jak długo ma się obracać. Wszystkie te ustawienia 
 można zmieniać za pomocą programu napisanego w języku Python. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
-Raspberry Pi. Dzięki temu za pomocą komend w kodzie możliwa jest zmiana, jak szybko i na jak długo kubek ma się obracać.
+Raspberry Pi. Dzięki temu za pomocą komend w kodzie, sterujących czasem i napięciem, możliwe jest dostosowanie, jak szybko i na jak długo kubek ma się obracać.
 W celach testowych został skonstruowany prototypowy model robota.
 
-\subsection{Prototypowanie}\label{subsec:Prototypowanie}
+\subsection{Prototypowanie}\label{subsec:prototypowanie}
 
 Pierwszy prototyp robota składał się z metalowych prętów służących za stelaż oraz elementów wydrukowanych na drukarce 3D.
 Tymi elementami były: kubek, ramię służące do montażu kubka, uchwyty do prętów oraz płytka mocująca do kamery. Dodatkowo
@@ -65,7 +65,7 @@ Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersj
 \end{figure}
 
 Do pierwszych testów robota zaprojektowano cztery warianty kształtów kubków. Przy ich projektowaniu wymiary wzorowano na dostępnych tradycyjnych kubkach do gry w kości.
-Średnice kubków do gry z reguły są w przedziale 70-90mm \cite{cup}. Przyjęto, że odpowiedni do tego zadania kubek powinien
+Średnice kubków do gry z reguły są w przedziale 70-90 mm \cite{cup} z tego powodu założono, że kubek powinien mieć średnicę około 80 mm. Przyjęto, że odpowiedni do tego zadania kubek powinien
 zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie \cite{PK}. Dzięki temu kość nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
 będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
 o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz rys.~\ref{fig:kubki}): kubek kwadratowy (nr 4), kubek sześcienny (nr 2), kubek sześcienny z dodatkowymi żebrami (nr 1)
@@ -73,8 +73,8 @@ oraz kubek cylindryczny z dodatkowymi żebrami (nr 3).
 Następnie je przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
 ponieważ kości ośmiościenne, które wykorzystywano do testów utykały w narożnikach dociskane przez siłę odśrodkową. Podobny problem pojawiał się przy testach kubka kwadratowego.
 Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr 3 na rys.~\ref{fig:kubki}), o które kość się odbijała podczas kręcenia.
-Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z reszta testowanych wariantów co ma duże znaczenie 
-przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladnosc}.
+Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z resztą testowanych wariantów co ma duże znaczenie 
+przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladnosc}. Kubek o mniejszej masie jest łatwiej wprawić w ruch co jest ważne ze względu na wybór silnika.
 
 \begin{figure}[H]
     \centering
@@ -83,7 +83,10 @@ przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladn
 \end{figure}
 
 Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
-wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Z początku planowano wykorzystanie
+wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Spowodowane to było faktem, że w momencie kiedy kubek stał prostopadle do podłoża, kość
+zwyczajnie ślizgała się po jego dnie, ponieważ nie działała na nią żadna siła, która mogłaby wprowadzić ją w ruch, który spowodowałby odbijanie się od ścian kubka w sposób podobny jak podczas tradycyjnego rzutu kością. 
+W tym celu postanowiono skontrułować mechanizm wchylający cały kubek przez co siła ciężkości zaczełaby dociskać ją do bocznych ścian kubka. W takim ułożeniu po wprowadzeniu
+kubka w ruch obrotowy, przy odpowiedniej prędkości obrotu kość zaczynała odbijać się o ścianki kubka. Z początku planowano wykorzystanie
 serwomechanizmu, jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów ma
 ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$, a to limitowałoby możliw ości mechanizmu służącego do wychylania kubka.
 Ostatecznie w tym celu wybrano mały silnik krokowy 28BYJ-48, którego moment obrotowy 34,3mNm jest w pełni wystarczający do wychylenia kubka. 
@@ -124,59 +127,61 @@ co zapewnia stabilne i bezpieczne działanie całego systemu.
 \end{figure}
 
 Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
-zamontowaną kamerę. Na Rys.~\ref{fig:zielona} - Rys.~\ref{fig:blue} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
+zamontowaną kamerę. Na rys.~\ref{fig:kostki} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
 Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu, najlepiej kontrastuje ze ścianami kości przez co jest on najlepiej widoczny
 właśnie na tej kości.
 
 \begin{figure}[H]
     \centering
     % Pierwsze zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zielona.jpg}
-        \caption{\label{fig:zielona}Pierwsze ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:zielona}Kość zielona.}
+    \end{subfigure}
     \hfill
     % Drugie zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/czerwona.jpg}
-        \caption{\label{fig:czerwona}Drugie ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:czerwona}Kość czerwona.}
+    \end{subfigure}
     \hfill
     % Trzecie zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/fiolet.jpg}
-        \caption{\label{fig:fiolet}Trzecie ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:fiolet}Kość fioletowa..}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/pomaranczowa.jpg}
-        \caption{\label{fig:orange}Trzecie ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:orange}Kość pomarańczowa.}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zolte.jpg}
-        \caption{\label{fig:yellow}Trzecie ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:yellow}Kość żółta.}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/niebieska.jpg}
-        \caption{\label{fig:blue}Trzecie ustawienie.}
-    \end{minipage}
+        \caption{\label{fig:blue}Kość niebieska.}
+    \end{subfigure}
+    \caption{\label{fig:kostki}Przetestowane kości w różnych kolorach.}
 \end{figure}
 
-W obu wariantach dużym problemem był złej jakości obraz z kamery. W tym celu zaprojektowano system oświetlenia składający się z diod
+W obu wariantach dużym problemem był złej jakości obraz z kamery spowodowany przez ciemne wnętrze kubka. W celu poprawy jakości zdjęć zaprojektowano 
+system oświetlenia składający się z diod
 LED sterowanych przy pomocy układu tranzystorów Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
 robienie zdjęć lepszej jakości. Zdjęcie oświetlonego kubka przedstawiono na rys.~\ref{fig:jasno}. 
 
 Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
-jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Spowodowało to, że wysokość prototypu zmniejszyła się o około 5cm, 
-co było znaczącą poprawą, ponieważ jednym z założeń postawionych na początku budowy było stworzenie urządzenia o niewielkich rozmiarach.
+jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Dzięki temu wysokość całego urządzenia zmniejszyła się co miało duże znaczenie, 
+ponieważ jednym z założeń postawionych na początku budowy było stworzenie urządzenia o niewielkich rozmiarach.
 Dzięki tym zabiegom otrzymywane zdjęcia stały się dużo bardziej wyraźne oraz pole widzenia kamery było ograniczone tylko do dna kubka.
 Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo. Dzięki temu nie trzeba było wykorzystywać dodatkowych rezystorów a liczba połączeń
 jest minimalna, ponieważ wystarczają dwa przewody do podłączenia całego układu diod.
@@ -189,33 +194,34 @@ jest minimalna, ponieważ wystarczają dwa przewody do podłączenia całego uk�
 
 Podczas testów prototypów konieczne było również określenie wysokości, na której może znajdywać się kamera nad kubkiem. 
 %Wysokość tą określono na podstawie jakości zdjęć jako najlepszą podczas testów prototypów. 
-W tym celu wykonano zdjęcia z różną odległością kamery od dna kubka (patrz rys.~\ref{fig:wysoko} - \ref{fig:ideolo}). Głównym celem było znalezienie minimalnej odległości kamery od dna kubka, które nie powodowałoby 
+W tym celu wykonano zdjęcia z różną odległością kamery od dna kubka (patrz rys.~\ref{fig:wysokosci}). Głównym celem było znalezienie minimalnej odległości kamery od dna kubka, które nie powodowałoby 
 znacznego pogorszenia się jakości zdjęć, co utrudniałoby rozpoznawanie wyników na kości. Dodatkową zaletą obniżenia kamery względem kubka był fakt, że kamera
 znajdująca się niżej miała w swoim zasięgu widoku tylko dno kubka, co również miało za zadanie ułatwić rozpoznawanie kości oraz jej wartości. W trakcie testowania
-odległość tą wyznaczono na 120mm.
+odległość tą wyznaczono na 120 mm.
 
 \begin{figure}[h]
     \centering
     % Pierwsze zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/wysoko}
         \caption{\label{fig:wysoko}Pierwsze ustawienie.}
-    \end{minipage}
+    \end{subfigure}
     \hfill
     % Drugie zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/niżej}
         \caption{\label{fig:nizej}Drugie ustawienie.}
-    \end{minipage}
+    \end{subfigure}
     \hfill
     % Trzecie zdjęcie
-    \begin{minipage}{0.32\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/ideolo}
         \caption{\label{fig:ideolo}Trzecie ustawienie.}
-    \end{minipage}
+    \end{subfigure}
+    \caption{\label{fig:wysokosci}Ustawienia kamery na różnych wysokościach.}
 \end{figure}
 
 W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzytany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
@@ -225,17 +231,17 @@ ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świ
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/za jasno.jpg}
         \caption{\label{fig:za jasno}Oświetlone wnętrze kubka bez rezystorów ograniczających napięcia zasilającego diody LED.}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/w sam raz.jpg}
         \caption{\label{fig:w sam raz}Oświetlone wnętrze kubka z rezystorami ograniczającymi napięcie zasilające diody LED.}
-    \end{minipage}
+    \end{subfigure}
 \end{figure}
 
 Po skonstruowaniu obu wersji robota i wstępnym przetestowaniu ich okazało się, że wariant \textit{blendera} znacznie szybciej (około 4-krotnie) wykonuje rzut kością.
@@ -330,17 +336,17 @@ demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie 
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v1}
         \caption{\label{fig:uchwyt_v1}Pierwsza wersja uchwytu silnika oraz śmigło względem kubka.}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}{0.48\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v2}
         \caption{\label{fig:uchwyt_v2}Druga wersja uchwytu silnika oraz śmigło względem kubka.}
-    \end{minipage}
+    \end{subfigure}
 \end{figure}
 
 
