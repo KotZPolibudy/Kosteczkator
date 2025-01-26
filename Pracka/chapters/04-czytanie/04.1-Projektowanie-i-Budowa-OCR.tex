@@ -4,15 +4,6 @@ Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości.
 Jak pokazano na rys.~\ref{fig:schemat_workflow}
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
-Rys.~\ref{fig:schemat_workflow} w formie tekstowej
-\begin{verbatim}
-    Maszyna (robot) wykonuje rzut kością.
-    Kamera umieszczona w jego górnej części robi zdjęcie.
-    Zdjęcie to jest przekazywane do algorytmu wykonującego preprocessing.
-    Następnie, wyuczony przez nas model SI odczytuje wyrzucony na kości wynik i zwraca cyfrę.
-    Cyfra jest przekazywana na wyjście.
-\end{verbatim}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{chapters/04-czytanie/figures/schemat}
@@ -23,20 +14,20 @@ Rys.~\ref{fig:schemat_workflow} w formie tekstowej
 \section{Przetwarzanie wstępne obrazów}\label{sec:preprocessing}
 
 W niniejszym rozdziale omówiono proces przetwarzania wstępnego obrazów kości,
-który przekształca dane pochodzące z fizycznego komponentu naszej maszyny (zdjęcia kości) na dane wejściowe dla modelu sztucznej inteligencji.
+który przekształca dane pochodzące z fizycznego komponentu robota (kamery dostarczającej zdjęcia kości) na dane wejściowe dla modelu sztucznej inteligencji.
 Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości,
-o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia całego bębna maszyny.
+o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia (nie zawierające w tle całego kubka).
 
 \subsection{Algorytm}\label{subsec:algorytm}
 
-Przetwarzanie obrazów składa się z kilku etapów, które dokładnie opisano poniżej, a przepływ pracy prezentuje się tak: \\
-1. Wczytanie obrazu wejściowego \\
-2. Odnalezienie kości za pomocą maski na komponencie nasycenia \\
-3. Stworzenie i wycięcie ramki ograniczającej (ang. \textit{bounding box}) wokół maski \\
-4. Przeskalowanie do odpowiedniego rozmiaru \\
-5. Konwersja do skali szarości \\
-6. Zapisanie gotowego obrazu \\
-
+\begin{enumerate}
+    \item Wczytanie obrazu wejściowego .
+    \item Odnalezienie kości za pomocą maski na komponencie nasycenia.
+    \item Stworzenie i wycięcie ramki ograniczającej (ang. \textit{bounding box}) wokół maski.
+    \item Przeskalowanie do odpowiedniego rozmiaru.
+    \item Konwersja do skali szarości.
+    \item Zapisanie gotowego obrazu.
+\end{enumerate}
 
 Na rys.~\ref{fig:preproc_steps} przedstawiono przykładowe zdjęcie surowe~\ref{fig:step1}
 oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
@@ -49,14 +40,14 @@ oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
         \caption{Etap 1: Surowe zdjęcie.}
         \label{fig:step1}
     \end{subfigure}
-    \hfill
+    \hspace{-0.5em}
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_2}
         \caption{Etap 2: Nałożenie maski}
         \label{fig:step2}
     \end{subfigure}
-    \hfill
+    \hspace{-0.5em}
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_3}
@@ -64,7 +55,7 @@ oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
         \label{fig:step3}
     \end{subfigure}
 
-    \vspace{0.5cm}
+    \vspace{0.3cm}
 
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
@@ -72,7 +63,7 @@ oraz kolejne etapy przetwarzania, aż do finalnego etapu~\ref{fig:step5}.
         \caption{Etap 4: Skala szarości}
         \label{fig:step4}
     \end{subfigure}
-    \hfill
+    \hspace{0.5em}
     \begin{subfigure}[t]{0.45\linewidth}
         \centering
         \includegraphics[height=4cm]{chapters/04-czytanie/figures/2_5}
@@ -100,10 +91,10 @@ Wykorzystano parametry filtru z maską o wymiarach $5 \times 5$ pikseli oraz odc
 Takie ustawienia zapewniają balans między wygładzeniem a zachowaniem szczegółów obrazu.
 
 Na podstawie wygładzonego komponentu nasycenia za pomocą progowania tworzona jest maska binarna,
-która identyfikuje obszary o wysokim nasyceniu, odpowiadające obiektom zainteresowania (np. kości).
+która identyfikuje obszary o wysokim nasyceniu, odpowiadające obiektom zainteresowania (kości).
 Próg został dobrany eksperymentalnie, kończąc na wartości 224,
 tak aby w kontrolowanym środowisku (opisanym w poprzednim rozdziale) maska obejmowała obszar zainteresowania,
-ale nie obejmowała tła (np. czarnego kubka).
+ale nie obejmowała tła (czarnego kubka).
 Korzysta to z faktu, że kubek wykonany jest z materiału o niskim nasyceniu,
 a używana kość ma jednolity, jasny kolor, a więc i wysokie nasycenie.
 
@@ -116,6 +107,7 @@ zlokalizowania największego konturu obejmującego obszar zainteresowania.
 W tym celu wykorzystano funkcje biblioteki OpenCV~\cite{opencv_docs},
 które umożliwiają zarówno zastosowanie domknięcia morfologicznego, jak i wykrycie konturu i obliczenie otaczającego go prostokąta.
 Rozmiar prostokąta jest dynamicznie dopasowywany do obszaru maski.
+%Domknięcie morfologiczne i zamknięcie morfologiczne to dokładnie to samo.
 
 Na tej podstawie oryginalny obraz jest kadrowany w kształt prostokąta wokół obszaru zainteresowania,
 a następnie przeskalowywany do wymiarów $64 \times 64$ pikseli.
@@ -150,36 +142,26 @@ od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na k
         \caption{Odblask po zmianie na skalę szarości.}
         \label{fig:blaskproc}
     \end{subfigure}
-    \caption{Porównanie przetwarzania odblasku: część a) i b).}
+    \caption{Porównanie odblasku przed i po przetworzeniu: część a) i b).}
     \label{fig:blaskcombined}
 \end{figure}
 
 
 Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
-w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware --
-pomogło lepsze zaizolowanie przewodów kamery i diod.
-
-Mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku,
-który nadarzy się gdy do preprocessu trafi zupełnie czarne zdjęcie -- taki przypadek jest pomijany.
-W przypadku trzech takich nieprawidłowych zdjęć pod rząd generator przerywa pracę zgłaszając błąd.
-W podobny sposób postarano się o wykrycie zacięcia się śmigła,
-co oznacza, że preprocess dostaje cały czas takie same zdjęcie do obróbki.
-Tu również zadbano o to, by to wykrywać, jednak w związku z ryzykiem losowego podobieństwa kilku rzutów następujących po sobie,
-a więc ryzyka nieprawidłowego wykrycia błędu, % nie wiem jak to nazwaććććć
-przerwanie pracy następuje dopiero po 13 identycznych odczytach z rzędu.
+w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware, wynikający z awarii diody doświetlającej kubek.
+Obecnie taki problem jest wykrywany oraz zgłaszany jest wyjątek oznaczający potrzebę naprawy usterki oświetlenia.
+Nie był to jedyny problem powodowany przede wszystkim częścią sprzętową -- drugim takim było zatrzymanie śmigła w miejscu,
+przez co do ewaluacji przez model kilkukrotnie trafiało identyczne, lub niemal identyczne zdjęcie.
+To również zostało rozwiązane fizycznie, poprzez dodanie metalowej podkładki pod śmigłem,
+ale mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku, który nadarzy się gdy wielokrotnie zostanie odczytana identyczna wartość.
+W związku z ryzykiem fałszywego rozpoznania zatarcia śmigła przez losowo wypadającą wielokrotnie identyczną wartość ustawiono próg wykrywania takiej sytuacji i zgłaszania wyjątku na 13 identycznych odczytów z rzędu.
 Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
 $\frac{1}{8^{12}} \approx 1{,}455 \times 10^{-11}$
-%tak, zmieniliśmy na 13 żeby tego nie przeliczać znowu.
-%a właściwie nie zmieniliśmy, bo w kodzie już było implementowane 13, bo tam zrobiłem ten sam off-by-one error, więc wszystko się zgadzało poza opisem
-%PS: Na probabilistyce jeszcze pamiętałem o takich rzeczach! Przepraszam!
-%%PPS: Mnie przepuścił Pana kolega, który potem niechcący zabrał mi miejsce na angielskim...
-
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
-a więc moment, gdy kość zatrzyma się w pozycji w której widać więcej niż jedną ściankę.
+a więc moment, gdy kość zatrzyma się w pozycji, w której widać więcej niż jedną ściankę.
 Najczęściej jest to spowodowane tym, że kość zatrzymała się na śmigle napędowym,
 przez co wynik może być niejednoznaczny, co pokazano na rys.~\ref{fig:smiglocombined}.
-% TODO check nazwy śmigło!
 
 \begin{figure}[h]
     \centering
@@ -201,15 +183,18 @@ przez co wynik może być niejednoznaczny, co pokazano na rys.~\ref{fig:smigloco
 \end{figure}
 
 
-Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, który siłą rzeczy odczytuje ze zdjęcia tylko jeden wynik i wybiera ten,
+Rozwiązaniem tego problemu jest model dokonujący klasyfikacji wyniku rzutu, który odczytuje ze zdjęcia tylko jeden, najbardziej prawdopodobny wynik i wybiera ten,
 który jest bardziej widoczny, ponieważ podczas uczenia model miał do czynienia z takimi niejednoznacznymi sytuacjami,
-które byliśmy w stanie ręcznie oznaczyć właśnie na potrzeby treningu modelu.
+które zostały ręcznie oznaczone właśnie na potrzeby treningu modelu.
 
-Zdarzają się oczywiście rzadkie przypadki, w których kość wyląduje równo na śmigle. Jednakże w takim wypadku wynik jest idealnie czytelny,
-tak jakby wylądowała normalnie na podstawce kubka. Wtedy problem z lądowaniem na śmigle nie istnieje,
-gdyż nie przeszkadza to w tym, że kość i tak zostanie podbita przy następnym obrocie śmigła. 
-Ostatnim rodzajem problemu jaki został napotkany był przypadek w którym kość nie skończyła jeszcze swojej fazy lotu,
+Zdarzają się również rzadkie przypadki, w których kość wyląduje równo na śmigle.
+Jednakże w takim wypadku wynik jest idealnie czytelny,
+identycznie jak gdy kość lądowała normalnie na podstawce kubka, więc nie jest to problemem.
+%Wtedy problem z lądowaniem na śmigle nie istnieje,
+%gdyż nie przeszkadza to w tym, że kość i tak zostanie podbita przy następnym obrocie śmigła.
+Ostatnim rodzajem problemu, jaki został napotkany, był przypadek, w którym kość nie skończyła jeszcze swojej fazy lotu,
 lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
+Przykłady zarejestrowanych przypadków wystąpienia tego problemu przestawiono na rys~\ref{fig:wircombined}.
 
 \begin{figure}[h]
     \centering
@@ -244,5 +229,5 @@ jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo ni�
 Przedstawiony algorytm przetwarzania wstępnego pozwala na skuteczne przygotowanie danych wejściowych dla modelu sztucznej inteligencji.
 Automatyzuje proces identyfikacji i kadrowania obiektów zainteresowania w obrazach, co znacząco poprawia jakość danych.
 Rozwiązanie zostało zaprojektowane z myślą o łatwej adaptacji do innych zastosowań wymagających podobnego przetwarzania obrazów,
-dla przykładu przypadku zmiany kości w maszynie na inną, lub z inną liczbą ścianek.
+na przykład w przypadku zmiany kości w maszynie na inną, lub z inną liczbą ścianek.
 

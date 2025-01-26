@@ -5,10 +5,7 @@ odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
 Do implementacji modelu wykorzystano przede wszystkim moduł TensorFlow~\cite{tensorflow_docs}
 oraz wchodzący obecnie w jego skład Keras~\cite{keras_docs},
 który umożliwia łatwe tworzenie i trenowanie sieci neuronowych.
-
-
 %% uselesss :(( \textit{Biblioteka Keras jest wygodnym opakowaniem (wrapperem) dla modeli DL używanych do oszacowań klasyfikacji lub regresji]} [Donald J. Norris, 2020 s. 355 wydanie APN PROMISE SA]
-
 
 \subsection{Przygotowanie danych}\label{subsec:przygotowanie-danych}
 
@@ -25,7 +22,6 @@ W celu zwiększenia różnorodności danych treningowych zastosowano techniki au
 
 Wszystkie augmentacje przedstawiono na rys.~\ref{fig:5augment}
 Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczniejsze działanie sieci neuronowej.
-
 
 \begin{figure}[h]
     \centering
@@ -103,108 +99,3 @@ a niepoprawne były te odbite tylko wobec jednej osi, czego przykład można zao
     \caption{Wizualne przedstawienie problemu dot. odbicia lustrzanego}
     \label{fig:25confusion}
 \end{figure}
-
-\subsection{Architektura modelu}\label{subsec:architektura-modelu}
-
-\subsection{Użyte funkcje aktywacji i rodzaje warstw}\label{subsec:uzyte-funkcje-aktywacji-i-rodzaje-warstw}
-
-\subsubsection{Sieci splotowe (CNN)}
-Sieci splotowe to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
-z przetwarzaniem obrazów, takich jak rozpoznawanie obiektów, klasyfikacja czy segmentacja.
-Główna różnica między siecią splotową a tradycyjną siecią neuronową polega na tym,
-że w sieciach splotowych stosuje się operację splotu, która umożliwia wydobycie lokalnych cech z obrazu,
-redukując liczbę parametrów i umożliwiając efektywniejsze uczenie się reprezentacji obrazu. \\
-Warstwy splotowe w sieci CNN wykonują operację splotu, polegającą na zastosowaniu filtrów (jąder) na obrazie wejściowym,
-co pozwala na wyodrębnienie różnych cech (np. krawędzi, tekstur) w różnych lokalizacjach obrazu.
-Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę postępującej abstrakcji,
-dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
-
-\subsubsection{Warstwa gęsta (Dense)}
-Warstwa gęsta (ang. \textit{Dense, fully connected layer}), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
-Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
-z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
-W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
-które reprezentują cechy odpowiednie do klasyfikacji.
-
-
-Użyte funkcje aktywacji:
-%o, sprawdziłem nawet, to NIE JEST to co mi chat geenrował, bo mi się nie podobało i przepisywałem XD
-% zupełnie zapomniałem o tym XDD
-\begin{itemize}
-    \item ReLU -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
-    Jest to funkcja, która zwraca 0 dla wszystkich ujemnych wartości i zachowuje wartość dodatnią dla wszystkich liczb dodatnich.
-    ReLU pozwala na szybkie i efektywne uczenie się sieci, eliminując problem zanikania gradientu,
-    który występuje w tradycyjnych funkcjach aktywacji, takich jak sigmoidalna.
-    \item Softmax -- to funkcja aktywacji, która jest używana w zadaniach klasyfikacyjnych,
-    szczególnie w przypadku, gdy mamy do czynienia z wieloma klasami.
-    Softmax przekształca wyjścia z warstwy gęstej w rozkład prawdopodobieństwa,
-    gdzie suma prawdopodobieństw dla wszystkich klas wynosi 1.
-\end{itemize}
-
-\subsection{Budowa sieci neuronowej}\label{subsec:budowa-sieci-neuronowej}
-Model jest wielowarstwową siecią splotową (ang. \textit{convolutional neural network, CNN}),
-składającą się z następujących elementów:
-
-\begin{enumerate}
-    \item Warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
-    \item Trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
-    \begin{enumerate}
-        \item Pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-    \end{enumerate}
-    \item Warstwa spłaszczająca (Flatten),
-    \item Dwóch w pełni połączonych warstw (Dense):
-    \begin{enumerate}
-        \item Pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
-        \item Druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
-    \end{enumerate}
-\end{enumerate}
-
-W przypadku zmiany kości na taką z inną liczbą ścianek, np.
-na również rozważane w fazie koncepcyjnej kości czworościenną, sześciościenną, albo szesnastościenną,
-ostatnia warstwa musiałaby również ulec odpowiedniej zmianie,
-tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
-
-\subsection{Trenowanie modelu}\label{subsec:trenowanie-modelu}
-
-Model został nauczony z wykorzystaniem optymalizatora Adam~\cite{kingma2014adam, keras_adam},
-funkcji straty entropii krzyżowej~\cite{crossentropy} dostępnej w module tensorflow jako sparse categorical crossentropy~\cite{tensorflow_loss},
-oraz metryki dokładności (ang. \textit{accuracy})~\cite{tensorflow_accuracy}.
-Proces trenowania obejmował dobraną eksperymentalnie liczbę 20 epok, gdyż dalsze zwiększanie liczby epok nie przynosiło istotnej poprawy wydajności zwiększając jedynie czas obliczeń.
-Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
-
-
-\subsection{Wyniki}\label{subsec:wyniki}
-
-Podczas trenowania osiągnięto następujące końcowe wyniki:
-
-\begin{itemize}
-    \item Dokładność na zbiorze treningowym: 0,9375
-    \item Dokładność na zbiorze walidacyjnym: 1,0
-    \item Strata na zbiorze treningowym: 0,0786
-    \item Strata na zbiorze walidacyjnym: 0,0274
-\end{itemize}
-
-Wyniki zostały również zwizualizowane na wykresach (rys.~\ref{fig:ModelAcc} oraz~\ref{fig:ModelLoss})
-przedstawiających zmianę dokładności i straty w trakcie trenowania.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{chapters/04-czytanie/figures/ModelAcc1}
-    \caption{Wykres dokładności modelu.}
-    \label{fig:ModelAcc}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{chapters/04-czytanie/figures/ModelLoss1}
-    \caption{Wykres straty modelu.}
-    \label{fig:ModelLoss}
-\end{figure}
-
-Model został zapisany w formacie \texttt{.keras} i jest gotowy do użycia w systemie rozpoznawania liczb na ośmiościennej kości,
-opisanym w kolejnej sekcji.
