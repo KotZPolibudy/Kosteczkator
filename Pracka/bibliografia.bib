@@ -78,21 +78,22 @@
 
 %%TODO - morfologiczne domknięcie
 
-@article{morphological_closure,
-  author={TRZEBA COŚ ZNALEŹĆ},
-  journal={IEEE AAAAA},
-  title={NADAL NIE MAM TUTAJ NIC},
-  year={2077},
-  volume={1},
-  number={1},
-  pages={11-22},
-  doi={10.1109/9.855552}
-}
+%article{morphological_closure,
+%  author={TRZEBA COŚ ZNALEŹĆ},
+%  journal={IEEE AAAAA},
+%  title={NADAL NIE MAM TUTAJ NIC},
+%  year={2077},
+%  volume={1},
+%  number={1},
+%  pages={11-22},
+%  doi={10.1109/9.855552}
+%}
 
 @misc{IDQ,
   author       = "{ID Quantique}",
   title        = "ID Quantique: Quantum Random Number Generators",
   year         = "2025",
+  howpublished = {[on-line] \url{https://www.idquantique.com/random-number-generation/overview/}},
   url          = "https://www.idquantique.com/random-number-generation/overview/",
   note         = "Dostęp: 24 stycznia 2025"
 }
@@ -101,6 +102,7 @@
   author       = "{Microchip Technology}",
   title        = "Microchip Technology: FIPS 140-3 Random Number Generator ESVTS ready",
   year         = "2025",
+  howpublished = {[on-line] \url{https://www.microchip.com/en-us/product/rng90#Documentation}},
   url          = "https://www.microchip.com/en-us/product/rng90#Documentation",
   note         = "Dostęp: 24 stycznia 2025"
 }
@@ -109,6 +111,7 @@
   author       = "{Semtech Corporation}",
   title        = "Semtech: Random Numbers and LoRa",
   year         = "2025",
+  howpublished = {[on-line] \url{https://learn.rakwireless.com/hc/en-us/articles/26580705507607-Random-Numbers-and-LoRa}},
   url          = "https://learn.rakwireless.com/hc/en-us/articles/26580705507607-Random-Numbers-and-LoRa",
   note         = "Dostęp: 24 stycznia 2025"
 }
@@ -117,42 +120,46 @@
   author       = {Intel Corporation},
   title        = {Intel{\textregistered} Digital Random Number Generator (DRNG)},
   year         = {2023},
-  howpublished = {\url{https://www.intel.com/content/www/us/en/developer/articles/guide/intel-digital-random-number-generator-drng-software-implementation-guide.html}},
-  note         = {Accessed: 2025-01-24}
+  howpublished = {[on-line] \url{https://www.intel.com/content/www/us/en/developer/articles/guide/intel-digital-random-number-generator-drng-software-implementation-guide.html}},
+  note         = {Dostęp: 24 stycznia 2025}
 }
 
 
-@online{tensorflow_docs,
+@misc{tensorflow_docs,
   author = {TensorFlow Developers},
   title = {TensorFlow Documentation},
   year = {2025},
+  howpublished = {[on-line] \url{https://www.tensorflow.org/}},
   url = {https://www.tensorflow.org/},
   urldate = {2025-01-20},
-  note = {\url{https://www.tensorflow.org/} Dostęp: 20 stycznia 2025},
+  note = {Dostęp: 20 stycznia 2025},
 }
 
-@online{keras_docs,
+@misc{keras_docs,
   author = {Keras Developers},
   title = {Keras Documentation},
   year = {2025},
+  howpublished = {[on-line] \url{https://keras.io/}},
   url = {https://keras.io/},
   urldate = {2025-01-20},
-  note = {\url{https://keras.io/} Dostęp: 20 stycznia 2025},
+  note = {Dostęp: 20 stycznia 2025},
 }
 
-@online{keras_imagedatagenerator,
+@misc{keras_imagedatagenerator,
   author = {Keras Developers},
   title = {ImageDataGenerator: Keras Preprocessing Layers},
   year = {2025},
+  howpublished = {[on-line] \url{https://keras.io/api/preprocessing/image/}},
   url = {https://keras.io/api/preprocessing/image/},
   urldate = {2025-01-20},
-  note = {\url{https://keras.io/api/preprocessing/image/} Dostęp: 20 stycznia 2025},
+  note = {Dostęp: 20 stycznia 2025},
 }
 
 @misc{keras_adam,
   author = {Keras},
   title = {Adam Optimizer},
   year = {2025},
+  howpublished = {[on-line] \url{https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam}},
   url = {https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam},
   note = {\url{https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam} Dostęp: 20 stycznia 2025},
 }
@@ -168,6 +175,7 @@
   author = {TensorFlow},
   title = {Sparse Categorical Crossentropy Loss},
   year = {2025},
+  howpublished = {[on-line] \url{https://www.tensorflow.org/api_docs/python/tf/keras/losses/SparseCategoricalCrossentropy}},
   url = {https://www.tensorflow.org/api_docs/python/tf/keras/losses/SparseCategoricalCrossentropy},
   note = {\url{https://www.tensorflow.org/api_docs/python/tf/keras/losses/SparseCategoricalCrossentropy} Dostęp: 20 stycznia 2025},
 }
@@ -176,8 +184,9 @@
   author = {TensorFlow},
   title = {Accuracy Metric},
   year = {2025},
+  howpublished = {[on-line] \url{https://www.tensorflow.org/api_docs/python/tf/keras/metrics/Accuracy}},
   url = {https://www.tensorflow.org/api_docs/python/tf/keras/metrics/Accuracy},
-  note = {\url{https://www.tensorflow.org/api_docs/python/tf/keras/metrics/Accuracy} Dostęp: 20 stycznia 2025},
+  note = {Dostęp: 20 stycznia 2025},
 }
 
 
@@ -195,10 +204,15 @@
   year = {2013}
 }
 
-@book{NIST2001,
+% https://csrc.nist.gov/pubs/fips/140-2/upd2/final
+
+@misc{NIST2001,
   author = {National Institute of Standards and Technology},
   title = {Security Requirements for Cryptographic Modules},
-  year = {2001}
+  year = {2001},
+  howpublished = {[on-line] \url{https://csrc.nist.gov/pubs/fips/140-2/upd2/final}},
+  url = {https://csrc.nist.gov/pubs/fips/140-2/upd2/final},
+  note = {Dostęp: 20 grudnia 2024},
 }
 
 @misc{NIST2012,
@@ -206,6 +220,7 @@
   title = "Critical Values of the Chi-Square Distribution",
   howpublished = "[on-line] \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm}",
   year = {2023},
+  note = {Dostęp: 20 stycznia 2025},
 }
 
 @misc{L298,
@@ -213,6 +228,7 @@
   title = "Dual Full Bridge Driver",
   howpublished = "[on-line] \url{https://www.st.com/en/motor-drivers/l298.html}",
   year = {2023},
+  note = {Dostęp: 22 stycznia 2025},
 }
 
 
@@ -221,6 +237,7 @@
   title = "Eight Darlington arrays",
   howpublished = "[on-line] \url{https://www.st.com/en/interfaces-and-transceivers/uln2803a.html}",
   year = {2018},
+  note = {Dostęp: 22 stycznia 2025},
 }
 
 @article{PK,
@@ -317,40 +334,44 @@
   year = {2024}
 }
 
-@online{g_serial,
+@misc{g_serial,
   author       = {Al Borchers},
-  title        = {Linux Gadget Serial Driver v2.0},
+  title        = {{Linux Gadget Serial Driver v2.0}},
   year         = {2008},
+  howpublished = {[on-line] \url{https://docs.kernel.org/usb/gadget_serial.html}},
   url          = {https://docs.kernel.org/usb/gadget_serial.html},
   urldate      = {2025-01-24},
-  note         = {\url{https://docs.kernel.org/usb/gadget_serial.html} Dostęp: 24 stycznia 2025}
+  note         = {Dostęp: 24 stycznia 2025}
 }
 
-@online{systemd,
+@misc{systemd,
   author       = {Lennart Poettering, Społeczność open source},
   title        = {Systemd Documentation},
   year         = {2024},
+  howpublished = {[on-line] \url{https://systemd.io}},
   url          = {https://systemd.io},
   urldate      = {2025-01-25},
-  note         = {\url{https://systemd.io} Dostęp: 25 stycznia 2025}
+  note         = {Dostęp: 25 stycznia 2025}
 }
 
-@online{SmartDice,
+@misc{SmartDice,
   author       = {Carsten Magerkurth, Timo Engelke, Carsten Röcker},
   title        = {The Smart Dice Cup: A Radio Controlled Sentient Interaction Device},
   year         = {2006},
+  howpublished = {[on-line] \url{https://dl.ifip.org/db/conf/iwec/icec2006/MagerkurthER06.pdf}},
   url          = {https://dl.ifip.org/db/conf/iwec/icec2006/MagerkurthER06.pdf},
   urldate      = {2025-01-26},
-  note         = {\url{https://dl.ifip.org/db/conf/iwec/icec2006/MagerkurthER06.pdf} Dostęp: 26 stycznia 2025}
+  note         = {Dostęp: 26 stycznia 2025}
 }
 
-@online{betoniarka43,
+@misc{betoniarka43,
   author       = {J. B. Rhine},
   title        = {Dice thrown by cup and machine in PK tests},
   year         = {1943},
+  howpublished = {[on-line] \url{https://dn720306.ca.archive.org/0/items/sim_journal-of-parapsychology_1943-09_7_3/sim_journal-of-parapsychology_1943-09_7_3.pdf}},
   url          = {https://dn720306.ca.archive.org/0/items/sim_journal-of-parapsychology_1943-09_7_3/sim_journal-of-parapsychology_1943-09_7_3.pdf},
   urldate      = {2025-01-26},
-  note         = {\url{https://dn720306.ca.archive.org/0/items/sim_journal-of-parapsychology_1943-09_7_3/sim_journal-of-parapsychology_1943-09_7_3.pdf} Dostęp: 26 stycznia 2025}
+  note         = {Dostęp: 26 stycznia 2025}
 }
 
 @book{chaos,
