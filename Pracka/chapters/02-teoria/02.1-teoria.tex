@@ -2,8 +2,11 @@
 
 Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania liczb losowych,
 które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
-Najlepiej spełniają do generatory liczb prawdziwie losowych, czyli te oparte na fizycznych zjawiskach,
-jednak powszechnie używane są generatory pseudolosowe (PRNG, z ang. \textit{Pseudorandom Number Generator}).
+Najlepiej to założenie spełniają generatory liczb prawdziwie losowych, czyli te oparte na fizycznych zjawiskach. Jest to spowodowane tym, że 
+kiedy w układach fizycznych bierze się pod
+uwagę wiele czynników to nawet najmniejsze zmiany, w którymś z tych czynników sprawiają, że wynik jest odmienny. Z tego powodu nie można przewidzieć wyniku
+działania takiego układu a uzyskane wyniki są losowe~\cite{chaos}.
+Jednak powszechnie używane są generatory pseudolosowe (PRNG, z ang. \textit{Pseudorandom Number Generator}).
 PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. \textit{seed}).
 
 TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych,
@@ -25,7 +28,7 @@ Najpopularniejszym medialnie RNG jest LavaRand~\cite{cloudflare_lavarand}, któr
 zbudowanym i opatentowanym przez Silicon Graphics~\cite{SiliconGraphics}.
 LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
 na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające.
-Wciąż jednak pozostaje inspirującym przykładem do szukania losowości wszędzie wokół nas.
+Wciąż jednak pozostaje inspirującym przykładem do szukania losowości w zjawiskach otaczających ludzi w codziennym życiu.
 
 \begin{figure}[h]
     \centering
@@ -45,7 +48,7 @@ za to na przykład za pośrednictwem API takiego jak \textit{drand}~\cite{drand_
 Przykładem takiego rozwiązania jest Cloudflare – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
 Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
 Dodatkowo Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak rozpad radioaktywnego uranu, 
-nieprzewidywalnego fizycznie trójstopniowego wahadła, czy „Entropy Wall”, która pobiera entropię z kamery
+trójstopniowego wahadła, czy „Entropy Wall”, która pobiera entropię z kamery
 ustawionej na ścianę lamp lawowych, pokazanej na rys.~\ref{fig:lavarand}.
 Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
 Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
