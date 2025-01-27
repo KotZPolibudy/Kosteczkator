@@ -4,7 +4,7 @@ Komercyjne rozwiązania bazują na przeróżnych źródłach entropii,
 najczęściej nie na dostarczanych przez użytkownika, aby wykluczyć możliwość ingerencji i ograniczyć przewidywalność, a na całkowicie niezależnych.
 Najpopularniejszym medialnie RNG jest LavaRand~\cite{cloudflare_lavarand}, który inspirowany był podobnym systemem,
 zbudowanym i opatentowanym przez Silicon Graphics~\cite{SiliconGraphics}.
-LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy,
+LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy Cloudflare,
 na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające.
 Wciąż jednak pozostaje inspirującym przykładem do szukania losowości w zjawiskach otaczających ludzi w codziennym życiu.
 
@@ -24,7 +24,7 @@ W ostatnich latach pojawiły się także inne rozwiązania chmurowe, które umo�
 za to na przykład za pośrednictwem API takiego jak \textit{drand}~\cite{drand_documentation}.
 Przykładem takiego rozwiązania jest Cloudflare – firma specjalizująca się w dostarczaniu usług związanych z bezpieczeństwem sieciowym.
 Na swoim blogu Cloudflare przedstawia zaawansowane metody generowania liczb losowych, które są wykorzystywane w ich systemach~\cite{cloudflare_league_of_entropy}.
-Dodatkowo Cloudflare korzysta z technologii opartych na zjawiskach fizycznych, takich jak rozpad radioaktywnego uranu, 
+Dodatkowo wspomniana firma korzysta również z technologii opartych na zjawiskach fizycznych, takich jak rozpad radioaktywnego uranu,
 trójstopniowego wahadła, czy „Entropy Wall”, która pobiera entropię z kamery
 ustawionej na ścianę lamp lawowych, pokazanej na rys.~\ref{fig:lavarand}.
 Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
