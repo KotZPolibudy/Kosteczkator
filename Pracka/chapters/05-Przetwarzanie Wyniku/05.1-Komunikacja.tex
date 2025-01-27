@@ -8,9 +8,10 @@ każde urządzenie z systemem Linux lub Windows.
 Komunikacja między robotem i drugim urządzeniem odbywa się za pośrednictwem przewodu USB.
 Do obsługi komunikacji wykorzystywany jest skrypt wykonany w języku python, który jest uruchamiany 
 przez \texttt{systemd}~\cite{systemd} po uruchomieniu robota. Po uruchomieniu robot czeka na komendę która wybierze jego tryb pracy.
-Obecnie do wyboru pracy obsługję znaki 'e' i 'd', w przypadku otrzymania innych znaków są one ignorowane a robot czeka aż otrzyma jeden z obsługiwanych znaków.
+Obecnie do wyboru pracy osbługiwane są znaki 'e' i 'd', w przypadku otrzymania innych znaków są one ignorowane a robot czeka aż otrzyma jeden z obsługiwanych znaków.
 Po rozpoczęciu jednego z trybów pracy możliwe jest zakończenie tego trybu wysyłając do robota znak 'q', sprawi to że robot wróci do stanu w którym czeka na wybranie 
-trybu pracy.
+trybu pracy. Zważywszy na to że do wykonywania rzutów używana jest kość ośmiościenna 
+każdy rzut generuje 3 bity, tak jak zostało opisane w rozdziale~\ref{subsec:interpretacja-wyniku}.
 
 % https://docs.kernel.org/usb/gadget_serial.html
 
@@ -29,7 +30,7 @@ Odbywa się to przez wykonanie następującego algorytmu:\\
 W powyższym algorytmie dane wysyłane są po bajcie danych ponieważ dane w pamięci 
 są wyrównane do bajtów więc jest najmniejszą jednostką, którą można przekazać na raz.
 Głównym założeniem tego trybu pracy jest wykorzystanie go jako dodatkowe źródło entropii w systemie Linux, 
-dla zobrazowania tego wykonany został diagram~\ref{fig:interface_a}.
+dla zobrazowania tego wykonany został rys.~\ref{fig:interface_a}.
 
 \begin{figure}[H]
     \centering
@@ -41,7 +42,8 @@ dla zobrazowania tego wykonany został diagram~\ref{fig:interface_a}.
 \subsection{Wykonywanie pojedyńczych rzutów}
 Aby wykorzystać ten tryb pracy należy wysłać do robota przez port szeregowy znak 'd'.
 W tym trybie zadaniem jest oczekiwanie na polecenie wykonania rzutu, czyli znak 'r'.
-Kolejnie wykonanie rzutu kością i odpowiedź otrzymaną liczbą. Następnie otrzymaną liczbę można wykorzystać w swoim programie. Działanie to zobrazowano na diagramie~\ref{fig:interface_b}.
+Kolejnie wykonanie rzutu kością i odpowiedź otrzymaną liczbą. Następnie otrzymaną 
+liczbę można wykorzystać w swoim programie. Działanie to zobrazowano na rys.~\ref{fig:interface_b}.
 
 \begin{figure}[H]
     \centering
