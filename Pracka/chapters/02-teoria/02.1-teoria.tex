@@ -3,13 +3,14 @@
 Współczesne systemy kryptograficzne oraz aplikacje wymagają generowania wysokiej jakości liczb losowych,
 które muszą charakteryzować się wysoką jakością i odpornością na przewidywalność.
 Najlepiej to założenie spełniają generatory liczb prawdziwie losowych, czyli te oparte na zjawiskach fizycznych.
-Jest to spowodowane tym, że kiedy w układach fizycznych bierze się pod uwagę wiele czynników to nawet najmniejsze zmiany,
+Jest to spowodowane tym, że kiedy w układach fizycznych bierze się pod uwagę wiele czynników, to nawet najmniejsze zmiany
 w którymś z tych czynników sprawiają, że wynik jest odmienny.
-Z tego powodu nie można przewidzieć wyniku działania takiego układu a uzyskane wyniki są losowe~\cite{chaos}.
+Z tego powodu nie można przewidzieć wyniku działania takiego układu, a uzyskane wyniki są losowe~\cite{chaos}.
+
 Jednak powszechnie używane są generatory pseudolosowe (PRNG, z ang. \textit{Pseudorandom Number Generator}).
 PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. \textit{seed}).
-TRNG są szczególnie istotne w kontekście aplikacji wymagających silnej ochrony danych,
-takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących,
+TRNG (z ang. \textit{True Random Number Generator}) są szczególnie istotne w kontekście aplikacji wymagających silnej 
+ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących,
 gdyż nie da się przewidzieć w skuteczny sposób generowanych przez nie wartości.
 
 \section{Obecnie stosowane rozwiązania}\label{sec:obecnie-stosowane-rozwiazania}
