@@ -144,7 +144,7 @@ def doRoll():
 
 def genEntropy(numberOfBytes: int):
     bytes = []
-    num = 0
+    global num
     global cycle
     for _ in range(numberOfBytes):
         if cycle == 1:
@@ -178,6 +178,8 @@ def genEntropy(numberOfBytes: int):
 
 
 def fillEntropy(usb:serial.Serial,numberOfBytes):
+    global num
+    num = 0
     while True:
         numbers = bytes(genEntropy(numberOfBytes))
         # print(numbers)
