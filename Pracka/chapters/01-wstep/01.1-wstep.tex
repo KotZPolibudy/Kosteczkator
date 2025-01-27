@@ -1,15 +1,17 @@
 \chapter{Wstęp}\label{ch:wstep}
 
-%todo ale boga czy Boga, oraz czy to dopisywać?
 %W swoim liście z 1926r. Albert Einstein pisał do Maxa Borna podkreślając swą wiarę w deterministyczny świat.
 %\textit{„Ja w każdym razie jestem głęboko przeświadczony, że On nie gra w kości.”}
 %Dla komputerów również wszystko jest deterministyczne, a jednak korzystamy z losowości przy tak wielu operacjach... bla bla, dobra, Kuba sam se wstaw ten cytat bo ja bardzo nie umiem tego ubrać w słowa
+
+%ej musimy we wstępie gdzieś wcisnąć ze einstein tez uważał ze rzuty kością są losowe bo powiedział Bog nie rzuca kośćmi \\
+%~ Jakub Kędra
 
 Współczesne systemy komputerowe i technologie wykorzystują liczne algorytmy generowania liczb losowych, które stanowią podstawę w takich dziedzinach jak kryptografia,
 symulacje komputerowe czy gry komputerowe.
 Jednakże większość tych rozwiązań opiera się na generatorach pseudolosowych,
 które, mimo swojej wydajności, w istocie generują liczby deterministyczne.
-W praktyce może to prowadzić do problemów z bezpieczeństwem i nieprzewidywalnością w sytuacjach, gdzie prawdziwa losowość jest kluczowa.
+W praktyce może to prowadzić do problemów z bezpieczeństwem i przewidywalnością w sytuacjach, gdzie prawdziwa losowość jest kluczowa.
 
 Inspiracją do podjęcia tematu budowy sprzętowego generatora liczb losowych (HRNG, z ang. \textit{Hardware Random Number Generator})
 było połączenie zainteresowań w dziedzinie techniki oraz pasji do gier planszowych i RPG. %czy należy wytłumaczyć rpg? XD
@@ -17,7 +19,6 @@ Gry te, korzystające od wieków z kości jako narzędzia generowania losowości
 Projekt stara się udowodnić hipotezę, że poprzez zautomatyzowanie procesu rzutu kością możliwe jest uzyskanie prawdziwej losowości mimo deterministycznego charakteru działania maszyny.
 
 \section{Cele i założenia projektu}\label{sec:cel-projektu}
-\subsection{Cele}
 
 Celem pracy jest zbudowanie urządzenia zdolnego do generowania liczb losowych poprzez mechaniczny rzut kością oraz analiza stopnia losowości uzyskanych wyników.
 Projekt ten zakłada wytworzenie urządzenia, które będzie w stanie rzucać kością w sposób powtarzalny i przewidywalny,
@@ -33,34 +34,37 @@ Realizacja tego projektu pozwoli nie tylko na sprawdzenie skuteczności podejśc
 ale również na pogłębienie wiedzy o granicach między deterministycznymi systemami a losowością,
 stanowiąc wkład w rozwój technologii oraz praktycznych zastosowań w obszarach wymagających prawdziwej losowości.
 
-\subsection{Założenia}
+Projekt robota został opracowany w oparciu o kilka kluczowych założeń, które mają na celu zapewnienie jego funkcjonalności, efektywności oraz użyteczności:
+\begin{enumerate}
+    \item Założenie niewielkich rozmiarów i kompaktowości.
+    \item Założenie modułowości elementów robota.
+    \item Założenie prostej budowy.
+    \item Założenie możliwie szybkiego uzyskiwania wyniku.
+    \item Założenie możliwie niskich kosztów projektu.
+\end{enumerate}
 
-Projekt robota został opracowany w oparciu o kilka kluczowych założeń, które mają na celu zapewnienie jego funkcjonalności, efektywności oraz użyteczności. 
+Niewielkie rozmiary robota są kluczowe, ponieważ pozwalają na łatwe wykorzystanie urządzenia nawet w codziennym życiu.
+Kompaktowa konstrukcja oznacza mniejszą wagę i większą mobilność, przez co robota można bez problemu przenosić pomiędzy różnymi miejscami.
+Dzięki temu robot jest bardziej wszechstronny w zastosowaniu i może być używany w różnych celach.
 
-\subsubsection{Założenie niewielkich rozmiarów i kompaktowości}
-Niewielkie rozmiary robota są kluczowe, ponieważ pozwalają na łatwe wykorzystanie urządzenia nawet w codziennym życiu. Kompaktowa konstrukcja oznacza 
-mniejszą wagę i większą mobilność, przez co robota można bez problemu przenosić pomiędzy różnymi miejscami. Dzięki temu robot jest bardziej wszechstronny 
-w zastosowaniu i może być używany w różnych celach.
-
-\subsubsection{Założenie modułowości elementów robota}
-Modułowość pozwala na łatwą rozbudowę i modyfikację robota. Poszczególne komponenty mogą być wymieniane, naprawiane lub ulepszane bez konieczności 
-ingerowania w całą konstrukcję. Dzięki temu projekt jest bardziej elastyczny, co zwiększa jego żywotność i możliwość dostosowania do nowych zastosowań. 
+Modułowość pozwala na łatwą rozbudowę i modyfikację robota.
+Poszczególne komponenty mogą być wymieniane, naprawiane lub ulepszane bez konieczności ingerowania w całą konstrukcję.
+Dzięki temu projekt jest bardziej elastyczny, co zwiększa jego żywotność i możliwość dostosowania do nowych zastosowań.
 Modułowość ułatwia również składanie, rozkładanie oraz serwisowanie urządzenia.
 
-\subsubsection{Założenie prostej budowy}
-Prosta konstrukcja zapewnia, że robot jest łatwy do złożenia, obsługi i serwisowania. Minimalizuje to ryzyko występowania błędów podczas montażu oraz 
-potencjalne problemy eksploatacyjne. Prosta budowa sprawia, że robot jest łatwiejszy w obsłudze dla osób mniej zaawansowanych technicznie, co zwiększa dostępność 
-urządzenia dla szerokiego grona użytkowników co ma znaczenie w przypadku komercjalizacji rozwiązania. Jednocześnie upraszcza to proces projektowania, co pozwala 
-na szybsze przejście od koncepcji do gotowego produktu.
+Prosta konstrukcja zapewnia, że robot jest łatwy do złożenia, obsługi i serwisowania.
+Minimalizuje to ryzyko występowania błędów podczas montażu oraz potencjalne problemy eksploatacyjne.
+Prosta budowa sprawia, że robot jest łatwiejszy w obsłudze dla osób mniej zaawansowanych technicznie, co zwiększa dostępność
+urządzenia dla szerokiego grona użytkowników co ma znaczenie w przypadku komercjalizacji rozwiązania.
+Jednocześnie upraszcza to proces projektowania, co pozwala na szybsze przejście od koncepcji do gotowego produktu.
 
-\subsubsection{Założenie możliwie szybkiego uzyskiwania wyniku}
-Szybkość działania robota jest kluczowa dla zwiększenia jego efektywności. Urządzenie, które w szybkim czasie może uzyskać rezultat jest bardziej użyteczne niż 
+Szybkość działania robota jest kluczowa dla zwiększenia jego efektywności.
+Urządzenie, które w szybkim czasie może uzyskać rezultat jest bardziej użyteczne niż
 takie, które na uzyskanie wyniku potrzebuje długiego czasu. 
 
-\subsubsection{Założenie możliwie niskich kosztów projektu}
 Optymalizacja kosztów konstrukcji i implementacji sprawia, że projekt jest bardziej dostępny dla potencjalnych użytkowników i może być wykorzystywany w praktyce a nie tylko w warunkach laboratoryjnych. 
-Dobór odpowiednich komponentów i technologii pozwala na obniżenie ogólnych wydatków bez utraty jakości. Dzięki temu realizacja 
-staje się możliwa nawet przy ograniczonym budżecie.
+Dobór odpowiednich komponentów i technologii pozwala na obniżenie ogólnych wydatków bez utraty jakości.
+Dzięki temu realizacja staje się możliwa nawet przy ograniczonym budżecie.
 
-Realizacja projektu w oparciu o powyższe założenia umożliwia zaprojektowanie robota, który jest nie tylko funkcjonalny i wydajny, ale również przystępny w produkcji i 
-użytkowaniu.
+Realizacja projektu w oparciu o powyższe założenia umożliwia zaprojektowanie robota, który jest nie tylko
+i wydajny, ale również przystępny w produkcji i użytkowaniu.

@@ -6,33 +6,34 @@ Wykorzystuje on rzut kością, a wynik jest odczytywany i interpretowany przez m
 testy statystyczne, badające losowość otrzymanych wyników. Pokazały one, że możliwe jest uzyskanie prawdziwej losowości 
 zautomatyzowanego rzutu kością, mimo deterministycznego działania wykonującej go maszyny.
 
-Mimo osiągnięcia celów projektu, możliwe jest wprowadzenie wielu usprawnien, które poprawią jego jakość i wygodę użytkownika.
-Korzystnym ulepszeniem byłoby zintegrowanie maszyny nie tylko z systemem Linux, ale również z popularnym systemem
-Windows. 
+Mimo osiągnięcia celów projektu, możliwe jest wprowadzenie wielu usprawnień, które poprawią jego jakość i wygodę użytkownika.
+Korzystnym ulepszeniem byłoby zintegrowanie maszyny nie tylko z systemem Linux, ale również z popularnym systemem Windows.
 
 Rozwiązaniem, które na pewno zachęciłoby wielu fanów gier planszowych i RPG, byłoby rozszerzenie modelu 
 sztucznej inteligencji o odczytywanie kości w innych wzorach i kolorach, a także o innych ilościach ścianek.
-Wprowadziwszy te ulepszenia, możliwe będzie również zbieranie statystyk używanej kości. Pozwoli to na wykrycie 
+Wprowadziwszy te ulepszenia, możliwe będzie zbieranie statystyk używanej kości, co pozwoli na wykrycie
 potencjalnych nieprawidłowości w jej budowie, które mogą zaburzać rozkład generowanych przez nią wyników.
 
-Dodatkowo, można również usprawnić wykorzystywane metody przetwarzania zdjęć oraz uzyskać 
+Co więcej, można również usprawnić wykorzystywane metody przetwarzania zdjęć oraz uzyskać
 „czystsze” zdjęcia wejściowe dla sieci neuronowej. Wśród rozważanych sposobów na uzyskanie tego efektu znajdują się
-dokładniejsze wycięcie tła czy poprawienie hardware, np. wprowadzając kamerę o małej ogniskowej lub 
-lepsze oświetlenie dna kubeczka.
+dokładniejsze wycięcie tła czy poprawienie hardware, poprzez np. wprowadzenie kamery o małej ogniskowej lub
+lepsze oświetlenie dna kubka.
 
-Jednym z najambitniejszych do zaimplementowania usprawnien jest nauczenie modelu sztucznej inteligencji odczytywania 
-wyników kilku kości na raz. Pozwoliłoby to na generowanie kilkukrotnie większej liczby bitów w tym samym czasie. Dzięki
-temu udałoby się choć częściowo zmniejszyć największą wadę zrealizowanego projektu, jakim jest wolne generowanie nowych
-liczb.
+Jednym z najambitniejszych do zaimplementowania usprawnień jest nauczenie modelu sztucznej inteligencji odczytywania
+wyników kilku kości jednocześnie lub zaimplementowanie przetwarzania, które pozwoliłoby na odczytywanie wyników z dwóch kości.
+Pozwoliłoby to na generowanie kilkukrotnie większej liczby bitów w tym samym czasie.
+Dzięki temu udałoby się chociaż częściowo zmniejszyć największą wadę zrealizowanego projektu,
+jaką jest wolne generowanie nowych liczb.
+Jednakże to usprawnienie wiąże się z ogromną trudnością kilku kości upadających potencjalnie na sobie, uniemożliwiając efektywny odczyt.
 
-Wśród innych planów na najbliższą przyszczłość znajduje się również dodanie praktycznego zastosowania dla guzika robota,
-której nie udało się zaimplementować wcześniej przez ogarniczenia czasowe. Wśród rozważanych funkcjonalności znajduje się
-przełączanie między trybami robota (opisanymi w rozdziale \ref{sec:tryby}) bądź wykonywanie pojedynczych rzutów kością.
+Wśród innych planów na najbliższą przyszłość znajduje się również dodanie praktycznego zastosowania dla guzika robota,
+której nie udało się zaimplementować wcześniej przez ograniczenia czasowe. Wśród rozważanych funkcjonalności znajduje się
+przełączanie między trybami robota (opisanymi w rozdziale~\ref{sec:tryby}) bądź wykonywanie pojedynczych rzutów kością.
 
-Kolejnym z planowanych ulepszeń jest wymiana komputera Raspberry Pi na tańszy model. Ponieważ rozważana jest komercjalizacja
-produktu, taka zmiana pozwoliłaby obniżyć jego cenę. Sama maszyna mogłaby znaleźć zastosowanie w kryptografii, gdzie 
-szybkość generowania nowych liczb nie jest kluczowa. Byłaby również ciekawym gadżetem dla fanów gier planszowych i RPG,
-oraz oferować rzuty kością dla takich gier online.
+W przypadku komercjalizacji produktu należy rozważyć również wymianę komputera Raspberry Pi na tańszy model lub stworzenie dedykowanego rozwiązania.
+Taka zmiana pozwoliłaby obniżyć cenę komercjalizowanego produktu, a sama maszyna mogłaby znaleźć zastosowanie nie tylko w kryptografii,
+ale również wśród fanów gier planszowych oraz RPG, gdzie mogłaby znaleźć zastosowanie jako urządzenie generujące sprawiedliwe rzuty kością
+dla graczy chcących grać zdalnie, za pośrednictwem sieci.
 
 To jedynie część z pomysłów na dalsze rozwijanie projektu, które narodziły się w trakcie kolejnych etapów jego tworzenia.
 Zrealizowała go czteroosobowa grupa, dzięki owocnej współpracy i jasnemu podziałowi zadań. 
