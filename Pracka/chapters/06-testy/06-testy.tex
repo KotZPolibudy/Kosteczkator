@@ -5,11 +5,11 @@
 
 Do przetestowania ciągów odczytanych przez model zaprezentowane w rozdziale~\ref{sec:opis-modelu-si} użyto pięć
 testów statystycznych. Pierwszy z nich to statystyka rozkładu chi-kwadrat, aby zbadać, czy rozkład otrzymywanych 
-wyników jest równy. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2~\cite{NIST2001}. Każdy z nich
+wyników jest równomierny. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2~\cite{NIST2001}. Każdy z nich
 jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
 
 
-W punktach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
+W sekcjach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
 są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
 Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01} \cite{TestU01}. Niestety, do zastosowania nawet 
@@ -50,6 +50,7 @@ wygenerowanych bitów zliczono liczbę jedynek w ciągu (\textit{X}). Oczekiwana
 \begin{displaymath}
     9725 < X < 10275
 \end{displaymath}
+Sformuowano następujące hipotezy:
 \par \begin{math} H_0 \end{math}: Proporcja zer i jedynek jest zgodna z oczekiwaną.
 \par \begin{math} H_1 \end{math}: Proporcja zer i jedynek nie jest zgodna z oczekiwaną.
 
@@ -57,7 +58,7 @@ wygenerowanych bitów zliczono liczbę jedynek w ciągu (\textit{X}). Oczekiwana
 Celem testu serii jest zliczenie tak zwanych \textit{serii}, czyli nieprzerwanych ciągów takich samych bitów. Test serii
 sprawdza, czy ilość serii każdej długości jest zgodna z oczekiwanymi wartościami oraz bada, czy zmiany między 
 wartościami bitów nie są zbyt częste bądź zbyt rzadkie. Oczekiwane rozkłady wystąpień poszczególnych serii przedstawiono
-w tabeli \ref{serieOczekiwane}.
+w tabeli \ref{serieOczekiwane}. Sformuowano hipotezy:
 \par \begin{math} H_0 \end{math}: Rozkład wystąpień serii bitów jest zgodny z przyjętym rozkładem.
 \par \begin{math} H_1 \end{math}: Rozkład wystąpień serii bitów nie jest zgodny z przyjętym rozkładem.
 \begin{table}[h]
@@ -100,6 +101,7 @@ Rozkład sekwencji w ciągu jest zgodny z oczekiwanym, gdy:
 \begin{displaymath}
     2{,}17 < X < 46{,}17
 \end{displaymath}
+Sformuowano hipotezy:
 \par \begin{math} H_0 \end{math}: Rozkład 4-bitowych segmentów w ciągu jest zgodny z oczekiwanym.
 \par \begin{math} H_1 \end{math}: Rozkład 4-bitowych segmentów w ciągu nie jest zgodny z oczekiwanym.
 
