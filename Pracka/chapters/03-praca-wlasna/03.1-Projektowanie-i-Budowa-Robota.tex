@@ -115,10 +115,12 @@ zastosowanie radiatorów (rys.~\ref{fig:zimno}), które miały pomóc w rozprosz
 wspomagał cyrkulację powietrza wokół procesora. Jest to działanie zalecane w oficjalnej dokumentacji na stronie Raspberry Pi, mające przeciwdziałać 
 ograniczaniu wydajności w celu ochrony przed przegrzaniem (ang. \textit{Thermal throttling}) \cite{cooling}. 
 Dodatkowym problemem rozgrzewania się procesora do wysokich temperatur jest jego bliski kontakt w robocie z materiałem PLA, z którego wykonywane były komponenty robota
-oraz prototypów. Materiał ten zaczyna się deformować przy temperature $60^{\circ}$C \cite{plaprusa}. Dzięki wykorzystaniu radiatorów oraz wentylatora udało się obniżyć temperaturę pracy
-procesora, która teraz utrzymuje się w granicach $55^{\circ}$C w czasie rzutów i spada po ich zakończeniu do około $45^{\circ}$C,
-co zapewnia stabilne i bezpieczne działanie całego systemu. 
-\textcolor{red}{TODO sprawdzic te wartości porównac z włączonym i wyłączonym wentylatorem + dodatkowo sterowanie wentylatorem}
+oraz prototypów. Materiał ten zaczyna się deformować przy temperaturze $60^{\circ}$C \cite{plaprusa} co mogłoby powodować problemy. Dzięki wykorzystaniu radiatorów oraz 
+wentylatora udało się obniżyć temperaturę pracy procesora. Praca wentylatora jest sterowana przy pomocy układu tranzystorów Darlingtona, złącza GPIO Raspberry Pi oraz programu 
+w języku Python, który implementuje prostą metodę progową. Oznacza
+to, że program sprawdza temeraturę procesora za pomocą wbudowanych funkcji dostępnych na Raspberry Pi. Jeśli temperatura procesora przekracza $55^{\circ}$C to program wysyła sygnał 
+do uruchomienia wentylatora. Jeśli temepratura spadnie poniżej $50^{\circ}$C program wyłączy wentylator. Program ten jest dodany do usługi \textit{systemd} dzięki czemu jest uruchamiany
+od razu po włączeniu systemu i stale monitoruje temperaturę procesora.
 
 \begin{figure}[H]
     \centering
