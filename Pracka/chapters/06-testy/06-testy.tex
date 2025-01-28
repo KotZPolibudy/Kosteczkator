@@ -6,7 +6,7 @@
 Do przetestowania ciągów odczytanych przez model zaprezentowane w rozdziale~\ref{sec:opis-modelu-si} użyto pięć
 testów statystycznych. Pierwszy z nich to statystyka rozkładu chi-kwadrat, aby zbadać, czy rozkład otrzymywanych 
 wyników jest równomierny. Pozostałe cztery to zestaw podany przez amerykańską normę FIPS-140-2~\cite{NIST2001}. Każdy z nich
-jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
+jest przygotowany dla ciągów o długości 20 000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
 
 
 W sekcjach~\ref{monbitOpis}~--~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
@@ -19,7 +19,7 @@ zrezygnowano z wykorzystania tej biblioteki.
 
 
 \subsection{Test chi-kwadrat}
-Sformuowano następującą hipotezę:
+Sformuowano następujące hipotezy:
 \par \begin{math} H_0 \end{math}: Rozkład prawdopodobieństwa wyników jest równomierny.
 \par \begin{math} H_1 \end{math}: Rozkład prawdopodobieństwa wyników nie jest równomierny.
 \par Aby zweryfikować hipotezę zerową, dla wszystkich \begin{math} n \end{math} rzutów odczytano, ile razy wypadła każda z 
@@ -192,7 +192,7 @@ Dla modelu drugiego rozkłady wszystkich serii są zgodne z oczekiwanymi. Brak p
 W wygenerowanym ciągu odczytanym przez model pierwszy zarówno dla zer, jak i dla jedynek, najdłuższa znaleziona seria 
 zawierała 13 bitów. Jest to liczba mniejsza od maksymalnej przyjętej długości najdłuższego ciągu bitów wynoszącej 25. 
 Nie ma podstaw do odrzucenia hipotezy zerowej dla modelu pierwszego. \par
-Natomiast dla modelu pierwszego najdłuższy nieprzerwany ciąg zer miał długość 17, a dla jedynek 16. To również są 
+Natomiast dla modelu drugiego najdłuższy nieprzerwany ciąg zer miał długość 17, a dla jedynek 16. To również są 
 mniejsze wartości od maksymalnych przyjętych, zatem nie ma podstaw do odrzucenia hipotezy zerowej dla modelu drugiego.
 
 \subsection{Test pokerowy}
@@ -265,7 +265,7 @@ niż jedynek. Dysproporcja między nimi jest niewielka, wynosi zaledwie niecałe
 różnica wynosiła prawie 1400 bitów. Podobnie dla testu serii liczby poszczególnych serii dla zer i jedynek są dużo
 bardziej zrównoważone dla drugiego modelu niż pierwszego.
 \par
-Wyniki dla drugiego modelu są zadowalające, dla którego nie ma przesłanek do odrzucenia żadnej z hipotez zerowych.
+Wyniki dla drugiego modelu są zadowalające, ponieważ nie ma dla nich przesłanek do odrzucenia żadnej z hipotez zerowych.
 Jednakże w przyszłości możliwa jest implementacja lepszego modelu, który
 potencjalnie mógłby otrzymywać jeszcze lepsze wyniki (rozdział \ref{ch:zakonczenie}). Prowadzi to do wniosku, że uzyskanie prawdziwej 
 losowości jest możliwe, mimo deterministycznego charakteru działania maszyny.
