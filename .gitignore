@@ -39,7 +39,7 @@ Pracka/main.out
 # data/train/
 # data/test/
 # data/validation
-# data/  - wrzucam też teraz i dane treningowe i testowe, ale tylko te po preprocesie ;)
+# data/  - wrzucam też teraz i dane treningowe i testowe, i jeszcze bardzo okrojone, stare przykłady etapów preprocesu :)
 
 
 # *.keras - dodaje model na gita, żeby na malinie go pociągnąć ;)
