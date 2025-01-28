@@ -23,12 +23,12 @@ Głównym założeniem podczas projektowania i budowy robota było założenie m
 Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
 są znacznie prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
 
-Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box.
+Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box - specjalny pojemnik wykorzystywany do losowego mieszania kości.
 Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia, jednak to rozwiązanie odrzucono ze względu na 
 skomplikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa również odrzucono ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
 wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa.
 Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. Kolejnym etapem była decyzja w jaki sposób 
-będzie wykonywany rzut kością. Pierwszym pomysłem było skonstrułowanie mechanizmu, który będzie podrzucał kość w górę. Rozważano, żeby w tym celu wykorzystać tłoki, które unosiłyby cały
+będzie wykonywany rzut kością. Pierwszym pomysłem było skonstruowanie mechanizmu, który będzie podrzucał kość w górę. Rozważano, żeby w tym celu wykorzystać tłoki, które unosiłyby cały
 kubek wraz z kością znajdującą się w środku w taki sposób, żeby kość została podrzucona a w momencie spadania uderzała o dno oraz ścianki kubka.
 Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. Po pierwsze, tłoki 
 generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
@@ -56,7 +56,7 @@ Tymi elementami były: kubek, ramię służące do montażu kubka, uchwyty do pr
 wykorzystano silnik prądu stałego z przekładnią 48:1 napędzający kubek~\cite{wheel} oraz sterownik służący do zasilania i sterowania ruchem silnika~\cite{L298}.
 Pierwszy prototyp po złożeniu przedstawiono na rys.~\ref{fig:pierwszy}.
 
-Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersji robota znajdują się w sekcji~\ref{subsec:hardware}.
+Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersji robota znajdują się w sekcji~\ref{sec:dokumentacja-techniczna}.
 
 \begin{figure}[H]
     \centering
@@ -67,7 +67,7 @@ Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersj
 Do pierwszych testów robota zaprojektowano cztery warianty kształtów kubków. Przy ich projektowaniu wymiary wzorowano na dostępnych tradycyjnych kubkach do gry w kości.
 Średnice kubków do gry z reguły są w przedziale 70-90 mm \cite{cup} z tego powodu założono, że kubek powinien mieć średnicę około 80 mm. Przyjęto, że odpowiedni do tego zadania kubek powinien
 zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie \cite{PK}. Dzięki temu kość nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
-będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu z założenia odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
+będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
 o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz rys.~\ref{fig:kubki}): kubek kwadratowy (nr 4), kubek sześcienny (nr 2), kubek sześcienny z dodatkowymi żebrami (nr 1)
 oraz kubek cylindryczny z dodatkowymi żebrami (nr 3). 
 Następnie je przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
@@ -85,10 +85,10 @@ przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladn
 Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
 wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Spowodowane to było faktem, że w momencie kiedy kubek stał prostopadle do podłoża, kość
 zwyczajnie ślizgała się po jego dnie, ponieważ nie działała na nią żadna siła, która mogłaby wprowadzić ją w ruch, który spowodowałby odbijanie się od ścian kubka w sposób podobny jak podczas tradycyjnego rzutu kością. 
-W tym celu postanowiono skontrułować mechanizm wchylający cały kubek przez co siła ciężkości zaczełaby dociskać ją do bocznych ścian kubka. W takim ułożeniu po wprowadzeniu
+W tym celu postanowiono skontruować mechanizm wchylający cały kubek przez co siła ciężkości zaczełaby dociskać ją do bocznych ścian kubka. W takim ułożeniu po wprowadzeniu
 kubka w ruch obrotowy, przy odpowiedniej prędkości obrotu kość zaczynała odbijać się o ścianki kubka. Z początku planowano wykorzystanie
 serwomechanizmu, jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów ma
-ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$, a to limitowałoby możliw ości mechanizmu służącego do wychylania kubka.
+ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$, a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
 Ostatecznie w tym celu wybrano mały silnik krokowy 28BYJ-48, którego moment obrotowy 34,3 mNm jest w pełni wystarczający do wychylenia kubka.
 Silnik ten obraca układem dwóch kół zębatych przedstawionych na rys.~\ref{fig:zebatki}.
 
@@ -102,7 +102,7 @@ Podczas testów pierwszej wersji robota wykorzystującej obrotowy kubek powstał
 Rozwiązanie to implementuje inne podejście do rzutu kością. Zamiast obracać cały kubek, a dodatkowo wychylać go,
 wykorzystany został trwale zamontowany kubek, na którego dnie znajduje się śmigło, które podcina leżącą na dnie kość.
 Takie rozwiązanie znacznie upraszcza cały mechanizm robota oraz bardzo przyspiesza proces losowania liczby. Ten wariant 
-nazwano roboczo \textit{blenderem} -- podobnie jak wariant \textit{betoniarki} -- od podobnej zasady działania mechanizmu.
+nazwano roboczo \textit{blenderem} -- podobnie jak wcześniej opisany wariant \textit{betoniarki} -- od podobnej zasady działania mechanizmu.
 
 Przy projektowaniu drugiego wariantu robota został wykorzystany ten sam stelaż złożony z metalowych prętów co w 
 pierwszym wariancie. Na drukarce 3D wydrukowano dodatkowe części, niezbędne do realizacji tego wariantu.
@@ -113,10 +113,10 @@ W trakcie testów zauważono, że procesor robota nagrzewa się do wysokich temp
 co mogło negatywnie wpływać na jego wydajność i żywotność. Aby temu zapobiec, w projekcie zdecydowano się na 
 zastosowanie radiatorów (rys.~\ref{fig:zimno}), które miały pomóc w rozproszeniu nadmiaru ciepła, oraz wentylatora, który 
 wspomagał cyrkulację powietrza wokół procesora. Jest to działanie zalecane w oficjalnej dokumentacji na stronie Raspberry Pi, mające przeciwdziałać 
-ograniczaniu wydajności w celu ochrony przed przegrzaniem (ang. \textit{Thermal throttling}) \cite{cooling}. 
+ograniczaniu wydajności w celu ochrony przed przegrzaniem (ang. \textit{thermal throttling}) \cite{cooling}. 
 Dodatkowym problemem rozgrzewania się procesora do wysokich temperatur jest jego bliski kontakt w robocie z materiałem PLA, z którego wykonywane były komponenty robota
 oraz prototypów. Materiał ten zaczyna się deformować przy temperaturze $60^{\circ}$C \cite{plaprusa} co mogłoby powodować problemy. Dzięki wykorzystaniu radiatorów oraz 
-wentylatora udało się obniżyć temperaturę pracy procesora. Praca wentylatora jest sterowana przy pomocy układu tranzystorów Darlingtona, złącza GPIO Raspberry Pi oraz programu 
+wentylatora udało się obniżyć temperaturę pracy procesora. Praca wentylatora jest sterowana przy pomocy tranzystorów w układzie Darlingtona, złącza GPIO Raspberry Pi oraz programu 
 w języku Python, który implementuje prostą metodę progową. Oznacza
 to, że program sprawdza temeraturę procesora za pomocą wbudowanych funkcji dostępnych na Raspberry Pi. Jeśli temperatura procesora przekracza $55^{\circ}$C to program wysyła sygnał 
 do uruchomienia wentylatora. Jeśli temepratura spadnie poniżej $50^{\circ}$C program wyłączy wentylator. Program ten jest dodany do usługi \textit{systemd} dzięki czemu jest uruchamiany
@@ -153,7 +153,7 @@ właśnie na tej kości.
     \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/fiolet.jpg}
-        \caption{\label{fig:fiolet}Kość fioletowa..}
+        \caption{\label{fig:fiolet}Kość fioletowa.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.32\textwidth}
@@ -178,7 +178,7 @@ właśnie na tej kości.
 
 W obu wariantach dużym problemem był złej jakości obraz z kamery spowodowany przez ciemne wnętrze kubka. W celu poprawy jakości zdjęć zaprojektowano 
 system oświetlenia składający się z diod
-LED sterowanych przy pomocy układu tranzystorów Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
+LED sterowanych przy pomocy tranzystorów w układzie Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
 robienie zdjęć lepszej jakości. Zdjęcie oświetlonego kubka przedstawiono na rys.~\ref{fig:jasno}. 
 
 Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
@@ -229,7 +229,7 @@ odległość tą wyznaczono na 120 mm.
 W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzytany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
 co objawiało się poprzez duże odblaski na powierzchni kości, które stanowiły jeden z głównych problemów dla modelu sieci neuronowej odczytującego wyniki rzutów o czym jest mowa
 w sekcji \ref{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}. Z tego powodu eksperymentalnie wybrano rezystory, których zadaniem było
-ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świecenia układu diod przedstawiono na Rys.~\ref{fig:za jasno} oraz Rys.~\ref{fig:w sam raz}.
+ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świecenia układu diod przedstawiono na rys.~\ref{fig:oswietlone}.
 
 \begin{figure}[H]
     \centering
@@ -244,6 +244,7 @@ ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świ
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/w sam raz.jpg}
         \caption{\label{fig:w sam raz}Oświetlone wnętrze kubka z rezystorami ograniczającymi napięcie zasilające diody LED.}
     \end{subfigure}
+    \caption{\label{fig:oswietlone}Oświetlone wnętrze kubka.}
 \end{figure}
 
 Po skonstruowaniu obu wersji robota i wstępnym przetestowaniu ich okazało się, że wariant \textit{blendera} znacznie szybciej (około 4-krotnie) wykonuje rzut kością.
@@ -269,8 +270,8 @@ czy Raspberry Pi \cite{malina}. Te wymiary posłużyły do określenia minimalne
 zwiększono w taki sposób, żeby we wnętrzu pomieściły się również przewody i śruby oraz żeby po całkowitym złożeniu pozostała przestrzeń do swobodnego manipulowania
 elementami składowymi.
 
-Każdy element został zaprojektowany w taki sposób, żeby cały robot był modułowy. Żeby spełnić to założenie, każdy element
-zaprojektowano w taki sposób, żeby posiadał on specjalne miejsca na inserty lub śruby. Inserty to mosiężne elementy, które za pomocą lutownicy wgrzewa się
+W celu spełnienia założenia modułowości, każdy element
+zaprojektowano w taki sposób, żeby posiadał specjalne miejsca na inserty lub śruby. Inserty to mosiężne elementy, które za pomocą lutownicy wgrzewa się
 w wydruk 3D. Posiadają one wewnętrzny gwint dzięki czemu można do łączenia wydruków wykorzystywać śruby nie uszkadzając samego wydruku przy 
 wielokrotnym skręcaniu i rozkręcaniu robota. Dzięki temu założenie modułowości zostało spełnione, ponieważ dzięki śrubom i insertom każdy element robota 
 mógł zostać wydrukowany jako osobna część, którą następnie połączono z innymi częściami w prosty do rozłożenia sposób.
@@ -308,7 +309,7 @@ wykorzystano klej cyjanoakrylowy.
 Kubek, w którym dokonywane są rzuty kością, zaprojektowano na podstawie kubka z prototypowej wersji \textit{blendera}. Zachowano jego średnicę oraz kształt i rozmieszczenie wewnętrznych
 żeber. Zmieniona została zasada mocowania kubka w taki sposób, żeby był on przystosowany do zamocowania w obudowie. W tym celu zaprojektowano
 cztery mocowania widoczne na rys.~\ref{fig:kubek}, znajdujące się u dołu kubka, za pomocą których kubek jest przykręcany do obudowy. Dodatkowo pogrubiono dno kubka tak, żeby można było w nim umieścić inserty służące 
-do przykręcenia uchwytu silnika. Ostatnią modyfikacją było podwyższenie kubka w taki sposób, żeby wysokością sięgał on aż do mocowania kamery - górnej pokrywy.
+do przykręcenia uchwytu silnika. Ostatnią modyfikacją było podwyższenie kubka w taki sposób, żeby wysokością sięgał on aż do mocowania kamery -- górnej pokrywy.
 Dzięki temu podczas rzutów zniknął problem z wypadającą kością, co było dość częstym zjawiskiem podczas testów prototypu. Niestety takie rozwiązanie
 spowodowało, że wnętrze kubka przestało być widoczne z zewnątrz. Jednak uznano, że widok z zewnątrz na wnętrze kubka nie jest konieczny do osiągnięcia celów projektu.
 
@@ -327,14 +328,14 @@ ograniczono tarcie śmigła o dno kubka.
 Śmigło zaprojektowano w taki sposób, żeby obracając się przy samym dnie kubka, po uderzeniu w kość wybijało ją w górę. Ten efekt uzyskano
 dzięki niskiemu profilowi śmigła oraz bocznych ścian śmigła nachylonych pod kątem $45^{\circ}$.
 
-Podczas testów ostatecznej wersji robota napotkano wcześniej wspominane problemy z pierwotnie wykorzystywanym silnikiem DC 6V. Silnik ten miał okrągły wał przez co śmigło musiało
+Podczas testów ostatecznej wersji robota napotkano wcześniej wspominane problemy z pierwotnie wykorzystywanym silnikiem DC 6 V. Silnik ten miał okrągły wał przez co śmigło musiało
 być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością śmigło
 wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
 Żeby temu zaradzić, umieszczono pomiędzy śmigłem a dnem kubka metalową podkładkę, po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
 jednak nie rozwiązało problemu, ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
-Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliwość obrotu (około 2000RPM zamiast 4000RPM), ale ma większy moment obrotowy.
+Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliwość obrotu (około 2000 RPM zamiast 4000 RPM), ale ma większy moment obrotowy.
 Zaletą nowego silnika jest jego wał w kształcie litery „D”. Pozwala to na znacznie luźniejsze spasowanie otworu śmigła z wałem, przez co
-demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie cichszy niż poprzedni. Obie wersje uchwytów silnika przedstawiono na rys.~\ref{fig:uchwyt_v1} oraz rys.~\ref{fig:uchwyt_v2}.
+demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie cichszy niż poprzedni. Obie wersje uchwytów silnika przedstawiono na rys.~\ref{fig:uchwyty}.
 
 \begin{figure}[H]
     \centering
@@ -349,6 +350,7 @@ demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie 
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v2}
         \caption{\label{fig:uchwyt_v2}Druga wersja uchwytu silnika oraz śmigło względem kubka.}
     \end{subfigure}
+    \caption{\label{fig:uchwyty}Zaprojektowane uchwyty silnika.}
 \end{figure}
 
 
@@ -384,7 +386,7 @@ się po wewnętrznej stronie ściany obudowy. Na dnie obudowy zaprojektowano ró
 W słupkach tych zaprojektowano otwory na inserty, dzięki którym kubek można przykręcić do obudowy gwarantując tym jego stabilność.
 
 Podczas projektowania obudowy przewidziano także takie elementy jak wycięcia od spodu bezpośrednio pod wentylatorem, służące za wlot powietrza
-oraz wycięcia w tylnej ściance, służące za wylot powietrza. Dodatkowo w dnie umieszczono duży utwór umożliwiający swobodne mocowanie oraz dostęp do
+oraz wycięcia w tylnej ściance, służące za wylot powietrza. Dodatkowo w dnie umieszczono duży otwór umożliwiający swobodne mocowanie oraz dostęp do
 silnika, diod LED oraz gniazda zasilania. Na bocznych ścianach zaprojektowano przerwy, które następnie zaślepiono kontrastującym kolorystycznie filamentem.
 Przerwy te tak samo jak cyfry na przedniej ścianie obudowy są tylko i wyłącznie elementami estetycznymi. Ostatnim elementem robota są zaprojektowane nóżki,
 które przyklejono do dna robota. Zapewniają one przepływ powietrza pod robotem gdzie znajduje się wlot powietrza do wentylatora. Gotowy model robota przedstawiono
