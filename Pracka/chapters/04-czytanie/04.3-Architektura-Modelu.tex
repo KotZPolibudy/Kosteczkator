@@ -2,18 +2,19 @@
 
 \subsection{Użyte funkcje aktywacji i rodzaje warstw}\label{subsec:uzyte-funkcje-aktywacji-i-rodzaje-warstw}
 
-\subsubsection{Sieci splotowe (CNN)}
+\subsubsection{Sieci splotowe (CNN)~\cite{Goodfellow-et-al-2016}}
 Sieci splotowe (ang. \textit{convolutional neural network, CNN}) to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
 z przetwarzaniem obrazów, takich jak rozpoznawanie obiektów, klasyfikacja czy segmentacja.
 Główna różnica między siecią splotową a tradycyjną siecią neuronową polega na tym,
 że w sieciach splotowych stosuje się operację splotu, która umożliwia wydobycie lokalnych cech z obrazu,
-redukując liczbę parametrów i umożliwiając efektywniejsze uczenie się reprezentacji obrazu. \\
+redukując liczbę parametrów i umożliwiając efektywniejsze uczenie się reprezentacji obrazu.
+
 Warstwy splotowe w sieci CNN wykonują operację splotu, polegającą na zastosowaniu filtrów (jąder) na obrazie wejściowym,
 co pozwala na wyodrębnienie różnych cech (np. krawędzi, tekstur) w różnych lokalizacjach obrazu.
 Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę postępującej abstrakcji,
 dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
 
-\subsubsection{Warstwa gęsta (Dense)}
+\subsubsection{Warstwa gęsta (Dense)~\cite{Goodfellow-et-al-2016}}
 Warstwa gęsta (ang. \textit{Dense, fully connected layer}), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
 Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
 z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
@@ -22,8 +23,6 @@ które reprezentują cechy odpowiednie do klasyfikacji.
 
 
 Użyte funkcje aktywacji:
-%o, sprawdziłem nawet, to NIE JEST to co mi chat geenrował, bo mi się nie podobało i przepisywałem XD
-% zupełnie zapomniałem o tym XDD
 \begin{itemize}
     \item ReLU -- najczęściej stosowana funkcja aktywacji w sieciach splotowych.
     Jest to funkcja, która zwraca 0 dla wszystkich ujemnych wartości i zachowuje wartość dodatnią dla wszystkich liczb dodatnich.

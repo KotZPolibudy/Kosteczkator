@@ -4,9 +4,6 @@ Komercyjne rozwiązania bazują na przeróżnych źródłach entropii,
 najczęściej nie na dostarczanych przez użytkownika, aby wykluczyć możliwość ingerencji i ograniczyć przewidywalność, a na całkowicie niezależnych.
 Najpopularniejszym medialnie RNG jest LavaRand~\cite{cloudflare_lavarand}, który inspirowany był podobnym systemem,
 zbudowanym i opatentowanym przez Silicon Graphics~\cite{SiliconGraphics}.
-LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy Cloudflare,
-na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające.
-Wciąż jednak pozostaje inspirującym przykładem do szukania losowości w zjawiskach otaczających ludzi w codziennym życiu.
 
 \begin{figure}[h]
     \centering
@@ -29,6 +26,9 @@ trójstopniowego wahadła czy „Entropy Wall”, która pobiera entropię z kam
 ustawionej na ścianę lamp lawowych, pokazanej na rys.~\ref{fig:lavarand}.
 Te prawdziwie losowe wartości zostają potem użyte jako ziarno dla generatorów pseudolosowych.
 Tego typu rozwiązania pozwalają na szybkie i bezpieczne generowanie liczb losowych w skali globalnej, zapewniając jednocześnie wysoki poziom ochrony przed atakami.
+LavaRand jest dzisiaj jedynie dodatkowym zabezpieczeniem firmy Cloudflare,
+na wypadek gdyby ich konwencjonalne źródła entropii okazały się niewystarczające.
+Wciąż jednak pozostaje inspirującym przykładem do szukania losowości w zjawiskach otaczających ludzi w codziennym życiu.
 
 \subsection{Rozwiązania sprzętowe}\label{subsec:rozwiazania-sprzetowe}
 Wiodącymi producentami komercyjnych rozwiązań sprzętowych są firmy takie jak
