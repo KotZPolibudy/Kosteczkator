@@ -38,15 +38,15 @@ Użyte funkcje aktywacji:
 
 Model jest wielowarstwową siecią splotową, składającą się z następujących elementów:
 \begin{enumerate}
-    \item warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
+    \item warstwa wejściowa o rozmiarze $64\times64$ pikseli i jednym kanale (skala szarości),
     \item trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
     \begin{enumerate}
-        \item pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
-        \item warstwa max poolingu z jądrem 2x2,
-        \item druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
-        \item warstwa max poolingu z jądrem 2x2,
-        \item trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
-        \item warstwa max poolingu z jądrem 2x2,
+        \item pierwsza warstwa splotowa z 32 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
+        \item druga warstwa splotowa z 64 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
+        \item trzecia warstwa splotowa z 128 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
     \end{enumerate}
     \item warstwa spłaszczająca (Flatten),
     \item dwóch w pełni połączonych warstw (Dense):

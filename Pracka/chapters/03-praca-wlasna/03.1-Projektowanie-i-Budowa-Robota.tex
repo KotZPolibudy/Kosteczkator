@@ -17,7 +17,7 @@ i trwałe, czy bardziej zaawansowane filamenty kompozytowe. Ta wszechstronność
 jak wytrzymałość, elastyczność lub odporność na wysokie temperatury, w zależności od wymagań projektu.
 
 Co więcej, technologia druku 3D pozwala tworzyć skomplikowane kształty, których wykonanie innymi metodami mogłoby być niemożliwe lub wymagać kosztownych 
-narzędzi. Możliwość drukowania prototypów bezpośrednio na miejscu skraca czas od koncepcji do gotowego produktu, co jest szczególnie cenne w dynamicznych 
+narzędzi. Możliwość drukowania prototypów bezpośrednio na miejscu skraca czas realizacji koncepcji, której efektem jest gotowy produkt, co jest szczególnie cenne w 
 projektach inżynierskich, takich jak konstrukcja robotów. To czyni druk 3D idealnym narzędziem w projektach, które wymagają wielokrotnego 
 testowania i wprowadzania ulepszeń.
 
@@ -25,9 +25,9 @@ Głównym założeniem podczas projektowania i budowy robota było założenie m
 Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
 są znacznie prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
 
-Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle--box - specjalny pojemnik wykorzystywany do losowego mieszania kości.
+Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie jak kubki do gry w kości oraz baffle--box - specjalny pojemnik wykorzystywany do losowego mieszania kości.
 Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia, jednak to rozwiązanie odrzucono ze względu na 
-skomplikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa również odrzucono ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
+skomplikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa odrzucono również ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
 wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa. Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. 
 
 Kolejnym etapem była decyzja, w jaki sposób będzie wykonywany rzut kością. Pierwszym pomysłem było skonstruowanie 
@@ -37,7 +37,7 @@ Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem
 
 Po pierwsze, tłoki generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
 wielokrotne uderzenia w mechanizm mogą prowadzić do jego szybkiego zużycia, co w konsekwencji mogłoby spowodować awarię.
-Dodatkowo, konstrukcja takiego systemu tłokowego wymagałaby solidnego montażu i zastosowania materiałów odpornych na dynamiczne obciążenia, takie jak 
+Dodatkowo, konstrukcja takiego systemu tłokowego wymagałaby solidnego montażu i zastosowania materiałów odpornych na obciążenia, takie jak 
 wibracje czy przeciążenia powstałe podczas pracy. Bez odpowiedniej sztywności konstrukcji, częste uderzenia i ruchy mogłyby powodować luzy w mechanizmie, 
 a w efekcie całkowite uszkodzenie się robota.
 Co więcej, projektowanie i wykonanie tłoków wraz z precyzyjnym układem sterowania wymagałoby znacznych nakładów czasu i kosztów. W przypadku pracy 
@@ -47,10 +47,10 @@ czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliw
 Po rozważeniu możliwości
 zdecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
-mechanizm, ponieważ zapewnia efekt rzutu zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
+mechanizm, ponieważ zapewnia on efekt rzutu zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
 sposób, aby umożliwić łatwą kontrolę nad jego ruchem. Dzięki temu możliwe jest ustawienie częstotliwości obrotu oraz określenie, jak długo ma się obracać. Wszystkie te ustawienia 
 można zmieniać za pomocą programu napisanego w języku Python. W praktyce oznacza to, że kubek jest połączony z silnikiem, który jest sterowany przez komputer 
-Raspberry Pi. Dzięki temu za pomocą komend w kodzie, sterujących czasem i napięciem, możliwe jest dostosowanie, jak szybko i na jak długo kubek ma się obracać.
+Raspberry Pi. Dzięki temu za pomocą komend w kodzie, sterujących czasem działania silnika i napięciem zasilającym silnik, możliwe jest dostosowanie, jak szybko i jak długo kubek ma się obracać.
 W celach testowych został skonstruowany prototypowy model robota.
 
 \subsection{Prototypowanie}\label{subsec:prototypowanie}
@@ -133,54 +133,6 @@ od razu po włączeniu systemu i stale monitoruje temperaturę procesora.
     \caption{\label{fig:zimno}Dodane radiatory.}
 \end{figure}
 
-Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
-zamontowaną kamerę. Na rys.~\ref{fig:kostki} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
-Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu najlepiej kontrastuje ze ścianami kości, przez co jest on najlepiej widoczny
-właśnie na tej kości.
-
-\begin{figure}[H]
-    \centering
-    % Pierwsze zdjęcie
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zielona.jpg}
-        \caption{\label{fig:zielona}Kość zielona.}
-    \end{subfigure}
-    \hfill
-    % Drugie zdjęcie
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/czerwona.jpg}
-        \caption{\label{fig:czerwona}Kość czerwona.}
-    \end{subfigure}
-    \hfill
-    % Trzecie zdjęcie
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/fiolet.jpg}
-        \caption{\label{fig:fiolet}Kość fioletowa.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/pomaranczowa.jpg}
-        \caption{\label{fig:orange}Kość pomarańczowa.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zolte.jpg}
-        \caption{\label{fig:yellow}Kość żółta.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/niebieska.jpg}
-        \caption{\label{fig:blue}Kość niebieska.}
-    \end{subfigure}
-    \caption{\label{fig:kostki}Przetestowane kości w różnych kolorach.}
-\end{figure}
-
 W obu wariantach dużym problemem był złej jakości obraz z kamery spowodowany przez ciemne wnętrze kubka. W celu poprawy jakości zdjęć zaprojektowano 
 system oświetlenia składający się z diod
 LED sterowanych przy pomocy tranzystorów w układzie Darlingtona. Dzięki temu wnętrze kubka stało się dużo jaśniejsze, co pozwala kamerze na
@@ -231,6 +183,54 @@ odległość tą wyznaczono na 120 mm.
     \caption{\label{fig:wysokosci}Ustawienia kamery na różnych wysokościach.}
 \end{figure}
 
+Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
+zamontowaną kamerę. Na rys.~\ref{fig:kostki} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
+Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu najlepiej kontrastuje ze ścianami kości, przez co jest on najlepiej widoczny
+właśnie na tej kości.
+
+\begin{figure}[H]
+    \centering
+    % Pierwsze zdjęcie
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zielona.jpg}
+        \caption{\label{fig:zielona}Kość zielona.}
+    \end{subfigure}
+    \hfill
+    % Drugie zdjęcie
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/czerwona.jpg}
+        \caption{\label{fig:czerwona}Kość czerwona.}
+    \end{subfigure}
+    \hfill
+    % Trzecie zdjęcie
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/fiolet.jpg}
+        \caption{\label{fig:fiolet}Kość fioletowa.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/pomaranczowa.jpg}
+        \caption{\label{fig:orange}Kość pomarańczowa.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/zolte.jpg}
+        \caption{\label{fig:yellow}Kość żółta.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/kolorki/niebieska.jpg}
+        \caption{\label{fig:blue}Kość niebieska.}
+    \end{subfigure}
+    \caption{\label{fig:kostki}Przetestowane kości w różnych kolorach.}
+\end{figure}
+
 W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzystany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
 co objawiało się poprzez duże odblaski na powierzchni kości, które stanowiły jeden z głównych problemów dla modelu sieci neuronowej odczytującego wyniki rzutów, o czym jest mowa
 w sekcji \ref{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}. Z tego powodu eksperymentalnie wybrano rezystory, których zadaniem było
@@ -267,13 +267,13 @@ Projektowanie ostatecznej wersji robota rozpoczęto od przeanalizowania wad, zal
 umieszczone z boku kubka, a nie nad nim, tak jak w prototypach, ponieważ sprawiało to, że robot byłby zbyt wysoki względem założenia kompaktowego urządzenia.
 Na podstawie testów prototypów wywnioskowano, że najlepszym rozwiązaniem będzie zaprojektowanie obudowy umożliwiającej łatwy dostęp do wszystkich komponentów.
 Postanowiono, że finalna wersja robota będzie wykorzystywała kubek o tej samej średnicy co w prototypie. Oznaczało to, że kubek będzie miał zewnętrzną średnicę 80mm
-i ścianki o grubości 2 mm, na których tak jak w prototypie będą pionowe żebra (patrz nr 3 na rys.~\ref{fig:kubki}). Dookoła kubka, którego ostateczne wymiary wyniosły 126x80mm,
-zaprojektowano resztę konstrukcji. Obudowę zaprojektowano w taki sposób, żeby była w stanie pomieścić kubek oraz kamerę umieszczoną na wysokości 120mm nad dnem kubka.
+i ścianki o grubości 2 mm, na których tak jak w prototypie będą pionowe żebra (patrz nr 3 na rys.~\ref{fig:kubki}). Dookoła kubka, którego ostateczne wymiary wyniosły $126 \times 80$ mm,
+zaprojektowano resztę konstrukcji. Obudowę zaprojektowano w taki sposób, żeby była w stanie pomieścić kubek oraz kamerę umieszczoną na wysokości 120 mm nad dnem kubka.
 Dodatkowo w tylnej oraz dolnej części obudowy pozostawiono przestrzeń na resztę
 elementów składowych robota. Wielkość tej przestrzeni wyznaczono poprzez zwymiarowanie pozostałych elementów takich jak silnik, sterownik \cite{L298}, wentylator 
-czy Raspberry Pi \cite{malina}. Te wymiary posłużyły do określenia minimalnej potrzebnej przestrzeni, którą wyznaczono na około 30mm z tyłu, 35mm od dołu oraz 10mm od góry kubka. To minimum 
+czy Raspberry Pi \cite{malina}. Te wymiary posłużyły do określenia minimalnej potrzebnej przestrzeni, którą wyznaczono na około 30 mm z tyłu, 35 mm od dołu oraz 10 mm od góry kubka. To minimum 
 zwiększono w taki sposób, żeby we wnętrzu pomieściły się również przewody i śruby oraz żeby po całkowitym złożeniu pozostała przestrzeń do swobodnego manipulowania
-elementami składowymi.
+elementami składowymi. Dokładne wymiary ostatecznej wersji robota przedstawiono na rys.~\ref{fig:wymiary} w sekcji~\ref{sec:dokumentacja-techniczna}.
 
 W celu spełnienia założenia modułowości, każdy element
 zaprojektowano w taki sposób, żeby posiadał specjalne miejsca na inserty lub śruby. Inserty to mosiężne elementy, które za pomocą lutownicy wgrzewa się
@@ -283,7 +283,7 @@ mógł zostać wydrukowany jako osobna część, którą następnie połączono 
 
 \subsubsection{Opis komponentów ostatecznej wersji robota}
 
-Górna część obudowy, pokrywa przedstawiona na rys.~\ref{fig:pokrywa}, mieszcząca kamerę oraz diody LED, została zaprojektowana w taki sposób, żeby dostęp do kubka pozostał łatwy. Osiągnięto to
+Górna część obudowy -- pokrywa -- przedstawiona na rys.~\ref{fig:pokrywa}, mieszcząca kamerę oraz diody LED, została zaprojektowana w taki sposób, żeby dostęp do kubka pozostał łatwy. Osiągnięto to
 poprzez wykorzystanie prostego mocowania pokrywy do obudowy z wykorzystaniem pojedynczej śruby oraz magnesów neodymowych. Dzięki temu w przypadku kiedy konieczny
 jest dostęp do kamery lub diod LED, wystarczy zdjąć tylną ścianę robota oraz odkręcić pojedynczą śrubę. Dodatkowo magnesy neodymowe zapewniają
 dobre przyleganie pokrywy do reszty obudowy. Ich dodatkową zaletą jest blokowanie pokrywy w ustalonej pozycji podczas umieszczania kości wewnątrz
@@ -338,7 +338,7 @@ być bardzo dokładnie spasowane, aby uniknąć ślizgania się wału wewnątrz 
 wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
 Żeby temu zaradzić, umieszczono pomiędzy śmigłem a dnem kubka metalową podkładkę, po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
 jednak nie rozwiązało problemu, ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
-Z tego powodu postanowiono wymienić silnik na mocniejszy 12V silnik z przekładnią, który ma mniejszą częstotliwość obrotu (około 2000 RPM zamiast 4000 RPM), ale ma większy moment obrotowy.
+Z tego powodu postanowiono wymienić silnik na mocniejszy 12 V silnik z przekładnią, który ma mniejszą częstotliwość obrotu (około 2000 RPM zamiast 4000 RPM), ale ma większy moment obrotowy.
 Zaletą nowego silnika jest jego wał w kształcie litery „D”. Pozwala to na znacznie luźniejsze spasowanie otworu śmigła z wałem, przez co
 demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie cichszy niż poprzedni. Obie wersje uchwytów silnika przedstawiono na rys.~\ref{fig:uchwyty}.
 
@@ -355,7 +355,7 @@ demontaż śmigła jest znacznie łatwiejszy. Ponadto nowy silnik jest znacznie 
         \includegraphics[width=\linewidth]{chapters/03-praca-wlasna/figures/uchwyt_v2}
         \caption{\label{fig:uchwyt_v2}Druga wersja uchwytu silnika oraz śmigło względem kubka.}
     \end{subfigure}
-    \caption{\label{fig:uchwyty}Zaprojektowane uchwyty silnika.}
+    \caption{\label{fig:uchwyty}Zaprojektowane uchwyty silnika oraz śmigła.}
 \end{figure}
 
 
@@ -372,14 +372,14 @@ nadal spełnia założenie modułowości poprzez mocowanie za pomocą śrub i in
     \caption{\label{fig:mainboard}Płytka do montażu elektroniki.}
 \end{figure}
 
-Układ sterujący silnikiem L298 przykręcono do obudowy pośrednio, poprzez specjalnie zaprojektowane i wydrukowane mocowanie. Dzięki temu wykorzystano
-gotowe otwory na śruby znajdujące się w płytce układu L298. Na rys.~\ref{fig:steownik}, na którym przedstawiono płytkę do mocowania elektroniki
-z zamontowaną Raspberry Pi 4b oraz układ L298, widoczne jest wspominane mocowanie służące do przykręcenia układu L298 do dna obudowy robota.
+Układ L298N sterujący silnikiem przykręcono do obudowy pośrednio, poprzez specjalnie zaprojektowane i wydrukowane mocowanie. Dzięki temu wykorzystano
+gotowe otwory na śruby znajdujące się w płytce układu L298N. Na rys.~\ref{fig:steownik}, na którym przedstawiono płytkę do mocowania elektroniki
+z zamontowaną Raspberry Pi 4b oraz układ L298N, widoczne jest wspominane mocowanie służące do przykręcenia układu L298N do dna obudowy robota.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/l298n}
-    \caption{\label{fig:steownik}Zamocowany sterownik L298 \cite{L298n3d} z widoczną płytką, na której zamocowana jest Raspberry Pi 4b \cite{malina3d}.}
+    \caption{\label{fig:steownik}Zamocowany sterownik L298N \cite{L298n3d} z widoczną płytką, na której zamocowana jest Raspberry Pi 4b \cite{malina3d}.}
 \end{figure}
 
 Do dna obudowy robota przymocowano, za pomocą śrub, również wentylator.
@@ -392,7 +392,7 @@ W słupkach tych zaprojektowano otwory na inserty, dzięki którym kubek można 
 
 Podczas projektowania obudowy przewidziano także takie elementy jak wycięcia od spodu bezpośrednio pod wentylatorem, służące za wlot powietrza
 oraz wycięcia w tylnej ściance, służące za wylot powietrza. Dodatkowo w dnie umieszczono duży otwór umożliwiający swobodne mocowanie oraz dostęp do
-silnika, diod LED, oraz gniazda zasilania. Na bocznych ścianach zaprojektowano przerwy, które następnie zaślepiono kontrastującym kolorystycznie filamentem.
+silnika, diod LED i gniazda zasilania. Na bocznych ścianach zaprojektowano przerwy, które następnie zaślepiono kontrastującym kolorystycznie filamentem.
 Przerwy te tak samo jak cyfry na przedniej ścianie obudowy są tylko i wyłącznie elementami estetycznymi. Ostatnim elementem robota są zaprojektowane nóżki,
 które przyklejono do dna robota. Zapewniają one przepływ powietrza pod robotem gdzie znajduje się wlot powietrza do wentylatora. Gotowy model robota przedstawiono
 na rys.~\ref{fig:gotowy} oraz rys.~\ref{fig:srodek}.
