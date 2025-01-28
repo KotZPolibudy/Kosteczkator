@@ -15,7 +15,7 @@ EPOCHS = 20
 
 
 if not os.path.exists(DATASET_PATH):
-    raise FileNotFoundError(f"Dataset not found at {DATASET_PATH}. Run preprocess.py first.")
+    raise FileNotFoundError(f"Dataset not found at {DATASET_PATH}.")
 print("Loading dataset...")
 
 datagen = ImageDataGenerator(
