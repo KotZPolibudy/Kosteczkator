@@ -139,33 +139,20 @@ def genEntropy(numberOfBytes: int):
     global num
     global cycle
     for _ in range(numberOfBytes):
+        num += doRoll()
+        num = num << 3
+        num += doRoll()
+        num = num << 3
         if cycle == 1:
             num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
             cycle += 1
-            bytes.append(0b11111111 & num)
-            num = num>>8
         elif cycle == 2:
             num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
             cycle = 0
-            bytes.append(0b11111111 & num)
-            num = num>>8
         else:
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
             cycle += 1
-            bytes.append(0b11111111 & num)
-            num = num>>8
-            
+        bytes.append(0b11111111 & num)
+        num = num >> 8
     return bytes
 
 
