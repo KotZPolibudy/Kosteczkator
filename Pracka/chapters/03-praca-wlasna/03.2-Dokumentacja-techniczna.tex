@@ -1,6 +1,6 @@
-\section{Dokumentacja techniczna - hardware}\label{sec:dokumentacja-techniczna}
+\section{Dokumentacja techniczna -- hardware}\label{sec:dokumentacja-techniczna}
 
-\subsection{Ogólne parametry robota:}
+\subsection{Ogólne parametry robota}
 Model 3D całego robota znajduje się w repozytorium projektu pod linkiem: \url{https://github.com/KotZPolibudy/Kosteczkator/tree/main/model%203d}.
 
 Wymiary zewnętrzne: $180 \times 134 \times 84$ mm
@@ -19,7 +19,7 @@ Pozostałe najważniejsze wymiary przedstawiono na rys.~\ref{fig:wymiary} oraz n
     \caption{\label{fig:wymiary_wew}Wymiary wewnętrzne.}
 \end{figure}
 
-\subsection{Wykorzytane elementy strukturalne}
+\subsection{Wykorzystane elementy strukturalne}
 Wszystkie elementy strukturalne wymienione poniżej są zaznaczone na rys.~\ref{fig:komponenty}. Zostały one wydrukowane w technologii FDM na drukarce 3D. Jako materiał do druku części wybrano
 PLA (ang. \textit{Polylactic Acid})~\cite{plaprusa}. Wyboru dokonano po porównaniu właściwości fizycznych, cen i łatwości wydruku różnych materiałów. Wzięto pod uwagę
 PLA, PETG (ang. \textit{Polyethylene Terephthalate Glycol-modified})~\cite{PETG} oraz ABS (ang. \textit{Acrylonitrile Butadiene Styrene})~\cite{ABS}. Ostatecznie wybrano PLA ze względu na jego sztywność, dużą popularność,
@@ -73,6 +73,7 @@ pośrednictwem układów L298N oraz ULN2803A. Raspberry Pi jest zasilane przez p
 Silnik prądu stałego (M1) jest sterowany za pomocą układu L298N, który umożliwia kontrolę prędkości z jaką obraca się silnik, poprzez kontrolę współczynnika wypełnienia (ang. \textit{duty cycle})
 za pomocą sygnału PWM generowanego przez Raspberry Pi i dostarczanego na pin ENB poprzez złącze GPIO. Układ L298N pozwala również na kontrolę kierunku, w którą obraca się silnik poprzez
 odpowiednie ustawienie stanów wysokiego i niskiego na pinach IN3 oraz IN4.
+
 Zewnętrzny zasilacz dostarcza napięcie 12V, które zasila zarówno silnik, jak i oba sterowniki -- L298N oraz ULN2803A.
 Do podłączenia zestawu trzech diod LED (czerwonej, niebieskiej oraz zielonej umieszczonych w gotowym robocie w ściance obudowy robota) wykorzystano rezystory ograniczające napięcie, które podłączono 
 do anod poszczególnych diod. Wartości rezystancji dobrano na podstawie zalecanych wartości napięcia dla tych diod oraz w taki sposób, żeby ich światło nie było zbyt jasne, ponieważ 
@@ -80,9 +81,11 @@ mają to być diody służące tylko do sygnalizowania procesów wykonywanych pr
 działanie celowe. Dla diod zielonej i niebieskiej wybrano rezystor $10~k\Omega$ dla każdej osobno, natomiast dla czerwonej $2{,}2~k\Omega$. Piny GPIO Raspberry Pi odpowiadają za kontrolę włączania poszczególnych diod poprzez sterowanie układem ULN2803A.
 Białe diody LED są połączone szeregowo i sterowane za pomocą tranzystorowego układu ULN2803A. W układzie zastosowano rezystory ograniczające napięcie. Każda z tych diod powinna być 
 zasilana napięciem od 3 V do 3,2 V, co oznacza, że po połączeniu szeregowym ich układ powinien być zasilany napięciem 12 V, które dostarcza im układ ULN2803A. Zdecydowano się na zastosowanie
-rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie, o czym jest mowa w sekcji~\ref{subsec:prototypowanie}.
-i ostatecznie wybrano dwa rezystory połączone szeregowo o rezystancji $2{,}2~k\Omega$ dające łącznie $4{,}4~k\Omega$.
-Dodatkowo układ zawiera mały wentylator (Fan1) zasilany napięciem 12V. W praktyce w robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
+rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie, o czym jest mowa w sekcji~\ref{subsec:prototypowanie}
+i ostatecznie wybrano dwa rezystory połączone szeregowo o rezystancji $2{,}2~k\Omega$, dające łącznie $4{,}4~k\Omega$.
+Dodatkowo układ zawiera mały wentylator (Fan1) zasilany napięciem 12V. 
+
+W praktyce w robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
 Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty przełącznik do wywołania sygnału wejściowego na jednym z pinów GPIO Raspberry Pi.
 
 \begin{figure}[H]

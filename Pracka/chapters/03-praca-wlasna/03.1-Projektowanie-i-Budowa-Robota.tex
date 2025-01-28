@@ -11,9 +11,11 @@ technologia do realizacji tego rodzaju projektów. Druk 3D umożliwia tworzenie 
 szybko zmodyfikować w fazie projektowania i łatwo wydrukować ponownie w przypadku wprowadzenia zmian. Dzięki temu prototypowanie w projektach takich 
 jak budowa robotów czy urządzeń mechanicznych jest znacznie bardziej elastyczne i tańsze w porównaniu do tradycyjnych metod, takich jak obróbka 
 mechaniczna czy formowanie wtryskowe, które często wymagają kosztownego sprzętu i specjalistycznej wiedzy.
+
 Drukarki 3D są także stosunkowo przystępne cenowo. Pozwalają one na wykorzystanie różnorodnych materiałów, takich jak tworzywa sztuczne, które są lekkie 
 i trwałe, czy bardziej zaawansowane filamenty kompozytowe. Ta wszechstronność materiałowa umożliwia dostosowanie właściwości mechanicznych części, takich 
 jak wytrzymałość, elastyczność lub odporność na wysokie temperatury, w zależności od wymagań projektu.
+
 Co więcej, technologia druku 3D pozwala tworzyć skomplikowane kształty, których wykonanie innymi metodami mogłoby być niemożliwe lub wymagać kosztownych 
 narzędzi. Możliwość drukowania prototypów bezpośrednio na miejscu skraca czas od koncepcji do gotowego produktu, co jest szczególnie cenne w dynamicznych 
 projektach inżynierskich, takich jak konstrukcja robotów. To czyni druk 3D idealnym narzędziem w projektach, które wymagają wielokrotnego 
@@ -23,15 +25,17 @@ Głównym założeniem podczas projektowania i budowy robota było założenie m
 Dzięki takiemu podejściu wymienianie elementów w przypadku awarii czy też małe modyfikacje wynikające z udoskonalania działania robota
 są znacznie prostsze i przede wszystkim szybsze, niż gdyby cały robot był jednolitą bryłą.
 
-Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle-box - specjalny pojemnik wykorzystywany do losowego mieszania kości.
+Proces projektowania robota rozpoczęto od przeanalizowania różnych metod wykonywania rzutu kością. Rozważano tradycyjne rozwiązania takie kubki do gry w kości oraz baffle--box - specjalny pojemnik wykorzystywany do losowego mieszania kości.
 Innym podejściem byłoby skonstruowanie robota symulującego rzut kością za pomocą mechanicznego ramienia, jednak to rozwiązanie odrzucono ze względu na 
 skomplikowaną mechanikę urządzenia. Opcje wykorzystania baffle-boxa również odrzucono ze względu na potrzebę transportu kości pomiędzy górą a dołem urządzenia. To wymagałoby
-wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa.
-Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. Kolejnym etapem była decyzja w jaki sposób 
-będzie wykonywany rzut kością. Pierwszym pomysłem było skonstruowanie mechanizmu, który będzie podrzucał kość w górę. Rozważano, żeby w tym celu wykorzystać tłoki, które unosiłyby cały
-kubek wraz z kością znajdującą się w środku w taki sposób, żeby kość została podrzucona a w momencie spadania uderzała o dno oraz ścianki kubka.
-Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. Po pierwsze, tłoki 
-generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
+wykorzystania kolejnych mechanicznych części takich jak np. taśma transportowa. Po przeanalizowaniu wszystkich pomysłów, zdecydowano się na rozwiązanie wykorzystujące kubek do gry w kości. 
+
+Kolejnym etapem była decyzja, w jaki sposób będzie wykonywany rzut kością. Pierwszym pomysłem było skonstruowanie 
+mechanizmu, który będzie podrzucał kość w górę. Rozważano, żeby w tym celu wykorzystać tłoki, które unosiłyby cały
+kubek wraz z kością znajdującą się w środku w taki sposób, żeby kość została podrzucona, a w momencie spadania uderzała o dno oraz ścianki kubka.
+Uznano jednak, że takie rozwiązanie mogłoby się okazać trudne pod względem wykonania z kilku powodów. 
+
+Po pierwsze, tłoki generujące odpowiednią siłę do podrzucenia kubka musiałyby działać bardzo precyzyjnie, aby zapewnić powtarzalność i właściwą wysokość rzutu. Jednakże 
 wielokrotne uderzenia w mechanizm mogą prowadzić do jego szybkiego zużycia, co w konsekwencji mogłoby spowodować awarię.
 Dodatkowo, konstrukcja takiego systemu tłokowego wymagałaby solidnego montażu i zastosowania materiałów odpornych na dynamiczne obciążenia, takie jak 
 wibracje czy przeciążenia powstałe podczas pracy. Bez odpowiedniej sztywności konstrukcji, częste uderzenia i ruchy mogłyby powodować luzy w mechanizmie, 
@@ -40,7 +44,7 @@ Co więcej, projektowanie i wykonanie tłoków wraz z precyzyjnym układem stero
 ciągłej, dodatkowym problemem mogłaby być konieczność regularnej konserwacji i napraw mechanizmu, aby zapewnić jego długotrwałą sprawność. Wszystko to 
 czyni to rozwiązanie niepraktycznym dla tego projektu, szczególnie gdy możliwe są prostsze i bardziej niezawodne alternatywy. 
 
-Po rozważeniu alternatyw
+Po rozważeniu możliwości
 zdecydowano, że najlepszym rozwiązaniem będzie obrotowy kubek, wewnątrz którego kość porusza się i odbija od ścianek. Wariant ten roboczo nazwano \textit{betoniarką} od podobnej
 zasady działania. W czasie przeglądu literatury w temacie rzutów kością znaleziono artykuł, w którym opisywany jest eksperyment, do którego wykorzystano właśnie taki 
 mechanizm, ponieważ zapewnia efekt rzutu zbliżony do takiego wykonanego przez człowieka \cite{PK}. Obrotowy kubek został zaprojektowany w taki 
@@ -65,16 +69,17 @@ Dokładne dane techniczne komponentów robota wykorzystanych w ostatecznej wersj
 \end{figure}
 
 Do pierwszych testów robota zaprojektowano cztery warianty kształtów kubków. Przy ich projektowaniu wymiary wzorowano na dostępnych tradycyjnych kubkach do gry w kości.
-Średnice kubków do gry z reguły są w przedziale 70-90 mm \cite{cup} z tego powodu założono, że kubek powinien mieć średnicę około 80 mm. Przyjęto, że odpowiedni do tego zadania kubek powinien
-zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie \cite{PK}. Dzięki temu kość nie będzie się ślizgać po ściance a zacznie się odbijać od tych nierówności, co 
+Średnice kubków do gry z reguły są w przedziale 70-90 mm \cite{cup}, z tego powodu założono, że kubek powinien mieć średnicę około 80 mm. Przyjęto, że odpowiedni do tego zadania kubek powinien
+zawierać pewnego rodzaju nierówności na ściankach. Takie samo założenie przyjęto przy wcześniej wspominanym eksperymencie \cite{PK}. Dzięki temu kość nie będzie się ślizgać po ściance, a zacznie się odbijać od tych nierówności, co 
 będzie lepiej imitowało rzut kością wykonany przez człowieka. Z tego powodu odrzucono tradycyjny model kubka do gry w cylindrycznym kształcie 
 o gładkich ściankach. Zaprojektowano cztery wersje kubka (patrz rys.~\ref{fig:kubki}): kubek kwadratowy (nr 4), kubek sześcienny (nr 2), kubek sześcienny z dodatkowymi żebrami (nr 1)
 oraz kubek cylindryczny z dodatkowymi żebrami (nr 3). 
-Następnie je przetestowano umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
-ponieważ kości ośmiościenne, które wykorzystywano do testów utykały w narożnikach dociskane przez siłę odśrodkową. Podobny problem pojawiał się przy testach kubka kwadratowego.
+
+Następnie je przetestowano, umieszczając w środku kość do gry i obracając kubek wokół osi przechodzącej przez środek kubka. W czasie testów najgorzej sprawdziły się kubki sześcienne,
+ponieważ kości ośmiościenne, które wykorzystywano do testów, utykały w narożnikach dociskane przez siłę odśrodkową. Podobny problem pojawiał się przy testach kubka kwadratowego.
 Najlepszym wariantem okazał się być cylindryczny kubek z dodatkowymi pionowymi żebrami (nr 3 na rys.~\ref{fig:kubki}), o które kość się odbijała podczas kręcenia.
-Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z resztą testowanych wariantów co ma duże znaczenie 
-przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladnosc}. Kubek o mniejszej masie jest łatwiej wprawić w ruch co jest ważne ze względu na wybór silnika.
+Jego zaletą jest to, że nie posiada on narożników, w których kość mogłaby utknąć. Dodatkowym atutem jest niewielka masa w porównaniu z resztą testowanych wariantów, co ma duże znaczenie 
+przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladnosc}. Kubek o mniejszej masie jest łatwiej wprawić w ruch, co jest ważne ze względu na wybór silnika.
 
 \begin{figure}[H]
     \centering
@@ -85,7 +90,7 @@ przy obracaniu całego kubka ze względu na moment bezwładności \cite{bezwladn
 Po pierwszych testach okazało się, że niezbędny do uzyskania zamierzonego efektu będzie mechanizm, który będzie 
 wychylał cały kubek wraz z silnikiem, który odpowiada za jego obrót. Spowodowane to było faktem, że w momencie kiedy kubek stał prostopadle do podłoża, kość
 zwyczajnie ślizgała się po jego dnie, ponieważ nie działała na nią żadna siła, która mogłaby wprowadzić ją w ruch, który spowodowałby odbijanie się od ścian kubka w sposób podobny jak podczas tradycyjnego rzutu kością. 
-W tym celu postanowiono skontruować mechanizm wchylający cały kubek przez co siła ciężkości zaczełaby dociskać ją do bocznych ścian kubka. W takim ułożeniu po wprowadzeniu
+W tym celu postanowiono skontruować mechanizm wchylający cały kubek, przez co siła ciężkości zaczełaby dociskać ją do bocznych ścian kubka. W takim ułożeniu po wprowadzeniu
 kubka w ruch obrotowy, przy odpowiedniej prędkości obrotu kość zaczynała odbijać się o ścianki kubka. Z początku planowano wykorzystanie
 serwomechanizmu, jednak to rozwiązanie odrzucono, ponieważ większość dostępnych serwomechanizmów ma
 ograniczony obrót do $180^{\circ}$ lub $360^{\circ}$, a to limitowałoby możliwości mechanizmu służącego do wychylania kubka.
@@ -118,8 +123,8 @@ Dodatkowym problemem rozgrzewania się procesora do wysokich temperatur jest jeg
 oraz prototypów. Materiał ten zaczyna się deformować przy temperaturze $60^{\circ}$C \cite{plaprusa} co mogłoby powodować problemy. Dzięki wykorzystaniu radiatorów oraz 
 wentylatora udało się obniżyć temperaturę pracy procesora. Praca wentylatora jest sterowana przy pomocy tranzystorów w układzie Darlingtona, złącza GPIO Raspberry Pi oraz programu 
 w języku Python, który implementuje prostą metodę progową. Oznacza
-to, że program sprawdza temeraturę procesora za pomocą wbudowanych funkcji dostępnych na Raspberry Pi. Jeśli temperatura procesora przekracza $55^{\circ}$C to program wysyła sygnał 
-do uruchomienia wentylatora. Jeśli temepratura spadnie poniżej $50^{\circ}$C program wyłączy wentylator. Program ten jest dodany do usługi \textit{systemd} dzięki czemu jest uruchamiany
+to, że program sprawdza temeraturę procesora za pomocą wbudowanych funkcji dostępnych na Raspberry Pi. Jeśli temperatura procesora przekracza $55^{\circ}$C, to program wysyła sygnał 
+do uruchomienia wentylatora. Jeśli temepratura spadnie poniżej $50^{\circ}$C, program wyłączy wentylator. Program ten jest dodany do usługi \textit{systemd}, dzięki czemu jest uruchamiany
 od razu po włączeniu systemu i stale monitoruje temperaturę procesora.
 
 \begin{figure}[H]
@@ -130,7 +135,7 @@ od razu po włączeniu systemu i stale monitoruje temperaturę procesora.
 
 Duże znaczenie ma również wykorzystywana kość. Od jej koloru i tekstury zależy jakość zdjęć zrobionych przez
 zamontowaną kamerę. Na rys.~\ref{fig:kostki} przedstawiono przykładowe zdjęcia kości w różnych warianach kolorystycznych.
-Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu, najlepiej kontrastuje ze ścianami kości przez co jest on najlepiej widoczny
+Na podstawie tych zdjęć wybrano kość niebieską, ponieważ numer oznaczający wynik rzutu najlepiej kontrastuje ze ścianami kości, przez co jest on najlepiej widoczny
 właśnie na tej kości.
 
 \begin{figure}[H]
@@ -182,10 +187,10 @@ LED sterowanych przy pomocy tranzystorów w układzie Darlingtona. Dzięki temu 
 robienie zdjęć lepszej jakości. Zdjęcie oświetlonego kubka przedstawiono na rys.~\ref{fig:jasno}. 
 
 Dodatkowo rozświetlenie wnętrza kubka na tyle poprawiło
-jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Dzięki temu wysokość całego urządzenia zmniejszyła się co miało duże znaczenie, 
+jakość zdjęć, że pozwoliło to na obniżenie kamery względem kubka. Dzięki temu wysokość całego urządzenia zmniejszyła się, co miało duże znaczenie, 
 ponieważ jednym z założeń postawionych na początku budowy było stworzenie urządzenia o niewielkich rozmiarach.
 Dzięki tym zabiegom otrzymywane zdjęcia stały się dużo bardziej wyraźne oraz pole widzenia kamery było ograniczone tylko do dna kubka.
-Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo. Dzięki temu nie trzeba było wykorzystywać dodatkowych rezystorów a liczba połączeń
+Diody LED służące do oświetlenia wnętrza kubka połączono szeregowo. Dzięki temu nie trzeba było wykorzystywać dodatkowych rezystorów, a liczba połączeń
 jest minimalna, ponieważ wystarczają dwa przewody do podłączenia całego układu diod.
 
 \begin{figure}[H]
@@ -226,8 +231,8 @@ odległość tą wyznaczono na 120 mm.
     \caption{\label{fig:wysokosci}Ustawienia kamery na różnych wysokościach.}
 \end{figure}
 
-W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzytany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
-co objawiało się poprzez duże odblaski na powierzchni kości, które stanowiły jeden z głównych problemów dla modelu sieci neuronowej odczytującego wyniki rzutów o czym jest mowa
+W trakcie testów konieczne okazało się również skorygowanie jasności świecenia diod LED. Wykorzystany układ czterech diod LED połączonych szeregowo dawał zbyt jasne światło, 
+co objawiało się poprzez duże odblaski na powierzchni kości, które stanowiły jeden z głównych problemów dla modelu sieci neuronowej odczytującego wyniki rzutów, o czym jest mowa
 w sekcji \ref{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}. Z tego powodu eksperymentalnie wybrano rezystory, których zadaniem było
 ograniczenie napięcia zasilającego układ diod LED. Porównanie jasności świecenia układu diod przedstawiono na rys.~\ref{fig:oswietlone}.
 
@@ -272,7 +277,7 @@ elementami składowymi.
 
 W celu spełnienia założenia modułowości, każdy element
 zaprojektowano w taki sposób, żeby posiadał specjalne miejsca na inserty lub śruby. Inserty to mosiężne elementy, które za pomocą lutownicy wgrzewa się
-w wydruk 3D. Posiadają one wewnętrzny gwint dzięki czemu można do łączenia wydruków wykorzystywać śruby nie uszkadzając samego wydruku przy 
+w wydruk 3D. Posiadają one wewnętrzny gwint, dzięki czemu można do łączenia wydruków wykorzystywać śruby, nie uszkadzając samego wydruku przy 
 wielokrotnym skręcaniu i rozkręcaniu robota. Dzięki temu założenie modułowości zostało spełnione, ponieważ dzięki śrubom i insertom każdy element robota 
 mógł zostać wydrukowany jako osobna część, którą następnie połączono z innymi częściami w prosty do rozłożenia sposób.
 
@@ -328,8 +333,8 @@ ograniczono tarcie śmigła o dno kubka.
 Śmigło zaprojektowano w taki sposób, żeby obracając się przy samym dnie kubka, po uderzeniu w kość wybijało ją w górę. Ten efekt uzyskano
 dzięki niskiemu profilowi śmigła oraz bocznych ścian śmigła nachylonych pod kątem $45^{\circ}$.
 
-Podczas testów ostatecznej wersji robota napotkano wcześniej wspominane problemy z pierwotnie wykorzystywanym silnikiem DC 6 V. Silnik ten miał okrągły wał przez co śmigło musiało
-być bardzo dokładnie spasowane aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością śmigło
+Podczas testów ostatecznej wersji robota napotkano wcześniej wspominane problemy z pierwotnie wykorzystywanym silnikiem DC 6 V. Silnik ten miał okrągły wał, przez co śmigło musiało
+być bardzo dokładnie spasowane, aby uniknąć ślizgania się wału wewnątrz otworu śmigła. To sprawiało, że montowanie śmigła i jego demontaż był bardzo trudny. Dodatkowo po wielokrotnych rzutach kością śmigło
 wbijało się coraz niżej na wał silnika i w ostateczności tarło o dno kubka tak mocno, że silnik nie był w stanie się obracać. 
 Żeby temu zaradzić, umieszczono pomiędzy śmigłem a dnem kubka metalową podkładkę, po której śmigło mogło się ślizgać łatwiej niż po dnie kubka. To
 jednak nie rozwiązało problemu, ponieważ po kolejnych kilku tysiącach rzutów śmigło zaczęło się blokować. 
@@ -387,7 +392,7 @@ W słupkach tych zaprojektowano otwory na inserty, dzięki którym kubek można 
 
 Podczas projektowania obudowy przewidziano także takie elementy jak wycięcia od spodu bezpośrednio pod wentylatorem, służące za wlot powietrza
 oraz wycięcia w tylnej ściance, służące za wylot powietrza. Dodatkowo w dnie umieszczono duży otwór umożliwiający swobodne mocowanie oraz dostęp do
-silnika, diod LED oraz gniazda zasilania. Na bocznych ścianach zaprojektowano przerwy, które następnie zaślepiono kontrastującym kolorystycznie filamentem.
+silnika, diod LED, oraz gniazda zasilania. Na bocznych ścianach zaprojektowano przerwy, które następnie zaślepiono kontrastującym kolorystycznie filamentem.
 Przerwy te tak samo jak cyfry na przedniej ścianie obudowy są tylko i wyłącznie elementami estetycznymi. Ostatnim elementem robota są zaprojektowane nóżki,
 które przyklejono do dna robota. Zapewniają one przepływ powietrza pod robotem gdzie znajduje się wlot powietrza do wentylatora. Gotowy model robota przedstawiono
 na rys.~\ref{fig:gotowy} oraz rys.~\ref{fig:srodek}.
