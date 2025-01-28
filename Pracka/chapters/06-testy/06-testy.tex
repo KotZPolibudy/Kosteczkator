@@ -1,6 +1,5 @@
 \chapter{Testy}\label{ch:testy}
 
-
 \section{Użyte testy}\label{testyOpis}
 
 Do przetestowania ciągów odczytanych przez model zaprezentowane w rozdziale~\ref{sec:opis-modelu-si} użyto pięć
@@ -105,11 +104,29 @@ Sformuowano hipotezy:
 \par \begin{math} H_0 \end{math}: Rozkład 4-bitowych segmentów w ciągu jest zgodny z oczekiwanym.
 \par \begin{math} H_1 \end{math}: Rozkład 4-bitowych segmentów w ciągu nie jest zgodny z oczekiwanym.
 
-
-
 \section{Wyniki testów}
 Przedstawione w sekcji \ref{testyOpis} testy zostały wykorzystane do sprawdzenia losowości ciągu wygenerowanego przez robota i 
 odczytywnane przez oba modele sztucznej inteligencji. Ich wyniki przedstawiono w poniższej sekcji.
+
+Jednakże, przed rozpoczęciem testów statystycznych wyników odczytanych przez model sztucznej inteligencji, postanowiono zbadać
+rozkład wyników rzutów wykonanych przez robota (przedstawionych na wykresie na rys. \ref{fig:robot-wykres}), które 
+zostały ręcznie oznaczone do przykładów uczących dla sieci neuronowej. Miało to na celu sprawdzenie, czy ewentualny 
+nierównomierny rozkład wyników końcowych jest spowodowany wadami maszyny lub nieprawidłości w bryle kości, czy może 
+problemem jest sam model sztucznej inteligencji. 
+
+Wartość statystyki testowej chi-kwadrat wyniosła \begin{math} 5{,}488 \end{math}, czyli mniej od przyjętej wartości krytycznej.
+Nie ma zatem podstaw do odrzucenia hipotezy zerowej: rozkład prawdopodobieństwa wyników jest równomierny dla rzutów
+wykonywanych przez robota.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{chapters/06-testy/figures/robot-rzuty.jpg}
+    \caption{Wykres straty modelu.}
+    \label{fig:robot-wykres}
+\end{figure}
+
+
+
 \subsection{Test chi-kwadrat}
 \label{chiWyniki}
 Dla odczytanych wyników rzutów kością przez pierwszy model otrzymano wartość statystyki testowej chi-kwadrat równą 
@@ -246,7 +263,7 @@ Rozkład segmentów w ciągach odczytanych przez oba modele przedstawiono w tabe
     \end{tabular} 
 \end{table} 
 
-\subsection{Wnioski}
+\section{Wnioski}
 Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów. W wynikach testu statystyki 
 rozkładu chi-kwadrat (sekcja \ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
 liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a 
@@ -255,7 +272,7 @@ częściej w ciągu niż zera. Ukazuje to już test monobitowy (sekcja \ref{chiW
 większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (sekcja \ref{pokerWyniki}), 
 gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające 
 więcej bitów o wartości 0. 
-\par
+
 Przez wzgląd na niezadowalające wyniki modelu pierwszego, dokonano jego poprawy (sekcja \ref{sec:podsumowanie}) i
 utworzono drugi model sztucznej inteligencji. Dla wszystkich przeprowadzonych testów nie było podstaw do odrzucenia
 hipotezy zerowej. W przeciwieństwie do pierwszego modelu, najczęściej odczytywanym wynikiem jest 8, a najrzadziej -- 6.
@@ -263,9 +280,17 @@ Różnica w liczbie odczytów tych wyników nie jest aż tak znacząca (737 dla 
 (1124 dla 6 i 547 dla 8). Częstsze wystąpienia wyniku 8 widać w teście monobitowym, gdzie zliczonych zer jest więcej
 niż jedynek. Dysproporcja między nimi jest niewielka, wynosi zaledwie niecałe 400 bitów, kiedy dla pierwszego modelu
 różnica wynosiła prawie 1400 bitów. Podobnie dla testu serii liczby poszczególnych serii dla zer i jedynek są dużo
-bardziej zrównoważone dla drugiego modelu niż pierwszego.
-\par
+bardziej zrównoważone dla drugiego modelu niż pierwszego. 
+
+Dla testów długich serii dla obu modeli nie było podstaw do odzucenia hipotezy zerowej. Dla pierwszego z nich najdłuższe
+ciągi dla obu wartości bitów miały długość 13, a dla drugiego 17 (zera) i 16 (jedynki). Ponieważ bity są generowane 
+trójkami przy każdym rzucie kością, oznacza to, że dla wartości 7 (kodowanej jako 111) i 8 (kodowanej jako 000)
+odczytano maksymalnie po cztery razy pod rząd dla modelu pierwszego i maksymalnie po pięć razy pod rząd dla modelu 
+drugiego. 
+
 Wyniki dla drugiego modelu są zadowalające, dla którego nie ma przesłanek do odrzucenia żadnej z hipotez zerowych.
 Jednakże w przyszłości możliwa jest implementacja lepszego modelu, który
-potencjalnie mógłby otrzymywać jeszcze lepsze wyniki (rozdział \ref{ch:zakonczenie}). Prowadzi to do wniosku, że uzyskanie prawdziwej 
-losowości jest możliwe, mimo deterministycznego charakteru działania maszyny.
+potencjalnie mógłby otrzymywać jeszcze lepsze wyniki (rozdział \ref{ch:zakonczenie}), ponieważ wartość statystyki testowej
+chi-kwadrat dla modelu drugiego jest niemal czterokrotnie większa, niż dla wartości statystyki testowej chi-kwadrat 
+otrzymanej dla ręcznie oznaczone do przykładów uczących dla sieci neuronowej.
+Prowadzi to do wniosku, że uzyskanie prawdziwej losowości jest możliwe, mimo deterministycznego charakteru działania maszyny.
