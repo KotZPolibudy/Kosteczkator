@@ -16,12 +16,12 @@ najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zosta
 W niniejszym rozdziale omówiono proces przetwarzania wstępnego obrazów kości,
 który przekształca dane pochodzące z fizycznego komponentu robota (kamery dostarczającej zdjęcia kości) na dane wejściowe dla modelu sztucznej inteligencji.
 Przez dane wejściowe dla modelu SI rozumie się tutaj odpowiednio sformatowane obrazy, a więc takie w skali szarości,
-o rozmiarach 64x64 piksele, zawierające jedynie kość wyciętą ze zdjęcia (nie zawierające w tle całego kubka).
+o rozmiarach 64\times64 piksele, zawierające jedynie kość wyciętą ze zdjęcia (nie zawierające w tle całego kubka).
 
 \subsection{Algorytm}\label{subsec:algorytm}
 
 \begin{enumerate}
-    \item Wczytanie obrazu wejściowego .
+    \item Wczytanie obrazu wejściowego.
     \item Odnalezienie kości za pomocą maski na komponencie nasycenia.
     \item Stworzenie i wycięcie ramki ograniczającej (ang. \textit{bounding box}) wokół maski.
     \item Przeskalowanie do odpowiedniego rozmiaru.
@@ -117,12 +117,11 @@ Konwersja do skali szarości dodatkowo minimalizuje negatywny wpływ odblasków,
 powstających gdy kość odbija światło wprost do kamery, co poprawia niezawodność analizy.
 
 
-
 \subsection{Zidentyfikowane trudności i ich rozwiązania}\label{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}
 
 Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kości.
 Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
-uwidaczniając widoczną na kości cyfrę, co pokazują rys. 4.3 oraz 4.4.
+uwidaczniając widoczną na kości cyfrę, co pokazuje rys.~\ref{fig:blaskcombined}.
 
 Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
 od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
@@ -147,16 +146,17 @@ od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na k
 \end{figure}
 
 
-Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
-w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware, wynikający z awarii diody doświetlającej kubek.
+Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy, ale
+problem ten wynikał z usterki zastosowanej diody i został zażegnany poprzez fizyczną wymianę oświetlenia.
 Obecnie taki problem jest wykrywany oraz zgłaszany jest wyjątek oznaczający potrzebę naprawy usterki oświetlenia.
+
 Nie był to jedyny problem powodowany przede wszystkim częścią sprzętową -- drugim takim było zatrzymanie śmigła w miejscu,
 przez co do ewaluacji przez model kilkukrotnie trafiało identyczne, lub niemal identyczne zdjęcie.
 To również zostało rozwiązane fizycznie, poprzez dodanie metalowej podkładki pod śmigłem,
-ale mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku, który nadarzy się gdy wielokrotnie zostanie odczytana identyczna wartość.
+ale mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku, który nadarzy się, gdy wielokrotnie zostanie odczytana identyczna wartość.
 W związku z ryzykiem fałszywego rozpoznania zatarcia śmigła przez losowo wypadającą wielokrotnie identyczną wartość ustawiono próg wykrywania takiej sytuacji i zgłaszania wyjątku na 13 identycznych odczytów z rzędu.
 Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
-$\frac{1}{8^{12}} \approx 1{,}455 \times 10^{-11}$
+$\frac{1}{8^{12}} \approx 1{,}455 \cdot 10^{-11}$
 
 Kolejną, znacznie częściej spotykaną trudnością w obecnej architekturze urządzenia są niejednoznaczne wyniki,
 a więc moment, gdy kość zatrzyma się w pozycji, w której widać więcej niż jedną ściankę.

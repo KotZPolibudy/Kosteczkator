@@ -1,6 +1,6 @@
 \section{Opis Modelu SI}\label{sec:opis-modelu-si}
 
-Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości ośmiościennych k8 do jednej z ośmiu klas,
+Model sztucznej inteligencji został zaprojektowany w celu klasyfikacji zdjęć kości ośmiościennych do jednej z ośmiu klas,
 odpowiadających cyfrom od 1 do 8 na każdej ze ścianek.
 Do implementacji modelu wykorzystano przede wszystkim moduł TensorFlow~\cite{tensorflow_docs}
 oraz wchodzący obecnie w jego skład Keras~\cite{keras_docs},
@@ -51,7 +51,7 @@ Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczni
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[width=\linewidth]{chapters/04-czytanie/figures/5_shear}
-        \caption{Obraz po ścinaniu.}
+        \caption{Obraz po transformacji perspektywicznej.}
         \label{fig:5shear}
     \end{subfigure}
     \hfill
@@ -76,9 +76,9 @@ Dodatkowo, obrazy są normalizowane do zakresu $[0, 1]$, co pozwala na skuteczni
 
 W szczególności należy zaznaczyć, że finalnie uniknięto początkowo przeoczonego błędu,
 jakim jest tworzenie obrazów lustrzanych w wyżej wymienionych transformacjach, gdyż obrazy lustrzane
-sprawiały, że ścianki 2 oraz 5 były znacznie gorzej rozróżnialne przez wytrenowany model.
+sprawiały, że ścianki 2 oraz 5 były znacznie gorzej rozróżniane przez wytrenowany model.
 Problem nie był początkowo łatwy do wykrycia, gdyż zdjęcia odbite zarówno w pionowej jak i poziomej osi były poprawne,
-a niepoprawne były te odbite tylko wobec jednej osi, czego przykład można zaobserwować na rys.~\ref{fig:25confusion}.
+a niepoprawne były te odbite tylko względem jednej osi, czego przykład można zaobserwować na rys.~\ref{fig:25confusion}.
 
 
 \begin{figure}[h]
