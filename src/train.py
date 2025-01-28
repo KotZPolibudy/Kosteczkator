@@ -13,11 +13,9 @@ IMAGE_SIZE = (64, 64)
 BATCH_SIZE = 16
 EPOCHS = 20
 
-# Check if the dataset path exists
+
 if not os.path.exists(DATASET_PATH):
     raise FileNotFoundError(f"Dataset not found at {DATASET_PATH}. Run preprocess.py first.")
-
-# Load and preprocess data
 print("Loading dataset...")
 
 datagen = ImageDataGenerator(
@@ -38,7 +36,7 @@ train_data = datagen.flow_from_directory(
     target_size=IMAGE_SIZE,
     batch_size=BATCH_SIZE,
     class_mode="sparse",
-    color_mode="grayscale",  # Specify grayscale mode
+    color_mode="grayscale",
     subset="training"
 )
 
@@ -47,19 +45,15 @@ val_data = datagen.flow_from_directory(
     target_size=IMAGE_SIZE,
     batch_size=BATCH_SIZE,
     class_mode="sparse",
-    color_mode="grayscale",  # Specify grayscale mode
+    color_mode="grayscale",
     subset="validation"
 )
 
-
 print(f"Training samples: {train_data.samples}")
 print(f"Validation samples: {val_data.samples}")
-
 print(train_data.class_indices)
 print(val_data.class_indices)
 
-
-# Define the CNN model
 def create_model():
     model = models.Sequential([
         layers.Input(shape=(64, 64, 1)),  # Input layer
@@ -84,12 +78,10 @@ def create_model():
     )
     return model
 
-# Create and summarize the model
 print("Creating model...")
 model = create_model()
 model.summary()
 
-# Train the model
 print("Starting training...")
 steps_per_epoch = train_data.samples // BATCH_SIZE
 validation_steps = val_data.samples // BATCH_SIZE
@@ -103,20 +95,16 @@ history = model.fit(
 )
 
 
-# Extract final metrics
 final_train_acc = history.history['accuracy'][-1]
 final_val_acc = history.history['val_accuracy'][-1]
 final_train_loss = history.history['loss'][-1]
 final_val_loss = history.history['val_loss'][-1]
 
-# Print final statistics
 print("\nFinal Training Accuracy: {:.4f}".format(final_train_acc))
 print("Final Validation Accuracy: {:.4f}".format(final_val_acc))
 print("Final Training Loss: {:.4f}".format(final_train_loss))
 print("Final Validation Loss: {:.4f}".format(final_val_loss))
 
-
-# Save the trained model
 print(f"Saving model to {MODEL_SAVE_PATH}...")
 model.save(MODEL_SAVE_PATH)
 print("Model saved!")
