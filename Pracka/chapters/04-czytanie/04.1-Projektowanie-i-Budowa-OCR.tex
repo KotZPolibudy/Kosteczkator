@@ -117,12 +117,11 @@ Konwersja do skali szarości dodatkowo minimalizuje negatywny wpływ odblasków,
 powstających gdy kość odbija światło wprost do kamery, co poprawia niezawodność analizy.
 
 
-
 \subsection{Zidentyfikowane trudności i ich rozwiązania}\label{subsec:zidentyfikowane-trudnosci-i-ich-rozwiazania}
 
 Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania wyniku z kości.
 Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
-uwidaczniając widoczną na kości cyfrę, co pokazują rys. 4.3 oraz 4.4.
+uwidaczniając widoczną na kości cyfrę, co pokazuje rys.~\ref{fig:blaskcombined}.
 
 Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
 od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
@@ -147,9 +146,10 @@ od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na k
 \end{figure}
 
 
-Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy,
-w wyniku problemu z działaniem diod, jednak problem okazał się być spowodowany przez hardware, wynikający z awarii diody doświetlającej kubek.
+Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy, ale
+problem ten wynikał z usterki zastosowanej diody i został zażegnany poprzez fizyczną wymianę oświetlenia.
 Obecnie taki problem jest wykrywany oraz zgłaszany jest wyjątek oznaczający potrzebę naprawy usterki oświetlenia.
+
 Nie był to jedyny problem powodowany przede wszystkim częścią sprzętową -- drugim takim było zatrzymanie śmigła w miejscu,
 przez co do ewaluacji przez model kilkukrotnie trafiało identyczne, lub niemal identyczne zdjęcie.
 To również zostało rozwiązane fizycznie, poprzez dodanie metalowej podkładki pod śmigłem,
