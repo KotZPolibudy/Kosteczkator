@@ -9,7 +9,7 @@ wyników jest równomierny. Pozostałe cztery to zestaw podany przez amerykańsk
 jest przygotowany dla ciągów o długości 20000 bitów. Poziom istotności tych testów jest równy 0{,}0001~\cite{Kotulski2001}.
 
 
-W sekcjach~\ref{monbitOpis}~-~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
+W sekcjach~\ref{monbitOpis}~--~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
 są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
 Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01} \cite{TestU01}. Niestety, do zastosowania nawet 
@@ -159,7 +159,7 @@ zgodna z oczekiwaną. Brak podstaw do odrzucenia hipotezy zerowej dla modelu dru
 \subsection{Test serii}
 
 Wyniki testów serii dla obu modeli przedstawiono w tabeli \ref{serieTabela}. Rozkład serii w badanym ciągu odczytanym
-przez modelu pierwszego nie jest zgodny z oczekiwanymi dla obu serii o długości 1, obu serii o długości 2, serii jedynek 
+przez pierwszy model nie jest zgodny z oczekiwanymi dla obu serii o długości 1, obu serii o długości 2, serii jedynek 
 o długości 4 i serii zer o długości 6 lub więcej. Hipotezę zerową dla modelu pierwszego odrzucono.
 
 Dla modelu drugiego rozkłady wszystkich serii są zgodne z oczekiwanymi. Brak podstaw do odrzucenia hipotezy zerowej.
@@ -247,12 +247,12 @@ Rozkład segmentów w ciągach odczytanych przez oba modele przedstawiono w tabe
 \end{table} 
 
 \subsection{Wnioski}
-Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów odrzucono. W wynikach testu statystyki 
-rozkładu chi-kwadrat (punt \ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
+Dla pierwszego modelu odrzucono hipotezę zerową dla czterech z pięciu testów. W wynikach testu statystyki 
+rozkładu chi-kwadrat (sekcja \ref{chiWyniki}) można zauważyć, że liczba 6 jest odczytywana ponad dwa razy częściej niż 
 liczba 8. Ma to bardzo duży wpływ na otrzymany ciąg bitów, ponieważ liczba 6 jest interpretowana jako 110, a 
 liczba 8 jako 000, co można zaobserwować w wynikach pozostałych testów. Sprawia to, że jedynki pojawiają się 
-częściej w ciągu niż zera. Ukazuje to już test monobitowy (punkt \ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
-większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (punkt \ref{pokerWyniki}), 
+częściej w ciągu niż zera. Ukazuje to już test monobitowy (sekcja \ref{chiWyniki}), gdzie liczba jedynek w ciągu jest 
+większa niż oczekiwana. Podobny problem można zaobserwować w wynikach testu pokerowego (sekcja \ref{pokerWyniki}), 
 gdzie segmenty zawierające trzy lub cztery bity o wartości 1 występują znacznie częściej niż segmenty zawierające 
 więcej bitów o wartości 0. 
 \par
