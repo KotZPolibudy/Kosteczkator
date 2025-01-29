@@ -69,7 +69,7 @@ def process_and_crop(image_path, size=(64, 64)):
     h, s, v = hsv_image.split()
     blurred_v = s.filter(ImageFilter.GaussianBlur(radius=5))
     v_array = np.array(blurred_v)
-    threshold = 224  # You can adjust this value
+    threshold = 224
     binary_mask = (v_array > threshold).astype(np.uint8) * 255
 
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (100, 100))
@@ -77,7 +77,6 @@ def process_and_crop(image_path, size=(64, 64)):
     mask = Image.fromarray(closed_mask)
     # masked_image = Image.composite(image, Image.new("RGB", image.size, (0, 0, 0)), mask)
 
-    # Find bounding box of the mask and crop the image
     contours, _ = cv2.findContours(closed_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if contours:
         x, y, w, h = cv2.boundingRect(max(contours, key=cv2.contourArea))
@@ -96,43 +95,32 @@ def process_and_crop(image_path, size=(64, 64)):
 
 # predict function
 def predict_number(model, img_path):
-    # Load the image in grayscale mode to match the model input
-    img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')  # Ensure grayscale input
-    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
-    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+    img = image.load_img(img_path, target_size=(64, 64), color_mode='grayscale')
+    img_array = image.img_to_array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    # Make prediction
-    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    prediction = model.predict(img_array)
     # print(prediction)
-    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
-
-    # List of class labels (from 1 to 8 for dice numbers)
+    predicted_class = np.argmax(prediction, axis=1)
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
     # print(predicted_class)
-    # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
 
 def predict_number_from_loaded_img(model, img):
-    # Load the image in grayscale mode to match the model input
-    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
-    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+    img_array = image.img_to_array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    # Make prediction
-    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    prediction = model.predict(img_array)
     # print(prediction)
-    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
-
-    # List of class labels (from 1 to 8 for dice numbers)
+    predicted_class = np.argmax(prediction, axis=1)
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
     # print(predicted_class)
-    # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
 try:
-    # Load the model
     model = load_model("na_nowych_final_unbalanced.keras")
     while True:
         print("Podaj liczbę zdjęć, jakie chcesz zrobić:")
@@ -141,7 +129,7 @@ try:
         # Tworzenie nowego folderu dla serii zdjęć
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         folder_name = f"../serie/seria_{timestamp}"
-        os.makedirs(folder_name, exist_ok=True)  # Tworzy folder, jeśli nie istnieje
+        os.makedirs(folder_name, exist_ok=True)
         # print(f"Utworzono folder: {folder_name}")
         
         GPIO.output(LED, GPIO.HIGH)

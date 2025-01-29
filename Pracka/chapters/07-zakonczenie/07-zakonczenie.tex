@@ -4,7 +4,8 @@
 W ramach realizacji projektu udało się spełnić jego główny cel, jakim było stworzenie sprzętowego generatora liczb losowych.
 Wykorzystuje on rzut kością, a wynik jest odczytywany i interpretowany przez model sztucznej inteligencji. Przeprowadzono
 testy statystyczne, badające losowość otrzymanych wyników. Pokazały one, że możliwe jest uzyskanie prawdziwej losowości 
-zautomatyzowanego rzutu kością, mimo deterministycznego działania wykonującej go maszyny.
+zautomatyzowanego rzutu kością, mimo deterministycznego działania wykonującej go maszyny. 
+Sumarycznie, w czasie realizacji projektu, robot wykonał ponad 30 000 rzutów kością.
 
 Mimo osiągnięcia celów projektu, możliwe jest wprowadzenie wielu usprawnień, które poprawią jego jakość i wygodę użytkownika.
 Korzystnym ulepszeniem byłoby zintegrowanie maszyny nie tylko z systemem Linux, ale również z popularnym systemem Windows.
@@ -16,15 +17,16 @@ potencjalnych nieprawidłowości w jej budowie, które mogą zaburzać rozkład 
 
 Co więcej, można również usprawnić wykorzystywane metody przetwarzania zdjęć oraz uzyskać
 „czystsze” zdjęcia wejściowe dla sieci neuronowej. Wśród rozważanych sposobów na uzyskanie tego efektu znajdują się
-dokładniejsze wycięcie tła czy poprawienie hardware, poprzez np. wprowadzenie kamery o małej ogniskowej lub
+dokładniejsze wycięcie tła czy poprawienie hardware poprzez np. wprowadzenie kamery o małej ogniskowej lub
 lepsze oświetlenie dna kubka.
 
-Jednym z najambitniejszych do zaimplementowania usprawnień jest nauczenie modelu sztucznej inteligencji odczytywania
+Innym ulepszeniem, które zwiększyłoby możliwości robota jest nauczenie modelu sztucznej inteligencji odczytywania
 wyników kilku kości jednocześnie lub zaimplementowanie przetwarzania, które pozwoliłoby na odczytywanie wyników z dwóch kości.
 Pozwoliłoby to na generowanie kilkukrotnie większej liczby bitów w tym samym czasie.
 Dzięki temu udałoby się chociaż częściowo zmniejszyć największą wadę zrealizowanego projektu,
 jaką jest wolne generowanie nowych liczb.
-Jednakże to usprawnienie wiąże się z ogromną trudnością kilku kości upadających potencjalnie na sobie, uniemożliwiając efektywny odczyt.
+Jednakże to usprawnienie wiąże się z trudnością, wykonywania samego rzutu kilkoma kośćmi czy innmi problemami takimi jak kości potencjalnie 
+upadające na sobie, uniemożliwiając efektywny odczyt.
 
 Wśród innych planów na najbliższą przyszłość znajduje się również dodanie praktycznego zastosowania dla guzika robota,
 której nie udało się zaimplementować wcześniej przez ograniczenia czasowe. Wśród rozważanych funkcjonalności znajduje się
@@ -33,10 +35,14 @@ przełączanie między trybami robota (opisanymi w rozdziale~\ref{sec:tryby}) b�
 W przypadku komercjalizacji produktu należy rozważyć również wymianę komputera Raspberry Pi na tańszy model lub stworzenie dedykowanego rozwiązania.
 Taka zmiana pozwoliłaby obniżyć cenę komercjalizowanego produktu, a sama maszyna mogłaby znaleźć zastosowanie nie tylko w kryptografii,
 ale również wśród fanów gier planszowych oraz RPG, gdzie mogłaby znaleźć zastosowanie jako urządzenie generujące sprawiedliwe rzuty kością
-dla graczy chcących grać zdalnie, za pośrednictwem sieci.
+dla graczy chcących grać zdalnie za pośrednictwem sieci.
 
-To jedynie część z pomysłów na dalsze rozwijanie projektu, które narodziły się w trakcie kolejnych etapów jego tworzenia.
-Zrealizowała go czteroosobowa grupa, dzięki owocnej współpracy i jasnemu podziałowi zadań. 
+To jedynie część z pomysłów na dalsze rozwijanie projektu, które narodziły się w trakcie kolejnych etapów jego realizacji.
+Wykonała go czteroosobowa grupa, dzięki owocnej współpracy i jasnemu podziałowi zadań. 
 Finalnie, projekt został ukończony z pełnym sukcesem, a wszystkie jego założenia zostały zrealizowane.
 
 W pracy zostały wykorzystane generatywne modele SI, przy sprawdzaniu poprawności składniowej i językowej zdań oraz generowaniu drobnych fragmentów wykorzystanego kodu.
+
+%przy tym projekcie nie ucierpiała żadna kostka,
+%jeden silnik,
+%wykonano pierdyliard rzutów

@@ -2,8 +2,8 @@
 
 \subsection{Użyte funkcje aktywacji i rodzaje warstw}\label{subsec:uzyte-funkcje-aktywacji-i-rodzaje-warstw}
 
-\subsubsection{Sieci splotowe (CNN)~\cite{Goodfellow-et-al-2016}}
-Sieci splotowe (ang. \textit{convolutional neural network, CNN}) to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
+\subsubsection{Sieci splotowe (CNN)}
+Sieci splotowe (ang. \textit{convolutional neural network, CNN})~\cite{Goodfellow-et-al-2016} to rodzaj sieci neuronowych, które szczególnie dobrze sprawdzają się w zadaniach związanych
 z przetwarzaniem obrazów, takich jak rozpoznawanie obiektów, klasyfikacja czy segmentacja.
 Główna różnica między siecią splotową a tradycyjną siecią neuronową polega na tym,
 że w sieciach splotowych stosuje się operację splotu, która umożliwia wydobycie lokalnych cech z obrazu,
@@ -14,8 +14,8 @@ co pozwala na wyodrębnienie różnych cech (np. krawędzi, tekstur) w różnych
 Kolejne warstwy splotowe uczą się coraz bardziej złożonych cech w miarę postępującej abstrakcji,
 dzięki czemu sieć może rozpoznać skomplikowane wzorce w danych wejściowych.
 
-\subsubsection{Warstwa gęsta (Dense)~\cite{Goodfellow-et-al-2016}}
-Warstwa gęsta (ang. \textit{Dense, fully connected layer}), to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
+\subsubsection{Warstwa gęsta (Dense)}
+Warstwa gęsta (ang. \textit{Dense, fully connected layer})~\cite{Goodfellow-et-al-2016}, to warstwa w której każdy neuron jest połączony z każdym neuronem w poprzedniej warstwie.
 Tego typu warstwy zwykle znajdują się na końcu sieci, po warstwach splotowych, i służą do agregowania informacji uzyskanych
 z wcześniejszych warstw w celu podjęcia ostatecznej decyzji, jak w klasyfikacji.
 W przypadku tego modelu, warstwy gęste przekształcają dane wyjściowe z warstw splotowych w wektory,
@@ -36,23 +36,23 @@ Użyte funkcje aktywacji:
 
 \subsection{Budowa sieci neuronowej}\label{subsec:budowa-sieci-neuronowej}
 
-Model jest wielowarstwową siecią splotową,składającą się z następujących elementów:
+Model jest wielowarstwową siecią splotową, składającą się z następujących elementów:
 \begin{enumerate}
-    \item Warstwa wejściowa o rozmiarze 64x64 pikseli i jednym kanale (skala szarości),
-    \item Trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
+    \item warstwa wejściowa o rozmiarze $64\times64$ pikseli i jednym kanale (skala szarości),
+    \item trzech warstw splotowych z funkcją aktywacji ReLU oraz warstw max poolingu:
     \begin{enumerate}
-        \item Pierwsza warstwa splotowa z 32 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Druga warstwa splotowa z 64 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
-        \item Trzecia warstwa splotowa z 128 filtrami o rozmiarze 3x3,
-        \item Warstwa max poolingu z jądrem 2x2,
+        \item pierwsza warstwa splotowa z 32 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
+        \item druga warstwa splotowa z 64 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
+        \item trzecia warstwa splotowa z 128 filtrami o rozmiarze $3\times3$,
+        \item warstwa max poolingu z jądrem $2\times2$,
     \end{enumerate}
-    \item Warstwa spłaszczająca (Flatten),
-    \item Dwóch w pełni połączonych warstw (Dense):
+    \item warstwa spłaszczająca (Flatten),
+    \item dwóch w pełni połączonych warstw (Dense):
     \begin{enumerate}
-        \item Pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
-        \item Druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
+        \item pierwsza warstwa Dense z 128 neuronami i funkcją aktywacji ReLU,
+        \item druga warstwa Dense z 8 neuronami i funkcją aktywacji softmax, przeznaczona do klasyfikacji na 8 klas.
     \end{enumerate}
 \end{enumerate}
 
@@ -66,8 +66,8 @@ tak aby liczba neuronów odpowiadała liczbie ścianek na używanej kości.
 Model został nauczony z wykorzystaniem optymalizatora Adam~\cite{kingma2014adam, keras_adam},
 funkcji straty entropii krzyżowej~\cite{crossentropy} dostępnej w module tensorflow jako sparse categorical crossentropy~\cite{tensorflow_loss},
 oraz metryki dokładności (ang. \textit{accuracy})~\cite{tensorflow_accuracy}.
-Proces trenowania obejmował dobraną eksperymentalnie liczbę 20 epok, gdyż dalsze zwiększanie liczby epok nie przynosiło istotnej poprawy wydajności zwiększając jedynie czas obliczeń.
-Na wejściu, model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
+Proces trenowania obejmował dobraną eksperymentalnie liczbę 20 epok, gdyż dalsze zwiększanie liczby epok nie przynosiło istotnej poprawy wydajności, zwiększając jedynie czas obliczeń.
+Na wejściu model oczekiwał obrazu przedstawiającego górną ściankę kości, przekształconego odpowiednio, a więc tak jak opisano w~\ref{sec:preprocessing}.
 
 
 \subsection{Wyniki}\label{subsec:wyniki}

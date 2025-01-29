@@ -9,17 +9,17 @@ Z tego powodu nie można przewidzieć wyniku działania takiego układu, a uzysk
 
 Jednak powszechnie używane są generatory pseudolosowe (PRNG, z ang. \textit{Pseudorandom Number Generator}).
 PRNG są całkowicie deterministyczne i zależą od zadanej im wartości początkowej zwanej ziarnem (ang. \textit{seed}).
-TRNG (z ang. \textit{True Random Number Generator}) są szczególnie istotne w kontekście aplikacji wymagających silnej 
-ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe, oraz w generowaniu kluczy szyfrujących,
+Dlatego TRNG (z ang. \textit{True Random Number Generator}) są szczególnie istotne w kontekście aplikacji wymagających silnej 
+ochrony danych, takich jak systemy kryptograficzne, podpisy cyfrowe oraz w generowaniu kluczy szyfrujących,
 gdyż nie da się przewidzieć w skuteczny sposób generowanych przez nie wartości.
 
 \section{Obecnie stosowane rozwiązania}\label{sec:obecnie-stosowane-rozwiazania}
 
 % todo opisać to lepiej, może Kuba (Yoshida) o linuxowych?
-Obecnie komputery osobiste wykorzystują generatory liczb losowych (RNG, z ang. \textit{Random Number Generator})
-wykorzystujące dostępne im źródła entropii dostarczane przez użytkownika, takie jak ruchy myszy lub naciśnięcia przycisków.
+Obecnie komputery osobiste korzystają z generatorów liczb losowych (RNG, z ang. \textit{Random Number Generator})
+wykorzystujących dostępne im źródła entropii dostarczane przez użytkownika, takie jak ruchy myszy lub naciśnięcia przycisków.
 W nowoczesnych procesorach stosuje się też liczby generowane przez dedykowane moduły takie jak Intel DRNG za pomocą \textit{Intel RDSEED} i \textit{RDRAND}~\cite{IntelRD}.
-System Linux dostarcza również interfejsy \textit{/dev/random} raz \textit{/dev/urandom} zapewniające liczby losowe.
+System Linux dostarcza również interfejsy \textit{/dev/random} oraz \textit{/dev/urandom} zapewniające liczby losowe.
 
 
 

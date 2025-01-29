@@ -1,12 +1,12 @@
 \chapter{Odczytywanie losowego wyniku z kości}\label{ch:odczytywanie-losowego-wyniku-z-kosci}
 
-Kolejnym krokiem przetwarzania jest odczyt wylosowanej wartości z kości.
-Jak pokazano na rys.~\ref{fig:schemat_workflow}
+Kolejnym krokiem przetwarzania -- po wykonaniu rzutu i zdjęcia -- jest odczyt wylosowanej wartości z kości.
+Jak pokazano na rys.~\ref{fig:schemat_workflow},
 najpierw zdjęcie musi zostać poddane odpowiedniemu przetwarzaniu, które zostało opisane w tym rozdziale.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{chapters/04-czytanie/figures/schemat}
+    \includegraphics[width=0.5\linewidth]{chapters/04-czytanie/figures/schemat.png}
     \caption{Schemat pracy robota}
     \label{fig:schemat_workflow}
 \end{figure}
@@ -105,7 +105,7 @@ gdzie maska mogłaby zawierać rozłączne fragmenty obiektu.
 Po zastosowaniu zamknięcia morfologicznego maska jest analizowana w celu
 zlokalizowania największego konturu obejmującego obszar zainteresowania.
 W tym celu wykorzystano funkcje biblioteki OpenCV~\cite{opencv_docs},
-które umożliwiają zarówno zastosowanie domknięcia morfologicznego, jak i wykrycie konturu i obliczenie otaczającego go prostokąta.
+które umożliwiają zarówno zastosowanie domknięcia morfologicznego, jak i wykrycie konturu, i obliczenie otaczającego go prostokąta.
 Rozmiar prostokąta jest dynamicznie dopasowywany do obszaru maski.
 %Domknięcie morfologiczne i zamknięcie morfologiczne to dokładnie to samo.
 
@@ -123,7 +123,7 @@ Wspomniane wcześniej odblaski znacznie pogarszają skuteczność odczytywania w
 Jednak zastosowanie skali szarości pozwoliło w znacznym stopniu pozbyć się tego problemu,
 uwidaczniając widoczną na kości cyfrę, co pokazuje rys.~\ref{fig:blaskcombined}.
 
-Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty będące wynikiem odblasku diody o ściankę kości,
+Dzięki zastosowaniu skali szarości łatwiej jest oddzielić jasne punkty, będące wynikiem odblasku światła diody od ściany kości,
 od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na kości.
 
 \begin{figure}[H]
@@ -141,20 +141,20 @@ od nieco ciemniejszych, lecz wciąż jasnych punktów oznaczających cyfrę na k
         \caption{Odblask po zmianie na skalę szarości.}
         \label{fig:blaskproc}
     \end{subfigure}
-    \caption{Porównanie odblasku przed i po przetworzeniu: część a) i b).}
+    \caption{Porównanie odblasku przed i po przetworzeniu.}
     \label{fig:blaskcombined}
 \end{figure}
 
 
-Inną trudnością, która objawiała się w początkowych fazach pracy były zupełnie czarne obrazy, ale
+Inną trudnością, która objawiała się w początkowych fazach pracy, były zupełnie czarne obrazy, ale
 problem ten wynikał z usterki zastosowanej diody i został zażegnany poprzez fizyczną wymianę oświetlenia.
 Obecnie taki problem jest wykrywany oraz zgłaszany jest wyjątek oznaczający potrzebę naprawy usterki oświetlenia.
 
 Nie był to jedyny problem powodowany przede wszystkim częścią sprzętową -- drugim takim było zatrzymanie śmigła w miejscu,
-przez co do ewaluacji przez model kilkukrotnie trafiało identyczne, lub niemal identyczne zdjęcie.
+przez co do ewaluacji przez model kilkukrotnie trafiało identyczne lub niemal identyczne zdjęcie.
 To również zostało rozwiązane fizycznie, poprzez dodanie metalowej podkładki pod śmigłem,
 ale mimo zażegnania problemu w taki sposób, zapewniono również obsługę wyjątku, który nadarzy się, gdy wielokrotnie zostanie odczytana identyczna wartość.
-W związku z ryzykiem fałszywego rozpoznania zatarcia śmigła przez losowo wypadającą wielokrotnie identyczną wartość ustawiono próg wykrywania takiej sytuacji i zgłaszania wyjątku na 13 identycznych odczytów z rzędu.
+W związku z ryzykiem fałszywego rozpoznania zatarcia śmigła przez losowo wypadającą wielokrotnie identyczną wartość, ustawiono próg wykrywania takiej sytuacji i zgłaszania wyjątku na 13 identycznych odczytów z rzędu.
 Statystyczna szansa na takie zdarzenie przy prawidłowej pracy maszyny wynosi
 $\frac{1}{8^{12}} \approx 1{,}455 \cdot 10^{-11}$
 
@@ -192,7 +192,7 @@ Jednakże w takim wypadku wynik jest idealnie czytelny,
 identycznie jak gdy kość lądowała normalnie na podstawce kubka, więc nie jest to problemem.
 %Wtedy problem z lądowaniem na śmigle nie istnieje,
 %gdyż nie przeszkadza to w tym, że kość i tak zostanie podbita przy następnym obrocie śmigła.
-Ostatnim rodzajem problemu, jaki został napotkany, był przypadek, w którym kość nie skończyła jeszcze swojej fazy lotu,
+Ostatnim rodzajem problemu, jaki został napotkany, był przypadek, w którym kość nie skończyła jeszcze swojej fazy lotu
 lub wpadła w bardzo długie wirowanie -- efektywnie uniemożliwiając odczytanie wyniku.
 Przykłady zarejestrowanych przypadków wystąpienia tego problemu przestawiono na rys~\ref{fig:wircombined}.
 
@@ -221,7 +221,7 @@ Obecnie oczekiwaniem aż kość zatrzyma się w miejscu steruje parametr czasowy
 Jest to wystarczające rozwiązanie, gdyż obecnie sytuacje niepewne z tego powodu zdarzają się bardzo rzadko (około 1 raz na 5000 rzutów).
 
 Istnieje możliwość udoskonalenia tego rozwiązania, poprzez stosowanie detekcji ruchu kości,
-jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo niż to proste czekanie stosowane obecnie.
+jednak to rozwiązanie najpewniej okazałoby się bardziej kosztowne czasowo niż proste czekanie stosowane obecnie.
 
 
 \subsection{Podsumowanie}\label{subsec:podsumowanie}

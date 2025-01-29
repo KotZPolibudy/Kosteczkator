@@ -39,16 +39,8 @@ Pracka/main.out
 # data/train/
 # data/test/
 # data/validation
-data/
+# data/  - wrzucam też teraz i dane treningowe i testowe, i jeszcze bardzo okrojone, stare przykłady etapów preprocesu :)
 
-# Moje stare śmieci ;)
-/old_kotu_stuff/data/test/*
-/old_kotu_stuff/data/train/*
-/old_kotu_stuff/data/validation/*
-# trained model (chcemy go w ignore, czy postępy treningu teżwrzucamy na gita??)
-# *.h5
-# models/
-/src/yolov8n.pt
 
 # *.keras - dodaje model na gita, żeby na malinie go pociągnąć ;)
 /serie/*
