@@ -1,9 +1,0 @@
-[Unit]
-Description=Test Python Service
-
-[Service]
-ExecStart=/bin/python3 /opt/script/test.py
-Restart=on-failure  # Restart if the script crashes
-
-[Install]
-WantedBy=multi-user.target
