@@ -11,7 +11,7 @@ jest przygotowany dla ciągów o długości 20 000 bitów. Poziom istotności ty
 W sekcjach~\ref{monbitOpis}~--~\ref{pokerowyOpis} zostały opisane testy wskazane w owej normie. Przedsawione w nich stałe
 są zgodnie z normami przedstawionymi w FIPS 140-2~\cite{NIST2001}. Zostały one zaimplementowane w języku Python.
 \par
-Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01} \cite{TestU01}. Niestety, do zastosowania nawet 
+Do przeprowadzenia testów rozważano również wykorzystanie biblioteki \textit{TestU01}~\cite{TestU01}. Niestety, do zastosowania nawet
 najmniejszego z zaproponowanych w niej testów potrzeba przynajmniej \begin{math} 10^6 \end{math} bitów. Przez 
 wzgląd na ograniczenia czasowe oraz ryzyko nadmiernej eksploatacji robota przy generowaniu tak dużej ilości danych, 
 zrezygnowano z wykorzystania tej biblioteki.
@@ -57,7 +57,7 @@ Sformuowano następujące hipotezy:
 Celem testu serii jest zliczenie tak zwanych \textit{serii}, czyli nieprzerwanych ciągów takich samych bitów. Test serii
 sprawdza, czy ilość serii każdej długości jest zgodna z oczekiwanymi wartościami oraz bada, czy zmiany między 
 wartościami bitów nie są zbyt częste bądź zbyt rzadkie. Oczekiwane rozkłady wystąpień poszczególnych serii przedstawiono
-w tabeli \ref{serieOczekiwane}. Sformuowano hipotezy:
+w tabeli~\ref{serieOczekiwane}. Sformuowano hipotezy:
 \par \begin{math} H_0 \end{math}: Rozkład wystąpień serii bitów jest zgodny z przyjętym rozkładem.
 \par \begin{math} H_1 \end{math}: Rozkład wystąpień serii bitów nie jest zgodny z przyjętym rozkładem.
 \begin{table}[h]
@@ -105,18 +105,17 @@ Sformuowano hipotezy:
 \par \begin{math} H_1 \end{math}: Rozkład 4-bitowych segmentów w ciągu nie jest zgodny z oczekiwanym.
 
 \section{Wyniki testów}
-Przedstawione w sekcji \ref{testyOpis} testy zostały wykorzystane do sprawdzenia losowości ciągu wygenerowanego przez robota i 
+Przedstawione w sekcji~\ref{testyOpis} testy zostały wykorzystane do sprawdzenia losowości ciągu wygenerowanego przez robota i
 odczytywnane przez oba modele sztucznej inteligencji. Ich wyniki przedstawiono w poniższej sekcji.
 
 Jednakże, przed rozpoczęciem testów statystycznych wyników odczytanych przez model sztucznej inteligencji, postanowiono zbadać
-rozkład wyników rzutów wykonanych przez robota (przedstawionych na wykresie na rys. \ref{fig:robot-wykres}), które 
+rozkład wyników rzutów wykonanych przez robota (przedstawionych na wykresie na rys.~\ref{fig:robot-wykres}), które
 zostały ręcznie oznaczone do przykładów uczących dla sieci neuronowej. Miało to na celu sprawdzenie, czy ewentualny 
-nierównomierny rozkład wyników końcowych jest spowodowany wadami maszyny lub nieprawidłości w bryle kości, czy może 
+nierównomierny rozkład wyników końcowych jest spowodowany wadami maszyny lub nieprawidłowości w bryle kości, czy może
 problemem jest sam model sztucznej inteligencji. 
 
 Wartość statystyki testowej chi-kwadrat wyniosła \begin{math} 5{,}488 \end{math}, czyli mniej od przyjętej wartości krytycznej.
-Nie ma zatem podstaw do odrzucenia hipotezy zerowej: rozkład prawdopodobieństwa wyników jest równomierny dla rzutów
-wykonywanych przez robota.
+Nie ma zatem podstaw do odrzucenia hipotezy zerowej: rozkład prawdopodobieństwa wyników dla rzutów wykonywanych przez robota jest równomierny.
 
 \begin{figure}[H]
     \centering
