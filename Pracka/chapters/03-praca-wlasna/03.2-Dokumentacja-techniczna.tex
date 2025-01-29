@@ -16,7 +16,7 @@ Pozostałe najważniejsze wymiary przedstawiono na rys.~\ref{fig:wymiary} oraz n
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\linewidth]{chapters/03-praca-wlasna/figures/wym_wew.png}
-    \caption{\label{fig:wymiary_wew}Wymiary wewnętrzne.}
+    \caption{\label{fig:wymiary_wew}Wymiary komponentów wewnętrznych.}
 \end{figure}
 
 \subsection{Wykorzystane elementy strukturalne}
@@ -68,7 +68,7 @@ obniżała by jakość wydruku komponentów robota, które zawierają wiele otwo
 \subsection{Podłączenie elektroniki}
 
 Schemat na rys.~\ref{fig:electronics} przedstawia wszystkie elementy układu elektronicznego wraz z połączeniami, które zostały wykorzystane w robocie.
-Złącza GPIO mikrokontrolera Raspberry Pi 4b zostały użyte do kontrolowania poszczególnych elementów, takich jak silnik prądu stałego oraz diody LED, które są sterowane za 
+Złącza GPIO mikrokontrolera Raspberry Pi 4b zostały użyte do kontrolowania poszczególnych elementów, takich jak silnik prądu stałego, wentylator oraz diody LED. Elementy te są sterowane za 
 pośrednictwem układów L298N oraz ULN2803A. Raspberry Pi jest zasilane przez port USB-C, a wszystkie podzespoły dzielą wspólną masę.
 Silnik prądu stałego (M1) jest sterowany za pomocą układu L298N, który umożliwia kontrolę prędkości z jaką obraca się silnik, poprzez kontrolę współczynnika wypełnienia (ang. \textit{duty cycle})
 za pomocą sygnału PWM generowanego przez Raspberry Pi i dostarczanego na pin ENB poprzez złącze GPIO. Układ L298N pozwala również na kontrolę kierunku, w którą obraca się silnik poprzez
@@ -80,13 +80,13 @@ do anod poszczególnych diod. Wartości rezystancji dobrano na podstawie zalecan
 mają to być diody służące tylko do sygnalizowania procesów wykonywanych przez robota. Z tego powodu rezystory, które wybrano mają wyższe wartości rezystancji niż te, które są zalecane, jednak było to
 działanie celowe. Dla diod zielonej i niebieskiej wybrano rezystor $10~k\Omega$ dla każdej osobno, natomiast dla czerwonej $2{,}2~k\Omega$. Piny GPIO Raspberry Pi odpowiadają za kontrolę włączania poszczególnych diod poprzez sterowanie układem ULN2803A.
 Białe diody LED są połączone szeregowo i sterowane za pomocą tranzystorowego układu ULN2803A. W układzie zastosowano rezystory ograniczające napięcie. Każda z tych diod powinna być 
-zasilana napięciem od 3 V do 3,2 V, co oznacza, że po połączeniu szeregowym ich układ powinien być zasilany napięciem 12 V, które dostarcza im układ ULN2803A. Zdecydowano się na zastosowanie
-rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tyh diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie, o czym jest mowa w sekcji~\ref{subsec:prototypowanie}
+zasilana napięciem od 3 V do 3,2 V, co oznacza, że po połączeniu szeregowym ich układ powinien być zasilany napięciem 12 V, które dostarcza im układ ULN2803A. Zdecydowano się jednak na zastosowanie
+rezystorów ograniczających napięcie ze względu na zbyt dużą jasność świecenia tych diod, co powodowało powstawanie odblasków na kości. Wartości rezystancji tych rezystorów dobrano eksperymentalnie, o czym jest mowa w sekcji~\ref{subsec:prototypowanie}
 i ostatecznie wybrano dwa rezystory połączone szeregowo o rezystancji $2{,}2~k\Omega$, dające łącznie $4{,}4~k\Omega$.
 Dodatkowo układ zawiera mały wentylator (Fan1) zasilany napięciem 12V. 
 
-W praktyce w robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
-Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty przełącznik do wywołania sygnału wejściowego na jednym z pinów GPIO Raspberry Pi.
+W robocie wykorzystano szynę zasilania, z której zasilane są wszystkie wspominane komponenty. 
+Schemat zawiera także przycisk (S1), który jest wykorzystywany jako prosty przełącznik do wywołania sygnału wejściowego na pinie GPIO Raspberry Pi.
 
 \begin{figure}[H]
     \centering

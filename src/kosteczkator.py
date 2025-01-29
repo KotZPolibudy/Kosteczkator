@@ -48,8 +48,6 @@ global model
 model = load_model("na_nowych_final_unbalanced.keras")
 
 
-
-# preprocess function
 def process_and_crop(image_path, size=(64, 64)):
     image = Image.open(image_path).convert("RGB")
     hsv_image = image.convert("HSV")
@@ -82,19 +80,14 @@ def process_and_crop(image_path, size=(64, 64)):
 
 
 def predict_number_from_loaded_img(model, img):
-    # Load the image in grayscale mode to match the model input
-    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
-    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
+    img_array = image.img_to_array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
 
-    # Make prediction
-    prediction = model.predict(img_array)  # Get the model's predictions for the image
+    prediction = model.predict(img_array)
     # print(prediction)
-    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
-
-    # List of class labels (from 1 to 8 for dice numbers)
+    predicted_class = np.argmax(prediction, axis=1)
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
     # print(predicted_class)
-    # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
@@ -119,8 +112,7 @@ def stop_motor():
 def doRoll():
     global direction
     global model
-    
-    
+
     # # Kręcenie silnikiem w aktualnym kierunku
     start_motor(direction)
     # print("Silnik się kręci...")
@@ -147,33 +139,20 @@ def genEntropy(numberOfBytes: int):
     global num
     global cycle
     for _ in range(numberOfBytes):
+        num += doRoll()
+        num = num << 3
+        num += doRoll()
+        num = num << 3
         if cycle == 1:
             num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
             cycle += 1
-            bytes.append(0b11111111 & num)
-            num = num>>8
         elif cycle == 2:
             num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
             cycle = 0
-            bytes.append(0b11111111 & num)
-            num = num>>8
         else:
-            num+=doRoll()
-            num = num<<3
-            num+=doRoll()
-            num = num<<3
             cycle += 1
-            bytes.append(0b11111111 & num)
-            num = num>>8
-            
+        bytes.append(0b11111111 & num)
+        num = num >> 8
     return bytes
 
 
@@ -184,8 +163,8 @@ def fillEntropy(usb:serial.Serial,numberOfBytes):
         numbers = bytes(genEntropy(numberOfBytes))
         # print(numbers)
         usb.write(numbers)
-        # print(f"Sent: {numbers}") Trzeba będzie zrobić porządek w komentarzach
-        # time.sleep(5)  # Send data every 5 seconds
+        # print(f"Sent: {numbers}")
+        # time.sleep(5)
 
 def rolling(usb:serial.Serial):
     while True:

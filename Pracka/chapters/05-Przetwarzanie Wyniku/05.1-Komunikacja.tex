@@ -1,5 +1,5 @@
 \chapter{Komunikacja}\label{ch:komunikacja}
-Aby móc korzystać z robota, opracowany został prosty protokół komunikacyjny, który 
+Aby móc korzystać z robota, opracowany został protokół komunikacyjny, który 
 odbywa się, wysyłając jednobajtowe znaki poprzez emulowany port szeregowy. Po stronie robota Raspberry Pi wykorzystuje 
 sterownik \texttt{g\_serial}~\cite{g_serial}, który odopowiedzialny jest za tę emulację. Z robotem może komunikować się 
 każde urządzenie z systemem Linux lub Windows. 
@@ -36,7 +36,8 @@ W powyższym algorytmie dane wysyłane są po bajcie danych, ponieważ jest to n
 %ponieważ dane w pamięci są wyrównane do bajtów więc jest najmniejszą jednostką
 którą można przekazać na raz wykorzystując \texttt{pySerial}.
 Głównym założeniem tego trybu pracy jest wykorzystanie go jako dodatkowe źródło entropii w systemie 
-Linux poprzez wypełnienie \textit{/dev/random}, dla zobrazowania tego wykonany został rys.~\ref{fig:interface_a}. Może również zostać wykorzystany w celach 
+Linux poprzez wypełnienie \textit{/dev/random}, dla zobrazowania tego wykonany został rys.~\ref{fig:interface_a}. 
+Ten tryb pracy może również zostać wykorzystany w celach 
 kryptograficznych na przykład w trakcie generowania kluczy.
 
 \begin{figure}[H]
