@@ -8,6 +8,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 from PIL import Image, ImageFilter
 import cv2
+import serial
 
 # Konfiguracja kamery
 camera = Picamera2()
@@ -48,6 +49,8 @@ global model
 model = load_model("na_nowych_final_unbalanced.keras")
 
 
+
+# preprocess function
 def process_and_crop(image_path, size=(64, 64)):
     image = Image.open(image_path).convert("RGB")
     hsv_image = image.convert("HSV")
@@ -80,14 +83,19 @@ def process_and_crop(image_path, size=(64, 64)):
 
 
 def predict_number_from_loaded_img(model, img):
-    img_array = image.img_to_array(img) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+    # Load the image in grayscale mode to match the model input
+    img_array = image.img_to_array(img) / 255.0  # Rescale pixel values to [0, 1]
+    img_array = np.expand_dims(img_array, axis=0)  # Add a batch dimension (since the model expects a batch)
 
-    prediction = model.predict(img_array)
+    # Make prediction
+    prediction = model.predict(img_array)  # Get the model's predictions for the image
     # print(prediction)
-    predicted_class = np.argmax(prediction, axis=1)
+    predicted_class = np.argmax(prediction, axis=1)  # Get the class with the highest probability
+
+    # List of class labels (from 1 to 8 for dice numbers)
     class_names = ['1', '2', '3', '4', '5', '6', '7', '8']
     # print(predicted_class)
+    # Return the predicted label (the number corresponding to the class)
     predicted_label = class_names[predicted_class[0]]
     return predicted_label
 
@@ -112,7 +120,8 @@ def stop_motor():
 def doRoll():
     global direction
     global model
-
+    
+    
     # # Kręcenie silnikiem w aktualnym kierunku
     start_motor(direction)
     # print("Silnik się kręci...")
@@ -139,39 +148,68 @@ def genEntropy(numberOfBytes: int):
     global num
     global cycle
     for _ in range(numberOfBytes):
-        num += doRoll()
-        num = num << 3
-        num += doRoll()
-        num = num << 3
         if cycle == 1:
             num+=doRoll()
+            num = num<<3
+            num+=doRoll()
+            num = num<<3
+            num+=doRoll()
             cycle += 1
+            bytes.append(0b11111111 & num)
+            num = num>>8
         elif cycle == 2:
             num+=doRoll()
+            num = num<<3
+            num+=doRoll()
+            num = num<<3
+            num+=doRoll()
             cycle = 0
+            bytes.append(0b11111111 & num)
+            num = num>>8
         else:
+            num+=doRoll()
+            num = num<<3
+            num+=doRoll()
+            num = num<<3
             cycle += 1
-        bytes.append(0b11111111 & num)
-        num = num >> 8
+            bytes.append(0b11111111 & num)
+            num = num>>8
+            
     return bytes
 
 
 def fillEntropy(usb:serial.Serial,numberOfBytes):
     global num
     num = 0
+    usb.timeout = 0
     while True:
         numbers = bytes(genEntropy(numberOfBytes))
         # print(numbers)
+        a = usb.read()
+        if(a == b'q'):
+            break
         usb.write(numbers)
-        # print(f"Sent: {numbers}")
-        # time.sleep(5)
+        # print(f"Sent: {numbers}") Trzeba będzie zrobić porządek w komentarzach
+        # time.sleep(5)  # Send data every 5 seconds
+    usb.timeout = None
 
 def rolling(usb:serial.Serial):
-    while True:
-        c = usb.read()
-        if(c == b'r'):
+    usb.timeout = 0
+    running = True
+    while running:
+        while GPIO.input(BUTTON):  # Dopóki stan przycisku jest HIGH, czekaj
+            c = usb.read()
+            if(c == b'r'):
+                break
+            if(c == b'q'):
+                running = False
+                break
+            time.sleep(0.1)  # Małe opóźnienie, aby odciążyć CPU
+        if running:
             num = doRoll()
-            usb.write(num)
+            usb.write(bytes([num]))
+    usb.timeout = None
+
         
 
 if __name__ == "__main__":
@@ -187,14 +225,14 @@ if __name__ == "__main__":
         # fillEntropy(serialPort,1)
           
         usb = serial.Serial(serialPort)
-        
-        a = usb.read()
-        if(a == b'e'):
-            fillEntropy(usb,1)
-        elif(a == b'd'):
-            rolling(usb)
-        else:
-            print('error')      
+        print("SETUP DONE")
+        while True:
+            a = usb.read()
+            print(a)
+            if(a == b'e'):
+                fillEntropy(usb,1)
+            elif(a == b'd'):
+                rolling(usb) 
             
         
         GPIO.output(LED, GPIO.LOW)

@@ -8,6 +8,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 from PIL import Image, ImageFilter
 import cv2
+import serial
 
 # Konfiguracja kamery
 camera = Picamera2()
@@ -180,19 +181,35 @@ def genEntropy(numberOfBytes: int):
 def fillEntropy(usb:serial.Serial,numberOfBytes):
     global num
     num = 0
+    usb.timeout = 0
     while True:
         numbers = bytes(genEntropy(numberOfBytes))
         # print(numbers)
+        a = usb.read()
+        if(a == b'q'):
+            break
         usb.write(numbers)
         # print(f"Sent: {numbers}") Trzeba będzie zrobić porządek w komentarzach
         # time.sleep(5)  # Send data every 5 seconds
+    usb.timeout = None
 
 def rolling(usb:serial.Serial):
-    while True:
-        c = usb.read()
-        if(c == b'r'):
+    usb.timeout = 0
+    running = True
+    while running:
+        while GPIO.input(BUTTON):  # Dopóki stan przycisku jest HIGH, czekaj
+            c = usb.read()
+            if(c == b'r'):
+                break
+            if(c == b'q'):
+                running = False
+                break
+            time.sleep(0.1)  # Małe opóźnienie, aby odciążyć CPU
+        if running:
             num = doRoll()
-            usb.write(num)
+            usb.write(bytes([num]))
+    usb.timeout = None
+
         
 
 if __name__ == "__main__":
@@ -208,14 +225,14 @@ if __name__ == "__main__":
         # fillEntropy(serialPort,1)
           
         usb = serial.Serial(serialPort)
-        
-        a = usb.read()
-        if(a == b'e'):
-            fillEntropy(usb,1)
-        elif(a == b'd'):
-            rolling(usb)
-        else:
-            print('error')      
+        print("SETUP DONE")
+        while True:
+            a = usb.read()
+            print(a)
+            if(a == b'e'):
+                fillEntropy(usb,1)
+            elif(a == b'd'):
+                rolling(usb) 
             
         
         GPIO.output(LED, GPIO.LOW)
