@@ -1,8 +1,8 @@
 [Unit]
-Description=Test Python Service
+Description=Sprzętowy generator liczb losowych
 
 [Service]
-ExecStart=/bin/python3 /opt/script/test.py
+ExecStart=/bin/python3 /opt/kosteczkator/kosteczkator.py
 Restart=on-failure  # Restart if the script crashes
 
 [Install]

@@ -1,0 +1,9 @@
+[Unit]
+Description=Fan Control Service
+
+[Service]
+ExecStart=/bin/python3 /opt/fan/fan.py
+Restart=on-failure  # Restart if the script crashes
+
+[Install]
+WantedBy=multi-user.target
